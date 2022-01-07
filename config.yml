@@ -40,8 +40,6 @@ params:
     tocopen: false
 
     assets:
-        # disableHLJS: true # to disable highlight.js
-        # disableFingerprinting: true
         favicon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
         favicon16x16: https://jiandandaoxingfu.github.io/myblog/favicon.ico
         favicon32x32: https://jiandandaoxingfu.github.io/myblog/favicon.ico
@@ -52,8 +50,6 @@ params:
         text: "JMx"
         # icon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
         # iconHeight: 35
-
-
 
     # profile-mode
     profileMode:
@@ -121,10 +117,6 @@ menu:
           name: Search
           url: /search/
           weight: 50
-        - identifier: about
-          name: About
-          url: /about/
-          weight: 60
 outputs:
     home:
         - HTML
