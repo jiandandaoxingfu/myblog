@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/post/hugo-papermod/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/categories/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/hugo/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/papermod/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/post/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/categories/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2022-01-06T18:13:52+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/archives/</loc>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/search/</loc>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/about/</loc>
+  </url>
+</urlset>

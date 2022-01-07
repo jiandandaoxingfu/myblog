@@ -1,0 +1,132 @@
+publishDir: docs
+baseURL: https://jiandandaoxingfu.github.io/myblog/
+title: Blog's of JMx
+paginate: 5
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: true
+buildFuture: false
+buildExpired: false
+
+
+minify:
+    disableXML: true
+    minifyOutput: true
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    title: Blog's of JMx
+    description: "Blog's of JMx"
+    keywords: [Blog, Portfolio, PaperMod]
+    author: JMx
+    # author: ["Me", "You"] # multiple authors
+    images: ["<link or path of image for opengraph, twitter-cards>"]
+    DateFormat: "January 2, 2006"
+    defaultTheme: auto # dark, light
+    disableThemeToggle: false
+
+    ShowReadingTime: true
+    ShowShareButtons: false
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    disableSpecial1stPost: false
+    disableScrollToTop: false
+    comments: true
+    hidemeta: false
+    hideSummary: false
+    showtoc: true
+    tocopen: false
+
+    assets:
+        # disableHLJS: true # to disable highlight.js
+        # disableFingerprinting: true
+        favicon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        favicon16x16: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        favicon32x32: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        apple_touch_icon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        safari_pinned_tab: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+
+    label:
+        text: "JMx"
+        # icon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        # iconHeight: 35
+
+
+
+    # profile-mode
+    profileMode:
+        enabled: true # needs to be explicitly set
+        title: Jia Minxin
+        subtitle: A PhD and a front-end amateur
+        imageUrl: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        imageWidth: 120
+        imageHeight: 120
+        imageTitle: my image
+        buttons:
+            - name: Blog
+              url: post/
+            - name: About
+              url: about
+    socialIcons: 
+        - name: Github 
+          url: https://github.com/jiandandaoxingfu 
+        - name: Researchgate 
+          url: https://www.researchgate.net/profile/Jia-Minxin
+        - name: GoogleScholar
+          url: https://scholar.google.com.hk/citations?user=r69GvBsAAAAJ&hl=zh-CN
+        - name: 知乎
+          url: https://www.zhihu.com/people/jian-dan-dao-xing-fu-57
+
+    # home-info mode
+    homeInfoParams:
+        Title: "Hi there \U0001F44B"
+        Content: Welcome to my blog
+
+    cover:
+        hidden: false # hide everywhere but not in structured data
+        hiddenInList: false # hide on list pages and home
+        hiddenInSingle: false # hide on single page
+
+    # for search
+    # https://fusejs.io/api/options.html
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.6
+        minMatchCharLength: 3
+        keys: ["title", "summary", "content", "permalink"]
+menu:
+    main:
+        - identifier: post
+          name: Blog
+          url: post/
+          weight: 10
+        - identifier: archives
+          name: Archives
+          url: /archives/
+          weight: 20
+        - identifier: categories
+          name: Categories
+          url: /categories/
+          weight: 30
+        - identifier: tags
+          name: Tags
+          url: /tags/
+          weight: 40
+        - identifier: search
+          name: Search
+          url: /search/
+          weight: 50
+        - identifier: about
+          name: About
+          url: /about/
+          weight: 60
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
