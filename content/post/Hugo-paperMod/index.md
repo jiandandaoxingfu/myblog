@@ -2,9 +2,8 @@
 title: "Hugo使用教程"
 date: 2022-01-06 18:13:52.872 +0800
 summary: 'How to use hugo with the theme "paperMod"'
-weight: 1
 tags: ["hugo", "PaperMod"]
-categories: ["教程"]
+categories: ["Hugo教程"]
 author: "JMx"
 showToc: true
 TocOpen: false
@@ -332,6 +331,8 @@ $$
 2. https://adityatelange.github.io/hugo-PaperMod/
 
 3. https://chrispanag.com/
+
+4. anvithks/hugo-embed-pdf-shortcode
 
 
 
