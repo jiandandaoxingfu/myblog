@@ -1,13 +1,13 @@
 ---
 title: "Hugo使用教程"
-date: 2022-01-06 18:13:52.872 +0800
+date: 2022-01-06 18:13:52.872 +0800 
 summary: 'How to use hugo with the theme "paperMod"'
 tags: ["hugo", "PaperMod"]
 categories: ["Hugo教程"]
 author: "JMx"
 showToc: true
 TocOpen: false
-draft: true
+draft: false
 hidemeta: false
 comments: false
 disableHLJS: true 
@@ -234,20 +234,13 @@ searchHidden: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
-cover:
-    image: "https://d33wubrfki0l68.cloudfront.net/c38c7334cc3f23585738e40334284fddcaf03d5e/2e17c/images/hugo-logo-wide.svg"  
-    alt: "图片"  
-    caption: "" 
-    relative: false 
-    hidden: true 
 ---
-
 
 ## content
 ```
 则此页面显示为
 ![图片](images/first1.jpg)
-至此我们完成了基本功能。 需要注意的是，我们将此页面引用的图片需要放在`E:/mysite/content/post/first/images/`文件夹下。
+至此我们完成了基本功能。 需要注意的是，我们将此页面引用的图片放在`E:/mysite/content/post/first/images/`文件夹下。
 
 
 ## 配置数学环境
@@ -313,6 +306,7 @@ $$
 ```
 则有
 ![图片](images/first2.jpg)
+需要注意的是， 下划线作为markdown特殊词义， 我们需要将公式中的下划线转义，即使用`\_`。
 
 
 

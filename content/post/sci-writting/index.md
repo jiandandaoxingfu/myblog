@@ -7,7 +7,7 @@ categories: ["科研"]
 author: "JMx"
 showToc: true
 TocOpen: false
-draft: true
+draft: false
 hidemeta: false
 comments: false
 disableHLJS: true 
@@ -17,12 +17,6 @@ searchHidden: false
 ShowReadingTime: true
 ShowBreadCrumbs: false
 ShowPostNavLinks: true
-<!-- cover:
-    image: ""  
-    alt: "图片"  
-    caption: "" 
-    relative: false 
-    hidden: true  -->
 ---
 
 {{< embed-pdf url="post/sci-writting/files/sci-writting.pdf" >}}
