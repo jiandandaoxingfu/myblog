@@ -244,36 +244,34 @@ ShowPostNavLinks: true
 
 
 ## 配置数学环境
-下面， 我们使其支持数学环境。 只需在文件`E:/mysite/themes/papermod/layouts/partials/header.html`中插入一段支持katex的代码
+下面， 我们使其支持数学环境。 创建模板文件`E:/mysite/themes/papermod/layouts/shortcodes/katex.html`， 这里我们使用katex：
 ```html
-       ...
-    </nav>
-
+<div id="katex-support">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                    {left: "\\begin{equation}", right: "\\end{equation}", display: true},
-                    {left: "\\begin{cases}", right: "\\end{cases}", display: true},
-                    {left: "\\begin{pmatrix}", right: "\\end{pmatrix}", display: true},
-                    {left: "\\begin{array}", right: "\\end{array}", display: true},
-                    {left: "\\begin{align}", right: "\\end{align}", display: true}
-                ],
-                throwOnError : false
-            });
-        });
-    </script>
-
-</header>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+              {left: "\\begin{cases}", right: "\\end{cases}", display: true},
+              {left: "\\begin{pmatrix}", right: "\\end{pmatrix}", display: true},
+              {left: "\\begin{array}", right: "\\end{array}", display: true},
+              {left: "\\begin{align}", right: "\\end{align}", display: true}
+            ],
+            throwOnError : false });
+      });
+  </script>
+</div>    
 ```
-为了查看效果， 我们在`E:/mysite/content/post/first/index.md`文件中追加如下代码
+然后只需要在用到数学公式的文章开头引入该模板。 为了查看效果， 我们在`E:/mysite/content/post/first/index.md`文件中追加如下代码
 ```markdown
 ...
+---
+{%{< katex >}} % 删除"%".
 ## content
 这是一个行内公式： $a^2+b^2=1$. 下面的是块级公式
 $$ 
@@ -308,13 +306,45 @@ $$
 ![图片](images/first2.jpg)
 需要注意的是， 下划线作为markdown特殊词义， 我们需要将公式中的下划线转义，即使用`\_`。
 
+## 支持PDF文件阅读
+类似于数学环境， 我们可以引入pdf.js来支持pdf文件阅读。 首先下载[pdfjs](https://github.com/mozilla/pdf.js/releases/download/v2.12.313/pdfjs-2.12.313-dist.zip)， 解压后将其放在`E:/msite/static/js/pdf-js/`文件夹下。 删除不必要文件后，结构如下
+```
+pdf-js/web/viewer.html
+pdf-js/web/viewer.js
+pdf-js/web/viewer.css
+pdf-js/web/images/
 
+pdf-js/build/pdf.js
+pdf-js/build/pdf.worker.js
+```
+然后修改`viewer.js`文件。 首行添加命令
+```javascript
+const _url_ = window.location.href.split("?")[1];
+```
+然后将文件中默认打开的文件`compressed.tracemonkey-pldi-09.pdf`改为`_url_`。 
+接着创建文件`E:/mysite/themes/papermod/layouts/shortcodes/embed-pdf.html`
+```html
+<div id="container">
+    <script type="text/javascript">
+        var url = "{{.Site.BaseURL}}" + '{{ .Get "url" }}';
+        var div  = document.getElementById('container');
+        div.innerHTML += `<iframe src=/hugo-papermod/js/pdf-js/web/viewer.html?${url} frameborder="0" width="100%" height="900px"></iframe>`
+    </script>
+</div>
+```
+同样地，我们在需要引入pdf文件的文章中添加
+```
+{%{< embed-pdf url="post/first/files/test.pdf" >}}         % 删除"%"
+```
+结果如下
+![图片](images/pdf.jpg)
 
 ## 部署到Github Pages
-下面， 我们将上述项目放在github中， 并启用github pages。 首先我们创建仓库`hugo-papermod`(前面我们已经假设此仓库建好了，并且有icon图片)。 然后打开github pages， 选择main->docs保存发布即可访问。
-
-
-
+下面， 我们将上述项目放在github中， 并启用github pages。 首先用hugo生成静态页面
+```
+E:\mysite> hugo
+```
+回车后hugo会将文章生成html页面， 放在docs文件夹下。 然后我们创建仓库`hugo-papermod`(前面我们已经假设此仓库建好了，并且有icon图片)。 然后打开github pages， 选择main->docs保存发布即可访问。
 
 
 ## 总结
@@ -326,7 +356,7 @@ $$
 
 3. https://chrispanag.com/
 
-4. anvithks/hugo-embed-pdf-shortcode
+4. https://github.com/anvithks/hugo-embed-pdf-shortcode
 
 
 

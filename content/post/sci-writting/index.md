@@ -19,6 +19,7 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
 
+
 {{< embed-pdf url="post/sci-writting/files/sci-writting.pdf" >}}
 
 

@@ -21,7 +21,6 @@
  */
  
 const _url_ = window.location.href.split("?")[1];
-console.log(_url_);
 
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
