@@ -55,7 +55,7 @@ params:
     profileMode:
         enabled: true # needs to be explicitly set
         title: Jia Minxin
-        subtitle: A PhD and a front-end amateur
+        subtitle: A PhD student in mathematics and a coder.
         imageUrl: https://jiandandaoxingfu.github.io/myblog/favicon.ico
         imageWidth: 120
         imageHeight: 120
@@ -72,6 +72,8 @@ params:
           url: https://www.researchgate.net/profile/Jia-Minxin
         - name: GoogleScholar
           url: https://scholar.google.com.hk/citations?user=r69GvBsAAAAJ&hl=zh-CN
+        - name: Math Review
+          url: https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1447439
         - name: 知乎
           url: https://www.zhihu.com/people/jian-dan-dao-xing-fu-57
 
