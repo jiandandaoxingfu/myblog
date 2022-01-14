@@ -1,8 +1,13 @@
-<div id="download">
+<div id="download" class="post-tags">
+	<style>
+		#download a::hover {
+			transform: scale(0.8);
+		}
+	</style>
     <script type="text/javascript">
         var url = "{{.Site.BaseURL}}" + '{{ .Get "url" }}';
         var text = '{{ .Get "text" }}';
         var div  = document.getElementById('download');
-        div.innerHTML = `<a id="download" href=${url} target="_blank" style="background: #1e9eb3;" download>${text}</a>`
+        div.innerHTML = `<a href=${url} target="_blank" style="display: inline-block; box-shadow: none;" download>${text}</a>`
 </script>
 </div>
