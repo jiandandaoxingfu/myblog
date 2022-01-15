@@ -1,9 +1,9 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-Last_Modified:  2022-01-13 23:25:51
+Last_Modified:  2022-01-15 10:37:54
 summary: 'Maple符号计算的快速入门教程'
-tags: ["symbolic calculation"]
+tags: ["symbolic calculation", "Maple", "tutorial"]
 categories: ["Maple"]
 author: "JMx"
 showToc: true
