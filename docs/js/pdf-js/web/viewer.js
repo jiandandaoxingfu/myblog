@@ -19,9 +19,8 @@
  * @licend The above is the entire license notice for the
  * Javascript code in this page
  */
- 
-const _url_ = window.location.href.split("?")[1];
 
+const _url_ = window.location.href.split("?")[1];
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -453,7 +452,6 @@ const PDFViewerApplication = {
         _app_options.AppOptions.set(name, prefs[name]);
       }
     } catch (reason) {
-      console.error(`_readPreferences: "${reason.message}".`);
     }
   },
 
@@ -531,7 +529,6 @@ const PDFViewerApplication = {
     }
 
     return Promise.all(waitOn).catch(reason => {
-      console.error(`_parseHashParameters: "${reason.message}".`);
     });
   },
 
@@ -1148,6 +1145,10 @@ const PDFViewerApplication = {
           scrollMode,
           spreadMode
         });
+
+        // console.log( document.getElementsByClassName('page')[0].style.height );
+        // document.body.style = `height: ${parseInt(document.getElementsByClassName('page')[0].style.height) + 40 + "px"};`
+
         this.eventBus.dispatch("documentinit", {
           source: this
         });
@@ -1185,7 +1186,6 @@ const PDFViewerApplication = {
       const numLabels = labels.length;
 
       if (numLabels !== this.pagesCount) {
-        console.error("The number of Page Labels does not match " + "the number of pages in the document.");
         return;
       }
 
@@ -1218,7 +1218,6 @@ const PDFViewerApplication = {
             return false;
           }
 
-          console.warn("Warning: JavaScript is not supported");
           this.fallback(_pdfjsLib.UNSUPPORTED_FEATURES.javaScript);
           return true;
         });
@@ -1263,7 +1262,6 @@ const PDFViewerApplication = {
       this.documentInfo = info;
       this.metadata = metadata;
       this.contentDispositionFilename = contentDispositionFilename;
-      console.log("PDF " + pdfDocument.fingerprint + " [" + info.PDFFormatVersion + " " + (info.Producer || "-").trim() + " / " + (info.Creator || "-").trim() + "]" + " (PDF.js: " + (_pdfjsLib.version || "-") + (_app_options.AppOptions.get("enableWebGL") ? " [WebGL]" : "") + ")");
       let pdfTitle;
       const infoTitle = info && info["Title"];
 
@@ -1286,7 +1284,6 @@ const PDFViewerApplication = {
       }
 
       if (info.IsAcroFormPresent) {
-        console.warn("Warning: AcroForm/XFA is not supported");
         this.fallback(_pdfjsLib.UNSUPPORTED_FEATURES.forms);
       }
 
@@ -1818,7 +1815,6 @@ function webViewerInitialized() {
     _app_options.AppOptions.set("disableFontFace", true);
 
     PDFViewerApplication.l10n.get("web_fonts_disabled", null, "Web fonts are disabled: unable to use embedded PDF fonts.").then(msg => {
-      console.warn(msg);
     });
   }
 
@@ -1940,7 +1936,6 @@ function webViewerPageMode({
       break;
 
     default:
-      console.error('Invalid "pagemode" hash parameter: ' + mode);
       return;
   }
 
@@ -2805,7 +2800,6 @@ function scrollIntoView(element, spot, skipOverflowHiddenElements = false) {
   let parent = element.offsetParent;
 
   if (!parent) {
-    console.error("offsetParent is not set -- cannot scroll");
     return;
   }
 
@@ -3120,7 +3114,6 @@ function getPDFFileNameFromURL(url, defaultFilename = "document.pdf") {
   }
 
   if (isDataSchema(url)) {
-    console.warn("getPDFFileNameFromURL: " + 'ignoring "data:" URL for performance reasons.');
     return defaultFilename;
   }
 
@@ -3262,7 +3255,6 @@ class EventBus {
     this._dispatchToDOM = dispatchToDOM === true;
 
     if (dispatchToDOM) {
-      console.error("The `eventBusDispatchToDOM` option/preference is deprecated, " + "add event listeners to the EventBus instance rather than the DOM.");
     }
   }
 
@@ -3354,7 +3346,6 @@ exports.EventBus = EventBus;
 let globalEventBus = null;
 
 function getGlobalEventBus(dispatchToDOM = false) {
-  console.error("getGlobalEventBus is deprecated, use a manually created EventBus instance instead.");
 
   if (!globalEventBus) {
     globalEventBus = new EventBus({
@@ -3839,7 +3830,6 @@ class PDFCursorTools {
 
       case CursorTool.ZOOM:
       default:
-        console.error(`switchTool: "${tool}" is an unsupported value.`);
         return;
     }
 
@@ -4172,7 +4162,6 @@ class PDFRenderingQueue {
         view.draw().finally(() => {
           this.renderHighestPriority();
         }).catch(reason => {
-          console.error(`renderView: "${reason}"`);
         });
         break;
     }
@@ -4325,7 +4314,6 @@ class PDFSidebar {
         break;
 
       default:
-        console.error(`PDFSidebar._switchView: "${view}" is not a valid view.`);
         return false;
     }
 
@@ -5851,7 +5839,6 @@ class PDFFindController {
           this._pageContents[i] = normalize(strBuf.join(""));
           extractTextCapability.resolve(i);
         }, reason => {
-          console.error(`Unable to get text content for page ${i + 1}`, reason);
           this._pageContents[i] = "";
           extractTextCapability.resolve(i);
         });
@@ -5971,7 +5958,6 @@ class PDFFindController {
 
   _nextPageMatch() {
     if (this._resumePageIdx !== null) {
-      console.error("There can only be one pending page.");
     }
 
     let matches = null;
@@ -6253,7 +6239,6 @@ class PDFHistory {
     updateUrl = false
   }) {
     if (!fingerprint || typeof fingerprint !== "string") {
-      console.error('PDFHistory.initialize: The "fingerprint" must be a non-empty string.');
       return;
     }
 
@@ -6349,14 +6334,11 @@ class PDFHistory {
     }
 
     if (namedDest && typeof namedDest !== "string") {
-      console.error("PDFHistory.push: " + `"${namedDest}" is not a valid namedDest parameter.`);
       return;
     } else if (!Array.isArray(explicitDest)) {
-      console.error("PDFHistory.push: " + `"${explicitDest}" is not a valid explicitDest parameter.`);
       return;
     } else if (!(Number.isInteger(pageNumber) && pageNumber > 0 && pageNumber <= this.linkService.pagesCount)) {
       if (pageNumber !== null || this._destination) {
-        console.error("PDFHistory.push: " + `"${pageNumber}" is not a valid pageNumber parameter.`);
         return;
       }
     }
@@ -6866,19 +6848,16 @@ class PDFLinkService {
               explicitDest
             });
           }).catch(() => {
-            console.error(`PDFLinkService.navigateTo: "${destRef}" is not ` + `a valid page reference, for dest="${dest}".`);
           });
           return;
         }
       } else if (Number.isInteger(destRef)) {
         pageNumber = destRef + 1;
       } else {
-        console.error(`PDFLinkService.navigateTo: "${destRef}" is not ` + `a valid destination reference, for dest="${dest}".`);
         return;
       }
 
       if (!pageNumber || pageNumber < 1 || pageNumber > this.pagesCount) {
-        console.error(`PDFLinkService.navigateTo: "${pageNumber}" is not ` + `a valid page number, for dest="${dest}".`);
         return;
       }
 
@@ -6915,7 +6894,6 @@ class PDFLinkService {
       });
     }).then(data => {
       if (!Array.isArray(data.explicitDest)) {
-        console.error(`PDFLinkService.navigateTo: "${data.explicitDest}" is` + ` not a valid destination array, for dest="${dest}".`);
         return;
       }
 
@@ -6983,14 +6961,12 @@ class PDFLinkService {
             }, zoomArgs.length > 1 ? zoomArgs[1] | 0 : null];
           } else if (zoomArg === "FitR") {
             if (zoomArgs.length !== 5) {
-              console.error('PDFLinkService.setHash: Not enough parameters for "FitR".');
             } else {
               dest = [null, {
                 name: zoomArg
               }, zoomArgs[1] | 0, zoomArgs[2] | 0, zoomArgs[3] | 0, zoomArgs[4] | 0];
             }
           } else {
-            console.error(`PDFLinkService.setHash: "${zoomArg}" is not ` + "a valid zoom value.");
           }
         }
       }
@@ -7027,7 +7003,6 @@ class PDFLinkService {
         return;
       }
 
-      console.error(`PDFLinkService.setHash: "${unescape(hash)}" is not ` + "a valid destination.");
     }
   }
 
@@ -7857,7 +7832,6 @@ class PDFSidebarResizer {
     this.l10n = l10n;
 
     if (typeof CSS === "undefined" || typeof CSS.supports !== "function" || !CSS.supports(SIDEBAR_WIDTH_VAR, `calc(-1 * ${SIDEBAR_MIN_WIDTH}px)`)) {
-      console.warn("PDFSidebarResizer: " + "The browser does not support resizing of the sidebar.");
       return;
     }
 
@@ -8028,7 +8002,6 @@ class PDFThumbnailViewer {
     const thumbnailView = this._thumbnails[pageNumber - 1];
 
     if (!thumbnailView) {
-      console.error('scrollThumbnailIntoView: Invalid "pageNumber" parameter.');
       return;
     }
 
@@ -8149,7 +8122,6 @@ class PDFThumbnailViewer {
       const thumbnailView = this._thumbnails[this._currentPageNumber - 1];
       thumbnailView.div.classList.add(THUMBNAIL_SELECTED_CLASS);
     }).catch(reason => {
-      console.error("Unable to initialize thumbnail viewer", reason);
     });
   }
 
@@ -8170,7 +8142,6 @@ class PDFThumbnailViewer {
       this._pageLabels = null;
     } else if (!(Array.isArray(labels) && this.pdfDocument.numPages === labels.length)) {
       this._pageLabels = null;
-      console.error("PDFThumbnailViewer_setPageLabels: Invalid page labels.");
     } else {
       this._pageLabels = labels;
     }
@@ -8200,7 +8171,6 @@ class PDFThumbnailViewer {
 
       return pdfPage;
     }).catch(reason => {
-      console.error("Unable to get page for thumb view", reason);
 
       this._pagesRequests.delete(thumbView);
     });
@@ -8476,7 +8446,6 @@ class PDFThumbnailView {
 
   draw() {
     if (this.renderingState !== _pdf_rendering_queue.RenderingStates.INITIAL) {
-      console.error("Must be in new state before drawing");
       return Promise.resolve(undefined);
     }
 
@@ -8886,7 +8855,6 @@ class BaseViewer {
     }
 
     if (!this._setCurrentPageNumber(val, true)) {
-      console.error(`${this._name}.currentPageNumber: "${val}" is not a valid page.`);
     }
   }
 
@@ -8937,7 +8905,6 @@ class BaseViewer {
     }
 
     if (!this._setCurrentPageNumber(page, true)) {
-      console.error(`${this._name}.currentPageLabel: "${val}" is not a valid page.`);
     }
   }
 
@@ -9143,7 +9110,6 @@ class BaseViewer {
         for (let pageNum = 2; pageNum <= pagesCount; ++pageNum) {
           pdfDocument.getPage(pageNum).then(pdfPage => {
             const pageView = this._pages[pageNum - 1];
-
             if (!pageView.pdfPage) {
               pageView.setPdfPage(pdfPage);
             }
@@ -9154,7 +9120,6 @@ class BaseViewer {
               this._pagesCapability.resolve();
             }
           }, reason => {
-            console.error(`Unable to get page ${pageNum} to initialize viewer`, reason);
 
             if (--getPagesLeft === 0) {
               this._pagesCapability.resolve();
@@ -9171,7 +9136,6 @@ class BaseViewer {
         this.update();
       }
     }).catch(reason => {
-      console.error("Unable to initialize viewer", reason);
     });
   }
 
@@ -9184,7 +9148,6 @@ class BaseViewer {
       this._pageLabels = null;
     } else if (!(Array.isArray(labels) && this.pdfDocument.numPages === labels.length)) {
       this._pageLabels = null;
-      console.error(`${this._name}.setPageLabels: Invalid page labels.`);
     } else {
       this._pageLabels = labels;
     }
@@ -9341,7 +9304,6 @@ class BaseViewer {
           break;
 
         default:
-          console.error(`${this._name}._setScale: "${value}" is an unknown zoom value.`);
           return;
       }
 
@@ -9374,7 +9336,6 @@ class BaseViewer {
     const pageView = Number.isInteger(pageNumber) && this._pages[pageNumber - 1];
 
     if (!pageView) {
-      console.error(`${this._name}.scrollPageIntoView: ` + `"${pageNumber}" is not a valid pageNumber parameter.`);
       return;
     }
 
@@ -9442,7 +9403,6 @@ class BaseViewer {
         break;
 
       default:
-        console.error(`${this._name}.scrollPageIntoView: ` + `"${destArray[1].name}" is not a valid destination type.`);
         return;
     }
 
@@ -9595,7 +9555,6 @@ class BaseViewer {
     }
 
     if (pageNumber < 1 || pageNumber > this.pagesCount) {
-      console.error(`${this._name}.isPageVisible: "${pageNumber}" is out of bounds.`);
       return false;
     }
 
@@ -9638,7 +9597,6 @@ class BaseViewer {
 
       return pdfPage;
     }).catch(reason => {
-      console.error("Unable to get page for page view", reason);
 
       this._pagesRequests.delete(pageView);
     });
@@ -10232,7 +10190,6 @@ class PDFPageView {
           break;
 
         default:
-          console.error("Bad rotation value.");
           break;
       }
 
@@ -10259,7 +10216,6 @@ class PDFPageView {
 
   draw() {
     if (this.renderingState !== _pdf_rendering_queue.RenderingStates.INITIAL) {
-      console.error("Must be in new state before drawing");
       this.reset();
     }
 
@@ -10694,7 +10650,6 @@ class TextLayerBuilder {
       }
 
       if (i === textContentItemsStr.length) {
-        console.error("Could not find a matching mapping");
       }
 
       const match = {
@@ -11695,7 +11650,7 @@ class ViewHistory {
   }
 
   async _writeToStorage() {
-    const databaseStr = JSON.stringify(this.database);
+    const databaseStr = ""; JSON.stringify(this.database);
     localStorage.setItem("pdfjs.history", databaseStr);
   }
 
@@ -11767,7 +11722,7 @@ exports.GenericCom = GenericCom;
 
 class GenericPreferences extends _preferences.BasePreferences {
   async _writeToStorage(prefObj) {
-    localStorage.setItem("pdfjs.preferences", JSON.stringify(prefObj));
+    localStorage.setItem("pdfjs.preferences", "") //JSON.stringify(prefObj));
   }
 
   async _readFromStorage(prefObj) {
@@ -12116,7 +12071,6 @@ document.webL10n = function (window, document, undefined) {
       try {
         args = JSON.parse(l10nArgs);
       } catch (e) {
-        console.warn('could not parse arguments for #' + l10nId);
       }
     }
 
@@ -12225,7 +12179,6 @@ document.webL10n = function (window, document, undefined) {
         xhrLoadText(url, function (content) {
           parseRawLines(content, false, callback);
         }, function () {
-          console.warn(url + ' not found.');
           callback();
         });
       }
@@ -12281,7 +12234,6 @@ document.webL10n = function (window, document, undefined) {
       var dict = getL10nDictionary();
 
       if (dict && dict.locales && dict.default_locale) {
-        console.log('using the embedded JSON directory, early way out');
         gL10nData = dict.locales[lang];
 
         if (!gL10nData) {
@@ -12301,7 +12253,6 @@ document.webL10n = function (window, document, undefined) {
 
         callback();
       } else {
-        console.log('no resource to load, early way out');
       }
 
       gReadyState = 'complete';
@@ -12325,8 +12276,6 @@ document.webL10n = function (window, document, undefined) {
 
       this.load = function (lang, callback) {
         parseResource(href, lang, callback, function () {
-          console.warn(href + ' not found.');
-          console.warn('"' + lang + '" resource not found');
           gLanguage = '';
           callback();
         });
@@ -12665,7 +12614,6 @@ document.webL10n = function (window, document, undefined) {
     var index = locales2rules[lang.replace(/-.*$/, '')];
 
     if (!(index in pluralRules)) {
-      console.warn('plural form unknown for [' + lang + ']');
       return function () {
         return 'other';
       };
@@ -12704,7 +12652,6 @@ document.webL10n = function (window, document, undefined) {
     var data = gL10nData[key];
 
     if (!data) {
-      console.warn('#' + key + ' is undefined.');
 
       if (!fallback) {
         return null;
@@ -12758,7 +12705,6 @@ document.webL10n = function (window, document, undefined) {
         return gL10nData[arg];
       }
 
-      console.log('argument {{' + arg + '}} for #' + key + ' is undefined.');
       return matched_text;
     });
   }
@@ -12769,7 +12715,6 @@ document.webL10n = function (window, document, undefined) {
     var data = getL10nData(l10n.id, l10n.args);
 
     if (!data) {
-      console.warn('#' + l10n.id + ' is undefined.');
       return;
     }
 
@@ -12973,7 +12918,6 @@ PDFPrintService.prototype = {
     }, this);
 
     if (!hasEqualPageSizes) {
-      console.warn("Not all pages have the same size. The printed " + "result may be incorrect!");
     }
 
     this.pageStyleSheet = document.createElement("style");
@@ -13084,7 +13028,6 @@ const print = window.print;
 
 window.print = function () {
   if (activeService) {
-    console.warn("Ignored window.print() because of a pending print job.");
     return;
   }
 
@@ -13098,7 +13041,6 @@ window.print = function () {
     dispatchEvent("beforeprint");
   } finally {
     if (!activeService) {
-      console.error("Expected print service to be initialized.");
       ensureOverlay().then(function () {
         if (overlayManager.active === "printServiceOverlay") {
           overlayManager.close("printServiceOverlay");
