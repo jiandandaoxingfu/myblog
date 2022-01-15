@@ -2,7 +2,7 @@
 <footer class="footer">
     <style>
         #img-preview {
-            display: none;
+            z-index: -1;
             position: fixed;
             top: 0;
             left: 0;
@@ -11,7 +11,12 @@
             overflow: scroll;
             text-align: center;
         }
+        #img-preview img {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
     </style>
+
     <div id="img-preview">
         <img src="" alt="没有图片" width="100%" id="preview-img">
     </div>
@@ -20,11 +25,15 @@
         document.addEventListener("click", e => {
             if (e.target.tagName.toLowerCase() === "img" ) {
                 if( e.target.id == "preview-img" ) {
-                    document.getElementById('preview-img').src = "";
-                    document.getElementById('img-preview').style.display = "none";
+                    document.getElementById('preview-img').style.opacity = 0;
+                    setTimeout( () => {
+                        document.getElementById('img-preview').style.zIndex = -1;
+                        document.getElementById('preview-img').src = "";
+                    }, 300);
                 } else {
+                    document.getElementById('img-preview').style.zIndex = 3;
                     document.getElementById('preview-img').src = e.target.src;
-                    document.getElementById('img-preview').style.display = "block";
+                    document.getElementById('preview-img').style.opacity = 1;
                 }
             }
         })
