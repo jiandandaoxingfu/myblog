@@ -277,7 +277,7 @@ ShowPostNavLinks: true
 $$ 
 x^2+y^2=1 
 $$
-支持一下数学环境
+支持以下数学环境
 \begin{pmatrix}
    a & b \\\\
    c & d

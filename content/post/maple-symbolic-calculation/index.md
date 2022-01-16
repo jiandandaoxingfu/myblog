@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-Last_Modified:  2022-01-15 10:37:54
+Last_Modified:  2022-01-15 15:41:13
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple", "tutorial"]
 categories: ["Maple"]
@@ -34,6 +34,7 @@ f := a x^2 + b x + c; #  两个变量或者数字与变量的乘积可以省略�
 ```
 
 - 变量类型
+
   - 矩阵
 	```javascript
 	with(LinearAlgebra):  # 使用矩阵及其操作， 需要引入线性代数包
@@ -41,11 +42,13 @@ f := a x^2 + b x + c; #  两个变量或者数字与变量的乘积可以省略�
 	M := Matrix( row ) ; # row阶方阵
 	M[1, ..] # M的第一行(向量型)
 	```
+
   - 列表
 	```javascript
 	arr :=[1, 2, 3, 4]:
 	arr[3] # return 3;
 	```
+
   - 集合
   	```javascript
 	arr := { 1, 2, 3, 4 }:
@@ -63,6 +66,15 @@ f := a x^2 + b x + c; #  两个变量或者数字与变量的乘积可以省略�
     arr := seq( i^2, i=1..3 ) # return 1, 4, 9
     ```
 
+  - 字典(table)
+  	```javascript
+	T := table([ a = 1, b = x^2, c = "abcde"  ]);  # T[a]
+  	```
+
+  - 字符串
+  	```javascript
+  	s := "i am a string";
+  	```
 
 - 判断
 ```javascript
@@ -163,7 +175,17 @@ seq(seq(cat(v, i, j), i=1..3), j=1..3 ) # return v11, v12, ..., v33
 Transpose(convert([seq(seq(cat(v, i, j), i = 1..3), j = 1..3)], Matrix, 3)) # return (vij)_{3*3}
 ```
 
+- 绘图
+```javascript
+plot( sin(x), x=-3..3 );
+plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
+```
 
+- 文件读取
+```javascript
+save var1, var2, ..., "path/var.m";
+read "path/var.m";
+```
 
 
 ### 示例
