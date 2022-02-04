@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-02-04 22:04:16
+Last_Modified:  2022-02-04 22:11:17
 summary: 'Maple-Latex使用文档'
 tags: ["Maple-Latex", "文档"]
 categories: ["文档"]
@@ -20,7 +20,9 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
 
-> 这里主要介绍一下Maple程序, Mathematics程序, Tex代码等与符号运算相关的工具[Maple-Latex](https://jiandandaoxingfu.gitee.io/maple-latex)的使用文档。
+> 这里主要介绍一下处理Maple程序, Mathematics程序, Tex代码等与符号运算相关的工具[maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex)的使用文档。
+欢迎使用， 如出现错误， 希望可以把相应的tex代码和错误描述
+发送至: jiaminxin@outlook.com。 或者到项目[maple-latex](https://gitub.com/jiandandaoxingfu/maple-latex)提issue。
 
 #### 使用说明
 略
