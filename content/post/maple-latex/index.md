@@ -1,14 +1,14 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-02-04 22:11:17
+Last_Modified:  2022-02-05 18:20:58
 summary: 'Maple-Latex使用文档'
-tags: ["Maple-Latex", "文档"]
+tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ["文档"]
 author: "JMx"
 showToc: true
 TocOpen: false
-draft: true
+draft: false
 hidemeta: false
 comments: false
 disableHLJS: true 
@@ -19,10 +19,13 @@ ShowReadingTime: true
 ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
-
-> 这里主要介绍一下处理Maple程序, Mathematics程序, Tex代码等与符号运算相关的工具[maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex)的使用文档。
+### 简介
+> 这是工具[maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex)的使用文档。 主要用来处理符号运算中， 
+Maple, Mathematics, Tex三者之间数学公式的转化。
 欢迎使用， 如出现错误， 希望可以把相应的tex代码和错误描述
 发送至: jiaminxin@outlook.com。 或者到项目[maple-latex](https://gitub.com/jiandandaoxingfu/maple-latex)提issue。
+
+### 功能
 
 #### 使用说明
 略
@@ -37,7 +40,7 @@ ShowPostNavLinks: true
 使用mathpix snipping tool识别PDF文件或图片中的数学公式， 将其生成的Tex代码复制在输入框， 点击按钮即可将Tex代码转成相应的Maple程序。 
 如果需要将Maple程序转为Mathematics程序， 可以再使用maple2mma功能。
 
-如下图所示: PDF ==mathpix snipping tool==> Tex ==latex2maple==> Maple
+如下图所示: PDF(IMG) ==mathpix snipping tool==> Tex ==latex2maple==> Maple
 ![latex2maple](images/latex2maple.png)
 
 #### maple2mma
@@ -46,7 +49,7 @@ ShowPostNavLinks: true
 #### DT-gT & DT-coe
 主要用于经典达布变换系数的整理。 不再维护。
 
-#### 连续[离散][szce]公式格式化 
+#### 连续(离散)[szce]公式格式化 
 将Maple中的数学公式经latex函数转为Tex代码以后， 复制到输入框， 将其处理为正常的Tex代码， 如求导运算等。
 
 如下图所示:
@@ -61,3 +64,10 @@ ShowPostNavLinks: true
 
 #### typora
 渲染typora生成的markdown文档， 支持数学公式。
+
+
+### 参考
+- create-react-app： 框架。
+- ant-design： 提供页面布局和UI。
+- remarkable： 渲染Markdown文档。
+- MathJax： 渲染数学公式。
