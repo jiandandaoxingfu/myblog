@@ -1,10 +1,10 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-Last_Modified:  2022-01-22 09:39:09
+Last_Modified:  2022-02-21 12:52:47
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
-tags: ["regrep"]
-categories: ["snippets", "code"]
+tags: ["regrep", "snippets"]
+categories: ["科研"]
 author: "JMx"
 showToc: true
 TocOpen: false
@@ -22,7 +22,7 @@ ShowPostNavLinks: true
 
 > 这里主要是记录一些平时用到的一些代码片段， 不定时更新。
 
-## 科研相关
+## 处理参考文献
 
 ### 按照引用顺序排列参考文献
 整理论文的参考文献时，没有使用bib文件， 想要按照引用的顺序来重新排列已经弄好的参考文献。 这里我们使用 **Sublime-text 3** 编辑器。 首先匹配tex文件中引用的文献索引名
@@ -92,11 +92,24 @@ authors_ = refs_.map( r => r.match(/} *\n(.*?)\n/)[1] )
 "名, 姓, 名, 姓"  => ["名", "姓", "名", "姓"]
 "姓 名, 姓 名"  => ["姓 名", "姓 名"]
 ```
-因为排序只比较姓氏， 因此， 我们只需获取每个参考文献的姓氏， 然后重排即可。 我们以第一种情况为例
+因为排序只比较姓氏， 因此， 我们只需获取每个参考文献的姓氏， 然后重排即可。 首先姓氏相加
+- Case 1
 ```javascript
-// 姓氏相加
 authors = authors_.map( a => a.reduce( (t, s, i) => t + (i % 2 == 0 ? s : "") ) )
 				  .map( a => a.replaceAll(" ", ""));
+```
+- Case 2
+```javascript
+authors = authors_.map( a => a.reduce( (t, s, i) => t + (i % 2 == 1 ? s : "") ) )
+				  .map( a => a.replaceAll(" ", ""));
+```
+- Case 3
+```javascript
+authors = authors_.map( a => a.map( a => a.replace(/^\s+/, '').split(' ')[0] ) )
+				  .map( a => a.reduce( (i, j) => i + j ) )
+```
+然后
+```javascript
 refs = {};
 // 首先生成字典， 作者重复的， 加索引加以区分
 for (i=0; i<refs_.length; i++) {

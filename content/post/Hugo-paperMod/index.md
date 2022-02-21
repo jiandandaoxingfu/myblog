@@ -2,8 +2,8 @@
 title: "Hugo使用教程"
 date: 2022-01-06 18:13:52.872 +0800 
 summary: 'How to use hugo with the theme "paperMod"'
-tags: ["hugo", "PaperMod"]
-categories: ["Hugo教程"]
+tags: ["hugo", "PaperMod", 'blog']
+categories: ["教程"]
 author: "JMx"
 showToc: true
 TocOpen: false

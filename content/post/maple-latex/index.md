@@ -1,10 +1,10 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-02-05 18:20:58
+Last_Modified:  2022-02-21 12:43:58
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
-categories: ["文档"]
+categories: ['Maple', "文档"]
 author: "JMx"
 showToc: true
 TocOpen: false

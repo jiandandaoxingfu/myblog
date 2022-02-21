@@ -1,9 +1,9 @@
 ---
 title: "Maple求解差分方程"
 date: 2022-01-11 19:31:32 +0800
-Last_Modified:  2022-01-13 22:22:00
+Last_Modified:  2022-02-21 12:45:12
 summary: '利用Maple求解差分方程的算法'
-tags: ["Maple", "difference equation"]
+tags: ["Maple", "solve difference equation"]
 categories: ["Maple"]
 author: "JMx"
 showToc: true
