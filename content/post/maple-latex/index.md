@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-02-21 12:43:58
+Last_Modified:  2022-02-28 20:09:23
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -61,6 +61,9 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 
 #### grammarly
 复制整个论文的Tex文件到输入框， 可以将其中的数学公式等相关信息删除， 然后使用Grammarly检查拼写及语法。
+
+#### Tex格式化
+复制整个论文的Tex文件到输入框， 对其格式化： 添加缩进， 断句(英文句号换行)。
 
 #### typora
 渲染typora生成的markdown文档， 支持数学公式。
