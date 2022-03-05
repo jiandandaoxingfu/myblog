@@ -54,8 +54,8 @@ params:
     # profile-mode
     profileMode:
         enabled: true # needs to be explicitly set
-        title: Jia Minxin
-        subtitle: A PhD student in mathematics and a coder.
+        title: No One
+        subtitle: The best will always appear inadvertently.
         imageUrl: https://jiandandaoxingfu.github.io/myblog/favicon.ico
         imageWidth: 120
         imageHeight: 120

@@ -15,7 +15,7 @@ ShowPostNavLinks: false
 ---
 
 ### Who Am I?
-My name is Jia Minxin, a PhD student in mathematics of ZhengZhou University. I like to develop something interesting and useful in Python and Javascript, which brings great convenience to my study and life.
+I am a PhD student in mathematics of ZZU. I like to develop something interesting and useful in Python and Javascript, which brings great convenience to my study and life.
 
 
 ### Education
@@ -31,6 +31,9 @@ A webpage for processing mathematical formulas in tex code, used in Maple, Latex
 #### [Pdfdo](https://github.com/jiandandaoxingfu/pdfdo)
 A software built by Python, which is used to split, merge, rotate, add page-number PDF files and convert PDF files to images, 
 
+### Experience
+#### Maki-Lab
+A member of the design department of [Maki's Lab](https://www.maki-math.com) since 2022.2.22.
 
 ### What Is This Website For?
 This website is used to record some skills and experience in research and programming. 
