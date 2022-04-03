@@ -1,7 +1,7 @@
 ---
-title: "git-版本控制"
+title: "Git-版本控制"
 date: 2022-03-27 16:09:02 +0800
-Last_Modified:  2022-03-27 19:35:37
+Last_Modified:  2022-04-03 20:52:27
 summary: '介绍版本控制软件git的基本使用以及常用的命令'
 tags: ["git", 'github']
 categories: ["教程", "git"]
@@ -109,6 +109,20 @@ s 2cfc89e update: maple-latex # 最新的
 需要注意的是, 这四次提交合并的时候可能会出现冲突, 此时回到 github, 它会有一个弹窗, 告诉你哪些文件在合并的时候出现了冲突.
 我们需要手动解决冲突, 一般来说选择最新的文件即可 (commit ... in ...).
 
+### pull request && fetch upstream
+这两个功能出现在多人协作中.
+当我们Fork别人的代码进行修改, 提交到自己的仓库. 然后可以提Pull Request (PR), 等待原仓库作者审阅, 合并. 如果在修改过程中, 原仓库有了新的提交, 如果需要更新Fork过来的仓库, 可以使用fetch upstream功能. 
 
+正常情况下, Github会给Fork的仓库上面提示和原仓库多了几次提交, 少了几次提交
+![](images/pull-fetch.png)
+对于多的, 我们可以Pull Request. 如果少了, 可以fetch upstream. 后者对于某些文件可能会出现冲突, 时我们可以根据github提示, 使用命令行工具进行修改. 
+![](images/fetch-conflict.png)
+在解决冲突文件时, 文件中会有如下的符号
+<<<<< HEAD
+这一部分是我们自己的修改
+== = = = 
+这一部分是原作者的修改
+\> \> b... 
+对这一部分内容保留想要的即可解决冲突.
 
 
