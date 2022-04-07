@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-Last_Modified:  2022-02-21 12:52:47
+Last_Modified:  2022-04-07 20:22:51
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets"]
 categories: ["科研"]
@@ -23,6 +23,62 @@ ShowPostNavLinks: true
 > 这里主要是记录一些平时用到的一些代码片段， 不定时更新。
 
 ## 处理参考文献
+
+> 良好的习惯是保持每条参考文献都是如下格式(下面我们的操作都以此为基础)
+> ```javascript
+> \bibitem{name}
+> authors.
+> title.
+> journal ...
+> ```
+> 即每个参考文献按索引名， 作者， 标题， 刊信息分为四行，同时要求两个参考文献之间空一行。 这样做的好处在于方便统一修改。 
+
+
+### 处理人名
+不同期刊, 参考文献人名格式也不尽相同, 每次修改总是很麻烦(这里指使用```\bibitem```环境). 
+主流期刊的人名格式([]表示可能有空格)以及他们对应的正则匹配
+```javascript
+M.[]X. Jia, M.[]X. Jia     <=======>     /([A-Z]\. ?)+ ([a-z]+ )?[A-Z][^\s,]+/g
+Jia, M.[]X., Jia, M.[]X.   <=======>     /([a-z]+ )?[A-Z][^\s,]+, ([A-Z]\. ?)+/g
+Jia M X, Jia M X           <=======>     /([a-z]+ )?[A-Z][^\s,]+ ([A-Z]\. ?)+/g
+```
+首先我们对参考文献进行处理, 得到文献作者列表
+```javascript
+var bib = document.getElementById('input').value.split(/\n/).filter( a => a.match('[a-z]') );
+var authors = [];
+for(let i=1; i<bib.length; i=i+4) authors.push( bib[i].replace(/and /, ', ') );
+```
+然后根据不同的作者格式来匹配, 正常情况下, 匹配完成后, 只会剩下标点符号, 否则匹配失败.
+```javascript
+// 3 ---> 2;
+const regreps = [
+	'',
+	'([A-Z]\\. ?)+ (([a-z]+ )?[A-Z][^\\s,]+)',
+	'(([a-z]+ )?[A-Z][^\\s,]+), ([A-Z]\\. ?)+',
+	'(([a-z]+ )?[A-Z][^\\s,]+) ([A-Z] ?)+',
+];
+const index_old = 3, 
+	  index_new = 2,
+      regrep_old = new RegExp( regreps[index_old] ),
+	  regrep_new = new RegExp( regreps[index_new] ),
+	  regrep_old_g = new RegExp( regreps[index_old], 'g');
+
+var authors_match = authors.map( a => a.match( regrep_old_g ) )
+var remaining = authors.map( a => {
+	let match = a.match( regrep_old_g );
+	match.forEach( m => a = a.replace(m, '') );
+	return a.match(/[A-Za-z]/);
+})
+for( let i=0; i<authors.length; i++) {
+	if( remaining[i] === null ) {
+		authors_match[i].map( a => a.match(regrep_old) )
+	}
+}
+
+```
+
+
+
 
 ### 按照引用顺序排列参考文献
 整理论文的参考文献时，没有使用bib文件， 想要按照引用的顺序来重新排列已经弄好的参考文献。 这里我们使用 **Sublime-text 3** 编辑器。 首先匹配tex文件中引用的文献索引名
@@ -66,14 +122,6 @@ $$('#input')[0].value = refs_.replaceAll('\n\n', '\n');
 ```
 这样就可以了。
 
-> 良好的习惯是保持每条参考文献都是如下格式
-> ```javascript
-> \bibitem{name}
-> authors.
-> title.
-> journal ...
-> ```
-> 即每个参考文献按索引名， 作者， 标题， 期刊信息分为四行，同时要求两个参考文献之间空一行。 这样做的好处在于方便统一修改。 
 
 
 ### 按照姓氏字母排列参考文献
@@ -127,10 +175,6 @@ for (let author of authors) {
 
 $$('#input')[0].value = refs_.replaceAll('\n\n', '\n');
 ```
-
-
-
-
 
 
 
