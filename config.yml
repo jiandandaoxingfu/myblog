@@ -74,8 +74,6 @@ params:
           url: https://scholar.google.com.hk/citations?user=r69GvBsAAAAJ&hl=zh-CN
         - name: Math Review
           url: https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1447439
-        - name: 知乎
-          url: https://www.zhihu.com/people/jian-dan-dao-xing-fu-57
 
     # home-info mode
     homeInfoParams:

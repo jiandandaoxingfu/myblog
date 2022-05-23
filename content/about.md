@@ -28,6 +28,9 @@ I am a PhD student in mathematics of ZZU. I like to develop something interestin
 #### [Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex)
 A webpage for processing mathematical formulas in tex code, used in Maple, Latex, Mathematics.
 
+#### [Scientific-research-assistant](https://github.com/jiandandaoxingfu/scientific-research-assistant)
+A Chrome/Edge extension for (mutil-) downloading papers from sci-hub (keep updated): add download-button automatically near links including doi.
+
 #### [Pdfdo](https://github.com/jiandandaoxingfu/pdfdo)
 A software built by Python, which is used to split, merge, rotate, add page-number PDF files and convert PDF files to images, 
 
