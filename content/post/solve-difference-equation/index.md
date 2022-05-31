@@ -1,7 +1,7 @@
 ---
 title: "Maple求解差分方程"
 date: 2022-01-11 19:31:32 +0800
-Last_Modified:  2022-02-21 12:45:12
+Last_Modified:  2022-05-31 09:06:27
 summary: '利用Maple求解差分方程的算法'
 tags: ["Maple", "solve difference equation"]
 categories: ["Maple"]
@@ -27,7 +27,7 @@ ShowPostNavLinks: true
 首先，我们要求解的是关于$A$的形如下面的差分方程
 \begin{equation}
 \begin{array}{l}
-A\_m + F(\cdots, A\_{-1}, A,\cdots, A\_{m-1}) = G\_{p},
+A\_m + F(\dots, A\_{-1}, A,\dots, A\_{m-1}) = G\_{p},
 \end{array}
 \end{equation}
 其中$A\_m = A(n+m)$，$F$是关于$A\_{m-k}, k\geq1$的有理函数(一般为变系数多项式)。 等式中与$A$无关的项全部归于$G\_{p}$。 在给出程序之前， 我们首先考虑如何求解此类问题。 考虑一个简单的方程
@@ -57,16 +57,16 @@ A = A' + u^{+} = A'' + u^+ - u = u^+ - u.
 我们发现以上的求解步骤中，遵循一个原则，即等式右端位移算子指数最大项$g\_p$，来自于$A\_m$。 然后我们做变换$A\_m = A\_m' + g\_p $，得到新的方程
 \begin{equation}
 \begin{array}{l}
-A\_m' + F(\cdots, A'\_{-1}, A',\cdots, A'\_{m-1}) = G\_{p-1}',
+A\_m' + F(\dots, A'\_{-1}, A',\dots, A'\_{m-1}) = G\_{p-1}',
 \end{array}
 \end{equation}
 重复上述步骤，即可得到
 \begin{equation}
 \begin{array}{l}
-A\_m^{'\cdots'} + F(\cdots, A\_{-1}^{'\cdots'} A,\cdots, A\_{m-1}^{'\cdots'} )= 0,
+A\_m^{'\dots'} + F(\dots, A\_{-1}^{'\dots'}, A^{'\dots'}, \dots, A\_{m-1}^{'\dots'} )= 0,
 \end{array}
 \end{equation}
-从而取$A\_m^{'\cdots'}=0$， 得$A\_m = A\_m' + g\_p = A\_m'' + g\_p + g\_{p-1}' = \cdots$。 如果不能经过有限次得到上式， 那么我们认为该方程没有显式解。
+从而取$A^{'\dots'}=0$， 得$A\_m = A\_m^' + g\_p = A\_m^{''} + g\_p + g\_{p-1}^' = \dots$。 如果不能经过有限次得到上式， 那么我们认为该方程没有显式解。
 
 下面我们考虑用Maple实现上述的算法。 上述的讨论也即我们的算法思想， 其中的关键在于获取$G\_p$中位移算子指数最大项$g\_p$。 幸运的是， 我们可以通过Maple内置的`op`函数计算$g\_p$。 这里我们简单说明如果利用`op`函数计算$g\_p$。 对于一个由有理分式组成的“多项式”形如
 \begin{equation}
