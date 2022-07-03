@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-Last_Modified:  2022-02-21 12:54:22
+Last_Modified:  2022-07-03 11:32:47
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -186,6 +186,20 @@ plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
 save var1, var2, ..., "path/var.m";
 read "path/var.m";
 ```
+
+### 进阶
+- 矩阵符号运算
+符号计算中, 当不确定矩阵维数时, 需要保证不满足交换律, 同时保持求导等运算. Maple的`Physics`包中提供了可以定义符号变量为非交换元素, 从而可用于矩阵的符号运算中去. 具体使用如下:
+```javascript
+with(Physics):
+Setup(mathematicalnotation=true):
+Set(noncommutativeprefix={U, V, X, ... }):
+eq := U V - V U; # eq != 0.
+```
+
+<!-- - 完全积分
+在一些积分运算中或者求解微分方程时, 一些积分可以被完全积出来, 但是Maple却没有积出来. 此时需要对其进行一些处理.  -->
+
 
 
 ### 示例
