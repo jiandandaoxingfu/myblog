@@ -2,7 +2,7 @@ publishDir: docs
 baseURL: https://jiandandaoxingfu.github.io/myblog/
 title: Blog's of JMx
 paginate: 5
-theme: PaperMod
+theme: papermod
 
 enableRobotsTXT: true
 buildDrafts: true
@@ -18,7 +18,7 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     title: Blog's of JMx
     description: "Blog's of JMx"
-    keywords: [Blog, Portfolio, PaperMod]
+    keywords: [Blog, Portfolio, papermod]
     author: JMx
     # author: ["Me", "You"] # multiple authors
     images: ["<link or path of image for opengraph, twitter-cards>"]
