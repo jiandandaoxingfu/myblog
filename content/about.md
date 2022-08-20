@@ -29,10 +29,16 @@ I am a PhD student in mathematics of ZZU. I like to develop something interestin
 A webpage for processing mathematical formulas in tex code, used in Maple, Latex, Mathematics.
 
 #### [Scientific-research-assistant](https://github.com/jiandandaoxingfu/scientific-research-assistant)
-A Chrome/Edge extension for (mutil-) downloading papers from sci-hub (keep updated): add download-button automatically near links including doi.
+A Chrome/Edge extension for (mutil-) downloading papers from sci-hub (keep updated): add download-button automatically near links including doi number.
 
 #### [Pdfdo](https://github.com/jiandandaoxingfu/pdfdo)
-A software built by Python, which is used to split, merge, rotate, add page-number PDF files and convert PDF files to images, 
+A software built in Python, which is used to 
+- split PDF
+- merge PDF
+- rotate PDF
+- add page-number to PDF
+- convert PDF to images
+- convert WORD to PDF (depends on office)
 
 ### Experience
 #### Maki-Lab
