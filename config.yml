@@ -40,15 +40,15 @@ params:
     tocopen: false
 
     assets:
-        favicon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
-        favicon16x16: https://jiandandaoxingfu.github.io/myblog/favicon.ico
-        favicon32x32: https://jiandandaoxingfu.github.io/myblog/favicon.ico
-        apple_touch_icon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
-        safari_pinned_tab: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        favicon: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
+        favicon16x16: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
+        favicon32x32: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
+        apple_touch_icon: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
+        safari_pinned_tab: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
 
     label:
         text: "Home"
-        # icon: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        # icon: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
         # iconHeight: 35
 
     # profile-mode
@@ -56,7 +56,7 @@ params:
         enabled: true # needs to be explicitly set
         title: No One
         subtitle: The best will always appear inadvertently.
-        imageUrl: https://jiandandaoxingfu.github.io/myblog/favicon.ico
+        imageUrl: https://raw.githubusercontent.com/jiandandaoxingfu/myblog/main/favicon.ico
         imageWidth: 120
         imageHeight: 120
         imageTitle: my image
