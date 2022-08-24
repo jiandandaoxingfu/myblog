@@ -1,8 +1,8 @@
 ---
-title: "科研论文写作"
+title: "科研工具与论文写作"
 date: 2022-01-08 13:20:52.872 +0800
-summary: '科研论文写作中一些常用的网站'
-tags: ["sci", "科研论文写作"]
+summary: '科研中一些常用的网站'
+tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
 author: "JMx"
 showToc: true
