@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-08-24 12:01:56
+Last_Modified:  2022-08-26 10:33:47
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -20,10 +20,10 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
 ### 简介
-> 这是工具[maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex)的使用文档。 主要用来处理符号运算中， 
+> Maple-Latex 主要用来处理符号运算中， 
 Maple, Mathematics, Tex三者之间数学公式的转化。
 欢迎使用， 如出现错误， 可以把相应的tex代码和错误描述
-发送至: jiaminxin@outlook.com。 或者到项目[maple-latex](https://gitub.com/jiandandaoxingfu/maple-latex)提issue。
+发送至: jiaminxin@outlook.com。 或者到项目[maple-latex](https://github.com/jiandandaoxingfu/maple-latex)提issue。
 
 ### 功能
 
@@ -66,7 +66,7 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 复制整个论文的Tex文件到输入框， 对其格式化： 添加缩进， 断句(英文句号换行)。
 
 #### typora
-渲染typora生成的markdown文档， 支持数学公式。
+渲染typora生成的markdown文档(支持数学公式). 也可简单渲染tex文档.
 
 
 ### 参考
