@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>blog on Blog&#39;s of JMx</title>
+    <link>https://jiandandaoxingfu.github.io/myblog/tags/blog/</link>
+    <description>Recent content in blog on Blog&#39;s of JMx</description>
+    <image>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 06 Jan 2022 18:13:52 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo使用教程</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/hugo-papermod/</link>
+      <pubDate>Thu, 06 Jan 2022 18:13:52 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/hugo-papermod/</guid>
+      <description>How to use hugo with the theme &amp;ldquo;paperMod&amp;rdquo;</description>
+    </item>
+    
+  </channel>
+</rss>

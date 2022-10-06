@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>论文写作 on Blog&#39;s of JMx</title>
+    <link>https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/</link>
+    <description>Recent content in 论文写作 on Blog&#39;s of JMx</description>
+    <image>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 08 Jan 2022 13:20:52 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>科研工具与论文写作</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</link>
+      <pubDate>Sat, 08 Jan 2022 13:20:52 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</guid>
+      <description>科研中一些常用的网站</description>
+    </item>
+    
+  </channel>
+</rss>

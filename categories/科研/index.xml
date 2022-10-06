@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>科研 on Blog&#39;s of JMx</title>
+    <link>https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/</link>
+    <description>Recent content in 科研 on Blog&#39;s of JMx</description>
+    <image>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 21 Jan 2022 18:34:49 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一些常用的代码片段</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/snippets/</link>
+      <pubDate>Fri, 21 Jan 2022 18:34:49 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/snippets/</guid>
+      <description>学习生活中用到的一些代码片段， 多是正则表示式。</description>
+    </item>
+    
+    <item>
+      <title>科研工具与论文写作</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</link>
+      <pubDate>Sat, 08 Jan 2022 13:20:52 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</guid>
+      <description>科研中一些常用的网站</description>
+    </item>
+    
+  </channel>
+</rss>
