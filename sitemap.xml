@@ -3,10 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jiandandaoxingfu.github.io/myblog/</loc>
-    <lastmod>2022-03-27T16:09:02+08:00</lastmod>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
   </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/categories/</loc>
-    <lastmod>2022-03-27T16:09:02+08:00</lastmod>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/categories/latex/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/latex/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/post/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/tags/tikz/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/post/tikz/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
+  </url><url>
+    <loc>https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/</loc>
+    <lastmod>2022-10-17T20:55:33+08:00</lastmod>
   </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/tags/git/</loc>
     <lastmod>2022-03-27T16:09:02+08:00</lastmod>
@@ -20,17 +41,8 @@
     <loc>https://jiandandaoxingfu.github.io/myblog/tags/github/</loc>
     <lastmod>2022-03-27T16:09:02+08:00</lastmod>
   </url><url>
-    <loc>https://jiandandaoxingfu.github.io/myblog/post/</loc>
-    <lastmod>2022-03-27T16:09:02+08:00</lastmod>
-  </url><url>
-    <loc>https://jiandandaoxingfu.github.io/myblog/tags/</loc>
-    <lastmod>2022-03-27T16:09:02+08:00</lastmod>
-  </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2022-03-27T16:09:02+08:00</lastmod>
-  </url><url>
-    <loc>https://jiandandaoxingfu.github.io/myblog/tags/latex/</loc>
-    <lastmod>2022-02-04T21:10:51+08:00</lastmod>
   </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/tags/maple/</loc>
     <lastmod>2022-02-04T21:10:51+08:00</lastmod>
@@ -57,9 +69,6 @@
     <lastmod>2022-01-21T18:34:49+08:00</lastmod>
   </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/post/snippets/</loc>
-    <lastmod>2022-01-21T18:34:49+08:00</lastmod>
-  </url><url>
-    <loc>https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/</loc>
     <lastmod>2022-01-21T18:34:49+08:00</lastmod>
   </url><url>
     <loc>https://jiandandaoxingfu.github.io/myblog/post/maple-symbolic-calculation/</loc>
