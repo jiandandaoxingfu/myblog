@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-08-26 10:33:47
+Last_Modified:  2022-10-17 22:24:34
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -67,6 +67,7 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 
 #### typora
 渲染typora生成的markdown文档(支持数学公式). 也可简单渲染tex文档.
+> 该功能已经被单独开了一个网站[tex-md](https://jiandandaoxingfu.github.io/md-tex-renderer).
 
 
 ### 参考

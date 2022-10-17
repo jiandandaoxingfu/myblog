@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-Last_Modified:  2022-07-03 11:32:47
+Last_Modified:  2022-10-17 21:27:50
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -204,8 +204,8 @@ eq := U V - V U; # eq != 0.
 
 ### 示例
 
-{{< embed-pdf url="post/maple-symbolic-calculation/files/example.pdf" >}}
+{{< embed-pdf url="files/example.pdf" >}}
 
-{{< download url="post/maple-symbolic-calculation/files/example.mw" text="下载源代码" >}}
+{{< download url="files/example.mw" text="下载源代码" >}}
 
 

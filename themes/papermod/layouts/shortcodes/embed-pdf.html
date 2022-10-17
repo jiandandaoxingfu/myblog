@@ -1,8 +1,7 @@
-<div id="container">
+<div id='{{.Get "url"}}' class="post-content">
     <script type="text/javascript">
-        var url = "{{.Site.BaseURL}}" + '{{ .Get "url" }}';
-        var div  = document.getElementById('container');
-        div.style = "margin: 2%;"
-        div.innerHTML += `<iframe src=/myblog/js/pdf-js/web/viewer.html?${url} frameborder="0" style="width: 100%; height: 900px; margin-bottom: 40px;"></iframe>`
-</script>
+        var url = window.location.href + '{{ .Get "url" }}';
+        var div = document.getElementById('{{ .Get "url" }}');
+        div.innerHTML = `<embed src=${url} style="width: 100%"; height="900px"></embed>`;
+    </script>
 </div>
