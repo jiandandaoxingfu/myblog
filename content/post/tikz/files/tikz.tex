@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper,hyperref]{ctexrep}
-\usepackage{amsmath,amsfonts,amscd,amsthm,dsfont,amssymb,extarrows}
+\usepackage{amsmath,amsfonts,amscd,amsthm,dsfont,amssymb,extarrows,mathtools}
 \usepackage{color}                           
 \usepackage[dvipsnames, svgnames, x11names]{xcolor}
 \usepackage{physics}
@@ -28,23 +28,65 @@
 \usepgflibrary{decorations.markings}
 \usetikzlibrary{decorations.markings}
 
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes,arrows}
+\usepackage{footmisc}
+
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+  % style to add an arrow in the middle of a path
+  mid arrow/.style={postaction={decorate,decoration={
+        markings,
+        mark=at position .5 with {\arrow[#1]{stealth}}
+      }}},
+}
+
+\newcommand{\dbar}{\overline{\partial}}
+\newcommand{\striu}[2][1]{\begin{psmallmatrix} #1 & #2 \\ 0 & #1 \end{psmallmatrix}}
+\newcommand{\stril}[2][1]{\begin{psmallmatrix} #1 & 0 \\ #2 & #1 \end{psmallmatrix}}
+
+
+
+
+
+
 \begin{document}
-
-
 \begin{figure}
    \centerline{
    \begin{tikzpicture}[scale=0.8]
-            %\path [fill=pink] (-5,4)--(-5,0) to (-9,0) -- (-9,4);
-            %\path [fill=pink] (-5,-4)--(-5,0) to (-1,0) -- (-1,-4);
+                  %\path [fill=pink] (-5,4)--(-5,0) to (-9,0) -- (-9,4);
+                  %\path [fill=pink] (-5,-4)--(-5,0) to (-1,0) -- (-1,-4);
       \draw[->][thick](-8,0)--(8,0)node[right]{$Rez$};
       \draw[fill] (0,0) circle [radius=0.05];
       \draw[fill] (-0.4,0)node[below]{$0$} ;
-            %\draw[fill] (4,0)circle [radius=0.05];
-            %\draw[fill] (4.2,0)node[below]{$\xi_{0}$};
-            %\draw[fill] (5.5,0)node[below]{$\xi_{0}+\rho$};
-            %\draw[fill] (2.5,0)node[below]{$\xi_{0}-\rho$};
-            %\draw[-][dashed](3.5,5)--(3.5,-5);
-            %\draw[-][dashed](4.5,5)--(4.5,-5);
+                  %\draw[fill] (4,0)circle [radius=0.05];
+                  %\draw[fill] (4.2,0)node[below]{$\xi_{0}$};
+                  %\draw[fill] (5.5,0)node[below]{$\xi_{0}+\rho$};
+                  %\draw[fill] (2.5,0)node[below]{$\xi_{0}-\rho$};
+                  %\draw[-][dashed](3.5,5)--(3.5,-5);
+                  %\draw[-][dashed](4.5,5)--(4.5,-5);
       \draw[->][dashed](0,-6)--(0,6);
       \draw[fill] (0,5.5) circle [radius=0.05];
       \draw[fill] (0.2,5.5)node[right]{$\frac{i}{2}$};
@@ -74,7 +116,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -106,38 +150,40 @@
       \fill (I) circle (0pt) node[below] {$0$};
       \coordinate (a) at (2.2,0.7);
       \fill (a) circle (0pt) node[right] {\small$\Omega_{10}$};
-            %\coordinate (b) at (0.2,2);
-            %     \fill (b) circle (0pt) node[right] {\small$\Omega_{2}$};
+                  %\coordinate (b) at (0.2,2);
+                  %     \fill (b) circle (0pt) node[right] {\small$\Omega_{2}$};
       \coordinate (c) at (-2.2,0.7);
       \fill (c) circle (0pt) node[left] {\small$\Omega_{20}$};
       \coordinate (d) at (-2.2,-0.7);
       \fill (d) circle (0pt) node[left] {\small$\Omega_{30}$};
-            %\coordinate (e) at (-0.2,-2);
-            %     \fill (e) circle (0pt) node[left] {\small$\Omega_{5}$};
+                  %\coordinate (e) at (-0.2,-2);
+                  %     \fill (e) circle (0pt) node[left] {\small$\Omega_{5}$};
       \coordinate (f) at (2.2,-0.7);
       \fill (f) circle (0pt) node[right] {\small$\Omega_{40}$};
-            %\coordinate (A) at (2,2.6);
-            %     \coordinate (B) at (2,-2.6);
-            %     \coordinate (C) at (-0.616996232,1.4);
-            %     \coordinate (D) at (-0.616996232,-1.4);
-            %     \coordinate (E) at (1.4,1);
-            %     \coordinate (F) at (1.4,-1);
-            %     \coordinate (G) at (-1.8,2);
-            %     \coordinate (H) at (-1.8,-2);
-            %  \fill (A) circle (1pt) node[right] {$z_1$};
-            %  \fill (B) circle (1pt) node[right] {$\bar{z}_1$};
-            %  \fill (C) circle (1pt) node[left] {$z_2$};
-            %  \fill (D) circle (1pt) node[left] {$\bar{z}_2$};
-            %  \fill (E) circle (1pt) node[right] {$z_3$};
-            %  \fill (F) circle (1pt) node[right] {$\bar{z}_3$};
-            %  \fill (G) circle (1pt) node[left] {$z_4$};
-            %  \fill (H) circle (1pt) node[left] {$\bar{z}_4$};
+                  %\coordinate (A) at (2,2.6);
+                  %     \coordinate (B) at (2,-2.6);
+                  %     \coordinate (C) at (-0.616996232,1.4);
+                  %     \coordinate (D) at (-0.616996232,-1.4);
+                  %     \coordinate (E) at (1.4,1);
+                  %     \coordinate (F) at (1.4,-1);
+                  %     \coordinate (G) at (-1.8,2);
+                  %     \coordinate (H) at (-1.8,-2);
+                  %  \fill (A) circle (1pt) node[right] {$z_1$};
+                  %  \fill (B) circle (1pt) node[right] {$\bar{z}_1$};
+                  %  \fill (C) circle (1pt) node[left] {$z_2$};
+                  %  \fill (D) circle (1pt) node[left] {$\bar{z}_2$};
+                  %  \fill (E) circle (1pt) node[right] {$z_3$};
+                  %  \fill (F) circle (1pt) node[right] {$\bar{z}_3$};
+                  %  \fill (G) circle (1pt) node[left] {$z_4$};
+                  %  \fill (H) circle (1pt) node[left] {$\bar{z}_4$};
    \end{tikzpicture}
    \caption{caption}\label{Fig-2}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -224,22 +270,22 @@
       \fill (m) circle (0pt) node[below] {\tiny$\Omega_{32}$};
       \coordinate (m1) at (-2.2,-0.1);
       \fill (m1) circle (0pt) node[above] {\tiny$\Omega_{31}$};
-            %\coordinate (c) at (-2,0);
-            %\fill[red] (c) circle (1pt) node[below] {\scriptsize$-1$};
-            %\coordinate (d) at (2,0);
-            %\fill[red] (d) circle (1pt) node[below] {\scriptsize$1$};
+                  %\coordinate (c) at (-2,0);
+                  %\fill[red] (c) circle (1pt) node[below] {\scriptsize$-1$};
+                  %\coordinate (d) at (2,0);
+                  %\fill[red] (d) circle (1pt) node[below] {\scriptsize$1$};
    \end{tikzpicture}
    \label{case1}}
    \subfigure[]{
    \begin{tikzpicture}[scale=1.5]
-            %\draw(-4,0)--(-5,0.5)node[above]{\scriptsize$\Sigma_{44}$};
-            %\draw[-<](-4,0)--(-4.5,0.25);
-            %\draw(-4,0)--(-2.5,0.6);
-            %\draw[->](-4,0)--(-3.25,-0.3)node[below]{\scriptsize$\Sigma_{42}$};
-            %\draw(-4,0)--(-5,-0.5)node[below]{\scriptsize$\Sigma_{43}$};
-            %\draw[->](-4,0)--(-3.25,0.3)node[above]{\scriptsize$\Sigma_{41}$};
-            %\draw(-4,0)--(-2.5,-0.6);
-            %\draw[-<](-4,0)--(-4.5,-0.25);
+                  %\draw(-4,0)--(-5,0.5)node[above]{\scriptsize$\Sigma_{44}$};
+                  %\draw[-<](-4,0)--(-4.5,0.25);
+                  %\draw(-4,0)--(-2.5,0.6);
+                  %\draw[->](-4,0)--(-3.25,-0.3)node[below]{\scriptsize$\Sigma_{42}$};
+                  %\draw(-4,0)--(-5,-0.5)node[below]{\scriptsize$\Sigma_{43}$};
+                  %\draw[->](-4,0)--(-3.25,0.3)node[above]{\scriptsize$\Sigma_{41}$};
+                  %\draw(-4,0)--(-2.5,-0.6);
+                  %\draw[-<](-4,0)--(-4.5,-0.25);
       \draw(-1,0)--(0,0.5);
       \draw[->](-1,0)--(-0.5,0.25)node[above]{\scriptsize$\Sigma_{24}$};
       \draw(-1,0)--(-2.5,0.6);
@@ -257,38 +303,38 @@
       \draw[->](1,0)--(1.75,0.3)node[above]{\scriptsize$\Sigma_{11}$};
       \draw(1,0)--(2.5,-0.6);
       \draw[-<](1,0)--(0.5,-0.25)node[below]{\scriptsize$\Sigma_{13}$};
-            %\draw(4,0)--(5,0.5)node[above]{\scriptsize$\Sigma_{14}$};
-            %\draw[->](4,0)--(4.5,0.25);
-            %\draw(4,0)--(2.5,0.6);
-            %\draw[-<](4,0)--(3.25,-0.3)node[below]{\scriptsize$\Sigma_{12}$};
-            %\draw(4,0)--(5,-0.5)node[below]{\scriptsize$\Sigma_{13}$};
-            %\draw[-<](4,0)--(3.25,0.3)node[above]{\scriptsize$\Sigma_{11}$};
-            %\draw(4,0)--(2.5,-0.6);
-            %\draw[->](4,0)--(4.5,-0.25);
-            %\draw[->](2.5,0)--(2.5,0.6)node[above]{\scriptsize$\Sigma_{2+}'$};
-            %\draw[->](2.5,0)--(2.5,-0.6)node[below]{\scriptsize$\Sigma_{2-}'$};
-            %\draw[->](-2.5,0)--(-2.5,0.6)node[above]{\scriptsize$\Sigma_{4+}'$};
-            %\draw[->](-2.5,0)--(-2.5,-0.6)node[below]{\scriptsize$\Sigma_{4-}'$};
+                  %\draw(4,0)--(5,0.5)node[above]{\scriptsize$\Sigma_{14}$};
+                  %\draw[->](4,0)--(4.5,0.25);
+                  %\draw(4,0)--(2.5,0.6);
+                  %\draw[-<](4,0)--(3.25,-0.3)node[below]{\scriptsize$\Sigma_{12}$};
+                  %\draw(4,0)--(5,-0.5)node[below]{\scriptsize$\Sigma_{13}$};
+                  %\draw[-<](4,0)--(3.25,0.3)node[above]{\scriptsize$\Sigma_{11}$};
+                  %\draw(4,0)--(2.5,-0.6);
+                  %\draw[->](4,0)--(4.5,-0.25);
+                  %\draw[->](2.5,0)--(2.5,0.6)node[above]{\scriptsize$\Sigma_{2+}'$};
+                  %\draw[->](2.5,0)--(2.5,-0.6)node[below]{\scriptsize$\Sigma_{2-}'$};
+                  %\draw[->](-2.5,0)--(-2.5,0.6)node[above]{\scriptsize$\Sigma_{4+}'$};
+                  %\draw[->](-2.5,0)--(-2.5,-0.6)node[below]{\scriptsize$\Sigma_{4-}'$};
       \draw[->](0,0)--(0,0.5)node[above]{\scriptsize$\Sigma_{3+}'$};
       \draw[->](0,0)--(0,-0.5)node[below]{\scriptsize$\Sigma_{3-}'$};
       \coordinate (I) at (0,0);
       \fill[red] (I) circle (1pt) node[below] {$0$};
-            %\coordinate (A) at (-4,0);
-            %\fill[blue] (A) circle (1pt) node[below] {$\xi_4$};
+                  %\coordinate (A) at (-4,0);
+                  %\fill[blue] (A) circle (1pt) node[below] {$\xi_4$};
       \coordinate (b) at (-1,0);
       \fill[blue] (b) circle (1pt) node[below] {$\xi_3$};
-            %\coordinate (e) at (4,0);
-            %\fill[blue] (e) circle (1pt) node[below] {$\xi_1$};
+                  %\coordinate (e) at (4,0);
+                  %\fill[blue] (e) circle (1pt) node[below] {$\xi_1$};
       \coordinate (f) at (1,0);
       \fill[blue] (f) circle (1pt) node[below] {$\xi_2$};
-            %\coordinate (ke) at (4.7,0.1);
-            %\fill (ke) circle (0pt) node[below] {\tiny$\Omega_{13}$};
-            %\coordinate (k1e) at (4.7,-0.1);
-            %\fill (k1e) circle (0pt) node[above] {\tiny$\Omega_{14}$};
-            %\coordinate (le) at (3,0.1);
-            %\fill (le) circle (0pt) node[below] {\tiny$\Omega_{12}$};
-            %\coordinate (l1e) at (3,-0.1);
-            %\fill (l1e) circle (0pt) node[above] {\tiny$\Omega_{11}$};
+                  %\coordinate (ke) at (4.7,0.1);
+                  %\fill (ke) circle (0pt) node[below] {\tiny$\Omega_{13}$};
+                  %\coordinate (k1e) at (4.7,-0.1);
+                  %\fill (k1e) circle (0pt) node[above] {\tiny$\Omega_{14}$};
+                  %\coordinate (le) at (3,0.1);
+                  %\fill (le) circle (0pt) node[below] {\tiny$\Omega_{12}$};
+                  %\coordinate (l1e) at (3,-0.1);
+                  %\fill (l1e) circle (0pt) node[above] {\tiny$\Omega_{11}$};
       \coordinate (n2) at (0.27,0);
       \fill (n2) circle (0pt) node[below] {\tiny$\Omega_{13}$};
       \coordinate (n12) at (0.27,0);
@@ -297,14 +343,14 @@
       \fill (m2) circle (0pt) node[below] {\tiny$\Omega_{12}$};
       \coordinate (m12) at (2.25,0);
       \fill (m12) circle (0pt) node[above] {\tiny$\Omega_{11}$};
-            %\coordinate (k) at (-4.7,0.1);
-            %\fill (k) circle (0pt) node[below] {\tiny$\Omega_{43}$};
-            %\coordinate (k1) at (-4.7,-0.1);
-            %\fill (k1) circle (0pt) node[above] {\tiny$\Omega_{44}$};
-            %\coordinate (l) at (-3,0.1);
-            %\fill (l) circle (0pt) node[below] {\tiny$\Omega_{42}$};
-            %\coordinate (l1) at (-3,-0.1);
-            %\fill (l1) circle (0pt) node[above] {\tiny$\Omega_{41}$};
+                  %\coordinate (k) at (-4.7,0.1);
+                  %\fill (k) circle (0pt) node[below] {\tiny$\Omega_{43}$};
+                  %\coordinate (k1) at (-4.7,-0.1);
+                  %\fill (k1) circle (0pt) node[above] {\tiny$\Omega_{44}$};
+                  %\coordinate (l) at (-3,0.1);
+                  %\fill (l) circle (0pt) node[below] {\tiny$\Omega_{42}$};
+                  %\coordinate (l1) at (-3,-0.1);
+                  %\fill (l1) circle (0pt) node[above] {\tiny$\Omega_{41}$};
       \coordinate (n) at (-0.27,0);
       \fill (n) circle (0pt) node[below] {\tiny$\Omega_{23}$};
       \coordinate (n1) at (-0.27,0);
@@ -313,17 +359,19 @@
       \fill (m) circle (0pt) node[below] {\tiny$\Omega_{22}$};
       \coordinate (m1) at (-2.2,0);
       \fill (m1) circle (0pt) node[above] {\tiny$\Omega_{21}$};
-            %\coordinate (c) at (-2,0);
-            %\fill[red] (c) circle (1pt) node[below] {\scriptsize$-1$};
-            %\coordinate (d) at (2,0);
-            %\fill[red] (d) circle (1pt) node[below] {\scriptsize$1$};
+                  %\coordinate (c) at (-2,0);
+                  %\fill[red] (c) circle (1pt) node[below] {\scriptsize$-1$};
+                  %\coordinate (d) at (2,0);
+                  %\fill[red] (d) circle (1pt) node[below] {\scriptsize$1$};
    \end{tikzpicture}
    \label{case2}}
    \caption{caption}\label{test}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -383,17 +431,17 @@
    \label{si1}}
    \subfigure[]{
    \begin{tikzpicture}[scale=1.7]
-            %\draw(-4,0)--(-4.8,0.4);
+                  %\draw(-4,0)--(-4.8,0.4);
       \draw[dashed](0,1.5)node[right]{ Im$z$}--(0,-1.5);
       \draw[-latex](0,1.5)--(0,1.6);
       \draw[-latex](3.3,0)--(3.4,0);
-            %\draw[-<](-4,0)--(-4.4,0.2);
-            %\draw(-4,0)--(-3.2,0.4);
-            %\draw[->](-4,0)--(-3.6,-0.2);
-            %\draw(-4,0)--(-4.8,-0.4);
-            %\draw[->](-4,0)--(-3.6,0.2);
-            %\draw(-4,0)--(-3.2,-0.4);
-            %\draw[-<](-4,0)--(-4.4,-0.2);
+                  %\draw[-<](-4,0)--(-4.4,0.2);
+                  %\draw(-4,0)--(-3.2,0.4);
+                  %\draw[->](-4,0)--(-3.6,-0.2);
+                  %\draw(-4,0)--(-4.8,-0.4);
+                  %\draw[->](-4,0)--(-3.6,0.2);
+                  %\draw(-4,0)--(-3.2,-0.4);
+                  %\draw[-<](-4,0)--(-4.4,-0.2);
       \draw(-1,0)--(-0.2,0.4);
       \draw[->](-1,0)--(-0.6,0.2);
       \draw(-1,0)--(-1.8,0.4);
@@ -411,22 +459,22 @@
       \draw[->](1,0)--(1.4,0.2);
       \draw(1,0)--(1.8,-0.4);
       \draw[-<](1,0)--(0.6,-0.2);
-            %\draw(4,0)--(4.8,0.4);
-            %\draw[->](4,0)--(4.4,0.2);
-            %\draw(4,0)--(3.2,0.4);
-            %\draw[-<](4,0)--(3.6,-0.2);
-            %\draw(4,0)--(4.8,-0.4);
-            %\draw[-<](4,0)--(3.6,0.2);
-            %\draw(4,0)--(3.2,-0.4);
-            %\draw[->](4,0)--(4.4,-0.2);
+                  %\draw(4,0)--(4.8,0.4);
+                  %\draw[->](4,0)--(4.4,0.2);
+                  %\draw(4,0)--(3.2,0.4);
+                  %\draw[-<](4,0)--(3.6,-0.2);
+                  %\draw(4,0)--(4.8,-0.4);
+                  %\draw[-<](4,0)--(3.6,0.2);
+                  %\draw(4,0)--(3.2,-0.4);
+                  %\draw[->](4,0)--(4.4,-0.2);
       \coordinate (I) at (0,0);
       \fill[red] (I) circle (1pt) node[below right] {$0$};
-            %\coordinate (A) at (-4,0);
-            %\fill (A) circle (1pt) node[below] {$\xi_4$};
+                  %\coordinate (A) at (-4,0);
+                  %\fill (A) circle (1pt) node[below] {$\xi_4$};
       \coordinate (b) at (-1,0);
       \fill (b) circle (1pt) node[below] {$\xi_3$};
-            %\coordinate (e) at (4,0);
-            %\fill (e) circle (1pt) node[below] {$\xi_1$};
+                  %\coordinate (e) at (4,0);
+                  %\fill (e) circle (1pt) node[below] {$\xi_1$};
       \coordinate (f) at (1,0);
       \fill (f) circle (1pt) node[below] {$\xi_2$};
       \coordinate (c) at (-2,0);
@@ -439,7 +487,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -522,22 +572,22 @@
    }
    \subfigure[]{
    \begin{tikzpicture}[scale=1.7]
-            %\draw(4.35,0.18)--(5,0.5);
-            %\draw[->](4.35,0.18)--(4.5,0.25);
-            %\draw(3.64,0.15)--(2.5,0.6);
-            %\draw[-<](3.64,-0.15)--(3.25,-0.3);
-            %\draw(4.35,-0.18)--(5,-0.5);
-            %\draw[-<](3.64,0.15)--(3.25,0.3);
-            %\draw(3.64,-0.15)--(2.5,-0.6);
-            %\draw[->](4.35,-0.18)--(4.5,-0.25);
-            %\draw(-4.35,0.18)--(-5,0.5);
-            %\draw[-<](-4.35,0.18)--(-4.5,0.25);
-            %\draw(-3.64,0.15)--(-2.5,0.6);
-            %\draw[->](-3.64,-0.15)--(-3.25,-0.3);
-            %\draw(-4.35,-0.18)--(-5,-0.5);
-            %\draw[->](-3.64,0.15)--(-3.25,0.3);
-            %\draw(-3.64,-0.15)--(-2.5,-0.6);
-            %\draw[-<](-4.35,-0.18)--(-4.5,-0.25);
+                  %\draw(4.35,0.18)--(5,0.5);
+                  %\draw[->](4.35,0.18)--(4.5,0.25);
+                  %\draw(3.64,0.15)--(2.5,0.6);
+                  %\draw[-<](3.64,-0.15)--(3.25,-0.3);
+                  %\draw(4.35,-0.18)--(5,-0.5);
+                  %\draw[-<](3.64,0.15)--(3.25,0.3);
+                  %\draw(3.64,-0.15)--(2.5,-0.6);
+                  %\draw[->](4.35,-0.18)--(4.5,-0.25);
+                  %\draw(-4.35,0.18)--(-5,0.5);
+                  %\draw[-<](-4.35,0.18)--(-4.5,0.25);
+                  %\draw(-3.64,0.15)--(-2.5,0.6);
+                  %\draw[->](-3.64,-0.15)--(-3.25,-0.3);
+                  %\draw(-4.35,-0.18)--(-5,-0.5);
+                  %\draw[->](-3.64,0.15)--(-3.25,0.3);
+                  %\draw(-3.64,-0.15)--(-2.5,-0.6);
+                  %\draw[-<](-4.35,-0.18)--(-4.5,-0.25);
       \draw(-0.64,0.15)--(0,0.5);
       \draw[->](-0.64,0.15)--(-0.4,0.28);
       \draw(-1.35,0.16)--(-2.5,0.6);
@@ -556,26 +606,26 @@
       \draw[->](1.35,0.16)--(1.75,0.31);
       \draw(1.35,-0.16)--(2.5,-0.6);
       \draw[-<](0.64,-0.15)--(0.4,-0.28);
-            %\draw[->](2.5,0)--(2.5,0.6);
-            %\draw[->](2.5,0)--(2.5,-0.6);
-            %\draw[->](-2.5,0)--(-2.5,0.6);
-            %\draw[->](-2.5,0)--(-2.5,-0.6);
+                  %\draw[->](2.5,0)--(2.5,0.6);
+                  %\draw[->](2.5,0)--(2.5,-0.6);
+                  %\draw[->](-2.5,0)--(-2.5,0.6);
+                  %\draw[->](-2.5,0)--(-2.5,-0.6);
       \draw[->](0,0)--(0,0.5);
       \draw[->](0,0)--(0,-0.5);
       \coordinate (I) at (0,0);
       \fill (I) circle (1pt) node[below right] {$0$};
-            %\coordinate (A) at (-4,0);
-            %\fill[blue] (A) circle (1pt) node[below] {$\xi_4$};
+                  %\coordinate (A) at (-4,0);
+                  %\fill[blue] (A) circle (1pt) node[below] {$\xi_4$};
       \coordinate (b) at (-1,0);
       \fill[blue] (b) circle (1pt) node[below] {$\xi_3$};
-            %\coordinate (e) at (4,0);
-            %\fill[blue] (e) circle (1pt) node[below] {$\xi_1$};
+                  %\coordinate (e) at (4,0);
+                  %\fill[blue] (e) circle (1pt) node[below] {$\xi_1$};
       \coordinate (f) at (1,0);
       \draw[thick,blue](1,0) circle (0.4);
       \fill[blue] (f) circle (1pt) node[below] {$\xi_2$};
-            %\draw[thick,red](4,0) circle (0.4);
+                  %\draw[thick,red](4,0) circle (0.4);
       \draw[thick,blue](-1,0) circle (0.4);
-            %\draw[thick,red](-4,0) circle (0.4);
+                  %\draw[thick,red](-4,0) circle (0.4);
       \coordinate (c) at (-2,0);
       \fill[red] (c) circle (1pt) node[below] {\scriptsize$-1$};
       \coordinate (d) at (2,0);
@@ -586,7 +636,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -611,14 +663,16 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \centerline{
    \begin{tikzpicture}[scale=0.9]
       \path [fill=pink] (-4.5,0)--(-4.5,4.5) to (4.5,4.5) -- (4.5,0);
-            %\path [fill=pink] (-5,-4)--(-5,0) to (-1,0) -- (-1,-4);
+                  %\path [fill=pink] (-5,-4)--(-5,0) to (-1,0) -- (-1,-4);
       \draw[->][thick](3,0)--(5,0)node[right]{$Rez$};
       \draw[->][thick](1.5,0)--(3,0);
       \draw[->][thick](0,0)--(1.5,0);
@@ -630,7 +684,7 @@
       \draw[-][thick](0,1.5)--(0,0);
       \draw[-][thick](0,-1.5)--(0,0);
       \draw[->][thick](0,-4)--(0,-1.5);
-            %\draw[->][thick](0,-5)--(0,-3);
+                  %\draw[->][thick](0,-5)--(0,-3);
       \draw(0,0) [dashed][blue, line width=0.5] circle(2);
       \draw[fill] (1.414,1.414) circle [radius=0.05];
       \draw[fill] (1.414,1.414)node[above]{$\hat{z}_{j}$};
@@ -666,18 +720,20 @@
       \draw[fill] (1.732,-1)node[right]{$z_{j}$};
       \draw[fill] (-1.732,-1) circle [radius=0.05];
       \draw[fill] (-1.732,-1)node[left]{$-z^*_{j}$};
-            %\draw[fill] (4,0)circle [radius=0.05];
-            %\draw[fill] (4.2,0)node[below]{$\xi_{0}$};
-            %\draw[fill] (5.5,0)node[below]{$\xi_{0}+\rho$};
-            %\draw[fill] (2.5,0)node[below]{$\xi_{0}-\rho$};
-            %\draw[-][dashed](3.5,5)--(3.5,-5);
+                  %\draw[fill] (4,0)circle [radius=0.05];
+                  %\draw[fill] (4.2,0)node[below]{$\xi_{0}$};
+                  %\draw[fill] (5.5,0)node[below]{$\xi_{0}+\rho$};
+                  %\draw[fill] (2.5,0)node[below]{$\xi_{0}-\rho$};
+                  %\draw[-][dashed](3.5,5)--(3.5,-5);
    \end{tikzpicture}
    }
    \caption{caption}\label{fig02}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -744,7 +800,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -782,7 +840,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -797,16 +857,16 @@
       \draw[green,->][thick](4,0)--(3,-1);
       \draw[green,-][thick](3,-1)--(1.5,-2.5);
       \draw[green,-][thick](1.5,2.5)--(1.5,-2.5);
-            %\draw[green,->][thick](2,2)--(1,1);
-            %\draw[green,->][thick](1,1)--(-1,-1);
-            %\draw[green,->][thick](2,-2)--(1,-1);
-            %\draw[green,->][thick](1,-1)--(-1,1);
-            %\draw[green,-][thick](-1,1)--(-2,2);
+                  %\draw[green,->][thick](2,2)--(1,1);
+                  %\draw[green,->][thick](1,1)--(-1,-1);
+                  %\draw[green,->][thick](2,-2)--(1,-1);
+                  %\draw[green,->][thick](1,-1)--(-1,1);
+                  %\draw[green,-][thick](-1,1)--(-2,2);
       \draw[green,->][thick](1.5,2.5)--(0,1);
       \draw[green,-][thick](0,1)--(-3,-2);
-            %\draw[green,->][thick](1,2)--(0,1);
+                  %\draw[green,->][thick](1,2)--(0,1);
       \draw[green,->][thick](-3,2)--(-2,1);
-            %\draw[green,-][thick](2,-1)--(1,-2);
+                  %\draw[green,-][thick](2,-1)--(1,-2);
       \draw[green,->][thick](1.5,-2.5)--(0,-1);
       \draw[green,-][thick](0,-1)--(-2,1);
       \draw[green,->][thick](-3,-2)--(-2,-1);
@@ -830,28 +890,30 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \centerline{
    \begin{tikzpicture}[scale=0.6]
       \draw[-][pink,dashed](-4,0)--(4,0);
-            %\draw[-][dashed](-3,0)--(-2,0);
-            %\draw[-][dashed](-2,0)--(-1,0);
-            %\draw[-][dashed](-1,0)--(0,0);
-            %\draw[-][dashed](0,0)--(1,0);
-            %\draw[-][dashed](1,0)--(2,0);
-            %\draw[-][dashed](2,0)--(3,0);
-            %\draw[-][dashed](3,0)--(4,0);
-            %\draw[-][thick](0,4)--(0,3);
-            %\draw[-][thick](0,3)--(0,2);
-            %\draw[-][thick](0,2)--(0,1);
-            %\draw[-][thick](0,1)--(0,0);
-            %\draw[-][thick](0,-4)--(0,-3);
-            %\draw[-][thick](0,-3)--(0,-2);
-            %\draw[-][thick](0,-2)--(0,-1);
-            %\draw[-][thick](0,-1)--(0,-0);
+                  %\draw[-][dashed](-3,0)--(-2,0);
+                  %\draw[-][dashed](-2,0)--(-1,0);
+                  %\draw[-][dashed](-1,0)--(0,0);
+                  %\draw[-][dashed](0,0)--(1,0);
+                  %\draw[-][dashed](1,0)--(2,0);
+                  %\draw[-][dashed](2,0)--(3,0);
+                  %\draw[-][dashed](3,0)--(4,0);
+                  %\draw[-][thick](0,4)--(0,3);
+                  %\draw[-][thick](0,3)--(0,2);
+                  %\draw[-][thick](0,2)--(0,1);
+                  %\draw[-][thick](0,1)--(0,0);
+                  %\draw[-][thick](0,-4)--(0,-3);
+                  %\draw[-][thick](0,-3)--(0,-2);
+                  %\draw[-][thick](0,-2)--(0,-1);
+                  %\draw[-][thick](0,-1)--(0,-0);
       \draw[-][thick](-4,-4)--(4,4);
       \draw[-][thick](-4,4)--(4,-4);
       \draw[->][thick](2,2)--(3,3);
@@ -907,7 +969,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -925,7 +989,7 @@
          \node    at (5,0)  {y};
          \node    at (0,3.8 )  {t};
          \node  [below]  at (-0.5,1.7) {$u^r  +f_{11}t^{-1/2}+\mathcal{O}(t^{-3/4})$};
-                  %\node  [below]  at (-1.5,1.8) {$-1/4<\xi<0 $};
+                           %\node  [below]  at (-1.5,1.8) {$-1/4<\xi<0 $};
          \node  [below]  at (2.9,0.7) {$  u^r +\mathcal{O}(t^{-1+2\rho})$};
          \node  [below]  at (-3,0.6) {$     u^r +\mathcal{O}(t^{-1+2\rho}) $};
          \node  [below]  at (-5,1.6) {$ \xi=-1/4 $};
@@ -936,7 +1000,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -944,8 +1010,8 @@
    \begin{tikzpicture}[node distance=2cm]
       \filldraw[yellow!20,line width=3] (3,0) rectangle (0,2.5);
       \filldraw[yellow!20,line width=3] (-3,0) rectangle (-0,2.5);
-            %\filldraw[green!20,line width=3] (3,0) rectangle (0,-3);
-            %\filldraw[green!20,line width=3] (-3,0) rectangle (-0,-3);
+                  %\filldraw[green!20,line width=3] (3,0) rectangle (0,-3);
+                  %\filldraw[green!20,line width=3] (-3,0) rectangle (-0,-3);
       \draw[->](-3.5,0)--(3.5,0)node[right]{Re$z$};
       \draw[->](0,-2.5)--(0,2.5)node[above]{Im$z$};
       \node   at (-1.1,2) {\footnotesize $\mathbb{C}^+$};
@@ -961,7 +1027,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -990,7 +1058,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1028,7 +1098,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1087,37 +1159,39 @@
       \fill (I) circle (1pt) ;
       \coordinate (J) at (0,-1);
       \fill (J) circle (1pt) ;
-                   % \coordinate (K) at (0.18,-1);
-                    %\fill (K) circle (1pt) ;
-                   % \coordinate (L) at (-0.18,-1);
-                    %\fill (L) circle (1pt) ;
-                    %\coordinate (M) at (0.613,0.679);
-                    %\fill (M) circle (1pt) ;
-                   % \coordinate (N) at (-0.613,0.679);
-                   % \fill (N) circle (1pt) ;
-                    %\coordinate (O) at (0.613,-0.679);
-                    %\fill (O) circle (1pt) ;
-                   % \coordinate (P) at (-0.613,-0.679);
-                    %\fill (P) circle (1pt) ;
-            %\coordinate (F) at (0.5546996232,-0.8320505887);
-            %\coordinate (G) at (-2,3);
-            %\coordinate (H) at (-2,-3);
-            %\coordinate (K) at (1.7320508075688774,-1);
-            %\coordinate (L) at (-1.7320508075688774,1);
-            %\coordinate (M) at (-1.7320508075688774,-1);
+                         % \coordinate (K) at (0.18,-1);
+                          %\fill (K) circle (1pt) ;
+                         % \coordinate (L) at (-0.18,-1);
+                          %\fill (L) circle (1pt) ;
+                          %\coordinate (M) at (0.613,0.679);
+                          %\fill (M) circle (1pt) ;
+                         % \coordinate (N) at (-0.613,0.679);
+                         % \fill (N) circle (1pt) ;
+                          %\coordinate (O) at (0.613,-0.679);
+                          %\fill (O) circle (1pt) ;
+                         % \coordinate (P) at (-0.613,-0.679);
+                          %\fill (P) circle (1pt) ;
+                  %\coordinate (F) at (0.5546996232,-0.8320505887);
+                  %\coordinate (G) at (-2,3);
+                  %\coordinate (H) at (-2,-3);
+                  %\coordinate (K) at (1.7320508075688774,-1);
+                  %\coordinate (L) at (-1.7320508075688774,1);
+                  %\coordinate (M) at (-1.7320508075688774,-1);
       
-            %\fill (F) circle (1pt) node[right] {$\frac{1}{z_n}$};
-            %\fill (G) circle (1pt) node[left] {$-\bar{z}_n$};
-            %\fill (H) circle (1pt) node[left] {$-z_n$};
-            %\fill (J) circle (1pt) node[right] {$w_m$};
-            %\fill (K) circle (1pt) node[right] {$\bar{w}_m$};
-            %\fill (M) circle (1pt) node[left] {$-w_m$};
+                  %\fill (F) circle (1pt) node[right] {$\frac{1}{z_n}$};
+                  %\fill (G) circle (1pt) node[left] {$-\bar{z}_n$};
+                  %\fill (H) circle (1pt) node[left] {$-z_n$};
+                  %\fill (J) circle (1pt) node[right] {$w_m$};
+                  %\fill (K) circle (1pt) node[right] {$\bar{w}_m$};
+                  %\fill (M) circle (1pt) node[left] {$-w_m$};
    \end{tikzpicture}
    \caption{caption}\label{figR2}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1180,36 +1254,38 @@
       \draw[blue] (0,-2) circle (0.15);
       \draw[blue] (0,1) circle (0.15);
       \draw[blue] (0,-1) circle (0.15);
-                    %\fill (K) circle (1pt) ;
-                   % \coordinate (L) at (-0.18,-1);
-                    %\fill (L) circle (1pt) ;
-                    %\coordinate (M) at (0.613,0.679);
-                    %\fill (M) circle (1pt) ;
-                   % \coordinate (N) at (-0.613,0.679);
-                   % \fill (N) circle (1pt) ;
-                    %\coordinate (O) at (0.613,-0.679);
-                    %\fill (O) circle (1pt) ;
-                   % \coordinate (P) at (-0.613,-0.679);
-                    %\fill (P) circle (1pt) ;
-            %\coordinate (F) at (0.5546996232,-0.8320505887);
-            %\coordinate (G) at (-2,3);
-            %\coordinate (H) at (-2,-3);
-            %\coordinate (K) at (1.7320508075688774,-1);
-            %\coordinate (L) at (-1.7320508075688774,1);
-            %\coordinate (M) at (-1.7320508075688774,-1);
+                          %\fill (K) circle (1pt) ;
+                         % \coordinate (L) at (-0.18,-1);
+                          %\fill (L) circle (1pt) ;
+                          %\coordinate (M) at (0.613,0.679);
+                          %\fill (M) circle (1pt) ;
+                         % \coordinate (N) at (-0.613,0.679);
+                         % \fill (N) circle (1pt) ;
+                          %\coordinate (O) at (0.613,-0.679);
+                          %\fill (O) circle (1pt) ;
+                         % \coordinate (P) at (-0.613,-0.679);
+                          %\fill (P) circle (1pt) ;
+                  %\coordinate (F) at (0.5546996232,-0.8320505887);
+                  %\coordinate (G) at (-2,3);
+                  %\coordinate (H) at (-2,-3);
+                  %\coordinate (K) at (1.7320508075688774,-1);
+                  %\coordinate (L) at (-1.7320508075688774,1);
+                  %\coordinate (M) at (-1.7320508075688774,-1);
       
-            %\fill (F) circle (1pt) node[right] {$\frac{1}{z_n}$};
-            %\fill (G) circle (1pt) node[left] {$-\bar{z}_n$};
-            %\fill (H) circle (1pt) node[left] {$-z_n$};
-            %\fill (J) circle (1pt) node[right] {$w_m$};
-            %\fill (K) circle (1pt) node[right] {$\bar{w}_m$};
-            %\fill (M) circle (1pt) node[left] {$-w_m$};
+                  %\fill (F) circle (1pt) node[right] {$\frac{1}{z_n}$};
+                  %\fill (G) circle (1pt) node[left] {$-\bar{z}_n$};
+                  %\fill (H) circle (1pt) node[left] {$-z_n$};
+                  %\fill (J) circle (1pt) node[right] {$w_m$};
+                  %\fill (K) circle (1pt) node[right] {$\bar{w}_m$};
+                  %\fill (M) circle (1pt) node[left] {$-w_m$};
    \end{tikzpicture}
    \caption{caption}\label{figVR}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1219,27 +1295,27 @@
          \draw[blue!20, fill=green!20] (0,0 )--(4.5,2)--(0,2)--(0,0);
          \draw[blue!20, fill=green!20] (0,0 )--(-4.5,0)--(-4.5,2)--(0, 2)--(0,0);
          \draw[yellow!20, fill=yellow!20] (0,0 )--(-4.5,0)--(-4.5,2)--(0,0);
-                  %\draw[CadetBlue!20, fill=LightSteelBlue!20] (0,0)--(2.5,0)--(2.5,2)--(0, 2);
-                  %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-2.5,0)--(0,0)--(0,2)--(-2.5, 2);
-                  %\draw[GreenYellow!20, fill=YellowGreen!20] (-2.5,-2)--(0,-2)--(0,0)--(-2.5, 0);
-                  %\draw[GreenYellow!20, fill=YellowGreen!20] (0,-2)--(2.5,-2)--(2.5,0)--(0, 0);
-                  %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-3.5,2.5)--(0,0)--(3.5,2.5);
-                  %\draw[GreenYellow!20, fill=LightSteelBlue!] (-3.5,2.5)--(-3.5,0)--(0,0);
-                  %\draw[GreenYellow!20, fill=LightSteelBlue!] (3.5,2.5)--(3.5,0)--(0,0);
+                           %\draw[CadetBlue!20, fill=LightSteelBlue!20] (0,0)--(2.5,0)--(2.5,2)--(0, 2);
+                           %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-2.5,0)--(0,0)--(0,2)--(-2.5, 2);
+                           %\draw[GreenYellow!20, fill=YellowGreen!20] (-2.5,-2)--(0,-2)--(0,0)--(-2.5, 0);
+                           %\draw[GreenYellow!20, fill=YellowGreen!20] (0,-2)--(2.5,-2)--(2.5,0)--(0, 0);
+                           %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-3.5,2.5)--(0,0)--(3.5,2.5);
+                           %\draw[GreenYellow!20, fill=LightSteelBlue!] (-3.5,2.5)--(-3.5,0)--(0,0);
+                           %\draw[GreenYellow!20, fill=LightSteelBlue!] (3.5,2.5)--(3.5,0)--(0,0);
          \draw [-> ](-5,0)--(5,0);
          \draw [-> ](0,0)--(0,2.8);
          \node    at (0.1,-0.3)  {$0$};
          \node    at (5.26,0)  { $x$};
          \node    at (0,3.2)  { $t$};
-                  %\draw [dashed](0,0)--(-4,2);
-                  %\draw [dashed](0,0)--(4,2);
+                           %\draw [dashed](0,0)--(-4,2);
+                           %\draw [dashed](0,0)--(4,2);
          \node  [below]  at (4.4,2.7) {\small$\xi=1$};
          \node  [below]  at (-4.4,2.7) {\small$\xi=-1$};
-                  %\node at (-0.1,1.5) {\small$|x/t|<2$};
+                           %\node at (-0.1,1.5) {\small$|x/t|<2$};
          \draw [red](0,0)--(-4.5,2);
          \draw [red](0,0)--(4.5,2);
-                  %\node  []  at (4,0.8) {\small$\xi=K$};
-                  %\node  []  at (-4,0.8) {\small$\xi=-K$};
+                           %\node  []  at (4,0.8) {\small$\xi=K$};
+                           %\node  []  at (-4,0.8) {\small$\xi=-K$};
          \node  []  at (0.7,1.5) { $I$};
          \node  []  at (-0.7,1.5) { $I$};
          \node [] at (0,0.85) {Solitonic region};
@@ -1253,16 +1329,18 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \begin{tikzpicture}
-                  %\draw[CadetBlue!20, fill=LightSteelBlue!20] (0,0)--(2.5,0)--(2.5,2)--(0, 2);
-                  %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-2.5,0)--(0,0)--(0,2)--(-2.5, 2);
-                  %\draw[GreenYellow!20, fill=YellowGreen!20] (-2.5,-2)--(0,-2)--(0,0)--(-2.5, 0);
-                  %\draw[GreenYellow!20, fill=YellowGreen!20] (0,-2)--(2.5,-2)--(2.5,0)--(0, 0);
+                           %\draw[CadetBlue!20, fill=LightSteelBlue!20] (0,0)--(2.5,0)--(2.5,2)--(0, 2);
+                           %\draw[CadetBlue!20, fill=LightSteelBlue!20] (-2.5,0)--(0,0)--(0,2)--(-2.5, 2);
+                           %\draw[GreenYellow!20, fill=YellowGreen!20] (-2.5,-2)--(0,-2)--(0,0)--(-2.5, 0);
+                           %\draw[GreenYellow!20, fill=YellowGreen!20] (0,-2)--(2.5,-2)--(2.5,0)--(0, 0);
          \draw [-> ](-3.5,0)--(3.5,0);
          \draw [-> ](0,-2.8)--(0,2.8);
          \node    at (0.3,-0.3)  {$0$};
@@ -1278,7 +1356,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1298,8 +1378,8 @@
          \node[below] at (-2.2,0) {$-1$};
          \node[right] at (1*30:2) {$z_j$};
          \node[right] at (-1*30:2) {$\bar{z}_j$};
-                  %  \node[left] at (5*30:2) {$\bar{z}_k$};
-                  %  \node[left] at (-5*30:2) {$z_j$};
+                           %  \node[left] at (5*30:2) {$\bar{z}_k$};
+                           %  \node[left] at (-5*30:2) {$z_j$};
          \draw [dashed, gray](1) arc (0:360:2);
       \end{tikzpicture}
       \caption{caption}\label{mjumpp}
@@ -1307,19 +1387,21 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \subfigure[$ \xi>1$]{
       \begin{tikzpicture}[scale=0.9]
-                                  %[node distance=2cm]
-                      %\draw [yellow!10, fill=yellow!10] (5.6,0)--(5.6,2.6)--(3.3,2.6)--(3.7,0);
-                      % \draw [yellow!10, fill=yellow!10] (-4,0)--(-4,-2.6)--(3.3,-2.6)--(3.7,0);
+                                           %[node distance=2cm]
+                               %\draw [yellow!10, fill=yellow!10] (5.6,0)--(5.6,2.6)--(3.3,2.6)--(3.7,0);
+                               % \draw [yellow!10, fill=yellow!10] (-4,0)--(-4,-2.6)--(3.3,-2.6)--(3.7,0);
          \draw [dashed  ] (3.3,2.6) to [out=-75,in=90] (3.75,0);
          \draw [dashed  ] (3.3,-2.6) to [out=75,in=-95] (3.75,0);
-                     %\filldraw[white](0,0)--(1.2,0) arc (0:-180:0.6);
+                              %\filldraw[white](0,0)--(1.2,0) arc (0:-180:0.6);
          \draw[dashed,->](-4.2,0)--(6,0)node[black,right]{Re$z$};
          \foreach \x [count=\p] in {1,...,5} {
          \node[shape=circle,fill=red, scale=0.15] (\p) at (\x*30:2) {};
@@ -1329,33 +1411,33 @@
          \draw[blue,line width=0.5] (180+\x*30:2) circle (0.2);
          \draw[blue, ->] (180+\x*30:2)+(-0.2,0) arc (180:90:0.2);
          };
-                           %   \draw[red,line width = 0.5](-1.8,0) arc(0:180:0.2);
-                           %   \draw[red,->] (-1.8,0) arc(0:90:0.2);
-                           %   \node[shape=circle,fill=black, scale=0.15] at (-2,0){};
-                          %    \draw[red,line width = 0.5](2.2,0) arc(0:180:0.2);
-                           %   \draw[red,->] (2.2,0) arc(0:90:0.2);
-                           %  \node[shape=circle,fill=black, scale=0.15] at (2,0){};
+                                    %   \draw[red,line width = 0.5](-1.8,0) arc(0:180:0.2);
+                                    %   \draw[red,->] (-1.8,0) arc(0:90:0.2);
+                                    %   \node[shape=circle,fill=black, scale=0.15] at (-2,0){};
+                                   %    \draw[red,line width = 0.5](2.2,0) arc(0:180:0.2);
+                                    %   \draw[red,->] (2.2,0) arc(0:90:0.2);
+                                    %  \node[shape=circle,fill=black, scale=0.15] at (2,0){};
          
-                           %   \draw[blue,line width = 0.5](-2.15,0) arc(180:360:0.15);
-                          %    \draw[blue,line width = 0.5](1.85,0) arc(180:360:0.15);
+                                    %   \draw[blue,line width = 0.5](-2.15,0) arc(180:360:0.15);
+                                   %    \draw[blue,line width = 0.5](1.85,0) arc(180:360:0.15);
          
-                             % \draw[red,line width=0.2] (\p) arc (0:360:0.2)
-                              %\foreach \x [count=\p] in {0,...,5} {
-                             %         \draw (-\x*60:2.4);
-                              %        \draw (-30-\x*60:2.4) ;};
-                                %  \node[shape=circle,fill=blue, scale=0.15]  at (0:2){0};
-                                %  \node[shape=circle,fill=blue, scale=0.15]  at (-6*30:2){0} ;
-                                %  \node[shape=circle,fill=blue,scale=0.15] at (-0.05,0) {0};
-                                  %\node[below] at (2.15,0.05) {\footnotesize $1$};
+                                      % \draw[red,line width=0.2] (\p) arc (0:360:0.2)
+                                       %\foreach \x [count=\p] in {0,...,5} {
+                                      %         \draw (-\x*60:2.4);
+                                       %        \draw (-30-\x*60:2.4) ;};
+                                         %  \node[shape=circle,fill=blue, scale=0.15]  at (0:2){0};
+                                         %  \node[shape=circle,fill=blue, scale=0.15]  at (-6*30:2){0} ;
+                                         %  \node[shape=circle,fill=blue,scale=0.15] at (-0.05,0) {0};
+                                           %\node[below] at (2.15,0.05) {\footnotesize $1$};
          \node[below] at (-0.1,0) {\footnotesize $0$};
          \node[below] at (-2.3,0) {\footnotesize $-1$};
          \node[right] at (1.2,1.8) {$z_j$};
-                              %    \draw[red,line width=0.2] (1,1.8) arc (0:360:0.2);
+                                       %    \draw[red,line width=0.2] (1,1.8) arc (0:360:0.2);
          \node[right] at (1.2,-1.8) {$\bar{z}_j$};
-                              %  \node[left] at (5*30:2) {$\bar{z}_k$};
-                              %  \node[left] at (-5*30:2) {$z_k$};
+                                       %  \node[left] at (5*30:2) {$\bar{z}_k$};
+                                       %  \node[left] at (-5*30:2) {$z_k$};
          \draw [dashed, gray] (0,0) circle (2);
-                              %    \draw [dashed, gray](1) arc (0:360:2);
+                                       %    \draw [dashed, gray](1) arc (0:360:2);
          \draw [dashed] (0.8,0) circle [radius=0.8];
          \draw [ blue] (-4, -1.5)--(0.8,0.35);
          \draw [ blue] (0.8,0.35 )--(2.7,-0.5);
@@ -1405,12 +1487,12 @@
       
       \subfigure[$ \xi<-1$]{
       \begin{tikzpicture}[scale=0.9]
-                                  %[node distance=2cm]
-                      %\draw [yellow!10, fill=yellow!10] (5.6,0)--(5.6,2.6)--(3.3,2.6)--(3.7,0);
-                      % \draw [yellow!10, fill=yellow!10] (-4,0)--(-4,-2.6)--(3.3,-2.6)--(3.7,0);
+                                           %[node distance=2cm]
+                               %\draw [yellow!10, fill=yellow!10] (5.6,0)--(5.6,2.6)--(3.3,2.6)--(3.7,0);
+                               % \draw [yellow!10, fill=yellow!10] (-4,0)--(-4,-2.6)--(3.3,-2.6)--(3.7,0);
          \draw [dashed  ] (-3.3,2.6) to [out=75,in=90] (-3.8,0);
          \draw [dashed  ] (-3.3,-2.6) to [out=-75,in=-95] (-3.8,0);
-                     %\filldraw[white](0,0)--(1.2,0) arc (0:-180:0.6);
+                              %\filldraw[white](0,0)--(1.2,0) arc (0:-180:0.6);
          \draw[dashed,->](-6,0)--(4.5,0)node[black,right]{Re$z$};
          \foreach \x [count=\p] in {1,...,5} {
          \node[shape=circle,fill=blue, scale=0.15] (\p) at (\x*30:2) {};
@@ -1421,21 +1503,21 @@
          \draw[red, ->] (180+\x*30:2)+(0.2,0) arc (0:90:0.2);
          };
          
-                              %    \foreach \x [count=\p] in {0,...,11} {
-                              %\node[shape=circle,fill=red, scale=0.25] (\p) at (-\x*30:2) {};};
-                               %   \foreach \x [count=\p] in {0,...,5} {
-                               %       \draw (-\x*60:2.4);
-                               %       \draw (-30-\x*60:2.4) ;};
-                              %    \node[shape=circle,fill=blue, scale=0.15]  at (0:2){0};
-                              %    \node[shape=circle,fill=blue, scale=0.15]  at (-6*30:2){0} ;
-                              %\node[shape=circle,fill=blue,scale=0.15] at (0.05,0) {0};
+                                       %    \foreach \x [count=\p] in {0,...,11} {
+                                       %\node[shape=circle,fill=red, scale=0.25] (\p) at (-\x*30:2) {};};
+                                        %   \foreach \x [count=\p] in {0,...,5} {
+                                        %       \draw (-\x*60:2.4);
+                                        %       \draw (-30-\x*60:2.4) ;};
+                                       %    \node[shape=circle,fill=blue, scale=0.15]  at (0:2){0};
+                                       %    \node[shape=circle,fill=blue, scale=0.15]  at (-6*30:2){0} ;
+                                       %\node[shape=circle,fill=blue,scale=0.15] at (0.05,0) {0};
          \node[below] at (2.1,0.05) {\footnotesize $1$};
          \node[below] at (0.1,0) {\footnotesize $0$};
-                                  % \node[below] at (-2.3,0) {\footnotesize $-1$};
+                                           % \node[below] at (-2.3,0) {\footnotesize $-1$};
          \node[right] at (1.2,1.8) {$z_j$};
          \node[right] at (1.2,-1.8) {$\bar{z}_j$};
-                              %  \node[left] at (5*30:2) {$\bar{z}_k$};
-                              %  \node[left] at (-5*30:2) {$z_k$};
+                                       %  \node[left] at (5*30:2) {$\bar{z}_k$};
+                                       %  \node[left] at (-5*30:2) {$z_k$};
          \draw [dashed, gray] (0,0) circle (2);
          \draw [dashed] (-0.8,0) circle [radius=0.8];
          
@@ -1490,7 +1572,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1543,29 +1627,29 @@
          \draw[](1,0.5)--(1,-1);
          
          \node[scale=0.6] at (2.8,0.38) {$\Omega_{21}$};
-                           %  \node[scale=0.5] at (2.38,0.78) {$\Sigma_{21}$};
+                                    %  \node[scale=0.5] at (2.38,0.78) {$\Sigma_{21}$};
          \node[scale=0.6] at (2.8,-0.38) {$\Omega_{24}$};
-                           %  \node[scale=0.7] at (2.38,-0.78) {$\Sigma_{24}$};
+                                    %  \node[scale=0.7] at (2.38,-0.78) {$\Sigma_{24}$};
          \node[scale=0.6] at (1.3,0.3) {$\Omega_{22}$};
-                           %  \node[scale=0.7] at (1.6,0.78) {$\Sigma_{22}$};
+                                    %  \node[scale=0.7] at (1.6,0.78) {$\Sigma_{22}$};
          \node[scale=0.6] at (1.3,-0.32) {$\Omega_{23}$};
-                           %  \node[scale=0.7] at (1.6,-0.78) {$\Sigma_{23}$};
+                                    %  \node[scale=0.7] at (1.6,-0.78) {$\Sigma_{23}$};
          \node[scale=0.6] at (0.72,0.3) {$\Omega_{12}$};
-                           %  \node[scale=0.7] at (0.45,0.8) {$\Sigma_{12}$};
+                                    %  \node[scale=0.7] at (0.45,0.8) {$\Sigma_{12}$};
          \node[scale=0.6] at (0.72,-0.32) {$\Omega_{13}$};
-                           %  \node[scale=0.7] at (0.45,-0.8) {$\Sigma_{13}$};
+                                    %  \node[scale=0.7] at (0.45,-0.8) {$\Sigma_{13}$};
          \node[scale=0.6] at (-0.7,0.3) {$\Omega_{11}$};
-                           %  \node[scale=0.7] at (-0.45,0.8) {$\Sigma_{11}$};
+                                    %  \node[scale=0.7] at (-0.45,0.8) {$\Sigma_{11}$};
          \node[scale=0.6] at (-0.68,-0.32) {$\Omega_{14}$};
-                           %  \node[scale=0.7] at (-0.4,-0.8) {$\Sigma_{14}$};
+                                    %  \node[scale=0.7] at (-0.4,-0.8) {$\Sigma_{14}$};
          \node[scale=0.6] at (-1.3,0.3) {$\Omega_{01}$};
-                           %  \node[scale=0.7] at (-1.6,0.8) {$\Sigma_{01}$};
+                                    %  \node[scale=0.7] at (-1.6,0.8) {$\Sigma_{01}$};
          \node[scale=0.6] at (-1.4,-0.3) {$\Omega_{04}$};
-                           %  \node[scale=0.7] at (-1.6,-0.8) {$\Sigma_{04}$};
+                                    %  \node[scale=0.7] at (-1.6,-0.8) {$\Sigma_{04}$};
          \node[scale=0.6] at (-2.8,0.3) {$\Omega_{02}$};
-                           %  \node[scale=0.7] at (-3.1,0.8) {$\Sigma_{02}$};
+                                    %  \node[scale=0.7] at (-3.1,0.8) {$\Sigma_{02}$};
          \node[scale=0.6] at (-2.8,-0.25) {$\Omega_{03}$};
-                           %  \node[scale=0.7] at (-3.2,-0.8) {$\Sigma_{03}$};
+                                    %  \node[scale=0.7] at (-3.2,-0.8) {$\Sigma_{03}$};
          \draw[](-1,0)--(-1,0.5);
          \draw[](-1,0.5)--(-1,1);
          \draw[](-1,-1)--(-1,-0.4);
@@ -1622,29 +1706,29 @@
          \draw[](1,0.5)--(1,-1);
          
          \node[scale=0.6] at (2.8,0.38) {$\Omega_{01}$};
-                           %  \node[scale=0.5] at (2.38,0.78) {$\Sigma_{21}$};
+                                    %  \node[scale=0.5] at (2.38,0.78) {$\Sigma_{21}$};
          \node[scale=0.6] at (2.8,-0.38) {$\Omega_{04}$};
-                           %  \node[scale=0.7] at (2.38,-0.78) {$\Sigma_{24}$};
+                                    %  \node[scale=0.7] at (2.38,-0.78) {$\Sigma_{24}$};
          \node[scale=0.6] at (1.3,0.3) {$\Omega_{02}$};
-                           %  \node[scale=0.7] at (1.6,0.78) {$\Sigma_{22}$};
+                                    %  \node[scale=0.7] at (1.6,0.78) {$\Sigma_{22}$};
          \node[scale=0.6] at (1.3,-0.32) {$\Omega_{03}$};
-                           %  \node[scale=0.7] at (1.6,-0.78) {$\Sigma_{23}$};
+                                    %  \node[scale=0.7] at (1.6,-0.78) {$\Sigma_{23}$};
          \node[scale=0.6] at (0.72,0.3) {$\Omega_{12}$};
-                           %  \node[scale=0.7] at (0.45,0.8) {$\Sigma_{12}$};
+                                    %  \node[scale=0.7] at (0.45,0.8) {$\Sigma_{12}$};
          \node[scale=0.6] at (0.72,-0.32) {$\Omega_{13}$};
-                           %  \node[scale=0.7] at (0.45,-0.8) {$\Sigma_{13}$};
+                                    %  \node[scale=0.7] at (0.45,-0.8) {$\Sigma_{13}$};
          \node[scale=0.6] at (-0.7,0.3) {$\Omega_{11}$};
-                           %  \node[scale=0.7] at (-0.45,0.8) {$\Sigma_{11}$};
+                                    %  \node[scale=0.7] at (-0.45,0.8) {$\Sigma_{11}$};
          \node[scale=0.6] at (-0.68,-0.32) {$\Omega_{14}$};
-                           %  \node[scale=0.7] at (-0.4,-0.8) {$\Sigma_{14}$};
+                                    %  \node[scale=0.7] at (-0.4,-0.8) {$\Sigma_{14}$};
          \node[scale=0.6] at (-1.3,0.3) {$\Omega_{21}$};
-                           %  \node[scale=0.7] at (-1.6,0.8) {$\Sigma_{01}$};
+                                    %  \node[scale=0.7] at (-1.6,0.8) {$\Sigma_{01}$};
          \node[scale=0.6] at (-1.4,-0.3) {$\Omega_{24}$};
-                           %  \node[scale=0.7] at (-1.6,-0.8) {$\Sigma_{04}$};
+                                    %  \node[scale=0.7] at (-1.6,-0.8) {$\Sigma_{04}$};
          \node[scale=0.6] at (-2.8,0.3) {$\Omega_{22}$};
-                           %  \node[scale=0.7] at (-3.1,0.8) {$\Sigma_{02}$};
+                                    %  \node[scale=0.7] at (-3.1,0.8) {$\Sigma_{02}$};
          \node[scale=0.6] at (-2.8,-0.25) {$\Omega_{23}$};
-                           %  \node[scale=0.7] at (-3.2,-0.8) {$\Sigma_{03}$};
+                                    %  \node[scale=0.7] at (-3.2,-0.8) {$\Sigma_{03}$};
          \draw[](-1,0)--(-1,0.5);
          \draw[](-1,0.5)--(-1,1);
          \draw[](-1,-1)--(-1,-0.4);
@@ -1658,7 +1742,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1721,16 +1807,16 @@
          \draw[-<](2,0)--(1.6,-0.2);
          \coordinate (I) at (1,0);
          \fill[red] (I) circle (1pt) node[below] {$-1$};
-                  %  \coordinate (A) at (-4,0);
-                  %     \fill (A) circle (1pt) node[blue,below] {$\xi_4$};
+                           %  \coordinate (A) at (-4,0);
+                           %     \fill (A) circle (1pt) node[blue,below] {$\xi_4$};
          \coordinate (b) at (-1,0);
          \fill (b) circle (1pt) node[blue,below] {$\xi_2$};
-                  %     \coordinate (e) at (4,0);
-                  %  \fill (e) circle (1pt) node[blue,below] {$\xi_1$};
+                           %     \coordinate (e) at (4,0);
+                           %  \fill (e) circle (1pt) node[blue,below] {$\xi_1$};
          \coordinate (f) at (2,0);
          \fill (f) circle (1pt) node[blue,below] {$\xi_1$};
-                  %  \coordinate (c) at (2,0);
-                  %  \fill[red] (c) circle (1pt) node[below] {$0$};
+                           %  \coordinate (c) at (2,0);
+                           %  \fill[red] (c) circle (1pt) node[below] {$0$};
          \node[shape=circle,fill=red,scale=0.11] at (3.3,0) {0};
          \node[below,red] at (3.5,0) {$0$};
          \draw[dashed,blue](2,0) circle (0.65);
@@ -1742,15 +1828,17 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \subfigure[The \ region $ \xi>1$]{
       \begin{tikzpicture}[scale=0.9]
-                  %\draw [dashed  ] (3.3,2.6) to [out=-75,in=90] (3.75,0);
-                  %\draw [dashed  ] (3.3,-2.6) to [out=75,in=-95] (3.75,0);
+                           %\draw [dashed  ] (3.3,2.6) to [out=-75,in=90] (3.75,0);
+                           %\draw [dashed  ] (3.3,-2.6) to [out=75,in=-95] (3.75,0);
          \draw[dashed,->](-4.2,0)--(6,0)node[black,right]{Re$z$};
          \foreach \x [count=\p] in {1,...,5} {
          \node[shape=circle,fill=black, scale=0.15] (\p) at (\x*30:2) {};
@@ -1783,7 +1871,7 @@
          \draw (2.7,0.5)--(3.52, 0.12);
          \draw  (4.1,0.09)--(5.5, 0.75);
          \draw [-latex]  (4.1,0.09)--(4.7, 0.373);
-                                      %\draw [-latex] (2.7,-0.5)--(4.6, 0.35);
+                                               %\draw [-latex] (2.7,-0.5)--(4.6, 0.35);
          
          \draw (0.8,-0.35)--(1.3, -0.12);
          \draw [-latex] (2,0.14 )--(2.2,0.265);
@@ -1801,16 +1889,16 @@
          
          \draw (-4, 1.5)--(0.8,-0.35 );
          \draw [-latex] (-4,  1.5)--(-1.25, 0.44 );
-                                               % \node[blue,thick]  at (4.5,1.2) {\bf  $+$};
-                                               %    \node[red,thick]  at (4.5,-1.2) {\bf  $-$};
-                                               %      \node[red,thick]  at (2.6,1.2) {\bf  $-$};
-                                               %    \node[blue,thick]  at (2.6,-1.2) {\bf  $+$};
-                                               %    \node[red,thick]  at (0,1.2) {\small\bf $-$};
-                                               %    \node[blue,thick]  at (0,-1.2) {\small\bf $+$};
-                                               %     \node[blue,thick]  at (0.8,0.5) {\tiny\bf $+$};
-                                               %        \node[red,thick]  at (0.8,-0.5) {\tiny\bf $-$};
-                                               %        \node[blue,thick]  at (-3,-1.3) {\bf  $+$};
-                                               %        \node[red,thick]  at (-3,1.3) {\bf  $-$};
+                                                        % \node[blue,thick]  at (4.5,1.2) {\bf  $+$};
+                                                        %    \node[red,thick]  at (4.5,-1.2) {\bf  $-$};
+                                                        %      \node[red,thick]  at (2.6,1.2) {\bf  $-$};
+                                                        %    \node[blue,thick]  at (2.6,-1.2) {\bf  $+$};
+                                                        %    \node[red,thick]  at (0,1.2) {\small\bf $-$};
+                                                        %    \node[blue,thick]  at (0,-1.2) {\small\bf $+$};
+                                                        %     \node[blue,thick]  at (0.8,0.5) {\tiny\bf $+$};
+                                                        %        \node[red,thick]  at (0.8,-0.5) {\tiny\bf $-$};
+                                                        %        \node[blue,thick]  at (-3,-1.3) {\bf  $+$};
+                                                        %        \node[red,thick]  at (-3,1.3) {\bf  $-$};
          
          \node  at (5.6,1) {\footnotesize $\Sigma_{21}$};
          \node  at (5.6,-1) {\footnotesize $\Sigma_{24}$};
@@ -1830,8 +1918,8 @@
       
       \subfigure[The \ region  $ \xi<-1$]{
       \begin{tikzpicture}[scale=0.9]
-                  %\draw [dashed  ] (-3.3,2.6) to [out=75,in=90] (-3.8,0);
-                  %\draw [dashed  ] (-3.3,-2.6) to [out=-75,in=-95] (-3.8,0);
+                           %\draw [dashed  ] (-3.3,2.6) to [out=75,in=90] (-3.8,0);
+                           %\draw [dashed  ] (-3.3,-2.6) to [out=-75,in=-95] (-3.8,0);
          
          \draw[dashed,->](-6,0)--(4.5,0)node[black,right]{Re$z$};
          \foreach \x [count=\p] in {1,...,5} {
@@ -1848,26 +1936,26 @@
          \node[right] at (1.2,1.8) {$z_j$};
          \node[right] at (1.2,-1.8) {$\bar{z}_j$};
          \draw [dashed, gray] (0,0) circle (2);
-                  %           \draw [dashed] (-0.8,0) circle [radius=0.8];
+                           %           \draw [dashed] (-0.8,0) circle [radius=0.8];
          
-                  %                             \draw [ red] (4, -1.5)--(-0.8,0.35);
-                  %                             \draw [ red] (-0.8,0.35 )--(-2.7,-0.5);
-                  %                             \draw [-latex,red] (-2.7,-0.5)--(-2,-0.175);
-                  %                       \draw [ red] (-2.7,-0.5)--(-5.5, 0.75);
-                  %                       \draw [-latex, red] (-5.5, 0.75)--(-4.6, 0.35);
-                  %\draw [-latex,red] (-0.8,0.35 )--(1.25,-0.44 );
-                  %\draw[](-0.8,-0.35)--(-0.8,0.35);
-                  %\draw[->](-0.8,0)--(-0.8,0.16);
-                  %\draw[->](-0.8,-0.35)--(0-.8,-0.1);
-                  %\draw[](-2.7,-0.5)--(-2.7,0.5);
-                  %\draw[->](-2.7,0.5)--(-2.7,0.2);
-                  %\draw[->](-2.7,0)--(-2.7,-0.2);
-                  %                         \draw [ blue] (-0.8,-0.35)--(-2.7, 0.5);
-                  %                            \draw [-latex,blue] (-2.7, 0.5)--(-2,0.175);
-                  %                            \draw [blue] (-2.7,0.5)--(-5.5, -0.75);
-                  %                            \draw [blue] (4, 1.5)--(-0.8,-0.35 );
-                  %                             \draw [-latex,blue] (-5.5, -0.75)--(-4.6, -0.35);
-                  %                               \draw [-latex,blue] (-0.8,-0.35 )--(1.25, 0.44 );
+                           %                             \draw [ red] (4, -1.5)--(-0.8,0.35);
+                           %                             \draw [ red] (-0.8,0.35 )--(-2.7,-0.5);
+                           %                             \draw [-latex,red] (-2.7,-0.5)--(-2,-0.175);
+                           %                       \draw [ red] (-2.7,-0.5)--(-5.5, 0.75);
+                           %                       \draw [-latex, red] (-5.5, 0.75)--(-4.6, 0.35);
+                           %\draw [-latex,red] (-0.8,0.35 )--(1.25,-0.44 );
+                           %\draw[](-0.8,-0.35)--(-0.8,0.35);
+                           %\draw[->](-0.8,0)--(-0.8,0.16);
+                           %\draw[->](-0.8,-0.35)--(0-.8,-0.1);
+                           %\draw[](-2.7,-0.5)--(-2.7,0.5);
+                           %\draw[->](-2.7,0.5)--(-2.7,0.2);
+                           %\draw[->](-2.7,0)--(-2.7,-0.2);
+                           %                         \draw [ blue] (-0.8,-0.35)--(-2.7, 0.5);
+                           %                            \draw [-latex,blue] (-2.7, 0.5)--(-2,0.175);
+                           %                            \draw [blue] (-2.7,0.5)--(-5.5, -0.75);
+                           %                            \draw [blue] (4, 1.5)--(-0.8,-0.35 );
+                           %                             \draw [-latex,blue] (-5.5, -0.75)--(-4.6, -0.35);
+                           %                               \draw [-latex,blue] (-0.8,-0.35 )--(1.25, 0.44 );
          
          \draw  (4, -1.5)--(-0.8,0.35);
          \draw[-latex] (-0.8,0.35)--(1.25,-0.44 );
@@ -1899,16 +1987,16 @@
          \draw[-latex](-2.7,0.5)--(-2.7,0.2);
          \draw[-latex](-2.7,0)--(-2.7,-0.2);
          
-                                            %    \node[red,thick]  at (-4.5,1.2) {\bf  $-$};
-                                           %        \node[blue,thick]  at (-4.5,-1.2) {\bf  $+$};
-                                             %        \node[blue,thick]  at (2.6,1.2) {\bf  $+$};
-                                            %       \node[red,thick]  at (2.6,-1.2) {\bf  $-$};
-                                            %       \node[blue,thick]  at (0,1.2) {\small\bf $+$};
-                                            %       \node[red,thick]  at (0,-1.2) {\small\bf $-$};
-                                            %        \node[red,thick]  at (-0.8,0.5) {\tiny\bf $-$};
-                                           %            \node[blue,thick]  at (-0.8,-0.5) {\tiny\bf $+$};
-                                            %           \node[red,thick]  at (-3,-1.2) {\bf  $-$};
-                                            %           \node[blue,thick]  at (-3,1.2) {\bf  $+$};
+                                                     %    \node[red,thick]  at (-4.5,1.2) {\bf  $-$};
+                                                    %        \node[blue,thick]  at (-4.5,-1.2) {\bf  $+$};
+                                                      %        \node[blue,thick]  at (2.6,1.2) {\bf  $+$};
+                                                     %       \node[red,thick]  at (2.6,-1.2) {\bf  $-$};
+                                                     %       \node[blue,thick]  at (0,1.2) {\small\bf $+$};
+                                                     %       \node[red,thick]  at (0,-1.2) {\small\bf $-$};
+                                                     %        \node[red,thick]  at (-0.8,0.5) {\tiny\bf $-$};
+                                                    %            \node[blue,thick]  at (-0.8,-0.5) {\tiny\bf $+$};
+                                                     %           \node[red,thick]  at (-3,-1.2) {\bf  $-$};
+                                                     %           \node[blue,thick]  at (-3,1.2) {\bf  $+$};
          
          \draw [red,line width=0.5] (-1.65,0) circle (0.35);
          \node[shape=circle,fill=black, scale=0.2]  at (-1.7,0) {};
@@ -1918,8 +2006,8 @@
          \node[shape=circle,fill=black, scale=0.2]  at (-3.8,0) {};
          \node[below] at (-3.8,0) {\tiny $\xi_2$};
          
-                                                  %     \node[below] at (-3.9,0) {\footnotesize $\xi_2$};
-                                                  %     \node[below] at (-1.73,0) {\footnotesize $\xi_1$};
+                                                           %     \node[below] at (-3.9,0) {\footnotesize $\xi_2$};
+                                                           %     \node[below] at (-1.73,0) {\footnotesize $\xi_1$};
          \node  at (-5.6,1) {\footnotesize $\Sigma_{22}$};
          \node  at (-5.6,-1) {\footnotesize $\Sigma_{23}$};
          \node  at (-3.2,0.6) {\footnotesize $\Sigma_{21}$};
@@ -1939,7 +2027,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -1987,7 +2077,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2157,7 +2249,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2427,7 +2521,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2503,7 +2599,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2652,7 +2750,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2745,7 +2845,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2790,7 +2892,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -2973,7 +3077,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3008,7 +3114,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3027,9 +3135,9 @@
          \node[shape=circle,fill=blue,scale=0.2] at (0,0) {$0$};
          \foreach \x [count=\p] in {0,...,11} {
          \node[shape=circle,fill=red, scale=0.25] (\p) at (-\x*30:2) {};};
-                     % \foreach \x [count=\p] in {0,...,5} {
-                       %   \draw (-\x*60:2.4) ;
-                        %  \draw (-30-\x*60:2.4) ;};
+                              % \foreach \x [count=\p] in {0,...,5} {
+                                %   \draw (-\x*60:2.4) ;
+                                 %  \draw (-30-\x*60:2.4) ;};
          \node[shape=circle,fill=blue, scale=0.25]  at (0:2) {};
          \node[shape=circle,fill=blue, scale=0.25]  at (-6*30:2) {};
          \node[right] at (1.83205,1) {$z_k$};
@@ -3054,13 +3162,15 @@
          \fill[green] (H) circle (1.2pt) node[below right] {};
          \fill[green] (I) circle (1.2pt) node[above right] {};
       \end{tikzpicture}
-            %\flushleft{\footnotesize {\bf Figure $\ref{Sigma1}$} The dotted lines are ${\mathrm re} z=\pm\xi_0$. We divide the discrete spectrum into three set: $\triangle\setminus\Lambda$, $\nabla\setminus\Lambda$ and $\Lambda$ and reserve the poles in $\Lambda$. }
+                  %\flushleft{\footnotesize {\bf Figure $\ref{Sigma1}$} The dotted lines are ${\mathrm re} z=\pm\xi_0$. We divide the discrete spectrum into three set: $\triangle\setminus\Lambda$, $\nabla\setminus\Lambda$ and $\Lambda$ and reserve the poles in $\Lambda$. }
       \caption{caption}\label{Sigma1}
    \end{center}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3116,7 +3226,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3146,7 +3258,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3183,14 +3297,16 @@
       \node [below] at (-5.1,-0.1) {$\Omega_6$};
       \node [above] at (0.2,1.3) {$\Omega_7$};
       \node [below] at (0.2,-1.5) {$\Omega_8$};
-            %orienations
-            %\draw (0,1)->(2,1/3);
+                  %orienations
+                  %\draw (0,1)->(2,1/3);
    \end{tikzpicture}
    \caption{caption}\label{deformRigen}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3224,39 +3340,41 @@
       \node [below] at (4.2,-1/2) {$L$};
       \node [above,red] at (0,1) {$L_\epsilon$};
       \node [below,red] at (0,-1) {$\bar{L}_\epsilon$};
-            %     \node [above] at (5.1,0.1) {$\Omega_1$};
-            %     \node [below] at (0,-0.3) {$\Omega_2$};
-            %     \node [above] at (-5.1,0.1) {$\Omega_3$};
-            %     \node [below] at (5.1,-0.1) {$\Omega_4$};
-            %     \node [above] at (0,0.3) {$\Omega_5$};
-            %     \node [below] at (-5.1,-0.1) {$\Omega_6$};
-            %     \node [above] at (0.2,1.3) {$\Omega_7$};
-            %     \node [below] at (0.2,-1.5) {$\Omega_8$};
-            %orienations
-            %\draw (0,1)->(2,1/3);
+                  %     \node [above] at (5.1,0.1) {$\Omega_1$};
+                  %     \node [below] at (0,-0.3) {$\Omega_2$};
+                  %     \node [above] at (-5.1,0.1) {$\Omega_3$};
+                  %     \node [below] at (5.1,-0.1) {$\Omega_4$};
+                  %     \node [above] at (0,0.3) {$\Omega_5$};
+                  %     \node [below] at (-5.1,-0.1) {$\Omega_6$};
+                  %     \node [above] at (0.2,1.3) {$\Omega_7$};
+                  %     \node [below] at (0.2,-1.5) {$\Omega_8$};
+                  %orienations
+                  %\draw (0,1)->(2,1/3);
    \end{tikzpicture}
    \caption{caption}\label{fig:truncate errors}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \centering
    \begin{tikzpicture}
-            %  \draw (-5,0)--(5,0);
+                  %  \draw (-5,0)--(5,0);
       \node [below] at (3,0) {$z_0$};
       \node [below] at (-3,0) {$-z_0$};
       \filldraw (3,0) circle (1pt);
       \filldraw (-3,0) circle (1pt);
-            %\draw [red,->] (0,1)--(2,1/3);
+                  %\draw [red,->] (0,1)--(2,1/3);
       \draw (2,1/3)--(5,-2/3);
-            %\draw [red] (0,1)--(-2,1/3);
+                  %\draw [red] (0,1)--(-2,1/3);
       \draw [<-](-2,1/3)--(-5,-2/3);
-            %  \draw [red,->] (0,-1)--(2,-1/3);
+                  %  \draw [red,->] (0,-1)--(2,-1/3);
       \draw (2,-1/3)--(5,2/3);
-            %  \draw [red] (0,-1)--(-2,-1/3);
+                  %  \draw [red] (0,-1)--(-2,-1/3);
       \draw [<-](-2,-1/3)--(-5,2/3);
       \draw [<-] (4,1/3)--(4.5,1/2);
       \draw [<-] (4,-1/3)--(4.5,-1/2);
@@ -3272,13 +3390,15 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \centering
    \begin{tikzpicture}[scale=0.6]
-            % coordinates
+                  % coordinates
       \draw [<->](-2,-2)--(2,2);
       \draw (-3,-3)--(3,3);
       \draw [<->](-2,2)--(2,-2);
@@ -3293,17 +3413,19 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \centering
    \begin{tikzpicture}[scale=0.6]
-            % coordinates
+                  % coordinates
       \draw [<-<](-2,-2)--(2,2);
       \draw (-3,-3)--(3,3);
       \draw [<-<](-2,2)--(2,-2);
-            %  \draw [-<](0,0)--(2,2);
+                  %  \draw [-<](0,0)--(2,2);
       \draw (-3,3)--(3,-3);
       \node [below] at (0,0) {0};
       \draw [<-<] (-2,0)--(2,0);
@@ -3314,17 +3436,19 @@
       \node [left] at (-2,-1) {$\Omega_4^e$};
       \node [] at (0,-2) {$\Omega_5^e$};
       \node [right] at (2,-1) {$\Omega_6^e$};
-            %  \node [right] at (2,1) {$\Omega_1$};
-            %  \node  [right] at (3,3) {$\Sigma_A^2$};
-            %  \node  [right] at (3,-3) {$\Sigma_A^1$};
-            %  \node  [left] at (-3,3) {$\Sigma_A^3$};
-            %  \node  [left] at (-3,-3) {$\Sigma_A^4$};
+                  %  \node [right] at (2,1) {$\Omega_1$};
+                  %  \node  [right] at (3,3) {$\Sigma_A^2$};
+                  %  \node  [right] at (3,-3) {$\Sigma_A^1$};
+                  %  \node  [left] at (-3,3) {$\Sigma_A^3$};
+                  %  \node  [left] at (-3,-3) {$\Sigma_A^4$};
    \end{tikzpicture}
    \caption{caption}\label{fig:sigma_e}
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3357,7 +3481,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3393,7 +3519,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3413,15 +3541,17 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \begin{tikzpicture}[scale=1.3,decoration={markings,mark=at position .67 with {\arrow[black,line width=0.8mm]{>}
          ;}}]
-         %\draw[->](-3,0)--(2.5,0) node[right]{$\Re z$};
-         %\draw[->](0,-3)--(0,3) node[above]{$\Im z$};
+                  %\draw[->](-3,0)--(2.5,0) node[right]{$\Re z$};
+                  %\draw[->](0,-3)--(0,3) node[above]{$\Im z$};
          
          \draw[postaction={decorate}, very thick] (0,0)--(1,0) node[right]{$x^*$};
          \draw[postaction={decorate}, very thick, rotate around={120:(0,0)}] (0,0)--(1,0) node[right]{$\omega x^*$};
@@ -3445,15 +3575,17 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \begin{tikzpicture}[scale=1.3,decoration={markings,mark=at position .67 with {\arrow[black,line width=0.8mm]{>}
          ;}}]
-         %\draw[->](-3,0)--(2.5,0) node[right]{$\Re z$};
-         %\draw[->](0,-3)--(0,3) node[above]{$\Im z$};
+                  %\draw[->](-3,0)--(2.5,0) node[right]{$\Re z$};
+                  %\draw[->](0,-3)--(0,3) node[above]{$\Im z$};
          
          \draw[postaction={decorate}, very thick] (0,0)--(1,0) node[below]{$x^*$};
          \draw[very thick] (0,0)--(1.5,0) node[right]{$\widehat{x}$};
@@ -3493,7 +3625,9 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
@@ -3535,8 +3669,8 @@
          \draw[rotate around={-120:(0,0)}] (2.5,1.6) node[left]{$C_2^+$}; 
          \draw[rotate around={-120:(0,0)}] (2.5,-1.6) node[below]{$C_2^-$};
          
-         %\draw(0.5,0) node[above]{$\Sigma_1$};
-         %\draw(0,0) node[left]{$0$};
+                  %\draw(0.5,0) node[above]{$\Sigma_1$};
+                  %\draw(0,0) node[left]{$0$};
          
          \filldraw(1,0) circle (1pt);
          \filldraw[rotate around={120:(0,0)}](1,0) circle (1pt);
@@ -3548,14 +3682,16 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \begin{tikzpicture}[scale=1.3,decoration={markings,mark=at position .67 with {\arrow[black,line width=0.8mm]{>}
          ;}}]
-
+         
          \draw[very thick] (0,0)--(1,0) node[below]{$x^*$};
          \draw[very thick] (0,0)--(1.5,0); % node[right]{$\widehat{x}$};
          \draw[very thick, rotate around ={120:(0,0)}] (0,0)--(1.5,0); % node[above]{$\omega \widehat{x}$};
@@ -3618,22 +3754,24 @@
 \end{figure}
 
 
+
 \clearpage
+
 
 
 \begin{figure}
    \begin{center}
       \begin{tikzpicture}[scale=1.3,decoration={markings,mark=at position .67 with {\arrow[black,line width=0.8mm]{>}
          ;}}]
-
-         %\draw[very thick] (0,0)--(1,0) node[below]{$x^*$};
+         
+                  %\draw[very thick] (0,0)--(1,0) node[below]{$x^*$};
          \draw[very thick] (1.2,0)--(1.5,0); % node[right]{$\widehat{x}$};
          \draw[very thick, rotate around ={120:(0,0)}] (1.2,0)--(1.5,0); % node[above]{$\omega \widehat{x}$};
          \draw[very thick, rotate around ={-120:(0,0)}] (1.2,0)--(1.5,0); % node[below]{$\omega^2 \widehat{x}$};
          
-         %\draw[postaction={decorate}, very thick] (0,0)--(-3,0);
-         %\draw[postaction={decorate}, very thick, rotate around={120:(0,0)}] (0,0)--(-3,0);
-         %\draw[postaction={decorate}, very thick, rotate around={-120:(0,0)}] (0,0)--(-3,0);
+                  %\draw[postaction={decorate}, very thick] (0,0)--(-3,0);
+                  %\draw[postaction={decorate}, very thick, rotate around={120:(0,0)}] (0,0)--(-3,0);
+                  %\draw[postaction={decorate}, very thick, rotate around={-120:(0,0)}] (0,0)--(-3,0);
          
          \draw[postaction={decorate},very thick,rotate around={-90:(1.5,0)}] (1.5,0) parabola (3.5,1.5);
          \draw[postaction={decorate},very thick,rotate around={90:(1.5,0)}] (1.5,0) parabola (3.5,-1.5);
@@ -3665,9 +3803,9 @@
          \draw[postaction={decorate},  very thick, rotate around={-120:(0,0)}] (0.2,0)--(2,2.4);
          \draw[postaction={decorate},  very thick, rotate around={-120:(0,0)}] (0.2,0)--(2,-2.4);
          
-         %\filldraw(1,0) circle (1pt);
-         %\filldraw[rotate around={120:(0,0)}](1,0) circle (1pt);
-         %\filldraw[rotate around={-120:(0,0)}](1,0) circle (1pt);
+                  %\filldraw(1,0) circle (1pt);
+                  %\filldraw[rotate around={120:(0,0)}](1,0) circle (1pt);
+                  %\filldraw[rotate around={-120:(0,0)}](1,0) circle (1pt);
          
          \draw[very thick](1,0) circle (5pt);
          \draw[very thick,rotate around={120:(0,0)}](1,0) circle (5pt);
@@ -3679,10 +3817,577 @@
 \end{figure}
 
 
+
 \clearpage
 
 
 
+\begin{figure}
+   \center
+   \begin{tikzpicture}
+      \coordinate [label=0: Im $k$] ()at (0,2.8);
+      \coordinate [label=0: Re $k$] ()at (3,-0.2);
+      \coordinate [label=0:] ()at (2,0.1);
+      \coordinate [label=0:] ()at (-2.6,0.1);
+      \path [fill=pink] (-3.5,2.5)--(3.5,2.5) to
+      (3.5,0)--(-3.5,0);
+      \coordinate [label=0: $\mathbb{C}^{+}$] ()at (1,1);
+      \coordinate [label=0: $\mathbb{C}^{-}$] ()at (1,-1);
+      \draw[->, ] (3,0)--(3.5,0);
+      \draw[->,] (0,2)--(0,2.5);
+      \draw[thin](0,2)--(0,-2.3);
+      \draw[thin](3.5,0)--(-3.5,0);
+   \end{tikzpicture}
+   \caption{caption}\label{1t}
+\end{figure}
 
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tabular}{c c}
+      \begin{tikzpicture}[scale=0.75]
+         \path [fill=gray!30](-3,0) -- (-2,4) -- (3,4) -- (0,0)--(-3,0);
+         \draw [thick](-3,0) -- (-2,4);
+         \draw [thick](0,0) -- (3,4);
+         \draw [help lines][->] (-4,0) -- (4,0);
+         \draw [help lines][->] (-3.8,-0.2) -- (-3.8,4);
+         \draw [fill] (-3,0) circle [radius=0.025];
+         \draw [fill] (0,0) circle [radius=0.025];
+         \node [below] at (-3,0) {$x_1$};
+         \node [below] at (0,0) {$x_2$};
+         \node [below] at (4,0) {$x$};
+         \node [left] at (-4,4) {$t$};
+         \node [above] at (-2,4) {$\scriptstyle{x-v_1 t = x_1}$};
+         \node [above] at (3,4) {$\scriptstyle{x-v_2 t = x_2}$};
+      \end{tikzpicture}
+      & 
+      \qquad
+      \begin{tikzpicture}[scale=0.75]
+         \path [fill=gray!30](-2,-0.2) -- (-2,4) -- (2,4) -- (2,-0.2)--(-2,-0.2);
+         \draw[thick](-2,-0.2) -- (-2,4);
+         \draw[thick](2,-0.2) -- (2,4);
+         \draw[help lines][->] (-4,0.0) -- (4,0.0);
+         %\draw[fill] (-2,0) circle [radius=0.025];
+         %\draw[fill] (2,0) circle [radius=0.025];
+         %% Soliton nodes
+         \draw[fill] (3,.4) circle [radius=0.04];
+         \draw[fill] (2.3,3) circle [radius=0.04];
+         \draw[fill] (1.3,2) circle [radius=0.04];
+         \draw[fill] (-.2,.5) circle [radius=0.04];
+         \draw[fill] (-.8,1.8) circle [radius=0.04];
+         \draw[fill] (-1.3,.3) circle [radius=0.04];
+         \draw[fill] (-2.4,3.3) circle [radius=0.04];
+         \draw[fill] (-3,.5) circle [radius=0.04];
+         \draw[fill] (-3,2.4) circle [radius=0.04];
+         %% soliton node labels
+         \node [left] at (3,.4) {$\scriptstyle{z_1}$};
+         \node [right] at (2.3,3) {$\scriptstyle{z_8}$};
+         \node [left] at (1.3,2) {$\scriptstyle{z_5}$};
+         \node [left] at (-.2,.5) {$\scriptstyle{z_2}$};
+         \node [left] at (-.8,1.8) {$\scriptstyle{z_6}$};
+         \node [left] at (-1.3,.3) {$\scriptstyle{z_3}$};
+         \node [left] at (-2.4,3.3) {$\scriptstyle{z_9}$};
+         \node [left] at (-3,.5) {$\scriptstyle{z_4}$};
+         \node [left] at (-3,2.4) {$\scriptstyle{z_7}$};
+         %% exterior figure labels
+         \node [below] at (-2,0) {$\scriptstyle{-v_2/2 }$};
+         \node [below] at (1.9,0) {$\scriptstyle{-v_1/2  }$};
+         \node [right] at (4,.0) {$\Re z$};
+         \node [right] at (-4,3.7) {$C$};
+      \end{tikzpicture}
+      \\
+   \end{tabular}
+   \caption{caption}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      %\draw[help lines] (-6,-6) grid (6,6);
+      \path [fill=gray!30] (0,0) -- (-4,4) -- (-6,4) -- (-6,-4) -- (-4,-4) -- (0,0);
+      \path [fill=gray!30] (0,0) -- (4,4) -- (6,4) -- (6,-4) -- (4,-4) -- (0,0);
+      \draw [help lines] (-6,0) -- (6,0);
+      \draw [thick][->] (-4,4) -- (-2,2);
+      \draw [thick] [->](-2,2)--(2,-2);
+      \draw [thick] (2,-2) -- (4,-4);
+      \draw [thick][->] (-4,-4) -- (-2,-2);
+      \draw [thick][->] (-2,-2)--(2,2);
+      \draw [thick] (2,2) -- (4,4);
+      \draw[color=white, fill=white] (1.5,1.4) circle [radius=.2];
+      \draw[color=white, fill=white] (1.5,-1.4) circle [radius=.2];
+      \draw[color=white, fill=white] (-3.5,2.5) circle [radius=.2];
+      \draw[color=white, fill=white] (-3.5,-2.5) circle [radius=.2];
+      \draw[color=white, fill=white] (3,2) circle [radius=.2];
+      \draw[color=white, fill=white] (3,-2) circle [radius=.2];
+      \node at (3.5,3) {$\Sigma_{1}$};
+      \node at (-3.5,3) {$\Sigma_{2}$};
+      \node at (-3.5,-3) {$\Sigma_{3}$};
+      \node at (3.5,-3) {$\Sigma_{4}$};
+      \node [right] at (6,0) {$\Re{z}$};
+      \draw [fill] (0,0) circle [radius=0.025];
+      \node [below] at (0,0) {$\xi$};
+      \node at (1,.4) {$\Omega_{1}$};
+      \node at (0,1.08) {$\Omega_{2}$};
+      \node at (-1,.4) {$\Omega_{3}$};
+      \node at (-1,-.4) {$\Omega_{4}$};
+      \node at (0,-1.08) {$\Omega_{5}$};
+      \node at (1,-.4) {$\Omega_{6}$};
+      \node at (4,1) {$W^{2} = \stril[0] {-\dbar R_1 e^{2it \theta}} $ };
+      \node at (-4,1) {$W^{2} = \striu[0]{ -\dbar R_3 e^{-2it \theta}} $ };
+      \node at (-4,-1) {$W^{2} = \stril[0]{ \dbar R_4 e^{2it \theta}} $ };
+      \node at (4,-1) {$W^{2} = \striu[0]{ \dbar R_6 e^{-2it \theta }} $};
+   \end{tikzpicture}
+   \caption{caption}\label{fig:M2def}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw [help lines] (-2,0) -- (2,0);
+      \draw [thick][->] (-2,2) -- (-1,1);
+      \draw [thick] [->](-2,2)--(1,-1);
+      \draw [thick] (-2,2) -- (2,-2);
+      \draw [thick][->] (-2,-2) -- (-1,-1);
+      \draw [thick][->] (-2,-2)--(1,1);
+      \draw [thick] (-2,-2) -- (2,2);
+      \node at (2.3,2) {$\Sigma_{1}$};
+      \node at (-2.3,2) {$\Sigma_{2}$};
+      \node at (-2.3,-2) {$\Sigma_{3}$};
+      \node at (2.3,-2) {$\Sigma_{4}$};
+      \node [right] at (2,0) {$\Re{\zeta}$};
+      \draw [fill] (0,0) circle [radius=0.025];
+      \node [below] at (0,-0.1) {$0$};
+      \node at (1,.4) {$\Omega_{1}$};
+      \node at (0,1.08) {$\Omega_{2}$};
+      \node at (-1,.4) {$\Omega_{3}$};
+      \node at (-1,-.4) {$\Omega_{4}$};
+      \node at (0,-1.08) {$\Omega_{5}$};
+      \node at (1,-.4) {$\Omega_{6}$};
+   \end{tikzpicture}
+   \caption{caption}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (0,0)--(4,0);
+      % \node [above] at (-1,2) {$\theta'=0$};
+      % \draw [->](-1,2)--(0,0.1);
+      \draw [fill] (0,0) circle [radius=0.05];
+      \node [below] at (0,0) {$O$};
+      % \node [below] at (2,0) {$I_{j+}$};
+      % \node [below] at (-2,0) {$I_{j-}$};
+      \draw [line width=0.3 mm] (0,0)--(4,1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(3.8,0)--(3.8,3.8*3/8)--(0,0);
+      % \draw (0.5,0) arc (0:27:0.4) ;
+      % \node [right] at (0.5,0.1) { $\alpha$};
+      \node [above] at (3.8,1.5) {$\Sigma_{1}$};
+      \node [above] at (3,0.4) {$\Omega_+$};
+      
+      \draw [line width=0.3 mm] (0,0)--(4,-1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(3.8,0)--(3.8,-3.8*3/8)--(0,0);
+      \node [below] at (3.8,-1.5) {$\Sigma_{2}$};
+      \node [below] at (3,-0.4) {$\Omega_-$};
+      % \draw (-0.5,0) arc (180:180-27:0.4) ;
+      \node [above] at (-1,1) {$\Omega$};
+   \end{tikzpicture}
+   \caption{Contour deformation}
+   \label{idea of dbar steepest descent}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (-4,0)--(4,0);
+      \node [above] at (-1,2) {$\theta'=0$};
+      \draw [->](-1,2)--(0,0.1);
+      \draw [fill] (0,0) circle [radius=0.05];
+      \node [below] at (0,0) {$z_j$};
+      \node [below] at (2,0) {$I_{j+}$};
+      \node [below] at (-2,0) {$I_{j-}$};
+      \draw [line width=0.3 mm] (0,0)--(4,1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(3.8,0)--(3.8,3.8*3/8)--(0,0);
+      \draw (0.5,0) arc (0:27:0.4) ;
+      \node [right] at (0.5,0.1) { $\alpha$};
+      \node [above] at (3.8,1.5) {$\Sigma_{j,1}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(-4,1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(-3.8,0)--(-3.8,3.8*3/8)--(0,0);
+      \draw (-0.5,0) arc (180:180-27:0.4) ;
+      \node [above] at (-3.8,1.5) {$\Sigma_{j,2}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(-4,-1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(-3.8,0)--(-3.8,-3.8*3/8)--(0,0);
+      \draw (-0.5,0) arc (180:180+27:0.4) ;
+      \node [below] at (-3.8,-1.5) {$\Sigma_{j,3}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(4,-1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(3.8,0)--(3.8,-3.8*3/8)--(0,0);
+      \node [below] at (3.8,-1.5) {$\Sigma_{j,4}$};
+      %\draw (0.5,0) arc (0:-27:0.4) ;
+      
+      \node at (3,0.65) {$\Omega_{j,1}$} ;
+      \node at (-3,0.65) {$\Omega_{j,3}$} ;
+      \node at (-3,-0.65) {$\Omega_{j,4}$} ;
+      \node at (3,-0.65) {$\Omega_{j,6}$} ;
+      \node at (0,0.95) {$\Omega_{j,2}$} ;
+      \node at (0,-0.95) {$\Omega_{j,5}$} ;
+   \end{tikzpicture}
+   \caption{Notations for studying signatures of $\Im(\theta(z))$ near $z_j$}
+   \label{notation for Im theta}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (-6,0)--(6,0);
+      \draw [fill] (-4,0) circle [radius=0.05] node [below] {$z_j$};
+      \draw [fill] (4,0) circle [radius=0.05] node [below] {$z_{j+1}$};
+      \draw [fill] (0,0) circle [radius=0.05] node [below] {$z_{j+\frac{1}{2}}$};
+      \draw (-4,0)--(0,2)--(4,0);
+      \path [fill=gray,opacity=0.3] (-4,0)--(0,2)--(4,0)--(-4,0);
+      \draw [red,line width=0.3 mm] (0,2)--(0,0);
+      \draw [->] (2,2)--(0.1,1.5) ;
+      \node [right] at (2,2) {$\Sigma_{j+\frac{1}{2}}$};
+      \node at (-2,0.4) {$\Omega_{j,1}$};
+      \node at (2,0.4) {$\Omega_{j+1,3}$};
+      \node at (-4,1.2) {$\Omega_{j,2}$};
+      \node at (4,1.2) {$\Omega_{j+1,2}$};
+      \node [above] at (-2,1){$\Sigma_{j,1}$};
+      \node [above] at (2,1){$\Sigma_{j+1,2}$};
+   \end{tikzpicture}
+   \caption{Jumps in a small triangular region.}
+   \label{sigma j 1/2}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm] (-6,0)--(6,0);
+      \draw (-6,1/2)--(-2,-1.5);
+      \draw (-6,-1/2)--(-2,1.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](-2,-1.5)--(0,-2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](-2,1.5)--(0,2.5);
+      \draw (6,-1/2)--(2,1.5);
+      \draw (6,1/2)--(2,-1.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](2,1.5)--(0,2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](2,-1.5)--(0,-2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](0,2.5)--(0,-2.5);
+      \node [below] at (-5,-0.2) {$z_j$} ;
+      \node [below] at (5,-0.2) {$z_{j+1}$};
+      \node [above] at (-3.4,0.8) {$\Sigma_{j,1}^o$};
+      \node [above] at (3.4,0.8) {$\Sigma_{j+1,2}^o$};
+      \node [below] at (-3.4,-0.8) {$\Sigma_{j,4}^o$};
+      \node [below] at (3.4,-0.9) {$\Sigma_{j+1,3}^o$};
+   \end{tikzpicture}
+   \caption{New contours, dashed line segments are those deleted parts.}
+   \label{truncated contours}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=blue,line width=0.3 mm,postaction={on each segment={mid arrow=red}}]
+      (-3,0)--(-0.05,0)--(-0.05,1.5)--(-3,0);
+      \path [draw=green,line width=0.3 mm,postaction={on each segment={mid arrow=red}}]
+      (0.05,0)--(3,0)--(0.05,1.5)--(0.05,0);
+      \draw [line width=0.2 mm](-4,0)--(4,0);
+   \end{tikzpicture}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+   \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+      %uncomment if require: \path (0,480); %set diagram left start at 0, and has height of 480
+      
+      %Straight Lines [id:da033751413755709114] 
+      \draw    (351,68.5) -- (351,95.5) ;
+      \draw [shift={(351,97.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da18304813914789442] 
+      \draw    (352,125.5) -- (352,159.5) ;
+      \draw [shift={(352,161.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da08124002810273079] 
+      \draw    (351,187.5) -- (351,219.5) ;
+      \draw [shift={(351,221.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da5217021068995016] 
+      \draw    (259,221.5) -- (485,222.5) ;
+      %Straight Lines [id:da8364406338125938] 
+      \draw    (259,221.5) -- (259.95,259.5) ;
+      \draw [shift={(260,261.5)}, rotate = 268.57] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da7120737338973813] 
+      \draw    (485,222.5) -- (485,259.5) ;
+      \draw [shift={(485,261.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da9031479502675461] 
+      \draw    (485,292.5) -- (485.94,323.5) ;
+      \draw [shift={(486,325.5)}, rotate = 268.26] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da8841466640758846] 
+      \draw    (487,354.5) -- (487.93,380.5) ;
+      \draw [shift={(488,382.5)}, rotate = 267.95] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da1714904266864925] 
+      \draw    (488,404.5) -- (489.86,430.51) ;
+      \draw [shift={(490,432.5)}, rotate = 265.90999999999997] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da33641820418844515] 
+      \draw    (472,449.5) .. controls (434.38,430.69) and (418.32,313.87) .. (456.82,282.43) ;
+      \draw [shift={(458,281.5)}, rotate = 503.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da14429246801857087] 
+      \draw    (263,289.5) .. controls (302,323.5) and (420,305.5) .. (460,275.5) ;
+      %Straight Lines [id:da5788083203930596] 
+      \draw    (360,306.5) -- (277.91,331.91) ;
+      \draw [shift={(276,332.5)}, rotate = 342.8] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da9826744196105175] 
+      \draw    (595,234.5) .. controls (557.57,251.25) and (525.96,253.44) .. (525.02,289.81) ;
+      \draw [shift={(525,291.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da14112929848257583] 
+      \draw    (595,234.5) .. controls (652.13,331.03) and (569.55,326.66) .. (541.25,353.26) ;
+      \draw [shift={(540,354.5)}, rotate = 313.96000000000004] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da9949936335253704] 
+      \draw    (595,234.5) .. controls (688.53,270.32) and (635.54,350.69) .. (586.74,402.72) ;
+      \draw [shift={(586,403.5)}, rotate = 313.3] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      
+      % Text Node
+      \draw (350.5,50.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {55.08pt}\setlength\topsep{0pt}
+         $ $$\displaystyle m^{[ 0]} =m$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (366,110) node   [align=left] {
+      \begin{minipage}[lt]
+         {88pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[1]} =m^{[ 0]} \delta ^{\sigma _{3}}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (353,71.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Conjugation};
+      % Text Node
+      \draw (367,180) node   [align=left] {
+      \begin{minipage}[lt]
+         {88pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[ 2]} =m^{[ 1]} O( z)$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (354,128.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Open lenses};
+      % Text Node
+      \draw (353,190.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mixed $\displaystyle \overline{\partial }$-RHP};
+      % Text Node
+      \draw (224,263) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \overline{\partial }$-Problem};
+      % Text Node
+      \draw (489,279.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {35.36pt}\setlength\topsep{0pt}
+         $\displaystyle m_{RHP}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (545.5,308.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {82.28pt}\setlength\topsep{0pt}
+         Remove $\displaystyle \Sigma _{j+1/2}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (492.5,339.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {27.88pt}\setlength\topsep{0pt}
+         $\displaystyle \tilde{m}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (499,393.13) node   [align=left] {
+      \begin{minipage}[lt]
+         {34pt}\setlength\topsep{0pt}
+         $\displaystyle \hat{m}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (531,368.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {58.48pt}\setlength\topsep{0pt}
+         Localization
+      \end{minipage}
+      };
+      % Text Node
+      \draw (500.5,446.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {31.96pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[ 3]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (496,407) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Reduce phase \& separate contributions}};
+      % Text Node
+      \draw (426.5,435.75) node [font=\small]   [align=left] {
+      \begin{minipage}[lt]
+         {49.64pt}\setlength\topsep{0pt}
+         Existence
+      \end{minipage}
+      };
+      % Text Node
+      \draw (400.5,338.25) node  [font=\small] [align=left] {
+      \begin{minipage}[lt]
+         {60.52pt}\setlength\topsep{0pt}
+         Small norm\\
+         (for large $\displaystyle t$)
+      \end{minipage}
+      };
+      % Text Node
+      \draw (264,363) node   [align=left] {
+      \begin{minipage}[lt]
+         {128pt}\setlength\topsep{0pt}
+         $\displaystyle E=m^{[ 2]}\left( m_{RHP}^{[ 2]}\right)^{-1}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (279,304) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.94,0.05,0.05}{Error}};
+      % Text Node
+      \draw (583,214) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.94,0.05,0.05}{Error}};
+      % Text Node
+      \draw (570.5,223.25) node  [font=\footnotesize] [align=left] {
+      \begin{minipage}[lt]
+         {42.84pt}\setlength\topsep{0pt}
+         $\displaystyle \mathcal{O}\left( t^{-1}\right)$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (254,312.75) node  [font=\footnotesize] [align=left] {
+      \begin{minipage}[lt]
+         {46.24pt}\setlength\topsep{0pt}
+         $\displaystyle \mathcal{O}\left( t^{-3/4}\right)$
+      \end{minipage}
+      };
+   \end{tikzpicture}
+   \caption{Steps of the $\dbar$-steepest method.}
+   \label{fig:steps}
+\end{figure}
+
+
+\clearpage
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=black,postaction={on each segment={mid arrow=red}}] (-5,0)--(-2,0)--(2,0)--(5,0);
+      \node[circle, fill=red, scale=0.3]  at (2,0) {};
+      \node[circle, fill=red, scale=0.3]  at (-2,0) {};
+      \node[below left] at (2,0) {\small $\xi_0$};
+      \node[below right] at (-2,0) {\small $-\xi_0$};
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,-2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,2)--(-2,0) ; 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,-2)--(-2,0); 
+      \node [right] at (4.2,1.5) {$\Sigma_1$};
+      \node [left] at (-4.2,1.5) {$\Sigma_2$};
+      \node [left] at (-4.2,-1.5) {$\Sigma_3$};
+      \node [right] at (4.2,-1.5) {$\Sigma_4$};
+      \node [below] at (0,0) {$\Sigma_0$};
+      \node [right] at (3.2,0.5) {$\Omega_1$};
+      \node [above] at (0,0.5) {$\Omega_2$};
+      \node [left] at (-3.2,0.5) {$\Omega_3$};
+      \node [left] at (-3.2,-0.5) {$\Omega_4$};
+      \node [below] at (0,-1.2) {$\Omega_5$};
+      \node [right] at (3.2,-0.5) {$\Omega_6$};
+   \end{tikzpicture}
+   \caption{Contour for $\dbar$-RHP.}
+   \label{painleve region contours}
+\end{figure}
+
+
+
+\clearpage
+
+
+
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=black,postaction={on each segment={mid arrow=red}}] (-2,0)--(2,0);
+      \node[circle, fill=red, scale=0.3]  at (2,0) {};
+      \node[circle, fill=red, scale=0.3]  at (-2,0) {};
+      \node[below left] at (2.2,0) {\small $|\xi_0|$};
+      \node[below right] at (-2.2,0) {\small $-|\xi_0|$};
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,2); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (0,0) -- (2.8,2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,-2); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (0,0) -- (2.8,-2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,2)--(-2,0) ; 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,-2)--(-2,0); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (-2.8,2)--(0,0) ; 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (-2.8,-2)--(0,0); 
+      \node [right] at (4.2,1.5) {$\Sigma_1$};
+      \node [right] at (2.2,1.5) {$\Sigma_1^{[5]}$};
+      \node [left] at (-4.2,1.5) {$\Sigma_2$};
+      \node [left] at (-2.2,1.5) {$\Sigma_2^{[5]}$};
+      \node [left] at (-4.2,-1.5) {$\Sigma_3$};
+      \node [left] at (-2.2,-1.5) {$\Sigma_3^{[5]}$};
+      \node [right] at (4.2,-1.5) {$\Sigma_4$};
+      \node [right] at (2.2,-1.5) {$\Sigma_4^{[5]}$};
+       % \node [below] at (0,0) {$\Sigma_0$};
+       % \node [right] at (3.2,0.5) {$\Omega_1$};
+       % \node [above] at (0,0.5) {$\Omega_2$};
+       % \node [left] at (-3.2,0.5) {$\Omega_3$};
+       % \node [left] at (-3.2,-0.5) {$\Omega_4$};
+       % \node [below] at (0,-1.2) {$\Omega_5$};
+       % \node [right] at (3.2,-0.5) {$\Omega_6$};
+   \end{tikzpicture}
+   \caption{Contour for $m^{[4]}$(Green part).}
+   \label{Countors for Painleve II hierarchy}
+\end{figure}
 
 \end{document}

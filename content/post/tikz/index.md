@@ -1,7 +1,7 @@
 ---
 title: "Tikz绘图示例"
 date: 2022-10-17 20:55:33 +0800
-Last_Modified:  2022-10-17 22:21:10
+Last_Modified:  2022-10-18 09:30:04
 summary: '一些在latex使用tikz绘制的图形示例'
 tags: ["latex", "tikz"]
 categories: ["latex", "科研"]
@@ -3733,6 +3733,571 @@ cover:
    \end{center}
    \caption{Contour $\Gamma_R$ for the RH problem for $R$.}
    \label{fig:contourR}
+\end{figure}
+```
+
+
+![](images/tikz-2-01.png)
+
+```latex
+\begin{figure}
+   \center
+   \begin{tikzpicture}
+      \coordinate [label=0: Im $k$] ()at (0,2.8);
+      \coordinate [label=0: Re $k$] ()at (3,-0.2);
+      \coordinate [label=0:] ()at (2,0.1);
+      \coordinate [label=0:] ()at (-2.6,0.1);
+      \path [fill=pink] (-3.5,2.5)--(3.5,2.5) to
+      (3.5,0)--(-3.5,0);
+      \coordinate [label=0: $\mathbb{C}^{+}$] ()at (1,1);
+      \coordinate [label=0: $\mathbb{C}^{-}$] ()at (1,-1);
+      \draw[->, ] (3,0)--(3.5,0);
+      \draw[->,] (0,2)--(0,2.5);
+      \draw[thin](0,2)--(0,-2.3);
+      \draw[thin](3.5,0)--(-3.5,0);
+   \end{tikzpicture}
+   \caption{caption}\label{1t}
+\end{figure}
+```
+
+
+![](images/tikz-2-02.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tabular}{c c}
+      \begin{tikzpicture}[scale=0.75]
+         \path [fill=gray!30](-3,0) -- (-2,4) -- (3,4) -- (0,0)--(-3,0);
+         \draw [thick](-3,0) -- (-2,4);
+         \draw [thick](0,0) -- (3,4);
+         \draw [help lines][->] (-4,0) -- (4,0);
+         \draw [help lines][->] (-3.8,-0.2) -- (-3.8,4);
+         \draw [fill] (-3,0) circle [radius=0.025];
+         \draw [fill] (0,0) circle [radius=0.025];
+         \node [below] at (-3,0) {$x_1$};
+         \node [below] at (0,0) {$x_2$};
+         \node [below] at (4,0) {$x$};
+         \node [left] at (-4,4) {$t$};
+         \node [above] at (-2,4) {$\scriptstyle{x-v_1 t = x_1}$};
+         \node [above] at (3,4) {$\scriptstyle{x-v_2 t = x_2}$};
+      \end{tikzpicture}
+      & 
+      \qquad
+      \begin{tikzpicture}[scale=0.75]
+         \path [fill=gray!30](-2,-0.2) -- (-2,4) -- (2,4) -- (2,-0.2)--(-2,-0.2);
+         \draw[thick](-2,-0.2) -- (-2,4);
+         \draw[thick](2,-0.2) -- (2,4);
+         \draw[help lines][->] (-4,0.0) -- (4,0.0);
+         %\draw[fill] (-2,0) circle [radius=0.025];
+         %\draw[fill] (2,0) circle [radius=0.025];
+         %% Soliton nodes
+         \draw[fill] (3,.4) circle [radius=0.04];
+         \draw[fill] (2.3,3) circle [radius=0.04];
+         \draw[fill] (1.3,2) circle [radius=0.04];
+         \draw[fill] (-.2,.5) circle [radius=0.04];
+         \draw[fill] (-.8,1.8) circle [radius=0.04];
+         \draw[fill] (-1.3,.3) circle [radius=0.04];
+         \draw[fill] (-2.4,3.3) circle [radius=0.04];
+         \draw[fill] (-3,.5) circle [radius=0.04];
+         \draw[fill] (-3,2.4) circle [radius=0.04];
+         %% soliton node labels
+         \node [left] at (3,.4) {$\scriptstyle{z_1}$};
+         \node [right] at (2.3,3) {$\scriptstyle{z_8}$};
+         \node [left] at (1.3,2) {$\scriptstyle{z_5}$};
+         \node [left] at (-.2,.5) {$\scriptstyle{z_2}$};
+         \node [left] at (-.8,1.8) {$\scriptstyle{z_6}$};
+         \node [left] at (-1.3,.3) {$\scriptstyle{z_3}$};
+         \node [left] at (-2.4,3.3) {$\scriptstyle{z_9}$};
+         \node [left] at (-3,.5) {$\scriptstyle{z_4}$};
+         \node [left] at (-3,2.4) {$\scriptstyle{z_7}$};
+         %% exterior figure labels
+         \node [below] at (-2,0) {$\scriptstyle{-v_2/2 }$};
+         \node [below] at (1.9,0) {$\scriptstyle{-v_1/2  }$};
+         \node [right] at (4,.0) {$\Re z$};
+         \node [right] at (-4,3.7) {$C$};
+      \end{tikzpicture}
+      \\
+   \end{tabular}
+   \caption{caption}
+\end{figure}
+```
+
+
+![](images/tikz-2-03.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      %\draw[help lines] (-6,-6) grid (6,6);
+      \path [fill=gray!30] (0,0) -- (-4,4) -- (-6,4) -- (-6,-4) -- (-4,-4) -- (0,0);
+      \path [fill=gray!30] (0,0) -- (4,4) -- (6,4) -- (6,-4) -- (4,-4) -- (0,0);
+      \draw [help lines] (-6,0) -- (6,0);
+      \draw [thick][->] (-4,4) -- (-2,2);
+      \draw [thick] [->](-2,2)--(2,-2);
+      \draw [thick] (2,-2) -- (4,-4);
+      \draw [thick][->] (-4,-4) -- (-2,-2);
+      \draw [thick][->] (-2,-2)--(2,2);
+      \draw [thick] (2,2) -- (4,4);
+      \draw[color=white, fill=white] (1.5,1.4) circle [radius=.2];
+      \draw[color=white, fill=white] (1.5,-1.4) circle [radius=.2];
+      \draw[color=white, fill=white] (-3.5,2.5) circle [radius=.2];
+      \draw[color=white, fill=white] (-3.5,-2.5) circle [radius=.2];
+      \draw[color=white, fill=white] (3,2) circle [radius=.2];
+      \draw[color=white, fill=white] (3,-2) circle [radius=.2];
+      \node at (3.5,3) {$\Sigma_{1}$};
+      \node at (-3.5,3) {$\Sigma_{2}$};
+      \node at (-3.5,-3) {$\Sigma_{3}$};
+      \node at (3.5,-3) {$\Sigma_{4}$};
+      \node [right] at (6,0) {$\Re{z}$};
+      \draw [fill] (0,0) circle [radius=0.025];
+      \node [below] at (0,0) {$\xi$};
+      \node at (1,.4) {$\Omega_{1}$};
+      \node at (0,1.08) {$\Omega_{2}$};
+      \node at (-1,.4) {$\Omega_{3}$};
+      \node at (-1,-.4) {$\Omega_{4}$};
+      \node at (0,-1.08) {$\Omega_{5}$};
+      \node at (1,-.4) {$\Omega_{6}$};
+      \node at (4,1) {$W^{2} = \stril[0] {-\dbar R_1 e^{2it \theta}} $ };
+      \node at (-4,1) {$W^{2} = \striu[0]{ -\dbar R_3 e^{-2it \theta}} $ };
+      \node at (-4,-1) {$W^{2} = \stril[0]{ \dbar R_4 e^{2it \theta}} $ };
+      \node at (4,-1) {$W^{2} = \striu[0]{ \dbar R_6 e^{-2it \theta }} $};
+   \end{tikzpicture}
+   \caption{caption}\label{fig:M2def}
+\end{figure}
+```
+
+
+![](images/tikz-2-04.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw [help lines] (-2,0) -- (2,0);
+      \draw [thick][->] (-2,2) -- (-1,1);
+      \draw [thick] [->](-2,2)--(1,-1);
+      \draw [thick] (-2,2) -- (2,-2);
+      \draw [thick][->] (-2,-2) -- (-1,-1);
+      \draw [thick][->] (-2,-2)--(1,1);
+      \draw [thick] (-2,-2) -- (2,2);
+      \node at (2.3,2) {$\Sigma_{1}$};
+      \node at (-2.3,2) {$\Sigma_{2}$};
+      \node at (-2.3,-2) {$\Sigma_{3}$};
+      \node at (2.3,-2) {$\Sigma_{4}$};
+      \node [right] at (2,0) {$\Re{\zeta}$};
+      \draw [fill] (0,0) circle [radius=0.025];
+      \node [below] at (0,-0.1) {$0$};
+      \node at (1,.4) {$\Omega_{1}$};
+      \node at (0,1.08) {$\Omega_{2}$};
+      \node at (-1,.4) {$\Omega_{3}$};
+      \node at (-1,-.4) {$\Omega_{4}$};
+      \node at (0,-1.08) {$\Omega_{5}$};
+      \node at (1,-.4) {$\Omega_{6}$};
+   \end{tikzpicture}
+   \caption{caption}
+\end{figure}
+```
+
+
+![](images/tikz-2-05.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (0,0)--(4,0);
+      % \node [above] at (-1,2) {$\theta'=0$};
+      % \draw [->](-1,2)--(0,0.1);
+      \draw [fill] (0,0) circle [radius=0.05];
+      \node [below] at (0,0) {$O$};
+      % \node [below] at (2,0) {$I_{j+}$};
+      % \node [below] at (-2,0) {$I_{j-}$};
+      \draw [line width=0.3 mm] (0,0)--(4,1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(3.8,0)--(3.8,3.8*3/8)--(0,0);
+      % \draw (0.5,0) arc (0:27:0.4) ;
+      % \node [right] at (0.5,0.1) { $\alpha$};
+      \node [above] at (3.8,1.5) {$\Sigma_{1}$};
+      \node [above] at (3,0.4) {$\Omega_+$};
+      
+      \draw [line width=0.3 mm] (0,0)--(4,-1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(3.8,0)--(3.8,-3.8*3/8)--(0,0);
+      \node [below] at (3.8,-1.5) {$\Sigma_{2}$};
+      \node [below] at (3,-0.4) {$\Omega_-$};
+      % \draw (-0.5,0) arc (180:180-27:0.4) ;
+      \node [above] at (-1,1) {$\Omega$};
+   \end{tikzpicture}
+   \caption{Contour deformation}
+   \label{idea of dbar steepest descent}
+\end{figure}
+```
+
+
+![](images/tikz-2-06.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (-4,0)--(4,0);
+      \node [above] at (-1,2) {$\theta'=0$};
+      \draw [->](-1,2)--(0,0.1);
+      \draw [fill] (0,0) circle [radius=0.05];
+      \node [below] at (0,0) {$z_j$};
+      \node [below] at (2,0) {$I_{j+}$};
+      \node [below] at (-2,0) {$I_{j-}$};
+      \draw [line width=0.3 mm] (0,0)--(4,1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(3.8,0)--(3.8,3.8*3/8)--(0,0);
+      \draw (0.5,0) arc (0:27:0.4) ;
+      \node [right] at (0.5,0.1) { $\alpha$};
+      \node [above] at (3.8,1.5) {$\Sigma_{j,1}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(-4,1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(-3.8,0)--(-3.8,3.8*3/8)--(0,0);
+      \draw (-0.5,0) arc (180:180-27:0.4) ;
+      \node [above] at (-3.8,1.5) {$\Sigma_{j,2}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(-4,-1.5);
+      \path [fill=gray,opacity=0.3] (0,0)--(-3.8,0)--(-3.8,-3.8*3/8)--(0,0);
+      \draw (-0.5,0) arc (180:180+27:0.4) ;
+      \node [below] at (-3.8,-1.5) {$\Sigma_{j,3}$};
+      
+      \draw [line width=0.3 mm] (0,0)--(4,-1.5);
+      \path [fill=gray,opacity=0.6] (0,0)--(3.8,0)--(3.8,-3.8*3/8)--(0,0);
+      \node [below] at (3.8,-1.5) {$\Sigma_{j,4}$};
+      %\draw (0.5,0) arc (0:-27:0.4) ;
+      
+      \node at (3,0.65) {$\Omega_{j,1}$} ;
+      \node at (-3,0.65) {$\Omega_{j,3}$} ;
+      \node at (-3,-0.65) {$\Omega_{j,4}$} ;
+      \node at (3,-0.65) {$\Omega_{j,6}$} ;
+      \node at (0,0.95) {$\Omega_{j,2}$} ;
+      \node at (0,-0.95) {$\Omega_{j,5}$} ;
+   \end{tikzpicture}
+   \caption{Notations for studying signatures of $\Im(\theta(z))$ near $z_j$}
+   \label{notation for Im theta}
+\end{figure}
+```
+
+
+![](images/tikz-2-07.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw (-6,0)--(6,0);
+      \draw [fill] (-4,0) circle [radius=0.05] node [below] {$z_j$};
+      \draw [fill] (4,0) circle [radius=0.05] node [below] {$z_{j+1}$};
+      \draw [fill] (0,0) circle [radius=0.05] node [below] {$z_{j+\frac{1}{2}}$};
+      \draw (-4,0)--(0,2)--(4,0);
+      \path [fill=gray,opacity=0.3] (-4,0)--(0,2)--(4,0)--(-4,0);
+      \draw [red,line width=0.3 mm] (0,2)--(0,0);
+      \draw [->] (2,2)--(0.1,1.5) ;
+      \node [right] at (2,2) {$\Sigma_{j+\frac{1}{2}}$};
+      \node at (-2,0.4) {$\Omega_{j,1}$};
+      \node at (2,0.4) {$\Omega_{j+1,3}$};
+      \node at (-4,1.2) {$\Omega_{j,2}$};
+      \node at (4,1.2) {$\Omega_{j+1,2}$};
+      \node [above] at (-2,1){$\Sigma_{j,1}$};
+      \node [above] at (2,1){$\Sigma_{j+1,2}$};
+   \end{tikzpicture}
+   \caption{Jumps in a small triangular region.}
+   \label{sigma j 1/2}
+\end{figure}
+```
+
+
+![](images/tikz-2-08.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm] (-6,0)--(6,0);
+      \draw (-6,1/2)--(-2,-1.5);
+      \draw (-6,-1/2)--(-2,1.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](-2,-1.5)--(0,-2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](-2,1.5)--(0,2.5);
+      \draw (6,-1/2)--(2,1.5);
+      \draw (6,1/2)--(2,-1.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](2,1.5)--(0,2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](2,-1.5)--(0,-2.5);
+      \draw [dashed,color=gray,opacity=0.3,line width=0.35 mm](0,2.5)--(0,-2.5);
+      \node [below] at (-5,-0.2) {$z_j$} ;
+      \node [below] at (5,-0.2) {$z_{j+1}$};
+      \node [above] at (-3.4,0.8) {$\Sigma_{j,1}^o$};
+      \node [above] at (3.4,0.8) {$\Sigma_{j+1,2}^o$};
+      \node [below] at (-3.4,-0.8) {$\Sigma_{j,4}^o$};
+      \node [below] at (3.4,-0.9) {$\Sigma_{j+1,3}^o$};
+   \end{tikzpicture}
+   \caption{New contours, dashed line segments are those deleted parts.}
+   \label{truncated contours}
+\end{figure}
+```
+
+
+![](images/tikz-2-09.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=blue,line width=0.3 mm,postaction={on each segment={mid arrow=red}}]
+      (-3,0)--(-0.05,0)--(-0.05,1.5)--(-3,0);
+      \path [draw=green,line width=0.3 mm,postaction={on each segment={mid arrow=red}}]
+      (0.05,0)--(3,0)--(0.05,1.5)--(0.05,0);
+      \draw [line width=0.2 mm](-4,0)--(4,0);
+   \end{tikzpicture}
+\end{figure}
+```
+
+
+![](images/tikz-2-10.png)
+
+```latex
+\begin{figure}
+   \centering
+   \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+   \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+      %uncomment if require: \path (0,480); %set diagram left start at 0, and has height of 480
+      
+      %Straight Lines [id:da033751413755709114] 
+      \draw    (351,68.5) -- (351,95.5) ;
+      \draw [shift={(351,97.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da18304813914789442] 
+      \draw    (352,125.5) -- (352,159.5) ;
+      \draw [shift={(352,161.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da08124002810273079] 
+      \draw    (351,187.5) -- (351,219.5) ;
+      \draw [shift={(351,221.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da5217021068995016] 
+      \draw    (259,221.5) -- (485,222.5) ;
+      %Straight Lines [id:da8364406338125938] 
+      \draw    (259,221.5) -- (259.95,259.5) ;
+      \draw [shift={(260,261.5)}, rotate = 268.57] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da7120737338973813] 
+      \draw    (485,222.5) -- (485,259.5) ;
+      \draw [shift={(485,261.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da9031479502675461] 
+      \draw    (485,292.5) -- (485.94,323.5) ;
+      \draw [shift={(486,325.5)}, rotate = 268.26] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da8841466640758846] 
+      \draw    (487,354.5) -- (487.93,380.5) ;
+      \draw [shift={(488,382.5)}, rotate = 267.95] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Straight Lines [id:da1714904266864925] 
+      \draw    (488,404.5) -- (489.86,430.51) ;
+      \draw [shift={(490,432.5)}, rotate = 265.90999999999997] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da33641820418844515] 
+      \draw    (472,449.5) .. controls (434.38,430.69) and (418.32,313.87) .. (456.82,282.43) ;
+      \draw [shift={(458,281.5)}, rotate = 503.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da14429246801857087] 
+      \draw    (263,289.5) .. controls (302,323.5) and (420,305.5) .. (460,275.5) ;
+      %Straight Lines [id:da5788083203930596] 
+      \draw    (360,306.5) -- (277.91,331.91) ;
+      \draw [shift={(276,332.5)}, rotate = 342.8] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da9826744196105175] 
+      \draw    (595,234.5) .. controls (557.57,251.25) and (525.96,253.44) .. (525.02,289.81) ;
+      \draw [shift={(525,291.5)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da14112929848257583] 
+      \draw    (595,234.5) .. controls (652.13,331.03) and (569.55,326.66) .. (541.25,353.26) ;
+      \draw [shift={(540,354.5)}, rotate = 313.96000000000004] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      %Curve Lines [id:da9949936335253704] 
+      \draw    (595,234.5) .. controls (688.53,270.32) and (635.54,350.69) .. (586.74,402.72) ;
+      \draw [shift={(586,403.5)}, rotate = 313.3] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+      
+      % Text Node
+      \draw (350.5,50.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {55.08pt}\setlength\topsep{0pt}
+         $ $$\displaystyle m^{[ 0]} =m$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (366,110) node   [align=left] {
+      \begin{minipage}[lt]
+         {88pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[1]} =m^{[ 0]} \delta ^{\sigma _{3}}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (353,71.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Conjugation};
+      % Text Node
+      \draw (367,180) node   [align=left] {
+      \begin{minipage}[lt]
+         {88pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[ 2]} =m^{[ 1]} O( z)$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (354,128.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Open lenses};
+      % Text Node
+      \draw (353,190.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mixed $\displaystyle \overline{\partial }$-RHP};
+      % Text Node
+      \draw (224,263) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \overline{\partial }$-Problem};
+      % Text Node
+      \draw (489,279.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {35.36pt}\setlength\topsep{0pt}
+         $\displaystyle m_{RHP}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (545.5,308.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {82.28pt}\setlength\topsep{0pt}
+         Remove $\displaystyle \Sigma _{j+1/2}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (492.5,339.75) node   [align=left] {
+      \begin{minipage}[lt]
+         {27.88pt}\setlength\topsep{0pt}
+         $\displaystyle \tilde{m}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (499,393.13) node   [align=left] {
+      \begin{minipage}[lt]
+         {34pt}\setlength\topsep{0pt}
+         $\displaystyle \hat{m}^{[ 2]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (531,368.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {58.48pt}\setlength\topsep{0pt}
+         Localization
+      \end{minipage}
+      };
+      % Text Node
+      \draw (500.5,446.25) node   [align=left] {
+      \begin{minipage}[lt]
+         {31.96pt}\setlength\topsep{0pt}
+         $\displaystyle m^{[ 3]}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (496,407) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Reduce phase \& separate contributions}};
+      % Text Node
+      \draw (426.5,435.75) node [font=\small]   [align=left] {
+      \begin{minipage}[lt]
+         {49.64pt}\setlength\topsep{0pt}
+         Existence
+      \end{minipage}
+      };
+      % Text Node
+      \draw (400.5,338.25) node  [font=\small] [align=left] {
+      \begin{minipage}[lt]
+         {60.52pt}\setlength\topsep{0pt}
+         Small norm\\
+         (for large $\displaystyle t$)
+      \end{minipage}
+      };
+      % Text Node
+      \draw (264,363) node   [align=left] {
+      \begin{minipage}[lt]
+         {128pt}\setlength\topsep{0pt}
+         $\displaystyle E=m^{[ 2]}\left( m_{RHP}^{[ 2]}\right)^{-1}$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (279,304) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.94,0.05,0.05}{Error}};
+      % Text Node
+      \draw (583,214) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.94,0.05,0.05}{Error}};
+      % Text Node
+      \draw (570.5,223.25) node  [font=\footnotesize] [align=left] {
+      \begin{minipage}[lt]
+         {42.84pt}\setlength\topsep{0pt}
+         $\displaystyle \mathcal{O}\left( t^{-1}\right)$
+      \end{minipage}
+      };
+      % Text Node
+      \draw (254,312.75) node  [font=\footnotesize] [align=left] {
+      \begin{minipage}[lt]
+         {46.24pt}\setlength\topsep{0pt}
+         $\displaystyle \mathcal{O}\left( t^{-3/4}\right)$
+      \end{minipage}
+      };
+   \end{tikzpicture}
+   \caption{Steps of the $\dbar$-steepest method.}
+   \label{fig:steps}
+\end{figure}
+```
+
+
+
+![](images/tikz-2-11.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=black,postaction={on each segment={mid arrow=red}}] (-5,0)--(-2,0)--(2,0)--(5,0);
+      \node[circle, fill=red, scale=0.3]  at (2,0) {};
+      \node[circle, fill=red, scale=0.3]  at (-2,0) {};
+      \node[below left] at (2,0) {\small $\xi_0$};
+      \node[below right] at (-2,0) {\small $-\xi_0$};
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,-2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,2)--(-2,0) ; 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,-2)--(-2,0); 
+      \node [right] at (4.2,1.5) {$\Sigma_1$};
+      \node [left] at (-4.2,1.5) {$\Sigma_2$};
+      \node [left] at (-4.2,-1.5) {$\Sigma_3$};
+      \node [right] at (4.2,-1.5) {$\Sigma_4$};
+      \node [below] at (0,0) {$\Sigma_0$};
+      \node [right] at (3.2,0.5) {$\Omega_1$};
+      \node [above] at (0,0.5) {$\Omega_2$};
+      \node [left] at (-3.2,0.5) {$\Omega_3$};
+      \node [left] at (-3.2,-0.5) {$\Omega_4$};
+      \node [below] at (0,-1.2) {$\Omega_5$};
+      \node [right] at (3.2,-0.5) {$\Omega_6$};
+   \end{tikzpicture}
+   \caption{Contour for $\dbar$-RHP.}
+   \label{painleve region contours}
+\end{figure}
+```
+
+
+![](images/tikz-2-12.png)
+
+```latex
+\begin{figure}
+   \centering
+   \begin{tikzpicture}
+      \path [draw=black,postaction={on each segment={mid arrow=red}}] (-2,0)--(2,0);
+      \node[circle, fill=red, scale=0.3]  at (2,0) {};
+      \node[circle, fill=red, scale=0.3]  at (-2,0) {};
+      \node[below left] at (2.2,0) {\small $|\xi_0|$};
+      \node[below right] at (-2.2,0) {\small $-|\xi_0|$};
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,2); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (0,0) -- (2.8,2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (2,0) -- (4.8,-2); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (0,0) -- (2.8,-2); 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,2)--(-2,0) ; 
+      \path [draw=blue,postaction={on each segment={mid arrow=red}}] (-4.8,-2)--(-2,0); 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (-2.8,2)--(0,0) ; 
+      \path [draw=green,postaction={on each segment={mid arrow=red}}] (-2.8,-2)--(0,0); 
+      \node [right] at (4.2,1.5) {$\Sigma_1$};
+      \node [right] at (2.2,1.5) {$\Sigma_1^{[5]}$};
+      \node [left] at (-4.2,1.5) {$\Sigma_2$};
+      \node [left] at (-2.2,1.5) {$\Sigma_2^{[5]}$};
+      \node [left] at (-4.2,-1.5) {$\Sigma_3$};
+      \node [left] at (-2.2,-1.5) {$\Sigma_3^{[5]}$};
+      \node [right] at (4.2,-1.5) {$\Sigma_4$};
+      \node [right] at (2.2,-1.5) {$\Sigma_4^{[5]}$};
+       % \node [below] at (0,0) {$\Sigma_0$};
+       % \node [right] at (3.2,0.5) {$\Omega_1$};
+       % \node [above] at (0,0.5) {$\Omega_2$};
+       % \node [left] at (-3.2,0.5) {$\Omega_3$};
+       % \node [left] at (-3.2,-0.5) {$\Omega_4$};
+       % \node [below] at (0,-1.2) {$\Omega_5$};
+       % \node [right] at (3.2,-0.5) {$\Omega_6$};
+   \end{tikzpicture}
+   \caption{Contour for $m^{[4]}$(Green part).}
+   \label{Countors for Painleve II hierarchy}
 \end{figure}
 ```
 

@@ -1,3 +1,8 @@
+.post-content .highlight:not(table), .post-content pre {
+    height: 220px;
+    overflow: scroll;
+}
+
 .hljs-comment,
 .hljs-quote {
     color: #b6b18b;
