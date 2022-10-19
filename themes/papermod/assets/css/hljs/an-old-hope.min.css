@@ -1,6 +1,6 @@
 .post-content .highlight:not(table), .post-content pre {
-    height: 220px;
-    overflow: scroll;
+    max-height: 350px;
+    overflow: auto;
 }
 
 .hljs-comment,
