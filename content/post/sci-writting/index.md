@@ -1,7 +1,7 @@
 ---
 title: "科研工具与论文写作"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2022-10-19 14:24:22 +0800
+lastmod: 2022-10-19 14:31:17 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -111,7 +111,7 @@ ShowPostNavLinks: true
 
 #### Djvu文件转PDF
 下载部分书籍时, 可能会遇到Djvu文件, 可以用SumatraPDF查看. 下面的软件可以将Djvu文件转为PDF
-{{< download url="post/sci-writting/files/DjVuToy转换工具.rar" text="DjvuToy下载" >}}
+{{< download url="files/DjVuToy转换工具.rar" text="DjvuToy下载" >}}
 
 
 
