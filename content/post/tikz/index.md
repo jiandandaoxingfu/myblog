@@ -1,7 +1,7 @@
 ---
 title: "Tikz绘图示例"
 date: 2022-10-17 20:55:33 +0800
-Last_Modified:  2022-10-18 09:30:04
+lastmod: 2022-10-19 14:23:41 +0800
 summary: '一些在latex使用tikz绘制的图形示例'
 tags: ["latex", "tikz"]
 categories: ["latex", "科研"]

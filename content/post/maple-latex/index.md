@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-Last_Modified:  2022-10-17 22:24:34
+lastmod: 2022-10-19 14:21:13 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]

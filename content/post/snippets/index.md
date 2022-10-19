@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-Last_Modified:  2022-04-07 20:22:51
+lastmod: 2022-10-19 14:23:31 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets"]
 categories: ["科研"]

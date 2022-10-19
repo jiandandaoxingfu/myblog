@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-Last\_Modified:  2022-01-11 19:52:40
+lastmod: 2022-10-19 14:25:02 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
