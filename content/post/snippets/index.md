@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2022-10-19 14:23:31 +0800
+lastmod: 2022-11-02 11:44:58 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets"]
 categories: ["科研"]
@@ -131,7 +131,7 @@ $$('#input')[0].value = refs_.replaceAll('\n\n', '\n');
 refs_ = $$("#input")[0].value.split(/\\bibitem/).slice(1).map( r => "\\bibitem" + r );
 authors_ = refs_.map( r => r.match(/} *\n(.*?)\n/)[1] )
 		   		.map( a => a.split(/(,| and)/)
-		   			.filter( a => (a !== ",") && (a !== " and") ) 
+		   			.filter( a => (a !== ",") && (a !== " and") && (a.replace(/ +/, '') !== "") ) 
 		    	);
 ```
 这样处理以后， 会根据文献格式得到不同的结果
@@ -139,22 +139,11 @@ authors_ = refs_.map( r => r.match(/} *\n(.*?)\n/)[1] )
 "姓, 名, 姓, 名"  => ["姓", "名", "姓", "名"]
 "名, 姓, 名, 姓"  => ["名", "姓", "名", "姓"]
 "姓 名, 姓 名"  => ["姓 名", "姓 名"]
+"名 姓, 名 姓"  => ["名 姓", "名 姓"]
 ```
 因为排序只比较姓氏， 因此， 我们只需获取每个参考文献的姓氏， 然后重排即可。 首先姓氏相加
-- Case 1
 ```javascript
-authors = authors_.map( a => a.reduce( (t, s, i) => t + (i % 2 == 0 ? s : "") ) )
-				  .map( a => a.replaceAll(" ", ""));
-```
-- Case 2
-```javascript
-authors = authors_.map( a => a.reduce( (t, s, i) => t + (i % 2 == 1 ? s : "") ) )
-				  .map( a => a.replaceAll(" ", ""));
-```
-- Case 3
-```javascript
-authors = authors_.map( a => a.map( a => a.replace(/^\s+/, '').split(' ')[0] ) )
-				  .map( a => a.reduce( (i, j) => i + j ) )
+authors = authors_.map( a => a.map( a => a.match(/([a-z]{2,} )?[A-Z][a-zA-Z]+/)[0] ) ).map( a => a.reduce( (i, j) => i+j) ) 
 ```
 然后
 ```javascript
