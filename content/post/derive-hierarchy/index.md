@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-lastmod: 2022-10-19 14:25:02 +0800
+lastmod: 2022-11-12 20:20:24 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
@@ -33,6 +33,8 @@ cover:
 	
 这里我们记录一下使用Maple自动推导离散谱问题的时间部分的$V$的形式。
 
+### 算法
+
 我们以$4$阶谱问题为例。 给定空间谱问题$U(n, \lambda)=(U\_{ij})\_{4\times 4}$ (这里我们限定$U$中的同一位势不重复出现)，我们设$V(n, \lambda)=(V\_{ij})\_{4\times 4}$，则静态零曲率方程
 \begin{equation}
 	S=V^+U - UV = 0
@@ -53,23 +55,40 @@ cover:
 
 对于不能满足(C2)或者满足(C2)但不满足(C1)的问题，我们无法给出$V$的形式。
 
-下面我们对程序中的函数做一些说明。
-
-- `size:` 返回向量，集合或者列表的元素个数。
-
-- `format-szce`: 消去(C2)中的$\lambda^k$。
-
-- `cancel-var`: 返回某个未知量用其它未知量表示的表达式。
-
-- `reduce-szce`: 将上面的结果代入$S$，减少方程个数。
-
-- `find-V`: 返回需要乘以$\lambda^k$的未知量。
-
-- `balance-lambda`: 将上面结果代入$S$， 平衡$\lambda$。
-
-- `check`: 检查$S$是否满足(C1)和(C2)。
-
-
 基于此， 我们也可以随机生成$U$，看是否可以找到满足(C1)和(C2)的$V$。 我们也用程序实现了这一想法， 这里我们不再描述。 这一方法很容易推广到连续谱问题，这里也不在给出。
 
+
+### 程序
+
+
+我们利用Maple来实现上述算法, 函数名为`construct_V`.
+
+#### 用法
+```javascript
+construct_V(U)
+```
+
+#### 输入
+**U**: 谱问题.
+
+#### 输出
+**[U, V, szce]**: U, V, szce(经过化简的驻定零曲率方程)
+
+#### 例子
+- 离散
+![](images/d1.jpg)
+![](images/d2.jpg)
+当然对于一些复杂的问题, 找到的V不一定满足上述条件, 此时需要人工对输出的结果进行分析.
+![](images/d-error.jpg)
+
+- 连续
+![](images/c1.jpg)
+
+
+### 链接
+
 我们将程序放在[Github代码库](https://github.com/jiandandaoxingfu/derive-hierarchy-V)， 这里不在附上。
+
+> 为了方便应用, 我们对上述程序进行了封装, 同样放在上述仓库中, 连续和离散情形的文件名分别为`Hierarchy.mla` 和 `DiscreteHierarchy.mla`, 需要将其放在maple安装目录的`lib`文件夹中. 之后就可以作为包导入即可使用,
+![](images/m1.jpg)
+其中包含了几个推导方程族时常用的函数.
