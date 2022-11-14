@@ -1,7 +1,7 @@
 ---
 title: "科研工具与论文写作"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2022-10-19 14:31:17 +0800
+lastmod: 2022-11-14 17:20:30 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -113,10 +113,12 @@ ShowPostNavLinks: true
 下载部分书籍时, 可能会遇到Djvu文件, 可以用SumatraPDF查看. 下面的软件可以将Djvu文件转为PDF
 {{< download url="files/DjVuToy转换工具.rar" text="DjvuToy下载" >}}
 
+#### caj文件转PDF
+知网很多论文只提供caj格式, 需要单独下载caj阅读器, 就很烦人. 有两个办法解决这个问题. 一个是访问知网海外版, 上面提供PDF格式, 且海外版用起来和国内的没太大区别.
+另外一个办法是利用在[线转换工具](https://caj2pdf.cn/)将下载的caj文件转为PDF格式.
 
 
-
-### 论文写作
+### 资料
 论文写作需要积累一些常用的句子, 表述等. 这可以通过每天读一些本领域大佬的论文, 或者是 arxiv 上的论文来积累. 读的时候可以不理解内容, 只需要把一些好的句子摘抄下来, 进行分类. 
 以下是一些笔记.
 
@@ -125,3 +127,5 @@ ShowPostNavLinks: true
 - [Xiaohong Guan(Tsinghua Univ.)](files/write-English.pdf)
 
 - [The Most Common Habits from more than 200 English Papers written by Graduate Chinese Engineering Students (By Felicia Brittman)](files/The-Most-Common-Habits-from-more-than-200-English-Papers-written.pdf)
+
+- [参考文献排列顺序](files/硕士论文格式.pdf)
