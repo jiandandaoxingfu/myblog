@@ -1,7 +1,7 @@
 ---
 title: "Maple求解差分方程"
 date: 2022-01-11 19:31:32 +0800
-lastmod: 2022-11-14 14:09:27 +0800
+lastmod: 2022-11-15 14:32:29 +0800
 summary: '利用Maple求解差分方程的算法'
 tags: ["Maple", "solve difference equation"]
 categories: ["Maple"]
@@ -112,7 +112,7 @@ A^+ - \dfrac{v^+}{v^{++}}A^{--}  = u^+ - \dfrac{v^+}{v^{++}}u^{--}.
 
 #### 用法
 ```javascript
-solve_deq(table([ _eq_ = eq, _iteration_ = iteration, _maxOrmin_ = maxOrmin, _var_ = var,
+solve_deq(table([ _eq_ = eq, _iteration_ = iteration, _maxORmin_ = maxORmin, _var_ = var,
             _F_ = F, _m_ = 0, _sol_ = 0, _rep_ = rep]));
 ```
 
@@ -122,7 +122,7 @@ solve_deq(table([ _eq_ = eq, _iteration_ = iteration, _maxOrmin_ = maxOrmin, _va
 |---:|:---|
 | **\_eq\_**:| 差分(代数)表达式|
 | **\_iteration\_**:| 非负整数(最大迭代次数)|
-| **\_maxOrmin\_**:| max/min(最大值函数或者最小值函数)|
+| **\_maxORmin\_**:| max/min(最大值函数或者最小值函数)|
 | **\_var\_**:| 要求解的未知函数|
 | **\_F\_**:| 关于\_A\_(n)的差分表达式|
 | **\_m\_**:| 0|
