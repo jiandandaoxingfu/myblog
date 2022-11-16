@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-lastmod: 2022-11-12 20:20:24 +0800
+lastmod: 2022-11-16 10:02:23 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
@@ -65,14 +65,14 @@ cover:
 
 #### 用法
 ```javascript
-construct_V(U)
+U, V, szce := construct_V(U);
 ```
 
 #### 输入
 **U**: 谱问题.
 
 #### 输出
-**[U, V, szce]**: U, V, szce(经过化简的驻定零曲率方程)
+**U, V, szce**(经过化简的驻定零曲率方程).
 
 #### 例子
 - 离散
@@ -85,10 +85,18 @@ construct_V(U)
 ![](images/c1.jpg)
 
 
-### 链接
+### 代码
 
 我们将程序放在[Github代码库](https://github.com/jiandandaoxingfu/derive-hierarchy-V)， 这里不在附上。
 
-> 为了方便应用, 我们对上述程序进行了封装, 同样放在上述仓库中, 连续和离散情形的文件名分别为`Hierarchy.mla` 和 `DiscreteHierarchy.mla`, 需要将其放在maple安装目录的`lib`文件夹中. 之后就可以作为包导入即可使用,
+为了方便应用, 我们对上述程序进行了封装, 同样放在上述仓库中, 连续和离散情形的文件名分别为`Hierarchy.mla` 和 `DiscreteHierarchy.mla`, 需要将其放在maple安装目录的`lib`文件夹中. 之后就可以作为包导入即可使用,
 ![](images/m1.jpg)
-其中包含了几个推导方程族时常用的函数.
+其中包含了几个推导方程族时常用的函数(连续, 离散情形类似)
+|||
+|---:|:---|
+| **L**:| 谱参数 $\lambda$, 方便输入. |
+| **compute_szce**:| 计算驻定零曲率方程. 用法: `szce := compute_szce(U, V)`. |
+| **create_V**:| 创建 $V=(V_{ij})_{order}$. 用法: `V := create_V(order)`.|
+| **get_KG_eqs**:| 从驻定零曲率方程获取 KG 和 JG. 用法: `K_eqs, J_eqs := get_KG_eqs(szce)`. |
+| **print_szce**:| 输出(打印)驻定零曲率方程. 用法: `print_szce(szce, U)`. |
+| **sort_szce**:| 对驻定零曲率方程中变量$G=(a, b, \dots)$进行排序, 方便写出$K, J$算子. 用法`szce: = sort_szce(szce, U)`. |

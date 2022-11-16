@@ -1,7 +1,7 @@
 ---
 title: "Maple求解差分方程"
 date: 2022-01-11 19:31:32 +0800
-lastmod: 2022-11-16 09:34:33 +0800
+lastmod: 2022-11-16 09:45:57 +0800
 summary: '利用Maple求解差分方程的算法'
 tags: ["Maple", "solve difference equation"]
 categories: ["Maple"]
@@ -143,9 +143,15 @@ $$
 d = -\alpha(u^-v^-uv^{\-\-} + v^-w^-u - uv^{\-\-}) - \beta (E+1)^{-1}(w + uv^-).
 $$
 
-### 链接
+### 代码
 我们将程序放在[Github代码库](https://github.com/jiandandaoxingfu/solve-difference-equations)， 这里不在附上。
 
-> 为了方便应用, 我们对上述程序进行了封装, 同样放在上述仓库中, 文件名为`SolveDifferenceEq.mla`, 需要将其放在maple安装目录的`lib`文件夹中. 之后就可以作为包导入即可使用
+为了方便应用, 我们对上述程序进行了封装, 同样放在上述仓库中, 文件名为`SolveDifferenceEq.mla`, 需要将其放在maple安装目录的`lib`文件夹中. 之后就可以作为包导入即可使用
 ![](images/eg4.jpg)
-其中包含了几个差分算子.
+其中包含了几个差分算子
+|||
+|---:|:---|
+| **$\bf{Delta(\Delta)}:$**| $\text{Delta}(a(n)) = a(n+1) - a(n).$|
+| **Deltam**:| $\text{Deltam}(a(n), k)=a(n) + a(n+1) + \dots + a(n+k).$|
+| **shift**:| 位移算子, $\text{shift}(a(n), k)=a(n+k)$|
+| **subss**:| 离散替换, `subss({ a(n)=b(n) }, expr) = subs({a(n-10)=b(n-10), ... a(n) = b(n), ..., a(n+10) = b(n+10)}, expr)`, 其中subs是Maple内置的替换函数. |
