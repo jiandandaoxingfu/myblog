@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-lastmod: 2022-11-16 10:22:57 +0800
+lastmod: 2022-11-19 20:21:54 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
@@ -93,11 +93,15 @@ U, V, szce := construct_V(U);
 ![](images/m1.jpg)
 其中包含了几个推导方程族时常用的函数(连续, 离散情形类似)
 
-|函数|作用|用法|
-|---:|:---|:---|
-| **L**:| 谱参数 $\lambda$, 方便输入. |`L` |
-| **compute_szce**:| 计算驻定零曲率方程. |`szce := compute_szce(U, V)`. |
-| **create_V**:| 创建 $V=(V_{ij})_{order}$. |`V := create_V(order)`.|
-| **get_KG_eqs**:| 从驻定零曲率方程获取 KG 和 JG. |`K_eqs, J_eqs := get_KG_eqs(szce)`. |
-| **print_szce**:| 输出(打印)驻定零曲率方程. |`print_szce(szce, U)`. |
-| **sort_szce**:| 对驻定零曲率方程中变量$G=(a, b, \dots)$进行排序, 方便写出$K, J$算子. |`szce: = sort_szce(szce, U)`. |
+|函数|作用|用法|参数|
+|:---|:---|:---|:---|
+| **L**:| 谱参数 $\lambda$, 方便输入. |`L` |无 |
+| **compute_szce**:| 计算驻定零曲率方程. |`szce := compute_szce(U, V)`. |$U, V$ |
+| **create_V**:| 创建 $V=(V_{ij})_{order}$. |`V := create_V(order)`.|矩阵阶数|
+| **get_KG_eqs**:| 分别获取方程组中$\lambda$的最低次幂和最高次幂的系数. 作用于 驻定零曲率方程可获取 $KG$ 和 $JG$ |`K_eqs, J_eqs := get_KG_eqs(szce)`. |方程组|
+| **print_szce**:| 输出(打印)驻定零曲率方程. |`print_szce(szce, U)`. |szce, $U$|
+| **sort_szce**:| 对方程组中的每个变量按照(导数的)阶数合并同类项. 作用于驻定零曲率方程, 可以方便写出$K, J$算子. |`szce: = sort_szce(szce, U)`. |方程组, 包含不需要合并同类项的变量的结构体|
+
+> 这里`szce`表示驻定零曲率方程(stationary zero-curvature equation).
+方程组可以是集合, 矩阵, 列表等非单个表达式(因为函数里面用到了map, 单个表达式无效), 
+结构体可以是表达式, 也可以是由多个表达式构成的结构.
