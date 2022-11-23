@@ -1,7 +1,7 @@
 ---
 title: "Sublime-Latex"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2022-11-22 13:11:53 +0800
+lastmod: 2022-11-23 15:19:13 +0800
 summary: '学习给 sublime 写插件'
 tags: ["sublime", "plugin"]
 categories: ["编程", "sublime", "python"]
@@ -80,4 +80,30 @@ class MatchDollorCommand(sublime_plugin.TextCommand):
 随后在快捷键定义中使用(多个单词以下划线连接, 首字母小写)
 ```javascript
 "keys": ["alt+d"], "command": "match_dollor"
+```
+类似地, 可以定义快速选择引号里面内容的函数
+```python
+import sublime
+import sublime_plugin
+
+class MatchQuotationMarkCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		idx_init = self.view.sel()[0].a
+		idx_begin1 = self.view.find_by_class(idx_init, False, 4, '"')
+		idx_begin2 = self.view.find_by_class(idx_init, False, 4, "'")
+		if idx_begin1 > idx_begin2:
+			idx_begin = idx_begin1
+			idx_end = self.view.find_by_class(idx_init, True, 8, '"')
+		else:
+			idx_begin = idx_begin2
+			idx_end = self.view.find_by_class(idx_init, True, 8, "'")
+
+			
+		if idx_begin != -1 and idx_end != -1 and (idx_end - idx_begin) < 200:
+			region = sublime.Region(idx_begin + 1, idx_end - 1)
+			self.view.sel().add(region)		
+```
+随后在快捷键定义中使用
+```javascript
+"keys": ["ctrl+'"], "command": "match_quotation_mark"
 ```
