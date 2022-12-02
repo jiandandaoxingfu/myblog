@@ -1,7 +1,7 @@
 ---
 title: "Tikz绘图示例"
 date: 2022-10-17 20:55:33 +0800
-lastmod: 2022-10-19 14:23:41 +0800
+lastmod: 2022-11-28 09:21:32 +0800
 summary: '一些在latex使用tikz绘制的图形示例'
 tags: ["latex", "tikz"]
 categories: ["latex", "科研"]
@@ -85,7 +85,6 @@ cover:
 
 ![](images/tikz-02.png)
 
-
 ```latex
 \begin{figure}
    \centering
@@ -148,7 +147,6 @@ cover:
 ```
 
 ![](images/tikz-03.png)
-
 
 ```latex
 \begin{figure}
@@ -336,7 +334,6 @@ cover:
 
 ![](images/tikz-04.png)
 
-
 ```latex
 \begin{figure}[h]
    \subfigure[]{
@@ -452,7 +449,6 @@ cover:
 ```
 
 ![](images/tikz-05.png)
-
 
 ```latex
 \begin{figure}
@@ -601,7 +597,6 @@ cover:
 
 ![](images/tikz-06.png)
 
-
 ```latex
 \begin{figure}
    \centerline{
@@ -626,7 +621,6 @@ cover:
 ```
 
 ![](images/tikz-07.png)
-
 
 ```latex
 \begin{figure}
@@ -693,7 +687,6 @@ cover:
 ```
 
 ![](images/tikz-08.png)
-
 
 ```latex
 \begin{figure}
@@ -762,7 +755,6 @@ cover:
 
 ![](images/tikz-09.png)
 
-
 ```latex
 \begin{figure}
    \centerline{
@@ -800,7 +792,6 @@ cover:
 ```
 
 ![](images/tikz-10.png)
-
 
 ```latex
 \begin{figure}
@@ -849,7 +840,6 @@ cover:
 ```
 
 ![](images/tikz-11.png)
-
 
 ```latex
 \begin{figure}
@@ -928,7 +918,6 @@ cover:
 
 ![](images/tikz-12.png)
 
-
 ```latex
 \begin{figure}
    \begin{center}
@@ -958,7 +947,6 @@ cover:
 
 ![](images/tikz-13.png)
 
-
 ```latex
 \begin{figure}[H]
    \centering
@@ -982,7 +970,6 @@ cover:
 ```
 
 ![](images/tikz-14.png)
-
 
 ```latex
 \begin{figure}
@@ -1012,7 +999,6 @@ cover:
 ```
 
 ![](images/tikz-15.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -1051,7 +1037,6 @@ cover:
 ```
 
 ![](images/tikz-16.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -1141,7 +1126,6 @@ cover:
 ```
 
 ![](images/tikz-17.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -1235,7 +1219,6 @@ cover:
 
 ![](images/tikz-18.png)
 
-
 ```latex
 \begin{figure}
    \begin{center}
@@ -1280,7 +1263,6 @@ cover:
 
 ![](images/tikz-19.png)
 
-
 ```latex
 \begin{figure}
    \begin{center}
@@ -1305,7 +1287,6 @@ cover:
 ```
 
 ![](images/tikz-20.png)
-
 
 ```latex
 \begin{figure}
@@ -1335,7 +1316,6 @@ cover:
 ```
 
 ![](images/tikz-21.png)
-
 
 ```latex
 \begin{figure}
@@ -1520,7 +1500,6 @@ cover:
 
 ![](images/tikz-22.png)
 
-
 ```latex
 \begin{figure}
    \begin{center}
@@ -1689,7 +1668,6 @@ cover:
 
 ![](images/tikz-23.png)
 
-
 ```latex
 \begin{figure}[h]
    \begin{center}
@@ -1773,7 +1751,6 @@ cover:
 ```
 
 ![](images/tikz-24.png)
-
 
 ```latex
 \begin{figure}
@@ -1972,7 +1949,6 @@ cover:
 
 ![](images/tikz-25.png)
 
-
 ```latex
 \begin{figure}[H]
    \centering
@@ -2020,7 +1996,6 @@ cover:
 ```
 
 ![](images/tikz-26.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -2191,7 +2166,6 @@ cover:
 ```
 
 ![](images/tikz-27.png)
-
 
 ```latex
 \begin{figure}[p]
@@ -2463,7 +2437,6 @@ cover:
 
 ![](images/tikz-28.png)
 
-
 ```latex
 \begin{figure}[H]
    \centering
@@ -2539,7 +2512,6 @@ cover:
 ```
 
 ![](images/tikz-29.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -2690,7 +2662,6 @@ cover:
 
 ![](images/tikz-30.png)
 
-
 ```latex
 \begin{figure}
    \centering
@@ -2784,7 +2755,6 @@ cover:
 
 ![](images/tikz-31.png)
 
-
 ```latex
 \begin{figure}
    \centering
@@ -2829,7 +2799,6 @@ cover:
 ```
 
 ![](images/tikz-32.png)
-
 
 ```latex
 \begin{figure}[H]
@@ -3014,7 +2983,6 @@ cover:
 
 ![](images/tikz-33.png)
 
-
 ```latex
 \begin{figure}
    \begin{center}
@@ -3049,7 +3017,6 @@ cover:
 ```
 
 ![](images/tikz-34.png)
-
 
 ```latex
 \begin{figure}
@@ -3102,7 +3069,6 @@ cover:
 ```
 
 ![](images/tikz-35.png)
-
 
 ```latex
 \begin{figure}
@@ -3160,7 +3126,6 @@ cover:
 
 ![](images/tikz-36.png)
 
-
 ```latex
 \begin{figure}[h]
    \centering
@@ -3190,7 +3155,6 @@ cover:
 ```
 
 ![](images/tikz-37.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -3235,7 +3199,6 @@ cover:
 ```
 
 ![](images/tikz-38.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -3286,7 +3249,6 @@ cover:
 
 ![](images/tikz-39.png)
 
-
 ```latex
 \begin{figure}[h]
    \centering
@@ -3320,7 +3282,6 @@ cover:
 
 ![](images/tikz-40.png)
 
-
 ```latex
 \begin{figure}[h]
    \centering
@@ -3341,7 +3302,6 @@ cover:
 ```
 
 ![](images/tikz-41.png)
-
 
 ```latex
 \begin{figure}[h]
@@ -3373,7 +3333,6 @@ cover:
 ```
 
 ![](images/tikz-42.png)
-
 
 ```latex
 \begin{figure}[ht]
@@ -3407,7 +3366,6 @@ cover:
 ```
 
 ![](images/tikz-43.png)
-
 
 ```latex
 \begin{figure}[ht]
@@ -3445,7 +3403,6 @@ cover:
 
 ![](images/tikz-44.png)
 
-
 ```latex
 \begin{figure}[t]
    \begin{center}
@@ -3465,7 +3422,6 @@ cover:
 ```
 
 ![](images/tikz-45.png)
-
 
 ```latex
 \begin{figure}[t]
@@ -3499,7 +3455,6 @@ cover:
 ```
 
 ![](images/tikz-46.png)
-
 
 ```latex
 \begin{figure}[t]
@@ -3548,7 +3503,6 @@ cover:
 ```
 
 ![](images/tikz-47.png)
-
 
 ```latex
 \begin{figure}[t]
@@ -3604,7 +3558,6 @@ cover:
 ```
 
 ![](images/tikz-48.png)
-
 
 ```latex
 \begin{figure}[t]
@@ -3675,7 +3628,6 @@ cover:
 ```
 
 ![](images/tikz-49.png)
-
 
 ```latex
 \begin{figure}[t]
