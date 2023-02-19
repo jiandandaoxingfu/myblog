@@ -1,7 +1,7 @@
 ---
 title: "科研工具与论文写作"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2022-11-14 20:31:43 +0800
+lastmod: 2023-02-20 07:48:34 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -24,13 +24,13 @@ ShowPostNavLinks: true
 收集一些科研和论文写作中常用的网站.
 
 ### 论文跟踪
-除了在各大论文出版网站看最新出版的论文, 还有以下两个途径.
 > 孤立子与可积系统方向比较好的期刊(部分):    
 [Ann. Math.](),&nbsp;
 [Math. Ann.](),&nbsp;
 [Bull. Amer. Math. Soc.](),&nbsp;
 [Mem. Amer. Math. Soc.](),&nbsp;
 [Trans. Amer. Math. Soc.](),&nbsp;
+[Phys. Rev. Lett.](),&nbsp;
 [Proc. Amer. Math. Soc.](),&nbsp;
 [Comm. Pure Math. Phys.](https://onlinelibrary.wiley.com/journal/10970312),&nbsp;
 [Comm. Math. Phys.](https://www.springer.com/journal/220),&nbsp;
@@ -38,7 +38,6 @@ ShowPostNavLinks: true
 [Int. Math. Reseach. Notices.](https://academic.oup.com/imrn),&nbsp;
 [Ann. Inst. H. Poincaré Anal. Non Linéaire](https://www.sciencedirect.com/journal/annales-de-linstitut-henri-poincare-c-analyse-non-lineaire),&nbsp;
 [Ann. Henri Poincare](https://www.springer.com/journal/23),&nbsp;
-[Phys. Rev. Lett.](),&nbsp;
 [Inverse Problems](https://iopscience.iop.org/journal/0266-5611),&nbsp;
 [Stud. Appl. Math.](https://onlinelibrary.wiley.com/journal/14679590),&nbsp;
 [Nonlinearity](https://iopscience.iop.org/journal/0951-7715),&nbsp;
@@ -46,12 +45,15 @@ ShowPostNavLinks: true
 [Phys. D](https://www.sciencedirect.com/journal/physica-d-nonlinear-phenomena),&nbsp;
 [Chaos, Solitons & Fractals](https://www.sciencedirect.com/journal/chaos-solitons-and-fractals),&nbsp;
 [J. Nonlinear Sci.](https://www.springer.com/journal/332),&nbsp;
-[J. Math. Phys](https://aip.scitation.org/journal/jmp),&nbsp;
+[J. Math. Phys.](https://aip.scitation.org/journal/jmp),&nbsp;
 [J. Phys. Soc. Japan](https://journals.jps.jp/journal/jpsj),&nbsp;
 [J. Differential Equation](https://www.sciencedirect.com/journal/journal-of-differential-equations),&nbsp;
 [J. Phys. A](https://iopscience.iop.org/journal/1751-8121),&nbsp;
 [Phys. Lett. A](https://www.sciencedirect.com/journal/physics-letters-a),&nbsp;
+[Lett. Math. Phys.](https://www.springer.com/journal/11005),&nbsp;
 
+
+除了在各大论文出版网站看最新出版的论文, 还有以下两个途径.
 
 #### ResearchGate
 [ResearchGate](https://www.researchgate.net/) 网站可以看做是学术微博. 首先在上面注册一个账号, 然后完善个人信息, 例如单位信息, 研究方向等. 之后它会推荐同一个单位的用户, 以及根据我们的研究领域来推荐该领域内的人.
@@ -73,6 +75,8 @@ ShowPostNavLinks: true
 
 当然, 由于未发表论文的隐私性, 我们在使用grammarly之前, 应该将论文里面的标题, 公式, 参考文献, 基金号等删除. 这可以借助在线工具 [maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex/) 的 grammarly 功能来实现. 这个在线工具只在本地运行, 不会将内容上传到网络.
 
+#### DeepL Translator && DeepL Writer
+人工智能[翻译](https://www.deepl.com/translator)和[写作](https://www.deepl.com/write).
 
 #### netspeak && linggle
 [netspeak](https://netspeak.org/) 和 [linggle](https://linggle.com/) 两个网站提供写作建议. 当写论文时, 有一些句子我们只知道一部分, 不知道接下来怎么说合适, 就可以用这两个网站. 他们可以根据输入, 提供大量的例句.
@@ -95,7 +99,7 @@ ShowPostNavLinks: true
 
 [Sci-hub1](https://www.sci-hub.ren/), [Sci-hub2](https://www.sci-hub.ee/), [Sci-hub3](https://www.sci-hub.wf/): 全球科研人员都在用的论文下载网站, 可以根据doi号下载论文(目前2022年论文大部分没有).
 
-[Library Genesis](https://libgen.li/): 此网站可以下载绝大部分论文和书籍(英文, 似乎需要翻墙, 或者使用上面iGG插件会员).
+[Library Genesis](https://libgen.li/): 此网站可以下载绝大部分论文和书籍(英文, 似乎需要翻墙, 或者使用下面iGG插件会员).
 
 [ProQuest](https://www.proquest.com/), [国外学位论文中国集团全文检索平台](https://www.pqdtcn.com/): 
 国外博士论文查询, 不过这两个似乎都不支持下载全文, 只能预览一部分.
@@ -106,8 +110,8 @@ ShowPostNavLinks: true
 #### 谷歌学术 && iGG谷歌学术助手
 谷歌学术完全吊打百度学术, 但想要使用, 一般需要找镜像网站. 最简单的方法是安装一个插件, 比较好用的是[iGG谷歌学术助手](https://iguge.xyz/), 可以在[Edge浏览器插件中心](https://microsoftedge.microsoft.com/addons/detail/igg%E8%B0%B7%E6%AD%8C%E5%AD%A6%E6%9C%AF%E5%8A%A9%E6%89%8B/mchibleoefileemjfghfejaggonplmmg)下载使用. 
 
-#### Texlive + Sublime Text/Visual Studio
-不管是Texlive还是Ctex都是编译tex文件的编辑器, 但是两者都很笨重而且不好用. 现在有很多优秀轻量的编辑器都支持调用Texlive或者Ctex来编译tex文件. 他们不仅提供了很多快捷键, 而且还支持非常丰富的插件, 比如tex代码自动补全, 自定义脚本, 数学公式预览等等. 因此选用这些编辑器, 如Sublime Text或Visual Studio是非常明智的选择.
+#### Texlive + Sublime Text/Visual Studio Code
+不管是Texlive还是Ctex都是编译tex文件的编辑器, 但是两者都很笨重而且不好用. 现在有很多优秀轻量的编辑器都支持调用Texlive或者Ctex来编译tex文件. 他们不仅提供了很多快捷键, 而且还支持非常丰富的插件, 比如tex代码自动补全, 自定义脚本, 数学公式预览等等. 因此选用这些编辑器, 如Sublime Text或Visual Studio Code是非常明智的选择.
 
 #### Djvu文件转PDF
 下载部分书籍时, 可能会遇到Djvu文件, 可以用SumatraPDF查看. 下面的软件可以将Djvu文件转为PDF
