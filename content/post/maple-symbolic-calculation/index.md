@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2022-12-02 17:06:17 +0800
+lastmod: 2023-02-24 11:53:03 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -182,12 +182,13 @@ map(expand, A);
 collect(A, lambda)
 ```
 
-- 公式拆解/获取自变量
+- 公式拆解/获取自变量/函数名
 ```javascript
 op( f(x) ) # return x
+op( 0, f(x) ) # return f
 op( a + b c ) # return a, b c
 op( a b ) # return a, b
-op( -f / g) # return [-1, f, g]
+op( -f / g) # return [-1, f, 1/g]
 nops([1, 2, 3, 4]) # 获取数组长度
 ```
 
@@ -202,7 +203,7 @@ indets( alpha f(x) + beta g(x) + 3, name) # return alpha, beta, x.
 ```javascript
 convert( 1/3, float ) #  return 0.3333333...
 convert( f(x), string ) # return "f(x)"
-convert( "f(x)", symbol ) # return f(x)
+convert( "f", symbol ) # return f
 convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
 evalf( 1/3 ) # return 0.33333...
 ```
