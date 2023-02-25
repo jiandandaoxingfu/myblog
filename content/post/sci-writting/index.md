@@ -1,7 +1,7 @@
 ---
 title: "科研工具与论文写作"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2023-02-23 09:05:05 +0800
+lastmod: 2023-02-25 08:12:03 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -73,7 +73,7 @@ ShowPostNavLinks: true
 #### grammarly
 [grammarly](https://app.grammarly.com/) 可以帮助我们检查论文中的拼写, 单复数, 用词不当等明显错误. 它提供在线版和桌面版两种方式, 都需要注册账号. 我们只需要使用免费版即可. 
 
-当然, 由于未发表论文的隐私性, 我们在使用grammarly之前, 应该将论文里面的标题, 公式, 参考文献, 基金号等删除. 这可以借助在线工具 [maple-latex](https://jiandandaoxingfu.gitee.io/maple-latex/) 的 grammarly 功能来实现. 这个在线工具只在本地运行, 不会将内容上传到网络.
+当然, 由于未发表论文的隐私性, 我们在使用grammarly之前, 应该将论文里面的标题, 公式, 参考文献, 基金号等删除. 这可以借助在线工具 [maple-latex](https://jiandandaoxingfu.github.io/maple-latex/) 的 grammarly 功能来实现. 这个在线工具只在本地运行, 不会将内容上传到网络.
 
 #### DeepL Translator && DeepL Writer
 人工智能[翻译](https://www.deepl.com/translator)和[写作](https://www.deepl.com/write).
@@ -125,6 +125,11 @@ ShowPostNavLinks: true
 数学方面比较全面的问答网站为[MathOverflow](https://mathoverflow.net/) 和 [Math Stack Exchange](https://math.stackexchange.com/). 前者主要是研究型问题, 上面有来自世界各地的学者, 包括很多大学的教授; 后者是基础性问题, 涉及大学知识, 大学生居多. 当然两者是互通的.
 科研或者学习中遇到不明白的一些问题和计算等, 都可以在上面提问, 上面的人都很喜欢分享.
 > 问答网站方面国外做的很强, 各种编程, 学术都有专门的网站, 而国内太缺乏这方面的东西了. 百度搜索就是垃圾. 
+
+#### 公式识别神器
+[Mathpix Tool](https://mathpix.com/desktop-downloads) 是一款通过截图, 将其中的数学公式转化为latex代码的神器, 准确度非常高, 十分方便. 
+另外还可以结合在线工具 [maple-latex](https://jiandandaoxingfu.github.io/maple-latex/) 中的 latex2maple 和 maple2mma 功能将其 Mathpix Tool 生成的 latex 代码转化为 Maple 或者 Mathematica 程序. 
+
 
 
 ### 资料
