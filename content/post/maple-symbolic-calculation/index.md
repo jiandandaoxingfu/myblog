@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-02-24 11:53:03 +0800
+lastmod: 2023-02-25 16:03:07 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -148,6 +148,9 @@ ldegree(expr, x) # x最低次幂
 coeff(expr, x, 3) # x^3 的系数
 lcoeff(expr, x)  # x最高次幂的系数
 tcoeff(expr, x)  # x最低次幂的系数
+
+with(PolynomialTools):
+CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 ```
 
 - 微分/积分 
@@ -160,6 +163,12 @@ map(diff/int/expand, M, x)  # 矩阵各个元素求导/积分/展开
 ```javascript
 solve( eq = 0, x ) / solve({ eq1=b1, eq2=b2, ... }, { x1, x2, ... })
 % 右端等于0可以省略
+```
+
+- 系数矩阵
+```javascript
+with(LinearAlgebra):
+coeMat, b1 = GenerateMatrix( { eq1, eq2, ...}, { var1, var2, ...} );
 ```
 
 - 求解常微分方程(组)
