@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-01 15:35:09 +0800
+lastmod: 2023-03-01 16:34:17 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -319,6 +319,8 @@ add(3, 5) # return 8
 ### 下载
 
 {{< download url="files/example.mw" text="Maple 与 Darboux 变换" >}}
+
+{{< download url="files/example-discrete.mw" text="离散可积方程的 Darboux 变换" >}}
 
 {{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
 
