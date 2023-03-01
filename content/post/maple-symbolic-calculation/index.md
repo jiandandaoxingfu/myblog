@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-01 17:08:54 +0800
+lastmod: 2023-03-01 22:30:33 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -20,19 +20,60 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 
 ---
+这里简单介绍一下Maple的使用. Maple和Mathematica (简称mma)以及Matlab并称为三个数学计算软件.
+后两个软件的使用者很多, 网上教程也比较丰富. 
+目前国内使用Maple的较少, 资料不多, 网上很多东西都搜不到.
+Matlab更加精于数值矩阵运算, 如果需要符号计算, 可以使用其`Mupad`工具箱.
+Mma则各方面都可以, 但是我个人用起来不太习惯.
+Maple 较强于符号计算, 其输入更加符合数学习惯.
+Maple的安装包大概只有`1G`, 后两个动辄`10G`.
 
 ### 基本用法
+
+#### 创建文件
+点击左上角`文件` -> `新建` -> `文件模式`. 或者使用快捷键 `Ctrl` + `N`.
+![创建文件](images/newfile.png)
+之后如下
+![空白文件](images/blank.png)
+
+#### 输入和输出
+上图中可以看到有`文字`和`数学`两个选项.
+点击`文字`, 鼠标所在行可以写文字, 不会运行, 可以正常换行等操作. 
+文字环境一般用来写程序说明, 即注释, 来说明程序是用来干什么的, 为什么, 以便阅读. 
+如果不加注释, 时间久了就容易忘. 而且程序可能会给别人用, 不加注释是很难读的.
+
+点击`数学`, 鼠标所在行会变成数学环境, 并且有虚线框.
+![空白文件](images/text-math.png)
+两种环境可以用快捷键`F5`来快速切换.
+在数学环境下, 按回车键`Enter`会运行当前代码块, 想要换行的话, 需要使用`Shift` + `Enter`.
+对于多行的代码块, 尽量一行只进行一个命令, 不要把很多命令全放在一行, 这样太长, 不容易读.
+多行代码中每一行代码都需要以分号或者冒号结束, 最后一行可以不加. 如下所示
+![换行](images/enter.png)
+不加分号或者冒号, 会认为仍然接上一行, 有时会报错.
+从上图还可以看出分号会输出, 冒号则不输出.
+在数学环境中, 也可以加注释, 但是需要在注释前面加`#`, 该符号后面的内容不会运行, 可以起到注释的作用.
+不过一般不这么做, 把代码和注释写在一块太乱.
+![注释](images/注释.png)
+最后, 在数学环境最后一行的结尾可以按`F5`切换至文字环境, 换行后再切换至数学环境来对代码进行分块.
+
+
 #### 定义变量
 ```javascript
 a := 3;  # 定义变量不是用等号， 而是用冒号等号
 b := 4:  # 冒号不打印
 c := 3 * 4; # 分号打印
-f := a x^2 + b x + c; #  两个变量或者数字与变量的乘积可以省略乘号， 两个数字的乘积不能省略
+#  两个变量或者数字与变量的乘积可以省略乘号，但两个数字的乘积不能省略
+f := a x^2 + b x + c;  # 注意不能定义 f(x) := ...
+# 需要注意的是, 这里所定义的变量都是全部变量, 运行过以后, 在程序的任何地方都可以引用.
+# 如果想要删除某个变量, 可以使用如下命令.
 unassign(`a`, `b`) # 取消给 a 和 b 赋值
-# 这里#表示注释， 其后面的内容不会运行。 
-# 对所写程序添加注释是一个良好的代码习惯。 说明方法和目的， 
-# 有助于自己和别人理解
+# 在后面的自定义函数中, 我们会看都局部变量, 它们只在函数体内有效.
+# 有时候为了方便输入, 会使用映射来定义变量
+alias(u=u(x), v=v(x));
+# 这样在后面用u, v的时候就会隐去x, 见下图
 ```
+![alias](images/alias.png)
+图中第一行由于 v 没有定义, 默认为常数, 因此求导为 0.
 
 #### 变量类型
 
@@ -45,43 +86,62 @@ M := Matrix([ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]); # 三阶矩阵 或者
 M := <1, 2, 3 | 4, 5, 6 |, 7, 8, 9>; # 注意这里与上面定义的M互为转置 
 M[1, ..] # M的第一行(向量型)
 M[.., 1] # M的第一列
+M^-1 # M的逆
+M . M # M^2
+M[1, 1] := 4 # 可以给矩阵的某个元素赋值
+Transpose(M);
+HermitianTranspose(M);
+Determinant(M);
+coeMat, b := GenerateMatrix( [ eq1, eq2, ...], [ x1, x2, ...]);  # 获取系数矩阵和右端项.
 ```
+![matrix](images/matrix.png)
 
-- 列表
+- 列表(list)
 ```javascript
 arr :=[1, 2, 3, 4]:
 arr[3] # return 3;
 arr[1..2] # return [1, 2];
 arr[-1] # return 4
+arr + arr # 列表也可以加减
 ```
+![list](images/list.png)
 
-- 集合
+- 集合(set)
 ```javascript
-arr := { 1, 2, 3, 4 }; # 无序(虽说无序, 但内部会按照数字/字母顺序排列), 不重复
+arr := { 5, 1, 2, 3, 4 }; # 无序(虽说无序, 但内部会按照数字/字母顺序排列), 不重复
 arr[1] # 可能是1
 intersect({1, 2, 3}, {3, 4, 5}) # return {3};
 union({1, 2, 3}, {3, 4, 5}) # return {1, 2, 3, 4, 5};
+{1, 2, 3} \ { 2 } # return {1, 3}
 ```
+集合中的元素可以是任意类型, 但是需要注意, 集合中的元素没有顺序, 上面定义的 `arr[1]` 不是 5.
+![set](images/set.png)
 
 - 向量
 ```javascript
-arr := <1, 2, 3, 4>; # 列向量
-arr := < 1 | 2 | 3>; # 行向量
+arr1 := <1, 2, 3, 4>; # 列向量
+arr2 := < 1 | 2 | 3>; # 行向量
+arr . arr2 # 矩阵
 ```
+![vec](images/vec.png)
 
 - 序列
 ```javascript
-arr := seq(1..3) # return 1, 2, 3
-arr := [ seq(1..3) ] # return [1, 2, 3]
-arr := seq( i^2, i=1..3 ) # return 1, 4, 9
+sequence := seq(1..3) # return 1, 2, 3
+arr := [ seq(1..3) ] # 序列加[]变列表
+set_ := { seq(1..3) } # 变集合, 这里加下划线是因为 set 是程序里面的关键字, 不能作为变量
+# 还有其它一些关键字, 如 if, then, do, list 等.
+sequence := seq( i^2, i=1..3 ) # return 1, 4, 9
+sequence := seq( F[i](x), i=1..3) #
 a, b, c := seq(1..3) # 使用序列可以给多个变量赋值
-seq( seq(a[j, i], i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}.
+seq( seq(a[j, i](x), i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}. # 多重, 常用来创建矩阵
 ```
+![seq](images/seq.png)
 
 - 字典(table)
 ```javascript
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
-T[a] # = 1.
+T[a] #  1.
 ```
 
 - 字符串
@@ -89,6 +149,7 @@ T[a] # = 1.
 s := "i am a string";
 s[1..4] # = "i am";
 ```
+![string](images/string.png)
 
 #### 流程
 - 判断
@@ -123,10 +184,13 @@ for i in arr do
    # do something;
 end do;
 ```
+![for](images/for.png)
 
-#### 定义函数
+#### 自定义函数
 ```javascript
 func := (x) -> x^2: # 箭头函数
+
+func(4) # 16
 
 func := proc(x)
 	global w, z; # 全局变量, 在整个程序中都存在
@@ -137,6 +201,7 @@ end proc:
 
 func(4) # return 16
 ```
+![func](images/func.png)
 
 
 ### 常用命令
@@ -146,6 +211,7 @@ Maple中的命令一般都是选取英文名称或者前几个字母
 ```javascript
 simplify / factor / expand / numer / denom
 ```
+![simplify](images/simplify.png)
 
 - **合并同类项/提取系数/次数**
 ```javascript
@@ -161,6 +227,7 @@ tcoeff(expr, x)  # x最低次幂的系数
 with(PolynomialTools):
 CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 ```
+![coeff](images/coeff.png)
 
 - **替换**
 ```javascript
@@ -169,9 +236,67 @@ subs(x=1, y=2, expr);
 subs({ x=1, y=2 }, expr);
 subs({ x=1 }, { y=2 }, expr);
 
+# 微分替换, 常用于具有导数的式子
 with(PDETools):
 dsubs( f(x) = g(x), expr );
 ```
+![subs](images/subs.png)
+
+- **复数/小数**
+```javascript
+sin(1) # sin(1)
+evalf( sin(1) ) # 0.8414709848
+evalf( sin(1), 4) # 0.8415
+evalc( exp(3 I x + y) ) # exp(y)*cos(3*x)+I*exp(y)*sin(3*x)
+```
+![evalc](images/evalc.png)
+
+- **公式生成 tex 代码**
+```javascript
+latex(expr);
+```
+![latex](images/latex.png)
+此处可以使用在线工具[Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex/)来格式化其生成的tex代码, 去除冗余.
+![maple-latex](images/maple-latex.png)
+
+- **公式拆解/获取自变量/函数名**
+```javascript
+op( f(x) ) # return x
+op( 0, f(x) ) # return f
+op( a + b c ) # return a, b c
+op( a b ) # return a, b
+op( -f / g) # return [-1, f, 1/g]
+nops([1, 2, 3, 4]) # 获取数组长度
+indets( A F(x) + B ) # { A, B, F(x), x }
+indets( A F(x) + B, name ) # { A, B, x}
+indets( A F(x) + B, Function ) # { F(x) }
+```
+![op](images/op.png)
+
+- **变量转换**
+```javascript
+convert( 1/3, float ) #  return 0.3333333...
+convert( f(x), string ) # return "f(x)"
+convert( "f", symbol ) # return f
+convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
+# 也可用 op
+{ op( [1, 2, 3, 4] ) }; # { 1, 2, 3, 4 }
+convert( [1, 2, 3, 4], Matrix, 2 );
+convert( seq( seq(V[j, i](x), i=1..3), j=1..3 ), Matrix, 3, 3 ) # (V_{ij})_{3*3} # 列表转矩阵
+```
+![convert](images/convert.png)
+
+- **微分/积分**
+```javascript
+diff(f, x);
+diff(f, x$k) # k阶导数
+diff(f, x$2, t$3);
+int(f, x); # 不定积分
+int(f, x=0..1); # 定积分
+seq( diff( f(x), x$i ), i=1..3)
+```
+需要注意的是, 在一些低版本中, 求导积分等一些运算只能作用域单个表达式, 不能作用域集合, 矩阵等.
+![diff](images/diff.png)
 
 - **映射**
 
@@ -182,89 +307,38 @@ map2(f, a, [x, y, z]) # return [f(x, 1), f(y, 2), f(a, z)];
 arr := [ seq(1..3) ];
 map( x-> x^2, arr ); # return [1, 4, 9] map可以替代for循环， 更加方便。
 map(sin, arr); # sin 函数作用于每一个元素
-map(diff, arr, x) # 矩阵求导
+V := convert( seq( seq(V[j, i](x), i=1..3), j=1..3 ), Matrix, 3, 3 );
+map(diff, V, x) # 矩阵求导
 map(op, 0, arr) 
 map(expand, M);
 # 另外, 也可以使用 ~ 来代替map, 如
 sin~(arr)
 diff~(arr, x)
 ```
-
-- **公式生成 tex 代码**
-```javascript
-latex(expr);
-```
-此处可以使用在线工具[Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex/)来格式化其生成的tex代码, 去除冗余.
-
-- **微分/积分**
-```javascript
-diff(f, x);
-diff(f, x$k) / int(f, x)
-diff(f, x$2, t$3);
-map(diff/int, M, x)  # 矩阵各个元素求导/积分
-```
+![map](images/map.png)
 
 - **求解方程(组)**
 ```javascript
-solve( eq = 0, x ) / solve({ eq1=b1, eq2=b2, ... }, { x1, x2, ... })
-solve( eq > 0, x); # 右端等于0可以省略
+solve( eq = 0, x ); # 右端等于0可以省略
+solve( eq, { x });
+solve({ eq1=b1, eq2=b2, ... }, { x1, x2, ... });
+solve( eq > 0, x);
 ```
+![solve](images/solve.png)
+
 
 - **求解常微分方程(组)**
 ```javascript
-dsolve( deq = 0, y ) / dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) # 偏微用 fdsolve
-% 右端等于0可以省略
+# 常微分方程
+dsolve( deq = 0, y );
+dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) 
+# 偏微用 
+dsolve( deq = 0, y );
+dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) 
+# 同样右端等于0可以省略
 ```
+![dsolve](images/dsolve.png)
 
-- **矩阵运算**
-```javascript
-# 矩阵运算一般需要加载线性代数包, 它内置了各种矩阵运算函数
-with(LinearAlgebra):
-A . B # 矩阵乘法
-A^2 # A . A
-Transpose(A) # 矩阵转置, 也可以用 A^%T, 注意不是 A^T
-HermitianTranspose(A) #  等价于 A^%H
-map(diff, A, x) # 等价于 diff~(A, x);
-A^-1 # 矩阵的逆
-map(expand, A);
-collect(A, lambda)
-coeMat, b1 = GenerateMatrix( [ eq1, eq2, ... ], [ var1, var2, ...] ); # 提取系数矩阵.
-```
-
-- **公式拆解/获取自变量/函数名**
-```javascript
-op( f(x) ) # return x
-op( 0, f(x) ) # return f
-op( a + b c ) # return a, b c
-op( a b ) # return a, b
-op( -f / g) # return [-1, f, 1/g]
-nops([1, 2, 3, 4]) # 获取数组长度
-```
-
-- **获取未知函数(量)**
-```javascript
-indets( a f(x) + b ) # return { a, b, x, f(x) };
-indets( a f(x) + b, Function ) # return { f(x) };
-indets( alpha f(x) + beta g(x) + 3, name) # return alpha, beta, x.
-```
-
-- **变量转换**
-```javascript
-convert( 1/3, float ) #  return 0.3333333...
-convert( f(x), string ) # return "f(x)"
-convert( "f", symbol ) # return f
-convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
-evalf( 1/3 ) # return 0.33333...
-evalf( 1/3, 3 ) # return 0.333
-```
-
-- **复数操作**
-```javascript
-a := 3 + 4 I:
-b := a^*  # return 3 - 4 I;
-[ Re(a), Im(a) ] # return [3, 4]
-evalc( expr ) # return Re(expr) + I Im(expr)
-```
 
 - **符号连接**
 ```javascript
@@ -273,6 +347,7 @@ seq(cat('v', i), i=1..3) # return v1, v2, v3
 seq(seq(cat('v', i, j), i=1..3), j=1..3 ) # return v11, v12, ..., v33
 convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij)_{3*3}
 ```
+![cat](images/cat.png)
 
 - **类型判断**
 ```javascript
@@ -290,12 +365,40 @@ plot( sin(x), x=-3..3 );
 plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
 plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 ```
+![plot](images/plot.png)
 
 - **文件读取**
 ```javascript
 save var1, var2, ..., "path/var.m";
 read "path/var.m";
 ```
+
+### 编程规范
+
+**帮助文档**
+
+学习一门语言最好的资料是软件自带的帮助文档, 其中详细的介绍了内置函数的各种用法和例子.
+![help](images/help.png)
+在上面的输入框中输入函数名, 点击进入相应的文档即可.
+
+**注释**
+
+写的程序一定要添加注释, 特别是程序特别长的, 要分成若干块. 
+
+**简洁**
+
+每一行代码不宜过长, 多用换行. 每个函数也不宜过长, 一个大的函数应该分成若干个子函数.
+
+**一般性**
+
+写的代码要有普适性, 能够很方便的移植到其它地方. 
+比如处理二阶谱问题的程序, 可以很容易的用于高阶谱问题.
+此类可以讲阶数定义出来, 后面用到阶数2的时候用变量代替, 后续改成3就很容易.
+
+**变量命名**
+
+给变量命名要么起一个英文名, 一看就知道是什么意思. 或者和文章中的符号保持一致.
+
 
 ### 进阶
 #### 矩阵符号运算
