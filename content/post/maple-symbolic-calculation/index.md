@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-01 16:38:07 +0800
+lastmod: 2023-03-01 17:08:54 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -21,7 +21,7 @@ ShowPostNavLinks: true
 
 ---
 
-### 基本使用
+### 基本用法
 #### 定义变量
 ```javascript
 a := 3;  # 定义变量不是用等号， 而是用冒号等号
@@ -46,6 +46,7 @@ M := <1, 2, 3 | 4, 5, 6 |, 7, 8, 9>; # 注意这里与上面定义的M互为转�
 M[1, ..] # M的第一行(向量型)
 M[.., 1] # M的第一列
 ```
+
 - 列表
 ```javascript
 arr :=[1, 2, 3, 4]:
@@ -53,28 +54,36 @@ arr[3] # return 3;
 arr[1..2] # return [1, 2];
 arr[-1] # return 4
 ```
+
 - 集合
 ```javascript
 arr := { 1, 2, 3, 4 }; # 无序(虽说无序, 但内部会按照数字/字母顺序排列), 不重复
 arr[1] # 可能是1
+intersect({1, 2, 3}, {3, 4, 5}) # return {3};
+union({1, 2, 3}, {3, 4, 5}) # return {1, 2, 3, 4, 5};
 ```
+
 - 向量
 ```javascript
 arr := <1, 2, 3, 4>; # 列向量
 arr := < 1 | 2 | 3>; # 行向量
 ```
+
 - 序列
 ```javascript
 arr := seq(1..3) # return 1, 2, 3
 arr := [ seq(1..3) ] # return [1, 2, 3]
 arr := seq( i^2, i=1..3 ) # return 1, 4, 9
 a, b, c := seq(1..3) # 使用序列可以给多个变量赋值
+seq( seq(a[j, i], i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}.
 ```
+
 - 字典(table)
 ```javascript
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
 T[a] # = 1.
 ```
+
 - 字符串
 ```javascript
 s := "i am a string";
@@ -131,14 +140,14 @@ func(4) # return 16
 
 
 ### 常用命令
-Maple中的命令一般都是选取英文名称的前几个字母
+Maple中的命令一般都是选取英文名称或者前几个字母
 
-- 化简/因式分解/展开/分子/分母
+- **化简/因式分解/展开/分子/分母**
 ```javascript
 simplify / factor / expand / numer / denom
 ```
 
-- 合并同类项/提取系数/次数
+- **合并同类项/提取系数/次数**
 ```javascript
 expr := x^3 + 2 x^4 + (x+1)^3 + (2 x +3 y)^2 + y^2;
 collect(expr, x);
@@ -153,31 +162,61 @@ with(PolynomialTools):
 CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 ```
 
-- 微分/积分 
+- **替换**
 ```javascript
-diff(f, x$k) / int(f, x)
-map(diff/int/expand, M, x)  # 矩阵各个元素求导/积分/展开
+subs(x=1, expr);
+subs(x=1, y=2, expr);
+subs({ x=1, y=2 }, expr);
+subs({ x=1 }, { y=2 }, expr);
+
+with(PDETools):
+dsubs( f(x) = g(x), expr );
 ```
 
-- 求解方程(组)
+- **映射**
+
+将某个函数作用于数组, 列表, 矩阵等多维表达式的每一个元素.
+```javascript
+map(f, [x, y, z], a); # return [f(x, a), f(y, a), f(z, a)];
+map2(f, a, [x, y, z]) # return [f(x, 1), f(y, 2), f(a, z)];
+arr := [ seq(1..3) ];
+map( x-> x^2, arr ); # return [1, 4, 9] map可以替代for循环， 更加方便。
+map(sin, arr); # sin 函数作用于每一个元素
+map(diff, arr, x) # 矩阵求导
+map(op, 0, arr) 
+map(expand, M);
+# 另外, 也可以使用 ~ 来代替map, 如
+sin~(arr)
+diff~(arr, x)
+```
+
+- **公式生成 tex 代码**
+```javascript
+latex(expr);
+```
+此处可以使用在线工具[Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex/)来格式化其生成的tex代码, 去除冗余.
+
+- **微分/积分**
+```javascript
+diff(f, x);
+diff(f, x$k) / int(f, x)
+diff(f, x$2, t$3);
+map(diff/int, M, x)  # 矩阵各个元素求导/积分
+```
+
+- **求解方程(组)**
 ```javascript
 solve( eq = 0, x ) / solve({ eq1=b1, eq2=b2, ... }, { x1, x2, ... })
+solve( eq > 0, x); # 右端等于0可以省略
+```
+
+- **求解常微分方程(组)**
+```javascript
+dsolve( deq = 0, y ) / dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) # 偏微用 fdsolve
 % 右端等于0可以省略
 ```
 
-- 系数矩阵
-```javascript
-with(LinearAlgebra):
-coeMat, b1 = GenerateMatrix( { eq1, eq2, ...}, { var1, var2, ...} );
-```
-
-- 求解常微分方程(组)
-```javascript
-dsolve( deq = 0, y ) / dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) # 偏微用 fsolve
-% 右端等于0可以省略
-```
-
-- 矩阵运算
+- **矩阵运算**
 ```javascript
 # 矩阵运算一般需要加载线性代数包, 它内置了各种矩阵运算函数
 with(LinearAlgebra):
@@ -189,9 +228,10 @@ map(diff, A, x) # 等价于 diff~(A, x);
 A^-1 # 矩阵的逆
 map(expand, A);
 collect(A, lambda)
+coeMat, b1 = GenerateMatrix( [ eq1, eq2, ... ], [ var1, var2, ...] ); # 提取系数矩阵.
 ```
 
-- 公式拆解/获取自变量/函数名
+- **公式拆解/获取自变量/函数名**
 ```javascript
 op( f(x) ) # return x
 op( 0, f(x) ) # return f
@@ -201,23 +241,24 @@ op( -f / g) # return [-1, f, 1/g]
 nops([1, 2, 3, 4]) # 获取数组长度
 ```
 
-- 获取未知函数(量)
+- **获取未知函数(量)**
 ```javascript
 indets( a f(x) + b ) # return { a, b, x, f(x) };
 indets( a f(x) + b, Function ) # return { f(x) };
 indets( alpha f(x) + beta g(x) + 3, name) # return alpha, beta, x.
 ```
 
-- 变量转换
+- **变量转换**
 ```javascript
 convert( 1/3, float ) #  return 0.3333333...
 convert( f(x), string ) # return "f(x)"
 convert( "f", symbol ) # return f
 convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
 evalf( 1/3 ) # return 0.33333...
+evalf( 1/3, 3 ) # return 0.333
 ```
 
-- 复数操作
+- **复数操作**
 ```javascript
 a := 3 + 4 I:
 b := a^*  # return 3 - 4 I;
@@ -225,42 +266,32 @@ b := a^*  # return 3 - 4 I;
 evalc( expr ) # return Re(expr) + I Im(expr)
 ```
 
-- 映射
+- **符号连接**
 ```javascript
-arr := [ seq(1..3) ];
-map( x-> x^2, arr ); # return [1, 4, 9] map可以替代for循环， 更加方便。
-map(sin, arr); # sin 函数作用于每一个元素
-map(diff, arr, x) # 矩阵求导
-# 另外, 也可以使用 ~ 来代替map, 如
-sin~(arr)
-diff~(arr, x)
+cat('v', 1, 2) # return v12;
+seq(cat('v', i), i=1..3) # return v1, v2, v3
+seq(seq(cat('v', i, j), i=1..3), j=1..3 ) # return v11, v12, ..., v33
+convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij)_{3*3}
 ```
 
-- 符号连接
+- **类型判断**
 ```javascript
-cat(v, 1, 2) # return v12;
-seq(cat(v, i), i=1..3) # return v1, v2, v3
-seq(seq(cat(v, i, j), i=1..3), j=1..3 ) # return v11, v12, ..., v33
-Transpose(convert([seq(seq(cat(v, i, j), i = 1..3), j = 1..3)], Matrix, 3)) # return (vij)_{3*3}
-```
-
-- 判断
-```javascript
-is(5 > 10) # False
-has(sin(x) + cos(x), `sin`) # True
+is(5 > 10) # false
+has(sin(x) + cos(x), `sin`) # true
 whattype(x) # symbol
 whattype(exp(x)) # function
 whattype(x - y) # `+`
 whattype( x y) # `*`
 ```
 
-- 绘图
+- **绘图**
 ```javascript
 plot( sin(x), x=-3..3 );
 plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
+plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 ```
 
-- 文件读取
+- **文件读取**
 ```javascript
 save var1, var2, ..., "path/var.m";
 read "path/var.m";
