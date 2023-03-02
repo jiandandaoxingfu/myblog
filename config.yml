@@ -1,6 +1,6 @@
 publishDir: docs
 baseURL: https://jiandandaoxingfu.github.io/myblog/
-title: Blog's of JMx
+title: JMx's Blog
 paginate: 5
 theme: papermod
 
@@ -16,8 +16,8 @@ minify:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    title: Blog's of JMx
-    description: "Blog's of JMx"
+    title: JMx's Blog
+    description: "JMx's Blog"
     keywords: [Blog, Portfolio, papermod]
     author: JMx
     # author: ["Me", "You"] # multiple authors
