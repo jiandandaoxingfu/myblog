@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-01 22:30:33 +0800
+lastmod: 2023-03-02 08:20:28 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -20,7 +20,7 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 
 ---
-这里简单介绍一下Maple的使用. Maple和Mathematica (简称mma)以及Matlab并称为三个数学计算软件.
+这里简单介绍一下Maple的使用. Maple和Mathematica (简称mma)以及Matlab并称为三大科学计算软件.
 后两个软件的使用者很多, 网上教程也比较丰富. 
 目前国内使用Maple的较少, 资料不多, 网上很多东西都搜不到.
 Matlab更加精于数值矩阵运算, 如果需要符号计算, 可以使用其`Mupad`工具箱.
@@ -54,7 +54,7 @@ Maple的安装包大概只有`1G`, 后两个动辄`10G`.
 在数学环境中, 也可以加注释, 但是需要在注释前面加`#`, 该符号后面的内容不会运行, 可以起到注释的作用.
 不过一般不这么做, 把代码和注释写在一块太乱.
 ![注释](images/注释.png)
-最后, 在数学环境最后一行的结尾可以按`F5`切换至文字环境, 换行后再切换至数学环境来对代码进行分块.
+最后, 在数学环境的开头或者结尾可以按`F5`切换至文字环境, 换行后再切换至数学环境来对代码进行分块.
 
 
 #### 定义变量
@@ -64,11 +64,11 @@ b := 4:  # 冒号不打印
 c := 3 * 4; # 分号打印
 #  两个变量或者数字与变量的乘积可以省略乘号，但两个数字的乘积不能省略
 f := a x^2 + b x + c;  # 注意不能定义 f(x) := ...
-# 需要注意的是, 这里所定义的变量都是全部变量, 运行过以后, 在程序的任何地方都可以引用.
-# 如果想要删除某个变量, 可以使用如下命令.
+# 需要注意的是, 这里所定义的变量都是全局变量, 运行过以后, 在程序的任何地方都可以引用
+# 如果想要删除某个变量, 可以使用如下命令
 unassign(`a`, `b`) # 取消给 a 和 b 赋值
-# 在后面的自定义函数中, 我们会看都局部变量, 它们只在函数体内有效.
-# 有时候为了方便输入, 会使用映射来定义变量
+# 在后面的自定义函数中, 我们会看到局部变量, 它们只在函数体内有效
+# 有时候为了方便输入, 会使用别名来定义变量
 alias(u=u(x), v=v(x));
 # 这样在后面用u, v的时候就会隐去x, 见下图
 ```
@@ -76,8 +76,10 @@ alias(u=u(x), v=v(x));
 图中第一行由于 v 没有定义, 默认为常数, 因此求导为 0.
 
 #### 变量类型
+上面定义的变量都是按个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
 
-- 矩阵
+
+矩阵基本与数学中的一致.
 ```javascript
 with(LinearAlgebra):  # 使用矩阵及其操作， 需要引入线性代数包
 M := Matrix( row, col ); # row * col阶矩阵
@@ -92,9 +94,27 @@ M[1, 1] := 4 # 可以给矩阵的某个元素赋值
 Transpose(M);
 HermitianTranspose(M);
 Determinant(M);
-coeMat, b := GenerateMatrix( [ eq1, eq2, ...], [ x1, x2, ...]);  # 获取系数矩阵和右端项.
+coeMat, b := GenerateMatrix( [ eq1, eq2, ...], [ x1, x2, ...]);  # 获取系数矩阵和右端项
 ```
 ![matrix](images/matrix.png)
+需要注意的是, 在使用`alias`时, 有如下区别:
+![mat-alias](images/mat-alias.png)
+可以看到, 从输入复制的矩阵, alias不起作用, 因此 `M4` 求导为0.
+
+另外需要注意的是, 每一个由单个表达式或者数字定义的变量在计算机内存中的地址都不一样, 如
+```javascript
+a := 3;
+b := a;
+```
+改变 `a` 的值不会影响 `b` 的值.
+但是对于矩阵, 两者指向同一地址.
+```javascript
+A := [1, 2, 3];
+B := A;
+```
+因此如果改变 `A` 中某个元素的值, 则 `B` 也会发生变化.
+![memory](images/memory.png)
+
 
 - 列表(list)
 ```javascript
@@ -105,8 +125,11 @@ arr[-1] # return 4
 arr + arr # 列表也可以加减
 ```
 ![list](images/list.png)
+列表引用似乎不会同时改变.
 
 - 集合(set)
+
+Maple中的集合与数学中的集合一致: 无序, 不重复.
 ```javascript
 arr := { 5, 1, 2, 3, 4 }; # 无序(虽说无序, 但内部会按照数字/字母顺序排列), 不重复
 arr[1] # 可能是1
@@ -128,9 +151,9 @@ arr . arr2 # 矩阵
 - 序列
 ```javascript
 sequence := seq(1..3) # return 1, 2, 3
-arr := [ seq(1..3) ] # 序列加[]变列表
-set_ := { seq(1..3) } # 变集合, 这里加下划线是因为 set 是程序里面的关键字, 不能作为变量
-# 还有其它一些关键字, 如 if, then, do, list 等.
+arr := [ seq(1..3) ] # 序列加`[]`变列表
+set_ := { seq(1..3) } # 变集合, 这里加下划线是因为 set 是程序里面的关键字, 不能作为变量名
+# 还有其它一些关键字, 如 if, then, do, list 等
 sequence := seq( i^2, i=1..3 ) # return 1, 4, 9
 sequence := seq( F[i](x), i=1..3) #
 a, b, c := seq(1..3) # 使用序列可以给多个变量赋值
@@ -150,8 +173,12 @@ s := "i am a string";
 s[1..4] # = "i am";
 ```
 ![string](images/string.png)
+字符串一般用于输出提示信息. 比如在一个程序中, 可以把各种提示信息打印出来.
+```javascript
+print("please input U");
+```
 
-#### 流程
+#### 流程控制
 - 判断
 ```javascript
 if x > 0 and (or) x < 4 then
@@ -166,6 +193,7 @@ else
 	# do something
 end if;
 ```
+注意换行并添加缩进.
 
 - 循环
 ```javascript
@@ -183,6 +211,14 @@ arr := [1, 2, 3, 4];
 for i in arr do
    # do something;
 end do;
+
+# 阶乘 n!
+prod_ := 1;
+n :=10;
+for i from 1 to n do
+	prod_ := prod_ * i:
+end do: # 注意, 这里如果不用冒号, 每次循环都会输出 prod_;
+print(prod_);
 ```
 ![for](images/for.png)
 
@@ -192,6 +228,7 @@ func := (x) -> x^2: # 箭头函数
 
 func(4) # 16
 
+# proc里面的量就是变量, 即输入, 而 return 后面是返回的结果, 可以返回多个
 func := proc(x)
 	global w, z; # 全局变量, 在整个程序中都存在
 	local y; # 局部变量, 只存在于本函数体内
@@ -199,13 +236,52 @@ func := proc(x)
    return y;
 end proc:
 
+# 即 y = func(x);
+
+
 func(4) # return 16
+
+# 我们把阶乘函数抽象出来
+factorial_ := proc(n)
+	# local prod_, i; # 程序内除输入以外的变量都要声明是全局变量还是局部变量, 否则可能会有警告信息
+	prod_ := 1;
+	n :=10;
+	for i from 1 to n do
+		prod_ := prod_ * i:
+	end do; 
+	return prod_; 
+end proc:
+
+# 使用递归来定义, 递归可以看作一种循环, 适用于知道循环结束判断, 不知道循环次数的问题
+factorial_ := proc(n)
+	if n = 0 then
+		return 1;
+	else
+		return n factorial_(n-1) ;
+	end if
+end proc:
+
+# 递归实现汉诺塔问题, (由 ChatGPT 作答)
+hanoi := proc(n, A, B, C)
+  if n = 1 then
+    printf("Move disk from %s to %s\n", A, C);
+  else
+    hanoi(n-1, A, C, B);
+    printf("Move disk from %s to %s\n", A, C);
+    hanoi(n-1, B, A, C);
+  end if;
+end proc:
+
+hanoi(3, "A", "B", "C");
 ```
 ![func](images/func.png)
+![func](images/func2.png)
+![chatgpt-hanoi](images/chatgpt-hanoi.png)
+需要注意的是, 函数内部的命令行不论是以分号还是冒号结尾, 都不会打印, 因此需要`print`函数来进行打印.
 
 
 ### 常用命令
-Maple中的命令一般都是选取英文名称或者前几个字母
+Maple中的内置命令一般都是选取英文名称或者前几个字母, 注意内置命令也不能作为变量名.
 
 - **化简/因式分解/展开/分子/分母**
 ```javascript
@@ -373,7 +449,7 @@ save var1, var2, ..., "path/var.m";
 read "path/var.m";
 ```
 
-### 编程规范
+### 注意事项
 
 **帮助文档**
 
@@ -381,9 +457,15 @@ read "path/var.m";
 ![help](images/help.png)
 在上面的输入框中输入函数名, 点击进入相应的文档即可.
 
+
 **注释**
 
-写的程序一定要添加注释, 特别是程序特别长的, 要分成若干块. 
+写的程序一定要添加注释, 特别是程序很长的, 要分成若干块. 
+
+**清晰**
+
+写的程序要清晰明了, 特别是流程控制合函数体内, 要使用空格或者缩进来加以区别, 不能都是从头开始.
+
 
 **简洁**
 
@@ -392,8 +474,8 @@ read "path/var.m";
 **一般性**
 
 写的代码要有普适性, 能够很方便的移植到其它地方. 
-比如处理二阶谱问题的程序, 可以很容易的用于高阶谱问题.
-此类可以讲阶数定义出来, 后面用到阶数2的时候用变量代替, 后续改成3就很容易.
+比如处理二阶谱问题的程序, 应该可以迁移到高阶谱问题.
+此类可以将阶数定义出来, 后面用到阶数2的时候用变量代替, 后续改成3就很容易.
 
 **变量命名**
 
