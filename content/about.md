@@ -46,3 +46,5 @@ A member of the design department of [Maki's Lab](https://www.maki-math.com) sin
 
 ### What Is This Website For?
 This website is used to record some skills and experience in research and programming. 
+
+
