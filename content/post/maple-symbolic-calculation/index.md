@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-03 07:23:21 +0800
+lastmod: 2023-03-03 12:13:15 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -79,7 +79,9 @@ alias(u=u(x), v=v(x));
 上面定义的变量都是按个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
 
 
-矩阵基本与数学中的一致.
+- 矩阵
+
+基本与数学中的一致.
 ```javascript
 with(LinearAlgebra):  # 使用矩阵及其操作， 需要引入线性代数包
 M := Matrix( row, col ); # row * col阶矩阵
@@ -349,6 +351,7 @@ indets( A F(x) + B, Function ) # { F(x) }
 ```
 ![op](images/op.png)
 
+
 - **变量转换**
 ```javascript
 convert( 1/3, float ) #  return 0.3333333...
@@ -533,9 +536,9 @@ add(3, 5) # return 8
 
 ### 下载
 
-{{< download url="files/2023-03-02-张鑫-三位势连续.mw" text="Maple 与 Darboux 变换" >}}
+{{< download url="files/2023-03-02-example.mw" text="Maple 与 Darboux 变换" >}}
 
-{{< download url="files/2023-03-02-example.mw" text="三位势可积方程的 Darboux 变换" >}
+{{< download url="files/2023-03-02-张鑫-三位势连续.mw" text="三位势可积方程的 Darboux 变换" >}}
 
 {{< download url="files/2023-02-24-王鑫-离散BC.mw" text="离散可积方程的 Darboux 变换" >}}
 
