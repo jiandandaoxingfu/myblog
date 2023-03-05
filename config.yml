@@ -3,6 +3,7 @@ baseURL: https://jiandandaoxingfu.github.io/myblog/
 title: JMx's Blog
 paginate: 5
 theme: papermod
+googleAnalytics: G-0JQXY0B11G
 
 enableRobotsTXT: true
 buildDrafts: true
