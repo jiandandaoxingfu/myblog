@@ -20,13 +20,13 @@ I am a PhD student in mathematics of ZZU. I like to develop something interestin
 
 ### Education
 - 2014 - 2018. Appl. Math., ZZU, Bachelor Degree.
-- 2017 - 2019. Appl. Math., ZZU, Graduate Student.
+- 2017 - 2019. Appl. Math., ZZU, Graduate student.
 - 2019 - Now. Pure Math., ZZU, PhD student.
 
 ### Selected Recent Projects
 
 #### [Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex)
-A webpage for processing mathematical formulas in tex code, used in Maple, Latex, Mathematics.
+A webpage for processing mathematical formulas in tex code, used in Maple, Latex, Mathematica.
 
 #### [Scientific-research-assistant](https://github.com/jiandandaoxingfu/scientific-research-assistant)
 A Chrome/Edge extension for (mutil-) downloading papers from sci-hub (keep updated): add download-button automatically near links including doi number.
@@ -41,6 +41,7 @@ A software built in Python, which is used to
 - convert WORD to PDF (depends on office)
 
 ### Experience
+
 #### Maki-Lab
 A member of the design department of [Maki's Lab](https://www.maki-math.com) since 2022.2.22.
 
