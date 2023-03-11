@@ -6,7 +6,7 @@ tags: ["hugo", "PaperMod", 'blog']
 categories: ["教程"]
 author: "JMx"
 showToc: true
-TocOpen: false
+TocOpen: true
 draft: false
 hidemeta: false
 comments: false

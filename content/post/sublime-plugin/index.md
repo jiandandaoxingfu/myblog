@@ -1,13 +1,13 @@
 ---
 title: "Sublime-Latex"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2022-11-23 15:19:13 +0800
+lastmod: 2023-03-11 20:31:29 +0800
 summary: '学习给 sublime 写插件'
 tags: ["sublime", "plugin"]
 categories: ["编程", "sublime", "python"]
 author: "JMx"
 showToc: true
-TocOpen: false
+TocOpen: true
 draft: true
 hidemeta: false
 comments: false
