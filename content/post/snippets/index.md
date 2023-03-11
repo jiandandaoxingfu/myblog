@@ -1,13 +1,13 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2022-11-02 11:44:58 +0800
+lastmod: 2023-03-11 20:32:20 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets"]
 categories: ["科研"]
 author: "JMx"
 showToc: true
-TocOpen: false
+TocOpen: true
 draft: true
 hidemeta: false
 comments: false

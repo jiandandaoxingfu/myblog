@@ -289,6 +289,26 @@
     padding: 10px 20px;
 }
 
+@media (min-width: 1400px) {
+  .toc {
+    position: fixed;
+    top: 15%;
+    left: 15px;
+    width: 280px;
+    max-height: 70%;
+    overflow-y: auto;
+    z-index: 999;
+  }
+  .toc details summary {
+    margin-inline-start: 5px;
+  }
+  .toc .inner { 
+    padding: 0 5px;
+    margin: 2px 0px 2px 20px;
+  }
+}
+
+
 .toc li ul {
     margin-inline-start: var(--gap);
 }

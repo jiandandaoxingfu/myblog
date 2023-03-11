@@ -8,6 +8,6 @@
         var url = window.location.href.replace(/#.*/, '') + '{{ .Get "url" }}'
         var text = '{{ .Get "text" }}';
         var div  = document.getElementById('{{ .Get "url" }}');
-        div.innerHTML = `<a href='${url}' target="_blank" style="margin: 5px; display: inline-block; box-shadow: none;" download onclick="ga('send', 'event', 'file', 'download', '${text}');">${text}</a>`
+        div.innerHTML = `<a href='${url}' target="_blank" style="margin: 5px; display: inline-block; box-shadow: none;" download>${text}</a>`
 </script>
 </div>
