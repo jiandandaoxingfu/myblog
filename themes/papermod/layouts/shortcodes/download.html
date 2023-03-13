@@ -5,7 +5,10 @@
 		}
 	</style>
     <script type="text/javascript">
-        var url = window.location.href.replace(/#.*/, '') + '{{ .Get "url" }}'
+        var url = '{{ .Get "url" }}'
+        if (url.startsWith('file')) {
+            url = window.location.href.replace(/#.*/, '') + url;
+        }
         var text = '{{ .Get "text" }}';
         var type = url.slice(url.lastIndexOf('.') + 1);
         var span  = document.getElementById('{{ .Get "url" }}');
