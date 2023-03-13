@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-03 12:13:15 +0800
+lastmod: 2023-03-13 12:43:25 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -28,15 +28,18 @@ Mma则各方面都可以, 但是我个人用起来不太习惯.
 Maple 较强于符号计算, 其输入更加符合数学习惯.
 Maple的安装包大概只有`1G`, 后两个动辄`10G`.
 
-### 基本用法
+---
 
-#### 创建文件
+## 基本用法
+
+### 创建文件
 点击左上角`文件` -> `新建` -> `文件模式`. 或者使用快捷键 `Ctrl` + `N`.
 ![创建文件](images/newfile.png)
 之后如下
 ![空白文件](images/blank.png)
 
-#### 输入和输出
+
+### 输入和输出
 上图中可以看到有`文字`和`数学`两个选项.
 点击`文字`, 鼠标所在行可以写文字, 不会运行, 可以正常换行等操作. 
 文字环境一般用来写程序说明, 即注释, 来说明程序是用来干什么的, 为什么, 以便阅读. 
@@ -57,7 +60,7 @@ Maple的安装包大概只有`1G`, 后两个动辄`10G`.
 最后, 在数学环境的开头或者结尾可以按`F5`切换至文字环境, 换行后再切换至数学环境来对代码进行分块.
 
 
-#### 定义变量
+### 定义变量
 ```javascript
 a := 3;  # 定义变量不是用等号， 而是用冒号等号
 b := 4:  # 冒号不打印
@@ -75,11 +78,10 @@ alias(u=u(x), v=v(x));
 ![alias](images/alias.png)
 图中第一行由于 v 没有定义, 默认为常数, 因此求导为 0.
 
-#### 变量类型
+### 变量类型
 上面定义的变量都是按个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
 
-
-- 矩阵
+- **矩阵**
 
 基本与数学中的一致.
 ```javascript
@@ -118,7 +120,7 @@ B := A;
 ![memory](images/memory.png)
 
 
-- 列表(list)
+- **列表(list)**
 ```javascript
 arr :=[1, 2, 3, 4]:
 arr[3] # return 3;
@@ -129,7 +131,7 @@ arr + arr # 列表也可以加减
 ![list](images/list.png)
 列表引用似乎不会同时改变.
 
-- 集合(set)
+- **集合(set)**
 
 Maple中的集合与数学中的集合一致: 无序, 不重复.
 ```javascript
@@ -142,7 +144,7 @@ union({1, 2, 3}, {3, 4, 5}) # return {1, 2, 3, 4, 5};
 集合中的元素可以是任意类型, 但是需要注意, 集合中的元素没有顺序, 上面定义的 `arr[1]` 不是 5.
 ![set](images/set.png)
 
-- 向量
+- **向量**
 ```javascript
 arr1 := <1, 2, 3, 4>; # 列向量
 arr2 := < 1 | 2 | 3>; # 行向量
@@ -150,7 +152,7 @@ arr . arr2 # 矩阵
 ```
 ![vec](images/vec.png)
 
-- 序列
+- **序列**
 ```javascript
 sequence := seq(1..3) # return 1, 2, 3
 arr := [ seq(1..3) ] # 序列加`[]`变列表
@@ -163,13 +165,13 @@ seq( seq(a[j, i](x), i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}. # 
 ```
 ![seq](images/seq.png)
 
-- 字典(table)
+- **字典(table)**
 ```javascript
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
 T[a] #  1.
 ```
 
-- 字符串
+- **字符串**
 ```javascript
 s := "i am a string";
 s[1..4] # = "i am";
@@ -180,8 +182,8 @@ s[1..4] # = "i am";
 print("please input U");
 ```
 
-#### 流程控制
-- 判断
+### 流程控制
+- **判断**
 ```javascript
 if x > 0 and (or) x < 4 then
    # do something;
@@ -197,7 +199,7 @@ end if;
 ```
 注意换行并添加缩进.
 
-- 循环
+- **循环**
 ```javascript
 for i from 1 to 10 do
    # do something;
@@ -224,7 +226,7 @@ print(prod_);
 ```
 ![for](images/for.png)
 
-#### 自定义函数
+### 自定义函数
 ```javascript
 func := (x) -> x^2: # 箭头函数
 
@@ -282,16 +284,18 @@ hanoi(3, "A", "B", "C");
 需要注意的是, 函数内部的命令行不论是以分号还是冒号结尾, 都不会打印, 因此需要`print`函数来进行打印.
 
 
-### 常用命令
+---
+
+## 常用命令
 Maple中的内置命令一般都是选取英文名称或者前几个字母, 注意内置命令也不能作为变量名.
 
-- **化简/因式分解/展开/分子/分母**
+### 化简/因式分解/展开/分子/分母
 ```javascript
 simplify / factor / expand / numer / denom
 ```
 ![simplify](images/simplify.png)
 
-- **合并同类项/提取系数/次数**
+### 合并同类项/提取系数/次数
 ```javascript
 expr := x^3 + 2 x^4 + (x+1)^3 + (2 x +3 y)^2 + y^2;
 collect(expr, x);
@@ -307,7 +311,7 @@ CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 ```
 ![coeff](images/coeff.png)
 
-- **替换**
+### 替换
 ```javascript
 subs(x=1, expr);
 subs(x=1, y=2, expr);
@@ -320,7 +324,7 @@ dsubs( f(x) = g(x), expr );
 ```
 ![subs](images/subs.png)
 
-- **复数/小数**
+### 复数/小数
 ```javascript
 sin(1) # sin(1)
 evalf( sin(1) ) # 0.8414709848
@@ -329,7 +333,7 @@ evalc( exp(3 I x + y) ) # exp(y)*cos(3*x)+I*exp(y)*sin(3*x)
 ```
 ![evalc](images/evalc.png)
 
-- **公式生成 tex 代码**
+### 公式生成 tex 代码
 ```javascript
 latex(expr);
 ```
@@ -337,7 +341,7 @@ latex(expr);
 此处可以使用在线工具[Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex/)来格式化其生成的tex代码, 去除冗余.
 ![maple-latex](images/maple-latex.png)
 
-- **公式拆解/获取自变量/函数名**
+### 公式拆解/获取自变量/函数名
 ```javascript
 op( f(x) ) # return x
 op( 0, f(x) ) # return f
@@ -352,7 +356,7 @@ indets( A F(x) + B, Function ) # { F(x) }
 ![op](images/op.png)
 
 
-- **变量转换**
+### 变量转换
 ```javascript
 convert( 1/3, float ) #  return 0.3333333...
 convert( f(x), string ) # return "f(x)"
@@ -365,7 +369,7 @@ convert( seq( seq(V[j, i](x), i=1..3), j=1..3 ), Matrix, 3, 3 ) # (V_{ij})_{3*3}
 ```
 ![convert](images/convert.png)
 
-- **微分/积分**
+### 微分/积分
 ```javascript
 diff(f, x);
 diff(f, x$k) # k阶导数
@@ -377,7 +381,7 @@ seq( diff( f(x), x$i ), i=1..3)
 需要注意的是, 在一些低版本中, 求导积分等一些运算只能作用域单个表达式, 不能作用域集合, 矩阵等.
 ![diff](images/diff.png)
 
-- **映射**
+### 映射
 
 将某个函数作用于数组, 列表, 矩阵等多维表达式的每一个元素.
 ```javascript
@@ -396,7 +400,7 @@ diff~(arr, x)
 ```
 ![map](images/map.png)
 
-- **求解方程(组)**
+### 求解方程(组)
 ```javascript
 solve( eq = 0, x ); # 右端等于0可以省略
 solve( eq, { x });
@@ -406,7 +410,7 @@ solve( eq > 0, x);
 ![solve](images/solve.png)
 
 
-- **求解常微分方程(组)**
+### 求解常微分方程(组)
 ```javascript
 # 常微分方程
 dsolve( deq = 0, y );
@@ -419,7 +423,7 @@ dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... })
 ![dsolve](images/dsolve.png)
 
 
-- **符号连接**
+### 符号连接
 ```javascript
 cat('v', 1, 2) # return v12;
 seq(cat('v', i), i=1..3) # return v1, v2, v3
@@ -428,7 +432,7 @@ convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij
 ```
 ![cat](images/cat.png)
 
-- **类型判断**
+### 类型判断
 ```javascript
 is(5 > 10) # false
 has(sin(x) + cos(x), `sin`) # true
@@ -438,7 +442,7 @@ whattype(x - y) # `+`
 whattype( x y) # `*`
 ```
 
-- **绘图**
+### 绘图
 ```javascript
 plot( sin(x), x=-3..3 );
 plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
@@ -446,13 +450,15 @@ plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 ```
 ![plot](images/plot.png)
 
-- **文件读取**
+### 文件读取
 ```javascript
 save var1, var2, ..., "path/var.m";
 read "path/var.m";
 ```
 
-### 注意事项
+---
+
+## 注意事项
 
 **帮助文档**
 
@@ -485,8 +491,10 @@ read "path/var.m";
 给变量命名要么起一个英文名, 一看就知道是什么意思. 或者和文章中的符号保持一致.
 
 
-### 进阶
-#### 矩阵符号运算
+---
+
+## 进阶
+### 矩阵符号运算
 
 符号计算中, 当不确定矩阵维数时, 需要保证不满足交换律, 同时保持求导等运算. Maple的`Physics`包中提供了可以定义符号变量为非交换元素, 从而可用于矩阵的符号运算中去. 具体使用如下:
 ```javascript
@@ -496,7 +504,7 @@ Set(noncommutativeprefix={U, V, X, ... }):
 eq := U V - V U; # eq != 0.
 ```
 
-#### 自定义模块
+### 自定义模块
 
 在日常使用中, 对于经常要使用的代码, 可以封装成模块, 放在Maple库中, 方便使用. 像线性代数包`LinearAlgebra`, 微分方程包`PDETools` 等. 其定义方式类似于`procedure`函数,
 ```javascript
@@ -534,7 +542,9 @@ add(3, 5) # return 8
 在一些积分运算中或者求解微分方程时, 一些积分可以被完全积出来, 但是Maple却没有积出来. 此时需要对其进行一些处理.  -->
 
 
-### 下载
+---
+
+## 下载
 
 {{< download url="files/2023-03-02-example.mw" text="Maple 与 Darboux 变换" >}}
 

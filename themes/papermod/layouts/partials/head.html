@@ -116,11 +116,34 @@
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
 {{ end -}}
 
-<noscript>
     <style>
         #theme-toggle,
         .top-link {
             display: none;
+        }
+
+        .file-type-icon {
+            position: relative;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            top: 8px;
+            background-size: cover;
+        }
+            
+        .pdf-icon {
+            background-image: url("/myblog/icons/pdf.svg");
+            
+        }
+        .mw-icon {
+            background-image: url("/myblog/icons/maple.png");
+        }
+        .rar-icon, .zip-icon {
+            background-image: url("/myblog/icons/zip.svg");
+            
+        }
+        .exe-icon {
+            background-image: url("/myblog/icons/exe.svg");
         }
 
     </style>
@@ -154,7 +177,6 @@
 
     </style>
     {{- end }}
-</noscript>
 
 {{- partial "extend_head.html" . -}}
 

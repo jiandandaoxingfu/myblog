@@ -73,7 +73,7 @@ params:
           url: https://www.researchgate.net/profile/Jia-Minxin
         - name: GoogleScholar
           url: https://scholar.google.com.hk/citations?user=r69GvBsAAAAJ&hl=zh-CN
-        - name: Math Review
+        - name: MathReview
           url: https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1447439
 
     # home-info mode

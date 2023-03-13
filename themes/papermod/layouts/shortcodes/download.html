@@ -1,4 +1,4 @@
-<div id='{{ .Get "url" }}' class="post-tags">
+<span id='{{ .Get "url" }}' class="post-tags">
 	<style>
 		#download a::hover {
 			transform: scale(0.8);
@@ -7,7 +7,12 @@
     <script type="text/javascript">
         var url = window.location.href.replace(/#.*/, '') + '{{ .Get "url" }}'
         var text = '{{ .Get "text" }}';
-        var div  = document.getElementById('{{ .Get "url" }}');
-        div.innerHTML = `<a href='${url}' target="_blank" style="margin: 5px; display: inline-block; box-shadow: none;" download>${text}</a>`
+        var type = url.slice(url.lastIndexOf('.') + 1);
+        var span  = document.getElementById('{{ .Get "url" }}');
+        span.innerHTML = `
+        <a href='${url}' target="_blank" style="margin: 5px; display: inline-block; box-shadow: none;" download>
+            <span class="file-type-icon ${type}-icon"></span>
+        	${text}
+        </a>`
 </script>
-</div>
+</span>

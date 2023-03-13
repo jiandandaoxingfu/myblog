@@ -40,6 +40,9 @@ A software built in Python, which is used to
 - convert PDF to images
 - convert WORD to PDF (depends on office)
 
+{{< download url="https://github.com/jiandandaoxingfu/pdfdo/releases/download/v3.0/pdfdo.exe" text="pdfdo下载" >}}
+
+
 ### Experience
 
 #### Maki-Lab
