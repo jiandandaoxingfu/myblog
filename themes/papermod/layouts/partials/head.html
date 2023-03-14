@@ -116,7 +116,54 @@
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
 {{ end -}}
 
+<script>
+  document.addEventListener('click', e => {
+    if (e.target.className === "overlay" || e.target.parentElement.className === 'overlay') {
+        document.body.removeChild(document.querySelector('.overlay'));
+        return
+    }
+    if (e.target.tagName.toUpperCase() === "IMG") {
+        var img = e.target;
+        var overlay = document.createElement('div');
+        overlay.classList.add('overlay');            
+        var image = document.createElement('img');
+        image.src = img.src;
+        image.alt = img.alt;            
+        overlay.appendChild(image);
+        document.body.appendChild(overlay);            
+        var scale = 0.9 * Math.min(window.innerWidth / image.clientWidth, window.innerHeight / image.clientHeight);
+        image.style.transform = `scale(${scale})`;
+    }
+  })
+</script>
+
     <style>
+
+        img {
+            cursor: zoom-in;
+        }
+            
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            
+        .overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            z-index: 1000;
+        }
+
+
         #theme-toggle,
         .top-link {
             display: none;
