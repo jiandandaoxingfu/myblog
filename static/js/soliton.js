@@ -28,25 +28,17 @@ const soliton = () => {
 // rogue wave
 const rogue_wave = () => {
 	let coordinates = [];
-	let x_arr = seq(-10, 10, 0.4);
-	let t_arr = seq(-10, 10, 0.4);
+	let x_arr = seq(-10, 10, 0.2);
+	let t_arr = seq(-10, 10, 0.2);
 	for (let x of x_arr) {
 		for (let t of t_arr) {
-			if ((abs(x) < 3 && abs(t) < 3) || random() > 0.8) continue
-			let re = (cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)+(sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2);
-			let im = ((sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)-(cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2));
-			let z = 10 * sqrt(re**2 + im**2);
-			max_z = z > max_z ? z : max_z;
-			min_z = z < min_z ? z : min_z;
-			coordinates.push(x, t, z);
-		} 
-	} 
-
-	x_arr = seq(-3, 3, 0.2);
-	t_arr = seq(-3, 3, 0.2);
-	for (let x of x_arr) {
-		for (let t of t_arr) {
-			if (random() > 0.8) continue
+			if (abs(x) > 3 || abs(t) > 3) {
+				if (random() > 0.25) {
+					continue
+				}
+			} else if (random() > 0.8) {
+				continue
+			}
 			let re = (cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)+(sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2);
 			let im = ((sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)-(cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2));
 			let z = 10 * sqrt(re**2 + im**2);
@@ -64,15 +56,16 @@ let positionsArray = new Float32Array(coordinates);
 let positionAttribute = new THREE.BufferAttribute(positionsArray, 3); 
 geometry.setAttribute('position', positionAttribute);
 geometry.center();
-let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.075} );
+
+let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
 let points = new THREE.Points( geometry, material );
 scene.add( points );
-let x = 40 * (random() - 0.5);
-let y = 40 * (random() - 0.5);
-let z = 40 * (random() - 0.5);
-x = abs(x) < 15 ? 15 : x;
-y = abs(y) < 15 ? 15 : y;
-z = abs(z) < 15 ? 15 : z;
+let x = 60 * (random() - 0.5);
+let y = 60 * (random() - 0.5);
+let z = 60 * (random() - 0.5);
+x = abs(x) < 20 ? 20 : x;
+y = abs(y) < 20 ? 20 : y;
+z = abs(z) < 20 ? 20 : z;
 camera.position.set(x, y, z);
 
 var controls = new THREE.TrackballControls(camera);
