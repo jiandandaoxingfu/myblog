@@ -52,6 +52,8 @@
 {{- /* Add extended css after theme style */ -}}
 {{- $stylesheet := (slice $core $extended) | resources.Concat "assets/css/stylesheet.css" | minify }}
 
+<link rel="stylesheet" href="/myblog/static/css/index.css">
+
 {{- if not .Site.Params.assets.disableFingerprinting }}
 {{- $stylesheet := $stylesheet | fingerprint }}
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
@@ -116,84 +118,14 @@
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
 {{ end -}}
 
-<script>
-  document.addEventListener('click', e => {
-    if (e.target.className === "overlay" || e.target.parentElement.className === 'overlay') {
-        document.body.removeChild(document.querySelector('.overlay'));
-        return
-    }
-    if (e.target.tagName.toUpperCase() === "IMG") {
-        var img = e.target;
-        var overlay = document.createElement('div');
-        overlay.classList.add('overlay');            
-        var image = document.createElement('img');
-        image.src = img.src;
-        image.alt = img.alt;            
-        overlay.appendChild(image);
-        document.body.appendChild(overlay);            
-        var scale = 0.9 * Math.min(window.innerWidth / image.clientWidth, window.innerHeight / image.clientHeight);
-        image.style.transform = `scale(${scale})`;
-    }
-  })
-</script>
-
+<noscript>
     <style>
-
-        img {
-            cursor: zoom-in;
-        }
-            
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-            
-        .overlay img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-            z-index: 1000;
-        }
-
-
         #theme-toggle,
         .top-link {
             display: none;
         }
-
-        .file-type-icon {
-            position: relative;
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            top: 8px;
-            background-size: cover;
-        }
-            
-        .pdf-icon {
-            background-image: url("/myblog/icons/pdf.svg");
-            
-        }
-        .mw-icon {
-            background-image: url("/myblog/icons/maple.png");
-        }
-        .rar-icon, .zip-icon {
-            background-image: url("/myblog/icons/zip.svg");
-            
-        }
-        .exe-icon {
-            background-image: url("/myblog/icons/exe.svg");
-        }
-
     </style>
+
     {{- if (and (ne .Site.Params.defaultTheme "light") (ne .Site.Params.defaultTheme "dark")) }}
     <style>
         @media (prefers-color-scheme: dark) {
@@ -224,6 +156,7 @@
 
     </style>
     {{- end }}
+</noscript>
 
 {{- partial "extend_head.html" . -}}
 
@@ -234,3 +167,64 @@
 {{- template "partials/templates/twitter_cards.html" . }}
 {{- template "partials/templates/schema_json.html" . }}
 {{- end -}}
+
+
+<script>
+// 图片凸显
+document.addEventListener('click', e => {
+    if (e.target.className === "overlay" || e.target.parentElement.className === 'overlay') {
+        document.body.removeChild(document.querySelector('.overlay'));
+        return
+    }
+    if (e.target.tagName.toUpperCase() === "IMG") {
+        var img = e.target;
+        var overlay = document.createElement('div');
+        overlay.classList.add('overlay');            
+        var image = document.createElement('img');
+        image.src = img.src;
+        image.alt = img.alt;            
+        overlay.appendChild(image);
+        document.body.appendChild(overlay);            
+        var scale = 0.9 * Math.min(window.innerWidth / image.clientWidth, window.innerHeight / image.clientHeight);
+        image.style.transform = `scale(${scale})`;
+    }
+})
+
+// 亮色主题时绘制孤子图
+let scene, camera, renderer;
+window.onload = () => {
+    if (window.location.href.endsWith('myblog/')) {
+        let script = document.createElement('script');
+        script.src =  '/myblog/static/js/three.min.js';
+        document.head.appendChild(script);
+        setTimeout( () => {            
+            scene = new THREE.Scene();            
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight 0.1, 10000);
+            renderer = new THREE.WebGLRenderer();
+            renderer.setClearColor('#f5f5f5');
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            let div = document.createElement('div');
+            div.setAttribute('class', 'three-container');
+            div.appendChild(renderer.domElement);
+            document.body.appendChild(div);
+            renderer.render(scene, camera);
+
+            [
+                '/myblog/static/js/OrbitControls.js',
+                '/myblog/static/js/TrackballControls.js',
+            ].forEach( url => {
+                let script = document.createElement('script');
+                script.src = url;
+                document.head.appendChild(script);
+            })
+
+            setTimeout( () => {
+                let script = document.createElement('script');
+                script.src = '/myblog/static/js/soliton.js';
+                document.head.appendChild(script);
+            }, 150)
+        }, 250)
+    }
+}
+</script>
+

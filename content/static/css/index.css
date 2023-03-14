@@ -1,0 +1,63 @@
+.three-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: transparent;
+    z-index: -1;
+    overflow: hidden;
+}
+    
+img {
+    cursor: zoom-in;
+}
+    
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.overlay img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    z-index: 1000;
+}
+    
+.file-type-icon {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    top: 8px;
+    background-size: cover;
+}
+    
+.pdf-icon {
+    background-image: url("/myblog/static/icons/pdf.svg");
+    
+}
+.mw-icon {
+    background-image: url("/myblog/static/icons/maple.png");
+}
+.rar-icon, .zip-icon {
+    background-image: url("/myblog/static/icons/zip.svg");
+    
+}
+.exe-icon {
+    background-image: url("/myblog/static/icons/exe.svg");
+}
+
+body.dark > .three-container {
+	display: none;
+}
