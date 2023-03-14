@@ -5,8 +5,6 @@ const sqrt = Math.sqrt;
 const sech = x => 1 / Math.cosh(x);
 const abs = Math.abs;
 const random = Math.random;
-let max_z = 0, min_z = 100;
-
 
 // soliton
 const soliton = () => {
@@ -17,8 +15,6 @@ const soliton = () => {
 		for (let t of t_arr) {
 			if (random() > 0.6) continue
 			let z = 6 * sech(x + 0.1 * t)**2;
-			max_z = z > max_z ? z : max_z;
-			min_z = z < min_z ? z : min_z;
 			coordinates.push(x, t, z);
 		} 
 	}
@@ -42,8 +38,6 @@ const rogue_wave = () => {
 			let re = (cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)+(sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2);
 			let im = ((sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)-(cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2));
 			let z = 10 * sqrt(re**2 + im**2);
-			max_z = z > max_z ? z : max_z;
-			min_z = z < min_z ? z : min_z;
 			coordinates.push(x, t, z);
 		} 
 	} 
@@ -60,6 +54,7 @@ geometry.center();
 let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
 let points = new THREE.Points( geometry, material );
 scene.add( points );
+
 let x = 60 * (random() - 0.5);
 let y = 60 * (random() - 0.5);
 let z = 60 * (random() - 0.5);
