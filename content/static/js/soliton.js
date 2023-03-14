@@ -33,8 +33,12 @@ const rogue_wave = () => {
 	for (let x of x_arr) {
 		for (let t of t_arr) {
 			if (abs(x) > 3 || abs(t) > 3) {
-				if (random() > 0.25) continue
-			} else if (random() > 0.8) continue
+				if (random() > 0.25) {
+					continue
+				}
+			} else if (random() > 0.8) {
+				continue
+			}
 			let re = (cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)+(sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2);
 			let im = ((sin((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)+cos((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(16*t**2+x**2+2)/((16*t**2+x**2+2)**2+(8*t-2*x)**2)-(cos((1/2)*x)*(-16*t**2-x**2-4*sqrt(2)+2)-sin((1/2)*x)*(4*x*sqrt(2)-8*t-2*x))*(8*t-2*x)/((16*t**2+x**2+2)**2+(8*t-2*x)**2));
 			let z = 10 * sqrt(re**2 + im**2);
@@ -52,6 +56,7 @@ let positionsArray = new Float32Array(coordinates);
 let positionAttribute = new THREE.BufferAttribute(positionsArray, 3); 
 geometry.setAttribute('position', positionAttribute);
 geometry.center();
+
 let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
 let points = new THREE.Points( geometry, material );
 scene.add( points );
