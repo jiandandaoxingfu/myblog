@@ -58,6 +58,10 @@ img {
     background-image: url("/myblog/static/icons/exe.svg");
 }
 
+.tex-icon {
+    background-image: url("/myblog/static/icons/tex.svg");
+}
+
 body.dark > .three-container {
 	display: none;
 }
