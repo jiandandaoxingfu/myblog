@@ -44,18 +44,57 @@ const rogue_wave = () => {
 	return coordinates;
 }
 
-let geometry = new THREE.BufferGeometry();
-let coordinates = random() > 0.5 ? soliton() : rogue_wave();
-let positionsArray = new Float32Array(coordinates);
-let positionAttribute = new THREE.BufferAttribute(positionsArray, 3); 
-geometry.setAttribute('position', positionAttribute);
-geometry.center();
+let rogue_wave_3d_x = [];
+let rogue_wave_3d_y = [];
 
-let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
-let points = new THREE.Points( geometry, material );
-scene.add( points );
+(function() {
+	let x_arr = seq(-15, 45.6, 0.6);
+	let y_arr = seq(-15, 45.6, 0.6);
+	for (let x of x_arr) {
+		for (let y of y_arr) {
+			rogue_wave_3d_x.push(x);
+			rogue_wave_3d_y.push(y);
+		} 
+	} 
+})()
 
-camera.position.set(0, -30, 30);
+const rogue_wave_3d = (iframe) => {
+	let coordinates = [];
+	for (let i=0; i<rogue_wave_3d_x.length; i++) {
+		if (iframes[iframe][i] < 1 && random() < 0.6) continue;
+		coordinates.push(rogue_wave_3d_x[i], rogue_wave_3d_y[i], iframes[iframe][i]);
+	}
+	return coordinates;
+}
+
+camera.position.set(0, 0, 70);
+
+let points_arr = [];
+const rogue_wave_3d_points_arr = () => {
+	for (let i=0; i<iframes.length; i++) {
+		let geometry = new THREE.BufferGeometry();
+		let coordinates = rogue_wave_3d(i);
+		let positionsArray = new Float32Array(coordinates);
+		let positionAttribute = new THREE.BufferAttribute(positionsArray, 3); 
+		geometry.setAttribute('position', positionAttribute);
+		geometry.center();
+		
+		let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
+		points_arr.push( new THREE.Points( geometry, material ) );
+	}
+}
+rogue_wave_3d_points_arr();
+
+let count = 0;
+setInterval( () => {
+	while (scene.children.length > 0) {
+		scene.remove(scene.children[0]);
+	}
+	count++;
+	if (count > 50) count = 1;
+	
+	scene.add( points_arr[count] );
+}, 100)
 
 var controls = new THREE.TrackballControls(camera);
 (function animate() {
