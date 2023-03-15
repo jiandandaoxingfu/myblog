@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-13 14:34:50 +0800
+lastmod: 2023-03-15 08:27:25 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -449,6 +449,12 @@ plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
 plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 ```
 ![plot](images/plot.png)
+Maple 还可以绘制动画, 例如我们有一个(2+1)-维偏微分方程的解, 那么可以将时间`t`作为参数进行绘制, 看图形随时间的演化
+```javascript
+with(plots):
+animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 50, t = 0 .. 50);
+```
+![animation](images/animation.gif)
 
 ### 文件读取
 ```javascript
