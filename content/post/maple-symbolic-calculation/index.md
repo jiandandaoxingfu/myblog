@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-15 09:19:31 +0800
+lastmod: 2023-03-15 15:29:24 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -461,8 +461,9 @@ animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 5
 
 ### 文件读取
 ```javascript
-save var1, var2, ..., "path/var.m";
+save var1, var2, ..., "path/var.m"; # 保存多个变量到文件
 read "path/var.m";
+ExportMatrix("F:data.txt", mat) # 保存矩阵到记事本文件, mat为矩阵
 ```
 
 ---
