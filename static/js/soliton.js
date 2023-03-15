@@ -55,13 +55,7 @@ let material = new THREE.PointsMaterial( { color: 0x000000, size: 0.08} );
 let points = new THREE.Points( geometry, material );
 scene.add( points );
 
-let x = 60 * (random() - 0.5);
-let y = 60 * (random() - 0.5);
-let z = 60 * (random() - 0.5);
-x = abs(x) < 20 ? 20 : x;
-y = abs(y) < 20 ? 20 : y;
-z = abs(z) < 20 ? 20 : z;
-camera.position.set(x, y, z);
+camera.position.set(0, -30, 30);
 
 var controls = new THREE.TrackballControls(camera);
 (function animate() {
