@@ -1,7 +1,7 @@
 ---
 title: "Sublime-Latex"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2023-03-11 20:31:29 +0800
+lastmod: 2023-03-16 14:09:09 +0800
 summary: '学习给 sublime 写插件'
 tags: ["sublime", "plugin"]
 categories: ["编程", "sublime", "python"]
@@ -106,4 +106,33 @@ class MatchQuotationMarkCommand(sublime_plugin.TextCommand):
 随后在快捷键定义中使用
 ```javascript
 "keys": ["ctrl+'"], "command": "match_quotation_mark"
+```
+
+由 ChatGPT 写的更好, 支持多选
+```python
+import sublime
+import sublime_plugin
+import re
+
+class MatchQuotationMarkCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selections = self.view.sel()
+        new_selections = []
+        for sel in selections:
+            # 获取光标所在位置
+            pos = sel.begin()
+            # 获取包含光标所在位置的引号
+            quote_regions = self.view.find_by_selector('string.quoted')
+            for region in quote_regions:
+                if region.contains(pos):
+                    # 获取引号的内容并创建新的选区
+                    quote_char = self.view.substr(region)
+                    string_region = self.view.extract_scope(region.begin() + 1)
+                    string_region = sublime.Region(string_region.begin() + 1, string_region.end() - 1)
+                    new_selections.append(string_region)
+                    break
+        # 更新选区
+        selections.clear()
+        for sel in new_selections:
+            selections.add(sel)
 ```
