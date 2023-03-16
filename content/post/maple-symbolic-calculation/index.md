@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-15 15:29:24 +0800
+lastmod: 2023-03-16 11:24:28 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -20,6 +20,9 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 
 ---
+
+{{< katex >}}
+
 这里简单介绍一下Maple的使用. Maple和Mathematica (简称mma)以及Matlab并称为三大科学计算软件.
 后两个软件的使用者很多, 网上教程也比较丰富. 
 目前国内使用Maple的较少, 资料不多, 网上很多东西都搜不到.
@@ -464,6 +467,77 @@ animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 5
 save var1, var2, ..., "path/var.m"; # 保存多个变量到文件
 read "path/var.m";
 ExportMatrix("F:data.txt", mat) # 保存矩阵到记事本文件, mat为矩阵
+```
+
+## 一些有趣的例子
+- 考虑下面的多项式
+```javascript
+eq := -u(n+2) v(n-2)^2
+	-v(n-4) u(n)
+	+3 v(n-3) w(n-3) u(n)^2
+	+v(n-3) u(n) w(n-1)
+	+v(n-2) u(n+1) w(n)
+	+u(n+2) v(n-1) w(n-1)
+	+v(n-3) u(n) v(n-2) u(n-1)
+	-4 v(n-3) v(n-4) u(n-3) u(n)
+	+v(n-4) u(n-2) u(n) v(n-2)
+	+v(n+1) u(n+2) v(n-2) u(n+1)
+	+u(n+2) v(n-1) v(n-2) u(n-1)
+	+u(n+2) u(n) v(n-2) v(n)
+	-w(n-2) u(n) v(n-2) w(n-1)
+	+u(n)^2 v(n-2)^2+v(n-4) v(n-1) u(n) u(n-1)^2
+	+v(n-1) u(n) v(n-2) u(n+1)
+	-v(n-1) w(n-1) u(n+1) w(n)
+	+-2 v(n-1) u(n)^2 v(n-2) w(n-1)
+	-u(n+2) v(n-1) u(n) w(n-1) v(n)
+	-v(n-3) w(n-3) u(n-2) u(n) v(n-2)
+	-v(n-3) u(n-2) u(n) v(n-2) w(n-1)
+	-v(n-3) v(n-1) u(n) u(n-1) w(n-1)
+	-v(n+1) u(n+2) v(n-1) w(n-1) u(n+1)
+	-w(n-2) u(n) v(n-2)^2 u(n-1)
+	-v(n-1)^2 u(n) w(n-1) u(n+1)
+	-u(n) v(n-2) v(n) u(n+1) w(n)
+	-v(n-1) v(n-2) u(n-1) u(n+1) w(n)
+	-v(n-3) w(n-3) v(n-1) u(n) u(n-1)
+	+v(n-1)^2 u(n)^2 w(n-1)^2-v(n-3) u(n-2) u(n) v(n-2)^2 u(n-1)
+	-2 v(n-1) u(n)^2 v(n-2)^2 u(n-1)
+	-v(n+1) u(n+2) u(n) v(n-2) v(n) u(n+1)
+	-u(n+2) v(n-1) u(n) v(n-2) u(n-1) v(n)
+	-v(n+1) u(n+2) v(n-1) v(n-2) u(n-1) u(n+1)
+```
+每个单项式由 $u, v, w$ 及其它们的位移相乘, 想要根据因子数(按重数记, 如第一项有三个因子, 第二项有两个)进行分类. 
+首先利用 `op` 函数对其分解
+```javascript
+eqs := [ op(eq) ];
+```
+然后使用 `map` 函数对每一项进行处理. 问题在于怎么判断因子数.
+一个比较简单的想法是令 $u=v=w=10$, 这样每一项都会变成 $10$ 的倍数, 只需要数 $0$ 的个数就可以了 (这里 $10$ 要大于每一项前面的系数, 不然就取更大的数).
+```javascript
+num := subss( { u(n)=10, v(n)=10, w(n)=10 }, eqs ); # subss 是对 subs 的改写, 可以替换 u(n-1), u(n+1), ...
+# 这样, 结果就变成了
+# num = [-10^3, -10^2, 3*10^4, ...]
+```
+那么怎么数 $0$ 的个数呢? 可以考虑对绝对值取以 $10$ 为底的对数(注意到 $\log_{a}b = \frac{\log a}{\log b}$), 即
+```javascript
+num2 := map( a -> evalf( log( abs(a) ) / log(10) ),  num );  #  [ 3, 2, 4 + log 4/ log 10, ... ]
+```
+注意, 这里因为每一项前面可能有一个系数 (小于 $10$), 所以会出现小数 (小于 $1$). 因此只需要再取下整即可.
+```javascript
+num3 := map( floor, num2 ) # [3, 2, 4, ...]
+```
+这样, 就可以根据每一项对应的 `num3` 中的值来进行分类.
+```javascript
+map( a -> if floor( evalf( log( abs(subss( { u(n)=10, v(n)=10, w(n)=10 }, a )) ) / log(10) ) ) = 3 then a end if, eqs );
+```
+这样就把因子数为 $3$ 的单项式挑出来了.
+然后再用 `convert` 把它们加起来:
+```javascript
+convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(n)=10 }, a ) ) ) / log(10) ) ) = 3 then a end if, eqs ), `+`); 
+```
+当然也可以用序列把每一类都加起来:
+```javascript
+eqs := [ op(eq) ]; 
+seq( convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(n)=10 },  a) ) ) / log(10) ) ) = i then a end if, eqs ), `+`), i=1..10)
 ```
 
 ---
