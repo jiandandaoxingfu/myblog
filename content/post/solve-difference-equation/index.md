@@ -1,7 +1,7 @@
 ---
 title: "Maple求解差分方程"
 date: 2022-01-11 19:31:32 +0800
-lastmod: 2023-03-11 20:31:36 +0800
+lastmod: 2023-03-16 15:21:14 +0800
 summary: '利用Maple求解差分方程的算法'
 tags: ["Maple", "solve difference equation"]
 categories: ["Maple"]
@@ -155,3 +155,4 @@ $$
 | **Deltam**:| $\text{Deltam}(a(n), k)=a(n) + a(n+1) + \dots + a(n+k).$|
 | **shift**:| 位移算子, $\text{shift}(a(n), k)=a(n+k)$|
 | **subss**:| 离散替换, `subss({ a(n)=b(n) }, expr) = subs({a(n-10)=b(n-10), ... a(n) = b(n), ..., a(n+10) = b(n+10)}, expr)`, 其中subs是Maple内置的替换函数. |
+| **algsubss**:| 离散代数替换, 与 subss 类似. |

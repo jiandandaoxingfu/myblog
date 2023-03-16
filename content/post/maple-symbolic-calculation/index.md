@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-16 13:55:04 +0800
+lastmod: 2023-03-16 15:18:50 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -319,10 +319,15 @@ CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 
 ### 替换
 ```javascript
+# 表达式替换
 subs(x=1, expr);
 subs(x=1, y=2, expr);
 subs({ x=1, y=2 }, expr);
 subs({ x=1 }, { y=2 }, expr);
+ 
+# 代数替换, subs替换模式是精确替换, 而代数替换会考虑代数关系
+subs( x + y + z = t, expr ) # 只有当 x + y + z 项才会被替换
+algsubs( x + y + z = t, expr ) # 一次只能有一个代数表达式, 与 subs 不同
 
 # 微分替换, 常用于具有导数的式子
 with(PDETools):
