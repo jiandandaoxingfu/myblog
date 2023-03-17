@@ -190,39 +190,15 @@ document.addEventListener('click', e => {
     }
 })
 
-// 亮色主题时绘制孤子图
-let scene, camera, renderer;
 window.onload = () => {
     if (window.location.href.endsWith('myblog/')) {
         let script = document.createElement('script');
         script.src =  '/myblog/static/js/three.min.js';
         document.head.appendChild(script);
         setTimeout( () => {            
-            scene = new THREE.Scene();            
-            camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight 0.1, 10000);
-            renderer = new THREE.WebGLRenderer();
-            renderer.setClearColor('#f5f5f5');
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            let div = document.createElement('div');
-            div.setAttribute('class', 'three-container');
-            div.appendChild(renderer.domElement);
-            document.body.appendChild(div);
-            renderer.render(scene, camera);
-
-            [
-                '/myblog/static/js/OrbitControls.js',
-                '/myblog/static/js/TrackballControls.js',
-            ].forEach( url => {
-                let script = document.createElement('script');
-                script.src = url;
-                document.head.appendChild(script);
-            })
-
-            setTimeout( () => {
-                let script = document.createElement('script');
-                script.src = '/myblog/static/js/soliton.js';
-                document.head.appendChild(script);
-            }, 150)
+            let script = document.createElement('script');
+            script.src = '/myblog/static/js/icon3d.js';
+            document.head.appendChild(script);
         }, 250)
     }
 }
