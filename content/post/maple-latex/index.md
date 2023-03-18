@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-03-16 10:16:08 +0800
+lastmod: 2023-03-18 10:51:41 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -35,8 +35,7 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 ![gui](images/gui.jpg)
 其中左侧为按钮区和输入区, 右侧为显示区.
 
-
-> 它的[最初版本](https://jiandandaoxingfu.github.io/maple-latex-version0/)是2018年1月14日制作的, 只涉及一些数学符号的GUI输入. 
+它的[最初版本](https://jiandandaoxingfu.github.io/maple-latex-version0/)是2018年1月24日制作的, 只涉及一些数学符号的GUI输入. 
 当时的想法是把tex中的数学符号用mathjax显示在网页上, 这样手机也可以写一些简单的数学公式, 虽然没啥用.
 当初还不知道 github 可以部署静态页面, 所以那时候是通过文件传输弄到手机或者电脑上, 本地使用.
 而且当时代码水平也一般, 所以做的很简陋.
@@ -71,13 +70,14 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 使用步骤如下: 首先使用 mathpix snipping tool 识别 PDF 文件或图片中的数学公式，然后将其生成的 Tex 代码复制到输入框，点击按钮即可将Tex代码转成相应的Maple程序。 
 
 此程序主要做如下工作:
-- 去除 tex 环境, 如`\begin{equation}...\end{equation}`, 换行符 `\\`, `\left, \right`等.
-- 导数转化, 如 `u_{xxx}` 转化为 `diff(u, x$3)`. 需要注意的是, 这里需要提前在程序中定义 `alias(u=u(x))`.
-- 位移转化, 如 `u^{+++}` 转化为 `shift(u, 3)`. 同样需要注意, 需要提前定义`alias(u=u(n))`.
-- 上/下标转化, 如 `alpha_1` 转化为 `alpha[1]`, 其在 maple 中显示为 $\alpha_1$. `s^{2x + t}` 转化为 `s^(2 x + t)`.
-因此, 对于太复杂的公式, 可能并不适用.
-- 分式转化, 如 `\frac{a}{b}` 转化为 `a / b`.
-- 函数转化, 默认把 $e^k$ 中的 $e$ 转化为 $\exp$ 函数, $\ln$ 函数转化为 $\log$ 函数.
+|功能|目的|
+|:-|:-|
+|去除 tex 环境 |  如`\begin{equation}...\end{equation}`, 换行符 `\\`, `\left, \right`等.|
+|导数转化 |  如 `u_{xxx}` 转化为 `diff(u, x$3)`. 需要注意的是, 这里需要提前在程序中定义 `alias(u=u(x))`.|
+|位移转化 |  如 `u^{+++}` 转化为 `shift(u, 3)`. 同样需要注意, 需要提前定义`alias(u=u(n))`.|
+|上/下标转化 |  如 `alpha_1` 转化为 `alpha[1]`, 其在 maple 中显示为 $\alpha_1$. `s^{2x + t}` 转化为 `s^(2 x + t)`. 因此, 对于太复杂的公式, 可能并不适用.|
+|分式转化 |  如 `\frac{a}{b}` 转化为 `a / b`.|
+|函数转化 | 默认把 $e^k$ 中的 $e$ 转化为 $\exp$ 函数, $\ln$ 函数转化为 $\log$ 函数.|
 
 下面是一些例子
 - 单行公式
