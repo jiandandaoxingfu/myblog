@@ -92,6 +92,6 @@ requestAnimationFrame(function animate() {
 });
 
 window.addEventListener('mousemove', (event) => {
-	mouse.x = 1 - (event.clientX / window.innerWidth) * 15;
-	mouse.y = (event.clientY / window.innerHeight) * 15 - 1;
+	mouse.x = 1 - ( (event.clientX - 0.5 * window.innerWidth) / window.innerWidth) * 15;
+	mouse.y = ( (event.clientY - 0.5 * window.innerHeight) / window.innerHeight) * 15 - 1;
 })
