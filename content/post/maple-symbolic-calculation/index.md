@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-18 08:07:46 +0800
+lastmod: 2023-03-18 09:23:36 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -388,6 +388,9 @@ convert( [1, 2, 3, 4], Matrix, 2 );
 convert( seq( seq(V[j, i](x), i=1..3), j=1..3 ), Matrix, 3, 3 ) # (V_{ij})_{3*3} # 列表转矩阵
 ```
 ![convert](images/convert.png)
+另外, 有时候在处理一些矩阵或者数组时, 需要转成字符串来处理. 之后再转回来. 这需要使用 `parse` 来解析.
+![parse](images/parse.jpg)
+
 
 ### 微分/积分
 ```javascript
