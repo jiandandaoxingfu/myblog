@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-03-18 10:51:41 +0800
+lastmod: 2023-03-19 15:23:31 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -118,13 +118,10 @@ $$e^{(2i x + 3 it + 4)},$$
 ![latex2maple5](images/latex2maple5.jpg)
 
 ### maple2mma
-将Maple中的数学公式转为Mathematics公式，主要是诸如sin(x) --> Sin[x]之间的转化。 只需直接复制Maple输出的数学公式到输入框，点击按钮即可。 
-注意, 这里的数学公式指的是 maple 输出的数学公式, 而不是经 `latex` 函数转化以后的结果. 
-目前支持的函数有:
-```javascript
-exp, log, abs, sqrt, conjugate, Re, Im,
-sin, cos, tan, sinh, cosh, tanh, sech, csch;
-```
+将Maple中的数学公式转为Mathematics公式，主要是诸如sin(x) --> Sin[x]之间的转化。 只需直接复制Maple输出的数学公式到输入框(注意, 这里的数学公式指的是 maple 输出的数学公式, 而不是经 `latex` 函数转化以后的结果)，点击按钮, 会出现一个小窗口
+![maple2mma](images/maple2mma.jpg)
+罗列出 maple 表达式中每个函数对应于 mma 中的函数(可以修改), 点击 `转换` 按钮即可.
+
 
 ### DT-gT & DT-coe
 主要用于经典达布变换系数的整理。 
