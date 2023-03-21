@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-18 11:02:04 +0800
+lastmod: 2023-03-21 18:03:11 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -75,9 +75,11 @@ Maple的安装包大概只有`1G`, 后两个动辄`10G`.
 | 下标 | 需要用 `[]`, 下标放在中括号里面即可.|
 | 分式 | 输入 `/` 会直接变成分式.|
 | 希腊字母 | 希腊字母的英文名输入直接变成数学符号, 输入中如果用 `^` 作用一次, 也会直接变成数学符号, 更加清晰.|
+| 百分号 | 在 Maple 中, 可以用 `%` 来表示上一步运行的结果, 直接引用, 免去定义或者复制.|
 
 示例
 ![下标](images/input-sub.jpg)
+![%](images/%.jpg)
 
 ### 定义变量
 ```javascript
@@ -319,14 +321,21 @@ simplify / factor / expand / numer / denom
 expr := x^3 + 2 x^4 + (x+1)^3 + (2 x +3 y)^2 + y^2;
 collect(expr, x);
 collect(expr, [x, y]); # 先对 x 再对 y
+collect(expr, diff); 
+collect(expr, exp);
+collect(expr, sin);
 degree(expr, x) # x的次数
 ldegree(expr, x) # x最低次幂
 coeff(expr, x, 3) # x^3 的系数
 lcoeff(expr, x)  # x最高次幂的系数
 tcoeff(expr, x)  # x最低次幂的系数
+coeffs(expr, x); # x 的各次幂系数
 
 with(PolynomialTools):
 CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
+
+with(PDETools):
+dcoeffs(expr, u); # u 的各阶导数的系数
 ```
 ![coeff](images/coeff.png)
 
@@ -386,6 +395,10 @@ convert( 1/3, float ) #  return 0.3333333...
 convert( f(x), string ) # return "f(x)"
 convert( "f", symbol ) # return f
 convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
+convert(expr, sin); # 把所有函数都用正弦函数来表示
+convert(expr, exp); 
+convert(expr, sech);
+
 # 也可用 op
 { op( [1, 2, 3, 4] ) }; # { 1, 2, 3, 4 }
 convert( [1, 2, 3, 4], Matrix, 2 );
