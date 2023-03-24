@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-21 18:03:11 +0800
+lastmod: 2023-03-24 12:03:17 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -656,9 +656,6 @@ add(3, 5) # return 8
 ```
 非常的方便.
 
-<!-- - 完全积分
-在一些积分运算中或者求解微分方程时, 一些积分可以被完全积出来, 但是Maple却没有积出来. 此时需要对其进行一些处理.  -->
-
 
 ---
 
@@ -671,5 +668,8 @@ add(3, 5) # return 8
 {{< download url="files/2023-02-24-王鑫-离散BC.mw" text="离散可积方程的 Darboux 变换" >}}
 
 {{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
+
+> 上面的`离散可积方程的Darboux变换`程序中用到了 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包中的一些函数, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
+这两个包的下载和使用方法可以参见文档 [SolveDifferenceEq](https://jiandandaoxingfu.github.io/myblog/post/solve-difference-equation/) 和 [DiscreteHierarchy](https://jiandandaoxingfu.github.io/myblog/post/derive-hierarchy/).
 
 
