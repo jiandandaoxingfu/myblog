@@ -1,7 +1,7 @@
 ---
-title: "科研工具与论文写作"
+title: "论文写作与科研工具"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2023-03-13 12:55:14 +0800
+lastmod: 2023-03-26 15:45:54 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -20,6 +20,7 @@ ShowBreadCrumbs: false
 ShowPostNavLinks: true
 ---
 
+{{< katex >}}
 
 收集一些科研和论文写作中常用的网站.
 
@@ -27,7 +28,7 @@ ShowPostNavLinks: true
 ---
 
 ## 论文跟踪
-> 孤立子与可积系统方向比较好的期刊(部分):    
+> 数学中一些较好的期刊(部分): 
 [Ann. Math.](),&nbsp;
 [Math. Ann.](),&nbsp;
 [Bull. Amer. Math. Soc.](),&nbsp;
@@ -75,7 +76,47 @@ ShowPostNavLinks: true
 
 ---
 
-## 论文撰写以及拼写检查
+## 论文撰写格式规范
+
+### 省略号
+latex中有三个常用的水平省略号命令, 分别是 `\cdots`, `\ldots` 和 `\dots`, 其中前两个分别是(竖直)居中和底部, 后一个会自适应, 即根据所在环境自动调整居中或底部, 大多数情况下都能够很好的自适应, 部分环境需要使用前两个来弥补. 通常来说, 数学运算, 如等号, 加法, 乘法, 并, 交需要使用居中省略号, 而列举则使用底部省略号, 如下所示
+```latex
+1, 2, \dots, N, 
+a = b = \dots = f = 0, 
+T_1T_2 \dots T_N,  % error
+T_1T_2 \cdots T_N, 
+T_1 + T_2 + \dots + T_N, 
+a_n \lambda^n + a_{n-1}\lambda^{n-1} + \dots, % error
+a_n \lambda^n + a_{n-1}\lambda^{n-1} + \cdots, 
+S_1 \cup S_2 \cup\dots\cup S_n, 
+```
+\begin{array}{l}
+	1, 2, \dots, N, \\\\
+	a = b = \dots = f = 0, \\\\
+	T_1T_2 \dots T_N, \\\\
+	T_1T_2 \cdots T_N, \\\\
+	T_1 + T_2 + \dots + T_N, \\\\
+	a_n \lambda^n + a_{n-1}\lambda^{n-1} + \dots, \\\\
+	a_n \lambda^n + a_{n-1}\lambda^{n-1} + \cdots, \\\\
+	S_1 \cup S_2 \cup\dots\cup S_n.
+\end{array}
+可以看出 `\dots` 具有很强的适应性, 它根据左右两侧的运算符来进行自适应. 如果缺少, 则可能会判断错误.
+
+### 学位论文
+- 论文中的章节安排是接下来要做的工作, 不能使用过去时, 比如 _得到了..._, _给出了..._, 应该把 _了_ 去掉.
+
+- 本文应该翻译为 _in this thesis_, 而不是 _in this paper_.
+
+- _我们_ 不要用的过于频繁.
+
+- 正确运用标点符号, 该断句就断句.
+
+
+
+
+--- 
+
+## 拼写检查
 ### grammarly
 [grammarly](https://app.grammarly.com/) 可以帮助我们检查论文中的拼写, 单复数, 用词不当等明显错误. 它提供在线版和桌面版两种方式, 都需要注册账号. 我们只需要使用免费版即可. 
 
@@ -92,7 +133,7 @@ ChatGPT 是 OpenAI 实验室在2022年年底放出来的人工智能对话机器
 比如让它帮忙找tex编译错误, tex, maple编程等.
 ChatGPT 完全颠覆了人们以往对各种语音助手的认知.
 官方入口[chatgpt](https://chat.openai.com/chat)需要翻墙, 不容易使用.
-目前OpenAI开放了API接口, 然后有一些个人利用这些接口二次开发, 使得它能够支持国内访问, 如[freechatgpt](https://freechatgpt.chat/).
+目前OpenAI开放了API接口, 然后有一些个人利用这些接口二次开发, 使得它能够支持国内访问, 如[freechatgpt](https://freechatgpt.chat/), [AI EDU](https://chat.forchange.cn/).
 
 ---
 
