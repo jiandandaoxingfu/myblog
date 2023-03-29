@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-29 15:56:41 +0800
+lastmod: 2023-03-29 18:38:19 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -461,6 +461,15 @@ dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... })
 # 同样右端等于0可以省略
 ```
 ![dsolve](images/dsolve.png)
+
+
+### 泰勒展式与幂级数展开
+```javascript
+taylor( f(x), x=0, 3 ) #  在 x=0 处展开, 精确到 x^3
+series( f(x) / x, x=0, 3 ) # 类似
+convert( series( f(x) / x, x=0, 3 ), polynom ) # 去掉大 O 项
+```
+![taylor](images/taylor.png)
 
 
 ### 符号连接
