@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-24 12:03:17 +0800
+lastmod: 2023-03-29 15:56:41 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -475,6 +475,7 @@ convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij
 ### 类型判断
 ```javascript
 is(5 > 10) # false
+hasfun(diff(g(x), x), diff);
 has(sin(x) + cos(x), `sin`) # true
 whattype(x) # symbol
 whattype(exp(x)) # function
@@ -503,8 +504,11 @@ read "path/var.m";
 ExportMatrix("F:data.txt", mat) # 保存矩阵到记事本文件, mat为矩阵
 ```
 
+--- 
+
 ## 一些有趣的例子
-- 考虑下面的多项式
+### 多项式处理
+考虑下面的多项式
 ```javascript
 eq := -u(n+2) v(n-2)^2
 	-v(n-4) u(n)
@@ -573,6 +577,19 @@ convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(n)=10
 eqs := [ op(eq) ]; 
 seq( convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(n)=10 },  a) ) ) / log(10) ) ) = i then a end if, eqs ), `+`), i=1..10)
 ```
+
+### 微分表达式处理
+考虑下面的微分多项式
+$$
+expr := -\frac{i}{2} u^{3}v \alpha_{5}+i u^{2}\alpha_{3}-\frac{i}{2} u^{3}v \alpha_{4}+i u^{2}\alpha_{2}+\frac{i}{2} v^{3}u \alpha_{5}-i v^{2}\alpha_{3}+\frac{i}{2} v^{3}u \alpha_{4}-i v^{2}\alpha_{2}-\frac{1}{2} u_{x} u \alpha_{5}-\frac{1}{2} u_{x} u \alpha_{4}-\frac{1}{2} v_{x} v \alpha_{5}-\frac{1}{2} v_{x} v \alpha_{4} .
+$$
+我们想要获取上式中不含导数的部分, 只需使用如下命令
+```javascript
+convert( remove(hasfun, [ op(expr) ], diff), `+`) 
+# or
+convert( select( f -> not( hasfun(f, diff) ), [ op(expr) ]), `+`) 
+```
+
 
 ---
 
