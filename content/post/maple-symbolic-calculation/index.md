@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-29 18:38:19 +0800
+lastmod: 2023-03-30 09:52:00 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -381,6 +381,8 @@ op( 0, f(x) ) # return f
 op( a + b c ) # return a, b c
 op( a b ) # return a, b
 op( -f / g) # return [-1, f, 1/g]
+op( [1,2,3] ) # list to seq
+[ op( [1,2,3] ), 4] # [1,2,3,4], 扩容
 nops([1, 2, 3, 4]) # 获取数组长度
 indets( A F(x) + B ) # { A, B, F(x), x }
 indets( A F(x) + B, name ) # { A, B, x}
@@ -484,12 +486,22 @@ convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij
 ### 类型判断
 ```javascript
 is(5 > 10) # false
-hasfun(diff(g(x), x), diff);
-has(sin(x) + cos(x), `sin`) # true
+type(f(x), function) # true
+has(f(x), x) # true
+has(sin(x) + cos(x), sin) # true
+hasfun(diff(g(x), x), diff); # true
 whattype(x) # symbol
-whattype(exp(x)) # function
+whattype(exp(x)) # function,
 whattype(x - y) # `+`
 whattype( x y) # `*`
+```
+
+### 选择/移除
+```javascript
+select(i -> i mod 2 = 0, [1,2,3,4]) # [2,4]
+remove(i -> i mod 2 = 0, [1,2,3,4]) # [1,3]
+select(has, [f(x), a, b], x) # [f(x)]
+select(type, [f(x), a, b], function) # [f(x)]
 ```
 
 ### 绘图
