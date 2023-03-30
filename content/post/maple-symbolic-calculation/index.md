@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-30 09:52:00 +0800
+lastmod: 2023-03-30 10:08:35 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -339,6 +339,13 @@ dcoeffs(expr, u); # u 的各阶导数的系数
 ```
 ![coeff](images/coeff.png)
 
+### 排序
+```javascript
+sort([1,3,4,2]) # [1,2,3,4]
+sort([1,3,4,2], `>`) # [4,3,2,1]
+sort(x^3 + 2 x^4 + x + 3 x^2) # 2 x^4 + x^3 + 3 x^2 + x
+```
+
 ### 替换
 ```javascript
 # 表达式替换
@@ -424,7 +431,6 @@ seq( diff( f(x), x$i ), i=1..3)
 ![diff](images/diff.png)
 
 ### 映射
-
 将某个函数作用于数组, 列表, 矩阵等多维表达式的每一个元素.
 ```javascript
 map(f, [x, y, z], a); # return [f(x, a), f(y, a), f(z, a)];
@@ -441,6 +447,11 @@ sin~(arr)
 diff~(arr, x)
 ```
 ![map](images/map.png)
+另外还有`zip`函数, 可以将某个函数同时作用于两个结构体对应的元素
+```javascript
+zip(f, [1,2,3], [4,5,6]) # [f(1,4), f(2,5), f(3,6)]
+zip(`*`, M1, M2) # 两个矩阵对应元素相乘
+```
 
 ### 求解方程(组)
 ```javascript
