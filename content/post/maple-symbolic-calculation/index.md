@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-03-30 10:08:35 +0800
+lastmod: 2023-04-06 09:10:22 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -535,11 +535,75 @@ save var1, var2, ..., "path/var.m"; # 保存多个变量到文件
 read "path/var.m";
 ExportMatrix("F:data.txt", mat) # 保存矩阵到记事本文件, mat为矩阵
 ```
+Maple绘图一般很丑, 这一点比mma和matlab差很多. 如果想在maple上计算, 在matlab中绘图, 通常有两种方法.
+其一是将maple计算的表达式直接复制到matlab中即可, 两者表达式除去一些特殊的以外基本类似, 然后用matlab绘图即可.
+另一种是先在maple中取点, 然后将点坐标矩阵导出, 之后用matlab读取直接绘制.
+下面是两者的代码示例.
+Maple中程序:
+```javascript
+with(ListTools): 
+with(LinearAlgebra):
+
+# 定义二元函数
+
+f := (x, t) -> f(x, t): 
+
+# 定义x和t的范围和步长
+
+x_min, x_max, t_min, t_max := -6, 6, -6, 6: 
+x_step, t_step := .3, .3:
+
+# 取点
+# data 为 3 * (n + 1) 的矩阵
+# data 的第一列是: row, col, 0
+# 后面的列是三维坐标
+# X, Y, Z 都是 row * col 的矩阵, matlab中绘图为 surf(X, Y, Z)
+
+X := Matrix([seq([seq(x, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
+Y := Matrix([seq([seq(t, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
+# 注意这里需要将数据转化为浮点数, 否则依然带着函数, 如sin等
+Z := convert(zip(f, X, Y), float): 
+row, col := Dimension(X): 
+data := Matrix([[row, op(convert(X, list))], [col, op(convert(Y, list))], [0, op(convert(Z, list))]]):
+
+# 导出
+path := "F:/";
+ExportMatrix(cat(path, "data.txt"), data);
+```
+Matlab中程序:
+```javascript
+% 读取 maple 导出的三维图形坐标, 并将其转化为矩阵
+% matlab 读取的数据变成了 3 * (n + 1) = 3 * N 列向量
+% row:  1
+% col:  N + 1
+% 0:    2N + 1
+% X:    2:N
+% Y:    N+2:2N
+% Z:    2N+2:3N
+
+clear
+path = 'F:/';
+
+fileID = fopen( strcat(path, 'data.txt') ,'r');
+data = fscanf(fileID, '%f');
+fclose(fileID);
+
+N = length(data)/3; % N = n+1
+row = data(1);
+col = data(N + 1);
+X = reshape( data(2:N), row, col );
+Y = reshape( data(N + 2:2 * N), row, col );
+Z = reshape( data(2 * N + 2:end), row, col );
+
+surf(X, Y, Z);
+```
 
 --- 
 
-## 一些有趣的例子
+## 一些例子
+
 ### 多项式处理
+
 考虑下面的多项式
 ```javascript
 eq := -u(n+2) v(n-2)^2
@@ -611,6 +675,7 @@ seq( convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(
 ```
 
 ### 微分表达式处理
+
 考虑下面的微分多项式
 $$
 expr := -\frac{i}{2} u^{3}v \alpha_{5}+i u^{2}\alpha_{3}-\frac{i}{2} u^{3}v \alpha_{4}+i u^{2}\alpha_{2}+\frac{i}{2} v^{3}u \alpha_{5}-i v^{2}\alpha_{3}+\frac{i}{2} v^{3}u \alpha_{4}-i v^{2}\alpha_{2}-\frac{1}{2} u_{x} u \alpha_{5}-\frac{1}{2} u_{x} u \alpha_{4}-\frac{1}{2} v_{x} v \alpha_{5}-\frac{1}{2} v_{x} v \alpha_{4} .
@@ -622,45 +687,6 @@ convert( remove(hasfun, [ op(expr) ], diff), `+`)
 convert( select( f -> not( hasfun(f, diff) ), [ op(expr) ]), `+`) 
 ```
 
-
----
-
-## 注意事项
-
-**帮助文档**
-
-学习一门语言最好的资料是软件自带的帮助文档, 其中详细的介绍了内置函数的各种用法和例子.
-![help](images/help.png)
-在上面的输入框中输入函数名, 点击进入相应的文档即可.
-
-
-**注释**
-
-写的程序一定要添加注释, 特别是程序很长的, 要分成若干块. 
-
-**清晰**
-
-写的程序要清晰明了, 特别是流程控制合函数体内, 要使用空格或者缩进来加以区别, 不能都是从头开始.
-
-
-**简洁**
-
-每一行代码不宜过长, 多用换行. 每个函数也不宜过长, 一个大的函数应该分成若干个子函数.
-
-**一般性**
-
-写的代码要有普适性, 能够很方便的移植到其它地方. 
-比如处理二阶谱问题的程序, 应该可以迁移到高阶谱问题.
-此类可以将阶数定义出来, 后面用到阶数2的时候用变量代替, 后续改成3就很容易.
-
-**变量命名**
-
-给变量命名要么起一个英文名, 一看就知道是什么意思. 或者和文章中的符号保持一致.
-
-
----
-
-## 进阶
 ### 矩阵符号运算
 
 符号计算中, 当不确定矩阵维数时, 需要保证不满足交换律, 同时保持求导等运算. Maple的`Physics`包中提供了可以定义符号变量为非交换元素, 从而可用于矩阵的符号运算中去. 具体使用如下:
@@ -704,6 +730,41 @@ with(MyModule)  # return [add]
 add(3, 5) # return 8
 ```
 非常的方便.
+
+
+---
+
+## 注意事项
+
+**帮助文档**
+
+学习一门语言最好的资料是软件自带的帮助文档, 其中详细的介绍了内置函数的各种用法和例子.
+![help](images/help.png)
+在上面的输入框中输入函数名, 点击进入相应的文档即可.
+
+
+**注释**
+
+写的程序一定要添加注释, 特别是程序很长的, 要分成若干块. 
+
+**清晰**
+
+写的程序要清晰明了, 特别是流程控制合函数体内, 要使用空格或者缩进来加以区别, 不能都是从头开始.
+
+
+**简洁**
+
+每一行代码不宜过长, 多用换行. 每个函数也不宜过长, 一个大的函数应该分成若干个子函数.
+
+**一般性**
+
+写的代码要有普适性, 能够很方便的移植到其它地方. 
+比如处理二阶谱问题的程序, 应该可以迁移到高阶谱问题.
+此类可以将阶数定义出来, 后面用到阶数2的时候用变量代替, 后续改成3就很容易.
+
+**变量命名**
+
+给变量命名要么起一个英文名, 一看就知道是什么意思. 或者和文章中的符号保持一致.
 
 
 ---
