@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-04-06 09:10:22 +0800
+lastmod: 2023-04-11 11:59:14 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -686,6 +686,25 @@ convert( remove(hasfun, [ op(expr) ], diff), `+`)
 # or
 convert( select( f -> not( hasfun(f, diff) ), [ op(expr) ]), `+`) 
 ```
+
+### 绘制三维图形及其俯视图
+想要绘制三维图形并在其下方绘制俯视图(或者密度图), Maple中没有提供这样的函数. 
+虽然它可以绘制密度图(`plots -> densityplot`), 但是其为2D, 不能与3D图形放在一块, 不过 Maple 支持将多个3D图形放在一块.
+一个巧妙地思路是将俯视图(或者密度图)也看作是三维图形, 将其高度设为原来的 $1\100$ 即可, 而且还可以通过减去一个数来进行平移.
+如下
+```javascript
+with(plots):
+f := sech(x + t)^2:
+p1 := plot3d(5 f, x=-5..5, t=-5..5, style=patchnogrid, color=f):
+p2 := plot3d(f/100 - 5, x=-5..5, t=-5..5, style=patchnogrid, color=f):
+display(p1, p2)
+```
+上面 `style=patchnogrid` 表示去掉网格线, `color=f`表示根据`z`坐标来进行染色.
+效果如下:
+![plot3d及其俯视图](images/topview.jpg)
+类似地, Matlab中虽然提供了俯视图函数(`iamgesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
+因此也可采用上述方法来实现这一操作.
+
 
 ### 矩阵符号运算
 
