@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-04-12 08:52:04 +0800
+lastmod: 2023-04-19 15:21:39 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -706,6 +706,31 @@ display(p1, p2)
 ![plot3d及其俯视图](images/topview.jpg)
 类似地, Matlab中虽然提供了俯视图函数(`iamgesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
 因此也可采用上述方法来实现这一操作.
+
+
+### 求解复线性方程组
+Maple 可以直接求解复的线性方程组(即变量及其共轭同时出现), 但有时候会带有 `RootOf` 函数, 需要手动化简, 比较麻烦.
+另一种做法是将变量和方程组的实部和虚部分开, 这样变量和方程都变为原来的二倍.
+一般来说, 如果方程组里面有指数函数, 则实部虚部分开会出现三角函数, 计算完成再组合到一块然后转化成指数函数.
+见下面的例子
+```javascript
+with(LinearAlgebra):
+
+A := Matrix([ [A11 + I B11, A12 + I B12], [A21 + I B21, A22 + I B22] ]):
+Ac := subs(I = -I, A):
+c1 := Matrix([ [alpha, beta], [0, 0] ]):
+c2 := Matrix([ [0, gamma], [0, delta] ]):
+eq1 := c1 . A exp(I x / (a + I b)) + c2 . Ac exp(I x / (a - I b)) + IdentityMatrix(2):
+
+eq2 := convert(eq1, set):
+getReIm := expr -> [ remove(has, evalc(expr), I), -I select(has, evalc(expr), I) ]:
+eq3 := map( eq -> op( getReIm(eq) ), eq2):
+sol := solve(eq3, indets(A, name)):
+
+n:=4:
+< seq( simplify( convert(sol[i] + I sol[i + n], exp) ), i=1..n ) >
+```
+![图片](images/csolve.png)
 
 
 ### 矩阵符号运算
