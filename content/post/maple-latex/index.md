@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-03-19 15:23:31 +0800
+lastmod: 2023-04-24 14:38:27 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -68,6 +68,8 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 ### latex2maple
 此功能通常用来把论文中的公式转换成 maple 中的表达式, 提高效率.
 使用步骤如下: 首先使用 mathpix snipping tool 识别 PDF 文件或图片中的数学公式，然后将其生成的 Tex 代码复制到输入框，点击按钮即可将Tex代码转成相应的Maple程序。 
+
+> 注意, 如果tex代码不是通过mathpix-snipping-tool生成, 可能会转换失败. 因为每个人书写习惯不同, 情况太多, 不好处理.
 
 此程序主要做如下工作:
 |功能|目的|
