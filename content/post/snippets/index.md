@@ -1,9 +1,9 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2023-03-11 20:32:20 +0800
+lastmod: 2023-04-25 08:54:33 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
-tags: ["regrep", "snippets"]
+tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
 author: "JMx"
 showToc: true
@@ -21,6 +21,22 @@ ShowPostNavLinks: true
 ---
 
 > 这里主要是记录一些平时用到的一些代码片段， 不定时更新。
+# Latex
+
+## 引用检查
+在写论文时, 可能会出现列出的参考文献未引用, 这种错误可以引入 `refcheck` 包来进行检查. 首先在文档开始引入
+```latex
+\usepackage{refcheck}
+```
+这个包会在所有具有编号但没有被引用的公式, 定理, 参考文献等附近添加问号, 如下所示:
+- 方程有标签但没有被引用, 有标签且被引用, 没有标签且没有被引用
+![eq](images/eq.jpg)
+- 参考文献(未)被引用
+![ref-nocite](images/ref-nocite.jpg)
+- 定理未被引用
+![th](images/th.jpg)
+
+# Javascript
 
 ## 处理参考文献
 
