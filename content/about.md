@@ -46,7 +46,7 @@ A software built in Python, which is used to
 ### Experience
 
 #### Maki-Lab
-A member of the design department of [Maki's Lab](https://www.maki-math.com) since 2022.2.22.
+A member of the design department of [Maki's Lab](https://www.maki-math.com) during 2022.2.22-2022.9.1.
 
 ### What Is This Website For?
 This website is used to record some skills and experience in research and programming. 
