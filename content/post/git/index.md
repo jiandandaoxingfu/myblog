@@ -1,7 +1,7 @@
 ---
 title: "Git-版本控制"
 date: 2022-03-27 16:09:02 +0800
-lastmod: 2023-06-19 14:29:09 +0800
+lastmod: 2023-06-19 19:03:56 +0800
 summary: '介绍版本控制软件git的基本使用以及常用的命令'
 tags: ["git", 'github']
 categories: ["教程", "git"]
@@ -99,9 +99,10 @@ ShowPostNavLinks: true
 右键某个版本, 点击`create branch from commit`, 可以生成一个分支(原来的称为主支, main), 该分支中的文件会回退到此版本.
 通过此方式, 可以回退到之前的版本, 并且保留之后的版本.
 如下所示
-![branch](images/branch.mp4)
-- **操作视频**
-![github](images/github.mp4)
+{{< video url="images/branch.mp4" >}}
+
+- **完整操作视频**
+{{< video url="images/github.mp4" >}}
 
 > 可以把所有的tex文件夹都放在latex仓库中, 方便管理. 当然, 每个tex最好单独放在一个子文件夹中. 全放在一个文件夹, 运行完太乱了.
 

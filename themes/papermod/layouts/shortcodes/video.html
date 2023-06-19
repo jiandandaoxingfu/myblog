@@ -1,0 +1,10 @@
+<div id='{{.Get "url"}}' class="post-content">
+    <script type="text/javascript">
+        var url = '{{ .Get "url" }}';
+        var div = document.getElementById('{{ .Get "url" }}');
+        div.innerHTML = `<video height="100%" width="100%" controls>
+            <source src=${url} type="video/mp4">
+            您的浏览器不支持 video 标签。
+        </video>`;
+    </script>
+</div>
