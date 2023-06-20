@@ -1,7 +1,7 @@
 ---
 title: "Git-版本控制"
 date: 2022-03-27 16:09:02 +0800
-lastmod: 2023-06-20 09:39:57 +0800
+lastmod: 2023-06-20 09:44:13 +0800
 summary: '介绍版本控制软件git的基本使用以及常用的命令'
 tags: ["git", 'github']
 categories: ["教程", "git"]
@@ -139,7 +139,6 @@ ShowPostNavLinks: true
 ```
 {{< download url="files/gitignore.zip" text="下载gitignore文件" >}}
 下载以后, 把它复制到latex文件夹中, 然后提交即可. 
-
 
 
 
