@@ -11,12 +11,12 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 27 Mar 2022 16:09:02 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git-版本控制</title>
+      <title>Tex文件版本控制</title>
       <link>https://jiandandaoxingfu.github.io/myblog/post/git/</link>
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
       <guid>https://jiandandaoxingfu.github.io/myblog/post/git/</guid>
-      <description>介绍版本控制软件git的基本使用以及常用的命令</description>
+      <description>介绍如何使用git以及github desktop对tex文件进行版本控制</description>
     </item>
     
     <item>

@@ -9,7 +9,16 @@
       <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Jan 2022 13:20:52 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Mar 2022 16:09:02 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tex文件版本控制</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/git/</link>
+      <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/git/</guid>
+      <description>介绍如何使用git以及github desktop对tex文件进行版本控制</description>
+    </item>
+    
     <item>
       <title>论文写作与科研工具</title>
       <link>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</link>
