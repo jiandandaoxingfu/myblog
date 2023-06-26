@@ -76,6 +76,7 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 |:-|:-|
 |去除 tex 环境 |  如`\begin{equation}...\end{equation}`, 换行符 `\\`, `\left, \right`等.|
 |导数转化 |  如 `u_{xxx}` 转化为 `diff(u, x$3)`. 需要注意的是, 这里需要提前在程序中定义 `alias(u=u(x))`.|
+|积分转化 |  如 `\int u d x` 转化为 `int(u, x)`. 需要注意的是, 这里需要提前在程序中定义 `alias(u=u(x))`.|
 |位移转化 |  如 `u^{+++}` 转化为 `shift(u, 3)`. 同样需要注意, 需要提前定义`alias(u=u(n))`.|
 |上/下标转化 |  如 `alpha_1` 转化为 `alpha[1]`, 其在 maple 中显示为 $\alpha_1$. `s^{2x + t}` 转化为 `s^(2 x + t)`. 因此, 对于太复杂的公式, 可能并不适用.|
 |分式转化 |  如 `\frac{a}{b}` 转化为 `a / b`.|
