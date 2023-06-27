@@ -53,12 +53,10 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 
 ### 创建矩阵
 可视化创建Tex矩阵/列表，生成相应代码.
-点击按钮, 出现如下窗口
-![create-matrix](images/create-matrix.jpg)
 默认生成 $3\times 4$ 矩阵 (最大不超过 10 阶). 
 选中补零选项, 则没有值的位置自动补 $0$. 
-![create-matrix-example](images/create-matrix-example.jpg)
-所有元素填完以后, 点击生成矩阵或者列表即可. 小窗口左下角会有当前元素的预览.
+小窗口左下角会有当前元素的预览
+![](images/create-matrix.gif)
 
 ### Excel转列表
 复制Excel表格中的数据， 转为Tex列表. 
@@ -101,7 +99,7 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 ![latex2maple3](images/latex2maple31.jpg)
 注意, 这里的矩阵, 我们仍然用逗号将每个元素隔开, 依然转化成序列.
 ![latex2maple3](images/latex2maple32.jpg)
-这里有几个需要注意的地方,, 首先需要使用 `alias` 来定义 $u, w$. 
+这里有几个需要注意的地方. 首先需要使用 `alias` 来定义 $u, w$. 
 另外, 由于我们只把 `\left` 和 `\right` 删除, 因此整个环境还被 `()` 包裹, 复制的时候要扔掉多余的括号. 这里的 `(ccc)` 我们也没有删除, 程序还需要优化, 不过不影响结果.
 ![latex2maple3](images/latex2maple33.jpg)
 
@@ -120,7 +118,7 @@ $$e^{(2i x + 3 it + 4)},$$
 `exp((2 i x+3 i t+4))`, 因此需要提前定义 $i$.
 ![latex2maple5](images/latex2maple5.jpg)
 
-下面是一个完成的示例
+下面是一个完整的示例
 ![示例](images/example.gif)
 
 ### maple2mma
@@ -157,12 +155,8 @@ $$e^{(2i x + 3 it + 4)},$$
 ### grammarly
 复制整个论文的Tex文件到输入框， 可以将其中的数学公式等相关信息删除， 然后使用Grammarly检查拼写及语法。
 
-> 为了保证复制的文本不渲染, 需要刷新页面, 初次复制不会渲染. 后续内容变动会渲染, 如果内容过大, 会卡顿.
-
 ### Tex格式化
 复制整个论文的Tex文件到输入框， 对其格式化： 添加缩进， 断句(英文句号换行)。
-
-> 和 grammarly 一样, 初次复制不渲染.
 
 ### typora
 渲染typora生成的markdown文档(支持数学公式). 也可简单渲染tex文档.
