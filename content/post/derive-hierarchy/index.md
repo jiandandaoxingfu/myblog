@@ -35,16 +35,16 @@ cover:
 
 ### 算法
 
-我们以$4$阶谱问题为例。 给定空间谱问题$U(n, \lambda)=(U\_{ij})\_{4\times 4}$ (这里我们限定$U$中的同一位势不重复出现)，我们设$V(n, \lambda)=(V\_{ij})\_{4\times 4}$，则静态零曲率方程
+我们以$4$阶谱问题为例。 给定空间谱问题$U(n, \lambda)=(U\_{ij})\_{4\times 4}$ (这里我们限定$U$中的同一位势不重复出现, 否则需要考虑相容性条件)，我们设$V(n, \lambda)=(V\_{ij})\_{4\times 4}$，则静态零曲率方程
 \begin{equation}
 	S=V^+U - UV = 0
 \end{equation}
 是包含$16$个未知量的线性方程。 
 
 我们的目的是构造恰当的$V$的形式，使得静态零曲率方程满足下面两个条件：
-- (C1): 如果$ \dfrac{\partial U\_{ij}}{\partial n}\neq 0$，则$S\_{ij}$形如$A+\lambda^k B=0$，其中$A，B$与谱参数$ \lambda$无关，且$U\_{ij}$中位势的系数为$\lambda$的$0$次或者$k$次幂。
+- (C1): 如果$ \dfrac{\partial U\_{ij}}{\partial n}\neq 0$ (即含有位势)，则$S\_{ij}$形如$A+\lambda^k B=0$，其中$A，B$与谱参数$ \lambda$无关，且$U\_{ij}$中位势的系数为$\lambda$的$0$次或者$k$次幂。
 
-- (C2): 如果$ \dfrac{\partial U\_{ij}}{\partial n}= 0$，则$S\_{ij}$形如$\lambda^k A=0$，其中$A$与谱参数$\lambda$无关。
+- (C2): 如果$ \dfrac{\partial U\_{ij}}{\partial n}= 0$ (即不含位势)，则$S\_{ij}$形如$\lambda^k A=0$，其中$A$与谱参数$\lambda$无关。
 
 接下来我们给出Maple实现的思想和步骤。 记$ \dfrac{\partial U\_{ij}}{\partial n}= 0$所对应的$S$的子集为$S\_0$。 我们分为两个步骤： 
 
