@@ -527,11 +527,14 @@ plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 Maple 还可以绘制动画, 例如我们有一个(2+1)-维偏微分方程的解, 那么可以将时间`t`作为参数进行绘制, 看图形随时间的演化
 ```javascript
 with(plots):
+u := sin(x + y + t):
 animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 50, t = 0 .. 50);
 ```
 ![animation](images/animation.gif)
 
 ### 文件读取
+我们可以把计算中产生的变量保存到文件, 下次直接读取文件即可得到数据. 
+对于一些需要很长时间才能算出来的结果, 这样做很方便.
 ```javascript
 save var1, var2, ..., "path/var.m"; # 保存多个变量到文件
 read "path/var.m";
@@ -540,65 +543,78 @@ ExportMatrix("F:data.txt", mat) # 保存矩阵到记事本文件, mat为矩阵
 Maple绘图一般很丑, 这一点比mma和matlab差很多. 如果想在maple上计算, 在matlab中绘图, 通常有两种方法.
 其一是将maple计算的表达式直接复制到matlab中即可, 两者表达式除去一些特殊的以外基本类似, 然后用matlab绘图即可.
 另一种是先在maple中取点, 然后将点坐标矩阵导出, 之后用matlab读取直接绘制.
-下面是两者的代码示例.
-Maple中程序:
+我们以`sin(x+t)`为例, 绘制其在单位矩形上的三维图形, 为了方便, 我们将此操作定义为函数.
+下面是示例代码.
+首先定义Maple中的函数
 ```javascript
-with(ListTools): 
-with(LinearAlgebra):
+maple2matlab := proc(func, range, step, path, filename)
+	# func: 关于x和t的二元函数, 如 sin(x, t)
+	# range: x和t的范围, 四元列表, [xmin, xmax, tmin, tmax], 如 [-5, 5, -5, 5]
+	# step: 二元列表, 分别是x和t的步长, 如 [0.1, 0.1]
+	# path: 保存路径, 如 "F:/"
+	# 文件名: 如 "data.txt"
 
-# 定义二元函数
+	local x_min, x_max, t_min, t_max, x_step, t_step, X, Y, Z, row, col, data;
 
-f := (x, t) -> f(x, t): 
+	with(ListTools): 
+	with(LinearAlgebra):
+	
+	x_min, x_max, t_min, t_max := op(range): 
+	x_step, t_step := op(step):
+	
+	# 取点
+	# data 为 3 * (n + 1) 的矩阵
+	# data 的第一列是: row, col, 0
+	# 后面的列是三维坐标
+	# X, Y, Z 都是 row * col 的矩阵, matlab中绘图为 surf(X, Y, Z)
+	
+	X := Matrix([seq([seq(x, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
+	Y := Matrix([seq([seq(t, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
 
-# 定义x和t的范围和步长
-
-x_min, x_max, t_min, t_max := -6, 6, -6, 6: 
-x_step, t_step := .3, .3:
-
-# 取点
-# data 为 3 * (n + 1) 的矩阵
-# data 的第一列是: row, col, 0
-# 后面的列是三维坐标
-# X, Y, Z 都是 row * col 的矩阵, matlab中绘图为 surf(X, Y, Z)
-
-X := Matrix([seq([seq(x, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
-Y := Matrix([seq([seq(t, x = x_min .. x_max, x_step)], t = t_min .. t_max, t_step)]): 
-# 注意这里需要将数据转化为浮点数, 否则依然带着函数, 如sin等
-Z := convert(zip(f, X, Y), float): 
-row, col := Dimension(X): 
-data := Matrix([[row, op(convert(X, list))], [col, op(convert(Y, list))], [0, op(convert(Z, list))]]):
-
-# 导出
-path := "F:/";
-ExportMatrix(cat(path, "data.txt"), data);
+	# 注意这里需要将数据转化为浮点数, 否则依然带着函数, 如sin等
+	Z := convert(zip((a, b) -> subs({x=a, t=b}, func), X, Y), float): 
+	row, col := Dimension(X): 
+	data := Matrix([[row, op(convert(X, list))], [col, op(convert(Y, list))], [0, op(convert(Z, list))]]):
+	
+	# 导出
+	ExportMatrix(cat(path, filename), data);
+	print(cat("已将数据导出到: ", path, filename ));
+end proc:
 ```
-Matlab中程序:
+接招调用, 即可导出数据到文件
 ```javascript
-% 读取 maple 导出的三维图形坐标, 并将其转化为矩阵
-% matlab 读取的数据变成了 3 * (n + 1) = 3 * N 列向量
-% row:  1
-% col:  N + 1
-% 0:    2N + 1
-% X:    2:N
-% Y:    N+2:2N
-% Z:    2N+2:3N
-
-clear
-path = 'F:/';
-
-fileID = fopen( strcat(path, 'data.txt') ,'r');
-data = fscanf(fileID, '%f');
-fclose(fileID);
-
-N = length(data)/3; % N = n+1
-row = data(1);
-col = data(N + 1);
-X = reshape( data(2:N), row, col );
-Y = reshape( data(N + 2:2 * N), row, col );
-Z = reshape( data(2 * N + 2:end), row, col );
-
+maple2matlab(sin(x+t), [-1, 1, -1, 1], [.1, .1], "F:/", "data.txt");
+```
+然后用matlab读取数据. 首先定义Matlab中的函数(将其保存为`maple2matlab.m`文件)
+```javascript
+function [X, Y, Z] = maple2matlab(path, filename)
+	% 读取 maple 导出的三维图形坐标, 并将其转化为矩阵
+	% matlab 读取的数据变成了 3 * (n + 1) = 3 * N 列向量
+	% row:  1
+	% col:  N + 1
+	% 0:    2N + 1
+	% X:    2:N
+	% Y:    N+2:2N
+	% Z:    2N+2:3N
+	
+	fileID = fopen( strcat(path, filename) ,'r');
+	data = fscanf(fileID, '%f');
+	fclose(fileID);
+	
+	N = length(data)/3; % N = n+1
+	row = data(1);
+	col = data(N + 1);
+	X = reshape( data(2:N), row, col );
+	Y = reshape( data(N + 2:2 * N), row, col );
+	Z = reshape( data(2 * N + 2:end), row, col );
+end
+```
+接着调用, 绘制图形
+```javascript
+[X, Y, Z] = maple2matlab('F:/', 'data.txt');
 surf(X, Y, Z);
 ```
+
 
 --- 
 

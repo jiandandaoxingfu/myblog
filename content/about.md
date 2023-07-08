@@ -14,14 +14,13 @@ ShowPostNavLinks: false
 
 ---
 
-### Who Am I?
-I am a PhD student in mathematics of ZZU. I like to develop something interesting and useful in Python and Javascript, which brings great convenience to my study and life.
-
+I like to develop something interesting and useful in Python and Javascript, which brings great convenience to my study and life.
+I also use Maple and Matlab for symbolic calculations.
 
 ### Education
-- 2014 - 2018. Appl. Math., ZZU, Bachelor Degree.
-- 2017 - 2019. Appl. Math., ZZU, Graduate student.
-- 2019 - Now. Pure Math., ZZU, PhD student.
+- 2014.9 - 2018.6 Appl. Math., ZZU, Bachelor Degree.
+- 2017.9 - 2019.6 Appl. Math., ZZU, Graduate student.
+- 2019.9 - 2023.6 Pure Math., ZZU, PhD.
 
 ### Selected Recent Projects
 
