@@ -184,6 +184,7 @@ github支持将仓库同步到网络, 便于多人协作.
 修改完成以后, 切换到主支, 把版本4的文件用仓库外的版本4替换掉即可.
 具体如下图所示
 ![示例图](images/branch-version.jpg)
+或者不创建分支(这样并没有对版本3进行版本控制), 直接使用在线[tex文件对比](https://jiandandaoxingfu.github.io/tex-diff-viewer/)工具, 对比版本2和版本3, 然后在版本4上进行修改.
 
 
 ## 其它命令
