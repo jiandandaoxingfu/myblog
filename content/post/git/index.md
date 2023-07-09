@@ -43,6 +43,9 @@ github支持将仓库同步到网络, 便于多人协作.
 
 这种做法除了占用空间以及比较混乱, 时间久了还很难知道两个文件之间有什么区别, 改动了哪里.
 
+> 我借助 [Diff](https://github.com/kpdecker/jsdiff) 和 [react-diff-viewer](https://github.com/praneshr/react-diff-viewer), 创建了一个在线的[tex文件对比](https://jiandandaoxingfu.github.io/text-diff/)工具.
+如果嫌下面的方法比较麻烦, 可以使用它来查看改动.
+
 
 ## 用法
 首先, 我们需要下载[ git ](https://git-scm.com/download/)和[ github desktop ](https://desktop.github.com/). 
