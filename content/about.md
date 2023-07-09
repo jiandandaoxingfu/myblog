@@ -41,6 +41,8 @@ A software built in Python, which is used to
 
 {{< download url="https://github.com/jiandandaoxingfu/pdfdo/releases/download/v3.0/pdfdo.exe" text="pdfdo下载" >}}
 
+#### [Tex-diff-viewer](https://jiandandaoxingfu.github.io/tex-diff-viewer)
+A webpage for viewing the difference between two `.tex` files, which is based on the program [react-diff-viewer](https://github.com/praneshr/react-diff-viewer).
 
 ### Experience
 
