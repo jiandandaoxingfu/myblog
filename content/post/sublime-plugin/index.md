@@ -1,7 +1,7 @@
 ---
 title: "Sublime Text 简介"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2023-07-13 11:01:25 +0800
+lastmod: 2023-07-18 09:35:06 +0800
 summary: 'sublime text简介以及利用其编辑tex文件'
 tags: ["sublime", "plugin", 'latex']
 categories: ["编程", "sublime", "python"]
@@ -167,7 +167,8 @@ ST自然也可以用来编辑tex文件, 平时打论文, Ctex和texlive提供的
 
 ### latextools配置
 安装latextools插件以后, 需要配置它的设置, 主要是告诉它CTEX或者texlive以及SumatraPDF的路径.
-在213行左右, 找到`windows`, 修改
+通过 `Preferences > Package Settings > LaTeXTools > Settings - User` 打开其设置文件,
+在213行左右, 找到`windows`, 修改下列三项
 ```javascript
 "texpath" : "D:\\texlive\\2022\\bin\\win32;$PATH",
 "distro" : "texlive",
