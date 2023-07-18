@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-04-24 14:38:27 +0800
+lastmod: 2023-07-18 10:19:32 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -23,7 +23,7 @@ ShowPostNavLinks: true
 
 {{< katex >}}
 
-这里是 [maple-latex](https://github.com/jiandandaoxingfu/maple-latex) 的使用文档.
+这里是 [maple-latex](https://jiandandaoxingfu.github.io/maple-latex) 的使用文档.
 
 使用过程中如果出现错误，可以把相应的tex代码和错误描述
 发送至: jiaminxin@outlook.com。 或者到项目[maple-latex](https://github.com/jiandandaoxingfu/maple-latex)提issue。
@@ -39,7 +39,8 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 当时的想法是把tex中的数学符号用mathjax显示在网页上, 这样手机也可以写一些简单的数学公式, 虽然没啥用.
 当初还不知道 github 可以部署静态页面, 所以那时候是通过文件传输弄到手机或者电脑上, 本地使用.
 而且当时代码水平也一般, 所以做的很简陋.
-几年过去, 现在的功能早已和最初的想法无关, 但是这个项目越来越大, 功能越来越多, 我还是很开心的.
+几年过去, 现在的功能早已和最初的想法无关, 但是这个项目的功能越来越多.
+这些功能都是根据科研过程中自己或者其他人遇到的一些有关tex, maple, mma的需求引入的, 为科研提供了便利. 
 
 ---
 
