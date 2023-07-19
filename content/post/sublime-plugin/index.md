@@ -1,7 +1,7 @@
 ---
 title: "Sublime Text 简介"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2023-07-18 09:35:06 +0800
+lastmod: 2023-07-19 09:09:32 +0800
 summary: 'sublime text简介以及利用其编辑tex文件'
 tags: ["sublime", "plugin", 'latex']
 categories: ["编程", "sublime", "python"]
@@ -39,7 +39,7 @@ Sublime Text (ST) 是一款轻量, 颜值高的编辑器.
 |`Ctrl + H`|替换|
 |`Ctrl + D`|多选(没有选中区域时, 选中邻近的单词; 有选中区域时, 会同时选择下一个)|
 |`Alt + F3`|全选选中的区域|
-|`Ctrl + F6`|选择下一个拼写错误的单词(需要开启单词拼写检查)|
+|`Ctrl + F6`|选择下一个拼写错误的单词(需要开启单词拼写检查, 按`F6`进行切换, 底部显示)|
 |`Ctrl + Shift + F6`|选择上一个拼写错误的单词|
 |`Ctrl + Shift + M`|选择鼠标邻近的括号里面的内容|
 |`Ctrl + Shift + L`|选中多行后按此快捷键, 选中区域的每一行行末都会出现鼠标指针, 可以同时操作|
@@ -62,11 +62,23 @@ Schr\"odinger equation
 ```
 保存在默认文件夹, 文件名为`sch.sublime-snippet`.
 则在tex文件中输入`sch`并按`tab`键即可生成`Schr\"odinger equation `非常的方便.
+注意, 只需要修改第三行和第五行, 第五行缩写需要和文件名中的一致.
 
 
-### 编写ST插件
-ST支持插件功能, 有丰富的[插件市场](https://packagecontrol.io/installation), 按照上述网站首页提示下载插件管理工具, 然后就可以下载插件了.
-同时, ST提供了丰富的接口给用户, 让用户可以自定义插件, 这些插件使用python来编写.
+### ST插件
+ST支持插件功能, 有丰富的[插件市场](https://packagecontrol.io/installation), 按照上述网站首页提示下载插件管理工具(Package Control).
+安装Package Control 以后, 就可以使用它来安装插件了. 
+具体步骤为: 在ST中按 `Ctrl + Shift + P` 打开控制面板, 输入`ins`, 选择 `Install Package`, 稍等片刻就会弹出插件列表. 
+输入想要安装的插件名, 即可安装. (左下角有提示)
+
+> 如果点击 `install package` 后有弹框, 显示 `There are no Packages available for installation`. 这种是因为默认的插件地址无效, 需要更换. 
+再次打开控制面板, 输入 `channel`, 选择 `Add Channel`, 添加新的插件地址即可. 下面是两个可以用的地址
+```
+https://packagecontrol.io/channel_v3.json
+https://raw.githubusercontent.com/SuCicada/channel_v3.json/master/channel_v3.json
+```
+
+另外, ST提供了丰富的接口给用户, 让用户可以自定义插件, 这些插件使用python来编写.
 在打tex时, 想要删除某个行内公式, 需要动用鼠标, 比较麻烦. 为此, 我们来写一个插件, 通过快捷键快速匹配这个行内公式, 按`del`即可删除.
 代码如下
 ```python
@@ -166,7 +178,7 @@ ST自然也可以用来编辑tex文件, 平时打论文, Ctex和texlive提供的
 > CTEX不推荐使用, 太古老, 笨重, 过时.
 
 ### latextools配置
-安装latextools插件以后, 需要配置它的设置, 主要是告诉它CTEX或者texlive以及SumatraPDF的路径.
+安装latextools插件以后, 需要配置它的设置(MacOS只需要安装有MacTex和Skim, 不需要下面的步骤), 主要是告诉它CTEX或者texlive以及SumatraPDF的路径.
 通过 `Preferences > Package Settings > LaTeXTools > Settings - User` 打开其设置文件,
 在213行左右, 找到`windows`, 修改下列三项
 ```javascript
@@ -189,6 +201,7 @@ latextools 公式预览时, 自定义命令无法编译, 但是可以修改`Subl
 打开 SumatraPDF, `设置 > 选项` > 输入双击PDF文件后调用的命令行框中输入(根据软件安装目录):
 - *CTEX*: `"D:/CTEX/WinEdt/WinEdt.exe" "[Open(|%f|);SelPar(%l,8)]"`
 - *Sublime Text* `"D:/Sublime Text/sublime_text.exe" "%f:%l"`
+> MacOS下, 需要配置Skim来跳转到ST.
 
 ### ST跳转到pdf
 latextools提供了跳转功能, 不过需要设置快捷键.
@@ -203,3 +216,9 @@ latextools提供了跳转功能, 不过需要设置快捷键.
 ]
 ```
 这样, 按`Ctrl + J`即可跳转至pdf对应位置.
+
+### 拼写检查
+在第一张图片的底部可以看到, ST分别显示了文件编码, 鼠标所在的位置等信息. 特别是 `225 misspelled words` 表示有255个单词拼写错误. 
+当然, 这里面大部分是由于参考文献里面的人名, 但是也有单词拼写错误的.
+根据前面列出的快捷键, 可以逐一检查. 
+对于一些特定的词, 虽然提示错误, 但是没有问题, 这个时候可以右键该词, 选择`Add 该词`, 将其添加到词典中, 这样这个词就不会报错了.
