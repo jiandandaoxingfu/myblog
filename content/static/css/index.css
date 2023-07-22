@@ -1,3 +1,7 @@
+.profile {
+    user-select: none;
+}
+
 .three-container {
     position: absolute;
     top: 0;
