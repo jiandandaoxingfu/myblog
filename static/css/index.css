@@ -69,3 +69,11 @@ img {
 body.dark > .three-container {
 	display: none;
 }
+
+h2:not(:first-of-type) {
+    padding-top: 30px;
+    border-top: 2px solid #666;
+}
+
+
+
