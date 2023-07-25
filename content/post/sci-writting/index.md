@@ -1,7 +1,7 @@
 ---
 title: "论文写作与科研工具"
 date: 2022-01-08 13:20:52.872 +0800
-lastmod: 2023-07-25 09:44:27 +0800
+lastmod: 2023-07-25 16:53:52 +0800
 summary: '科研中一些常用的网站'
 tags: ["sci", "论文写作", "资源网站"]
 categories: ["科研"]
@@ -23,7 +23,6 @@ ShowPostNavLinks: true
 {{< katex >}}
 
 收集一些科研和论文写作中常用的网站.
-
 
 
 ## 论文跟踪
@@ -118,8 +117,6 @@ S_1 \cup S_2 \cup\dots\cup S_n,
 - 正确运用标点符号, 该断句就断句.
 
 
-
-
 ## 拼写检查
 ### grammarly
 [grammarly](https://app.grammarly.com/) 可以帮助我们检查论文中的拼写, 单复数, 用词不当等明显错误. 它提供在线版和桌面版两种方式, 都需要注册账号. 我们只需要使用免费版即可. 
@@ -194,10 +191,7 @@ ChatGPT 完全颠覆了人们以往对各种语音助手的认知.
 另外还可以结合在线工具 [maple-latex](https://jiandandaoxingfu.github.io/maple-latex/) 中的 latex2maple 和 maple2mma 功能将其 Mathpix Tool 生成的 latex 代码转化为 Maple 或者 Mathematica 程序. 
 
 
-
-
-
-## 资料
+## 更多资料
 论文写作需要积累一些常用的句子, 表述等. 这可以通过每天读一些本领域大佬的论文, 或者是 arxiv 上的论文来积累. 读的时候可以不理解内容, 只需要把一些好的句子摘抄下来, 进行分类. 
 以下是一些笔记.
 
@@ -208,3 +202,5 @@ ChatGPT 完全颠覆了人们以往对各种语音助手的认知.
 - [The Most Common Habits from more than 200 English Papers written by Graduate Chinese Engineering Students (By Felicia Brittman)](files/The-Most-Common-Habits-from-more-than-200-English-Papers-written.pdf)
 
 - [参考文献排列顺序](files/硕士论文格式.pdf)
+
+- [教学与指导研究生](http://staff.ustc.edu.cn/~yqliang/files/teaching.htm), [怎样写一篇(学位)论文](http://staff.ustc.edu.cn/~yqliang/files/howtowriteapaper.htm) (中科大, 梁永祺)
