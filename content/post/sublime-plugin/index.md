@@ -1,7 +1,7 @@
 ---
 title: "Sublime Text 简介"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2023-07-19 09:09:32 +0800
+lastmod: 2023-07-25 09:45:13 +0800
 summary: 'sublime text简介以及利用其编辑tex文件'
 tags: ["sublime", "plugin", 'latex']
 categories: ["编程", "sublime", "python"]
@@ -25,6 +25,7 @@ cover:
     relative: false 
     hidden: true 
 ---
+
 ## Sublime Text
 Sublime Text (ST) 是一款轻量, 颜值高的编辑器.
 功能类似于记事本, 能够编辑文本文件, 但是它界面更好看, 而且提供了丰富的插件等功能, 能够调用其它程序来编译或者执行.
@@ -164,7 +165,6 @@ class MatchQuotationMarkCommand(sublime_plugin.TextCommand):
         for sel in new_selections:
             selections.add(sel)
 ```
----
 
 ## ST编写tex文件
 ST自然也可以用来编辑tex文件, 平时打论文, Ctex和texlive提供的编辑器都很丑, 用起来也不方便. 而ST则非常方便又好看

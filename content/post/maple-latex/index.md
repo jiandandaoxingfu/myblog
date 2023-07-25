@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-07-18 10:19:32 +0800
+lastmod: 2023-07-25 09:42:05 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -42,7 +42,8 @@ Maple, Mathematics, Tex三者之间数学公式的转化。
 几年过去, 现在的功能早已和最初的想法无关, 但是这个项目的功能越来越多.
 这些功能都是根据科研过程中自己或者其他人遇到的一些有关tex, maple, mma的需求引入的, 为科研提供了便利. 
 
----
+> 注意, 处理 Maple生成的tex代码(经`latex`函数生成), 仅针对 Maple 18 (2014年2月10日) 版本. 对于更早的版本, 未测试. 对于更新的版本, 如 Maple 2023, `latex` 函数生成的tex代码与Maple 18不一致, 这样就导致本应用的一些功能可能不适用.
+
 
 ## 功能
 
@@ -163,7 +164,6 @@ $$e^{(2i x + 3 it + 4)},$$
 渲染typora生成的markdown文档(支持数学公式). 也可简单渲染tex文档.
 > 该功能已经被单独开了一个网站[tex-md](https://jiandandaoxingfu.github.io/md-tex-renderer).
 
----
 
 ## 相关库
 - create-react-app： 框架。
@@ -171,7 +171,6 @@ $$e^{(2i x + 3 it + 4)},$$
 - remarkable： 渲染Markdown文档。
 - MathJax： 渲染数学公式。
 
---- 
 
 ## Todo
 - 目前程序对于混合导数的处理还有问题.
