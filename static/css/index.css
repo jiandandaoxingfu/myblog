@@ -75,5 +75,11 @@ h2:not(:first-of-type) {
     border-top: 2px solid #666;
 }
 
+.post-content a {
+    box-shadow: none !important;
+    color: green;
+}
 
-
+.post-content a:hover {
+    color: red;
+}
