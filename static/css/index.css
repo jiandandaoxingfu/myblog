@@ -71,8 +71,8 @@ body.dark > .three-container {
 }
 
 h2:not(:first-of-type) {
-    padding-top: 30px;
-    border-top: 2px solid #666;
+    padding-top: 40px;
+    border-top: 2px solid #eee;
 }
 
 .post-content a {
@@ -82,4 +82,11 @@ h2:not(:first-of-type) {
 
 .post-content a:hover {
     color: red;
+}
+
+blockquote {
+    border-inline-start: 3px solid #f0ad4e !important;
+    border: 1px solid #eee;
+    padding-top: 15px !important;
+    border-radius: 5px;
 }
