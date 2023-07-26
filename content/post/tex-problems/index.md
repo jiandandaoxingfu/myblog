@@ -1,7 +1,7 @@
 ---
 title: "Tex常见问题"
 date: 2023-07-26 22:18:06 +0800
-lastmod: 2023-07-26 23:23:30 +0800
+lastmod: 2023-07-26 23:43:12 +0800
 summary: 'tex常见问题'
 tags: ["tex", '科研']
 categories: ["tex"]
@@ -37,10 +37,20 @@ cover:
 \renewcommand\thesection{\arabic{section}}
 ```
 
-
-
 ### 双击pdf文件无法回到tex文件
 有两方面原因, 一个是pdf软件没有设置好回到tex文件, 正常安装的情况下是可以的.
+对于SumatraPDF软件, 在 `设置 > 选项 > 设置反向搜索命令行` 中输入
+```
+"D:/CTEX/WinEdt/WinEdt.exe" "[Open(|%f|);SelPar(%l,8)]"
+```
+可以回到 `CTEX`.
+输入
+```
+"D:/Sublime Text 3/sublime_text.exe" "%f:%l"
+```
+可以回到Sublime Text.
+当然, 需要根据自己的安装路径来修改.
+
 另一个问题可能是文件名中有空格导致，需要重命名，不能有空格，可以以`-`或`_`替代。
 
 ### 特殊符号的使用
@@ -62,15 +72,11 @@ gbk2uni tex文件名.out //（跟*.tex一个目录，没有就自己创建一个
 pdflatex tex文件名.tex
 ```
 
-
-
 ### 有序列表编号加括号
 在文档头部引入
 ```latex
 \renewcommand\labelenumi{(\theenumi)}
 ```
-
-
 
 ## 错误提示
 tex编译器编译出错时, 通常会告诉你错误信息, 精确到某一行. 
@@ -165,6 +171,23 @@ $$
 ![saveas](images/save.png)
     底部编码选择`ANSI`或者`UTF-8`后保存. 然后删除文件后缀`.txt`, 尝试运行.
 
+
+
+## 引用检查
+在写论文时, 可能会出现列出的参考文献未引用, 
+这种错误应该尽量避免.
+可以引入 `refcheck` 包来进行检查. 首先在文档开始引入
+```latex
+\usepackage{refcheck}
+```
+这个包会在所有具有编号但没有被引用的公式, 定理, 参考文献等附近添加问号, 如下所示:
+- 方程有标签但没有被引用, 有标签且被引用, 没有标签且没有被引用
+![eq](images/eq.jpg)
+- 参考文献(未)被引用
+![ref-nocite](images/ref-nocite.jpg)
+- 定理未被引用
+![th](images/th.jpg)
+通常只需要处理未被引用的参考文献即可.
 
 ## 一些特殊符号
 
