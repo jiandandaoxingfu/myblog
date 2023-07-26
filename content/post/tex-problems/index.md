@@ -1,7 +1,7 @@
 ---
 title: "Tex常见问题"
 date: 2023-07-26 22:18:06 +0800
-lastmod: 2023-07-26 23:43:12 +0800
+lastmod: 2023-07-27 07:03:53 +0800
 summary: 'tex常见问题'
 tags: ["tex", '科研']
 categories: ["tex"]
@@ -111,14 +111,13 @@ $$(\frac{2}{3}),[\frac{2}{3}]$$
 ```latex
 \left(...\right), \left[...\right], \big(...\big), \Big[\Big], \bigg, \Bigg
 ```
-等命令, 它们具有的特性，
+等命令, 它们具有自适应的特性，
 但要注意的是, `\left\right`中间的内容不能换行(这里指编译后的公式). 
 如果想要换行, 需要如下操作
 ```latex
 \left(blablabla \right.\\
 \left. blabla \right)
 ```
-
 
 ### 公式对齐问题
 我们想将下面公式
@@ -151,7 +150,7 @@ $$
 ### 编译PDF乱码/tex文件打不开
 可能的原因有以下几种:
 
-**文档类不支持中文, tex文件中有中文字符或者其它特殊字符**
+**文档类不支持中文, 但tex文件中有中文字符或者其它特殊字符**
 
 解决办法是使用支持中文字符的文档类, 如`ctexart`.
 
@@ -160,10 +159,12 @@ $$
 可以尝试如下几种解决办法
 - 用tex编译器新建tex文件, 然后用记事本打开旧文件, 把内容复制到新的文件中, 保存, 尝试运行.
 
-- 在tex开头添加声明
+- 在tex文件开头添加声明
     ```latex
     % !Mode:: "TeX:UTF-8"
     % !TEX program = xelatex
+
+    \documentclass[12pt]{article}
     ```
     保存重新运行
 
@@ -192,7 +193,12 @@ $$
 ## 一些特殊符号
 
 ### 数学符号
-$$\overset{\Delta}{=}, \xlongequal[down]{up}$$
+$$
+\begin{align*}
+&\overset{\Delta}{=},\\
+&\xlongequal[down]{up}
+\end{align*}
+$$
 ```latex
 \overset{\Delta}{=}, \xlongequal[down]{up}
 ```
