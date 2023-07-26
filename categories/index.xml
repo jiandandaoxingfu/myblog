@@ -9,7 +9,16 @@
       <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 Nov 2022 11:20:38 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jul 2023 22:18:06 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tex</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/tex/</link>
+      <pubDate>Wed, 26 Jul 2023 22:18:06 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/tex/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>python</title>
       <link>https://jiandandaoxingfu.github.io/myblog/categories/python/</link>
@@ -61,15 +70,6 @@
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
       <guid>https://jiandandaoxingfu.github.io/myblog/categories/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tex</title>
-      <link>https://jiandandaoxingfu.github.io/myblog/categories/tex/</link>
-      <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
-      
-      <guid>https://jiandandaoxingfu.github.io/myblog/categories/tex/</guid>
       <description></description>
     </item>
     
