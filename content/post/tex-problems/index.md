@@ -1,7 +1,7 @@
 ---
 title: "Tex常见问题"
 date: 2023-07-26 22:18:06 +0800
-lastmod: 2023-07-27 07:03:53 +0800
+lastmod: 2023-07-28 09:13:28 +0800
 summary: 'tex常见问题'
 tags: ["tex", '科研']
 categories: ["tex"]
@@ -166,7 +166,7 @@ $$
 
     \documentclass[12pt]{article}
     ```
-    保存重新运行
+    保存重新运行, 使用`xelatex`编译.
 
 - 用记事本打开tex文件, 选择`另存为`, 如下所示
 ![saveas](images/save.png)

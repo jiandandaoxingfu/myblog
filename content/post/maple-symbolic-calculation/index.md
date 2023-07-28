@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-07-25 09:46:32 +0800
+lastmod: 2023-07-28 09:29:36 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -586,7 +586,7 @@ maple2matlab := proc(func, range, step, path, filename)
 	print(cat("已将数据导出到: ", path, filename ));
 end proc:
 ```
-接招调用, 即可导出数据到文件
+接着调用, 即可导出数据到文件
 ```javascript
 maple2matlab(sin(x+t), [-1, 1, -1, 1], [.1, .1], "F:/", "data.txt");
 ```
@@ -701,6 +701,7 @@ seq( convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(
 $$
 expr := -\frac{i}{2} u^{3}v \alpha_{5}+i u^{2}\alpha_{3}-\frac{i}{2} u^{3}v \alpha_{4}+i u^{2}\alpha_{2}+\frac{i}{2} v^{3}u \alpha_{5}-i v^{2}\alpha_{3}+\frac{i}{2} v^{3}u \alpha_{4}-i v^{2}\alpha_{2}-\frac{1}{2} u_{x} u \alpha_{5}-\frac{1}{2} u_{x} u \alpha_{4}-\frac{1}{2} v_{x} v \alpha_{5}-\frac{1}{2} v_{x} v \alpha_{4} .
 $$
+
 我们想要获取上式中不含导数的部分, 只需使用如下命令
 ```javascript
 convert( remove(hasfun, [ op(expr) ], diff), `+`) 

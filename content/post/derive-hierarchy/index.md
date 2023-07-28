@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-lastmod: 2023-03-11 20:32:39 +0800
+lastmod: 2023-07-28 09:29:21 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
@@ -33,7 +33,7 @@ cover:
 	
 这里我们记录一下使用Maple自动推导离散谱问题的时间部分的$V$的形式。
 
-### 算法
+## 算法
 
 我们以$4$阶谱问题为例。 给定空间谱问题$U(n, \lambda)=(U\_{ij})\_{4\times 4}$ (这里我们限定$U$中的同一位势不重复出现, 否则需要考虑相容性条件)，我们设$V(n, \lambda)=(V\_{ij})\_{4\times 4}$，则静态零曲率方程
 \begin{equation}
@@ -58,23 +58,23 @@ cover:
 基于此， 我们也可以随机生成$U$，看是否可以找到满足(C1)和(C2)的$V$。 我们也用程序实现了这一想法， 这里我们不再描述。 这一方法很容易推广到连续谱问题，这里也不在给出。
 
 
-### 程序
+## 程序
 
 
 我们利用Maple来实现上述算法, 函数名为`construct_V`.
 
-#### 用法
+### 用法
 ```javascript
 U, V, szce := construct_V(U);
 ```
 
-#### 输入
+### 输入
 **U**: 谱问题.
 
-#### 输出
+### 输出
 **U, V, szce**(经过化简的驻定零曲率方程).
 
-#### 例子
+### 例子
 - 离散
 ![](images/d1.jpg)
 ![](images/d2.jpg)
@@ -85,7 +85,7 @@ U, V, szce := construct_V(U);
 ![](images/c1.jpg)
 
 
-### 代码
+## 代码
 
 我们将程序放在[Github代码库](https://github.com/jiandandaoxingfu/derive-hierarchy-V)， 这里不在附上。
 
