@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-07-28 09:29:36 +0800
+lastmod: 2023-07-29 15:01:48 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -108,7 +108,7 @@ alias(u=u(x), v=v(x));
 ### 变量类型
 上面定义的变量都是单个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
 
-- **矩阵**
+**矩阵**
 
 基本与数学中的一致.
 ```javascript
@@ -147,7 +147,7 @@ B := A;
 ![memory](images/memory.png)
 
 
-- **列表(list)**
+**列表(list)**
 ```javascript
 arr :=[1, 2, 3, 4]:
 arr[3] # return 3;
@@ -158,7 +158,7 @@ arr + arr # 列表也可以加减
 ![list](images/list.png)
 列表引用似乎不会同时改变.
 
-- **集合(set)**
+**集合(set)**
 
 Maple中的集合与数学中的集合一致: 无序, 不重复.
 ```javascript
@@ -171,7 +171,7 @@ union({1, 2, 3}, {3, 4, 5}) # return {1, 2, 3, 4, 5};
 集合中的元素可以是任意类型, 但是需要注意, 集合中的元素没有顺序, 上面定义的 `arr[1]` 不是 5.
 ![set](images/set.png)
 
-- **向量**
+**向量**
 ```javascript
 arr1 := <1, 2, 3, 4>; # 列向量
 arr2 := < 1 | 2 | 3>; # 行向量
@@ -179,7 +179,7 @@ arr . arr2 # 矩阵
 ```
 ![vec](images/vec.png)
 
-- **序列**
+**序列**
 ```javascript
 sequence := seq(1..3) # return 1, 2, 3
 arr := [ seq(1..3) ] # 序列加`[]`变列表
@@ -192,13 +192,13 @@ seq( seq(a[j, i](x), i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}. # 
 ```
 ![seq](images/seq.png)
 
-- **字典(table)**
+**字典(table)**
 ```javascript
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
 T[a] #  1.
 ```
 
-- **字符串**
+**字符串**
 ```javascript
 s := "i am a string";
 s[1..4] # = "i am";
@@ -210,7 +210,7 @@ print("please input U");
 ```
 
 ### 流程控制
-- **判断**
+**判断**
 ```javascript
 if x > 0 and (or) x < 4 then
    # do something;
@@ -226,7 +226,7 @@ end if;
 ```
 注意换行并添加缩进.
 
-- **循环**
+**循环**
 ```javascript
 for i from 1 to 10 do
    # do something;
