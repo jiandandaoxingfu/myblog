@@ -3,7 +3,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
     <style>
-        .katex-display:has(.tag) .base, .katex-display:has(.base + .base) .katex-html {
+        .katex-display:has(.tag) .base, .katex-display .base:only-child, .katex-display:has(.base + .newline + .base) .katex-html {
             margin: 0 auto;
             overflow-x: auto;
             width: 80%;
