@@ -90,3 +90,7 @@ blockquote {
     padding-top: 15px !important;
     border-radius: 5px;
 }
+
+.highlight {
+    font-size: 18px !important;
+}
