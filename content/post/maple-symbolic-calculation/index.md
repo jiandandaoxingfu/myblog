@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-07-29 15:01:48 +0800
+lastmod: 2023-09-03 17:31:29 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -696,17 +696,32 @@ seq( convert( map( a -> if floor( evalf( log( abs( subss( { u(n)=10, v(n)=10, w(
 ```
 
 ### 微分表达式处理
+**获取导数项**
 
 考虑下面的微分多项式
 $$
 expr := -\frac{i}{2} u^{3}v \alpha_{5}+i u^{2}\alpha_{3}-\frac{i}{2} u^{3}v \alpha_{4}+i u^{2}\alpha_{2}+\frac{i}{2} v^{3}u \alpha_{5}-i v^{2}\alpha_{3}+\frac{i}{2} v^{3}u \alpha_{4}-i v^{2}\alpha_{2}-\frac{1}{2} u_{x} u \alpha_{5}-\frac{1}{2} u_{x} u \alpha_{4}-\frac{1}{2} v_{x} v \alpha_{5}-\frac{1}{2} v_{x} v \alpha_{4} .
 $$
-
 我们想要获取上式中不含导数的部分, 只需使用如下命令
 ```javascript
 convert( remove(hasfun, [ op(expr) ], diff), `+`) 
 # or
 convert( select( f -> not( hasfun(f, diff) ), [ op(expr) ]), `+`) 
+```
+
+**获取导数的阶数**
+
+给定一个函数的导函数, 可以使用循环和判断来获取其阶数. 也可以使用`dsolve`求解, 然后获取自变量的最高次幂.
+```javascript
+eq := diff(u(x), x$6);
+sol := dsolve(eq, {u(x)}); # u = C_1 x^5 + C_2 x^4 + ...
+ord := degree(op(sol)[2], x) + 1; # 6
+```
+当然, 也可以使用`dsubs`:
+```javascript
+with(PDETools):
+eq := diff(u(x), x$6);
+ord := 100 - degree(dsubs(u(x) = x^100, eq), x);
 ```
 
 ### 绘制三维图形及其俯视图
