@@ -1,7 +1,7 @@
 ---
 title: "Sublime Text 简介"
 date: 2022-11-22 11:20:38 +0800
-lastmod: 2023-07-25 16:48:13 +0800
+lastmod: 2023-09-06 17:14:19 +0800
 summary: 'sublime text简介以及利用其编辑tex文件'
 tags: ["sublime", "plugin", 'latex']
 categories: ["编程", "sublime", "python"]
@@ -196,6 +196,15 @@ ST自然也可以用来编辑tex文件, 平时打论文, Ctex和texlive提供的
 
 ### 公式预览
 latextools 公式预览时, 自定义命令无法编译, 但是可以修改`Sublime Text\Packages\LaTeXTools\st_preview`文件夹下的`preview_math.py`文件, 将自定义命令加入到第50行`default_latex_template`模板中.
+
+> 预览产生的图片在`C:\Users\LENOVO\AppData\Local\Sublime Text\Cache\LaTeXTools\internal\preview_math`文件夹中.
+
+>如果ST公式预览出错, 下方会提供三个按钮, 可以先点击`Check System`看是否缺失`magick`软件. 如果缺失, 到[官网](https://imagemagick.org/script/download.php#windows)下载安装, 安装的时候不需要勾选`FFmpeg`选项. 之后重启ST看是否可以预览公式. 
+如果还不行, 点击查看报告. 如果显示`Failed to convert pdf to png to preview.`, 则需要修改环境变量. 添加用户变量`GS_LIB`, 变量值为`C:\texlive\2021\tlpkg\tlgs\Resource\Init;C:\texlive\2021\tlpkg\tlgs\kanji`.
+注意和自己的texlive安装路径一致. 
+这样就可以了.
+
+
 
 ### pdf跳转到ST
 打开 SumatraPDF, `设置 > 选项` > 输入双击PDF文件后调用的命令行框中输入(根据软件安装目录):
