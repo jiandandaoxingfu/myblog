@@ -1,7 +1,7 @@
 ---
 title: "Maple-Latex"
 date: 2022-02-04 21:10:51 +0800
-lastmod: 2023-07-25 09:42:05 +0800
+lastmod: 2023-09-13 09:26:20 +0800
 summary: 'Maple-Latex使用文档'
 tags: ["Maple", "Mathematics", "Latex", "文档"]
 categories: ['Maple', "文档"]
@@ -10,7 +10,7 @@ showToc: true
 TocOpen: true
 draft: false
 hidemeta: false
-comments: false
+comments: true
 disableHLJS: true 
 disableShare: true
 hideSummary: false

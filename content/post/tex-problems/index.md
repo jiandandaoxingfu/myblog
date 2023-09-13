@@ -1,7 +1,7 @@
 ---
 title: "Tex常见问题"
 date: 2023-07-26 22:18:06 +0800
-lastmod: 2023-07-28 09:13:28 +0800
+lastmod: 2023-09-13 09:26:36 +0800
 summary: 'tex常见问题'
 tags: ["tex", '科研']
 categories: ["tex"]
@@ -10,7 +10,7 @@ showToc: true
 TocOpen: true
 draft: true
 hidemeta: false
-comments: false
+comments: true
 disableHLJS: true 
 disableShare: true
 hideSummary: false
