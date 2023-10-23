@@ -9,7 +9,22 @@
       <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 26 Jul 2023 22:18:06 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Oct 2023 14:29:55 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GeoGebra 绘图简介</title>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/geogebra/</link>
+      <pubDate>Mon, 23 Oct 2023 14:29:55 +0800</pubDate>
+      
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/geogebra/</guid>
+      <description>本文简要介绍一下如何使用 GeoGebra 绘制平面图形. 因为是可视化操作, 大多数操作都可以通过拖拽来完成, 所以主要给出一些例子, 具体的功能不再介绍.
+GeoGebra 是什么 以下摘自于GeoGebra官网
+ GeoGebra 是一款适用于各级教育的动态数学软件, 它将几何, 代数, 表格, 绘图, 统计和微积分整合到一个引擎中. 此外, GeoGebra 还提供了一个在线平台, 其中包含由多语言社区创建的超过 100 万个免费课堂资源. 这些资源可以通过我们的协作平台 GeoGebra 教室轻松共享, 在那里可以实时监控学生的进度.
+GeoGebra 是一个拥有数百万用户的社区, 几乎分布在每个国家. 它已经成为全球领先的动态数学软件提供商, 支持科学, 技术, 工程和数学(STEM)教育以及教学创新. GeoGebra 的数学引擎以不同的方式, 从简单的演示到完整的在线评估系统, 为全球数百个教育网站提供动力.
+ 操作界面 获取软件 GeoGebra 同时提供在线版本(Web端)和客户端. 不经常使用的话, 可以使用在线版本. 其主页如下 左上角提供了一些资源和教程等链接, 右上角可以登录账号, 下方是侧重点不同的应用的地址, 包括3D计算器, 几何, GeoGebra 经典等.
+ 建议注册一个账号, 方便把绘制的图像保存在账号中, 以备后续修改或使用, 也便于分享给其他人.
+ GeoGebra 经典 绘制平面图形通常使用GeoGebra 经典, 其操作界面如下  左上方是工具栏, 可以移动画布, 然后是点, 线, 关系线, 多边形, 圆, 圆锥曲线, 角度, 对称, 文本等操作集合.</description>
+    </item>
+    
     <item>
       <title>Tex常见问题</title>
       <link>https://jiandandaoxingfu.github.io/myblog/post/tex-problems/</link>
