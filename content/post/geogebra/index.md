@@ -1,7 +1,7 @@
 ---
 title: "GeoGebra 绘图简介"
 date: 2023-10-23 14:29:55 +0800
-lastmod: 2023-10-23 21:58:21 +0800
+lastmod: 2023-10-24 09:24:02 +0800
 summary: ''
 tags: ["geogebra"]
 categories: ["教程"]
@@ -124,6 +124,11 @@ GeoGebra 左上方工具栏提供了各种点线面的功能, 可以轻松绘制
 ## 椭圆的离心率
 可视化当椭圆逐渐变圆的过程中, 离心率 $e$ 的变化.
 {{< video url="images/14.mp4" >}}
+
+## [心形曲线](https://www.bilibili.com/video/BV1PK411T7nC/)
+{{< video url="images/15.mp4" >}}
+
+
 
 
 # 在线资源
