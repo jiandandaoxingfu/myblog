@@ -16,12 +16,12 @@ ShowPostNavLinks: false
 
 I like to develop something interesting and useful in Python and Javascript, which brings great convenience to my study and life.
 I also use Maple and Matlab for symbolic calculations.
-
+<!-- 
 ### Education
 - 2014.9 - 2018.6 Appl. Math., ZZU, Bachelor Degree.
 - 2017.9 - 2019.6 Appl. Math., ZZU, Graduate student.
 - 2019.9 - 2023.6 Pure Math., ZZU, PhD.
-
+ -->
 ### Selected Recent Projects
 
 #### [Maple-Latex](https://jiandandaoxingfu.github.io/maple-latex)
