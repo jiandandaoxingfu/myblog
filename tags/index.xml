@@ -2,227 +2,227 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on JMx&#39;s Blog</title>
-    <link>./tags/</link>
+    <link>https://jiandandaoxingfu.github.io/myblog/tags/</link>
     <description>Recent content in Tags on JMx&#39;s Blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Oct 2023 14:29:55 +0800</lastBuildDate><atom:link href="./tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Oct 2023 14:29:55 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>geogebra</title>
-      <link>./tags/geogebra/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/geogebra/</link>
       <pubDate>Mon, 23 Oct 2023 14:29:55 +0800</pubDate>
       
-      <guid>./tags/geogebra/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/geogebra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tex</title>
-      <link>./tags/tex/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/tex/</link>
       <pubDate>Wed, 26 Jul 2023 22:18:06 +0800</pubDate>
       
-      <guid>./tags/tex/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/tex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>科研</title>
-      <link>./tags/%E7%A7%91%E7%A0%94/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/%E7%A7%91%E7%A0%94/</link>
       <pubDate>Wed, 26 Jul 2023 22:18:06 +0800</pubDate>
       
-      <guid>./tags/%E7%A7%91%E7%A0%94/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/%E7%A7%91%E7%A0%94/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Latex</title>
-      <link>./tags/latex/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/latex/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./tags/latex/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/latex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>plugin</title>
-      <link>./tags/plugin/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/plugin/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./tags/plugin/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/plugin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sublime</title>
-      <link>./tags/sublime/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/sublime/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./tags/sublime/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/sublime/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tikz</title>
-      <link>./tags/tikz/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/tikz/</link>
       <pubDate>Mon, 17 Oct 2022 20:55:33 +0800</pubDate>
       
-      <guid>./tags/tikz/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/tikz/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>./tags/git/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/git/</link>
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
-      <guid>./tags/git/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github</title>
-      <link>./tags/github/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/github/</link>
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
-      <guid>./tags/github/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>论文写作</title>
-      <link>./tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/</link>
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
-      <guid>./tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maple</title>
-      <link>./tags/maple/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/maple/</link>
       <pubDate>Fri, 04 Feb 2022 21:10:51 +0800</pubDate>
       
-      <guid>./tags/maple/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/maple/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mathematics</title>
-      <link>./tags/mathematics/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/mathematics/</link>
       <pubDate>Fri, 04 Feb 2022 21:10:51 +0800</pubDate>
       
-      <guid>./tags/mathematics/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/mathematics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>文档</title>
-      <link>./tags/%E6%96%87%E6%A1%A3/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/%E6%96%87%E6%A1%A3/</link>
       <pubDate>Fri, 04 Feb 2022 21:10:51 +0800</pubDate>
       
-      <guid>./tags/%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/%E6%96%87%E6%A1%A3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>regrep</title>
-      <link>./tags/regrep/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/regrep/</link>
       <pubDate>Fri, 21 Jan 2022 18:34:49 +0800</pubDate>
       
-      <guid>./tags/regrep/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/regrep/</guid>
       <description></description>
     </item>
     
     <item>
       <title>snippets</title>
-      <link>./tags/snippets/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/snippets/</link>
       <pubDate>Fri, 21 Jan 2022 18:34:49 +0800</pubDate>
       
-      <guid>./tags/snippets/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/snippets/</guid>
       <description></description>
     </item>
     
     <item>
       <title>symbolic calculation</title>
-      <link>./tags/symbolic-calculation/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/symbolic-calculation/</link>
       <pubDate>Thu, 13 Jan 2022 07:43:08 +0800</pubDate>
       
-      <guid>./tags/symbolic-calculation/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/symbolic-calculation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lax pairs</title>
-      <link>./tags/lax-pairs/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/lax-pairs/</link>
       <pubDate>Tue, 11 Jan 2022 19:48:46 +0800</pubDate>
       
-      <guid>./tags/lax-pairs/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/lax-pairs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spectral problem</title>
-      <link>./tags/spectral-problem/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/spectral-problem/</link>
       <pubDate>Tue, 11 Jan 2022 19:48:46 +0800</pubDate>
       
-      <guid>./tags/spectral-problem/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/spectral-problem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>solve difference equation</title>
-      <link>./tags/solve-difference-equation/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/solve-difference-equation/</link>
       <pubDate>Tue, 11 Jan 2022 19:31:32 +0800</pubDate>
       
-      <guid>./tags/solve-difference-equation/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/solve-difference-equation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sci</title>
-      <link>./tags/sci/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/sci/</link>
       <pubDate>Sat, 08 Jan 2022 13:20:52 +0800</pubDate>
       
-      <guid>./tags/sci/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/sci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>资源网站</title>
-      <link>./tags/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/</link>
       <pubDate>Sat, 08 Jan 2022 13:20:52 +0800</pubDate>
       
-      <guid>./tags/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/%E8%B5%84%E6%BA%90%E7%BD%91%E7%AB%99/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>./tags/blog/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/blog/</link>
       <pubDate>Thu, 06 Jan 2022 18:13:52 +0800</pubDate>
       
-      <guid>./tags/blog/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>./tags/hugo/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/hugo/</link>
       <pubDate>Thu, 06 Jan 2022 18:13:52 +0800</pubDate>
       
-      <guid>./tags/hugo/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PaperMod</title>
-      <link>./tags/papermod/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/tags/papermod/</link>
       <pubDate>Thu, 06 Jan 2022 18:13:52 +0800</pubDate>
       
-      <guid>./tags/papermod/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/tags/papermod/</guid>
       <description></description>
     </item>
     

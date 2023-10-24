@@ -2,110 +2,110 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on JMx&#39;s Blog</title>
-    <link>./categories/</link>
+    <link>https://jiandandaoxingfu.github.io/myblog/categories/</link>
     <description>Recent content in Categories on JMx&#39;s Blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Oct 2023 14:29:55 +0800</lastBuildDate><atom:link href="./categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Oct 2023 14:29:55 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>教程</title>
-      <link>./categories/%E6%95%99%E7%A8%8B/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/%E6%95%99%E7%A8%8B/</link>
       <pubDate>Mon, 23 Oct 2023 14:29:55 +0800</pubDate>
       
-      <guid>./categories/%E6%95%99%E7%A8%8B/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/%E6%95%99%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tex</title>
-      <link>./categories/tex/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/tex/</link>
       <pubDate>Wed, 26 Jul 2023 22:18:06 +0800</pubDate>
       
-      <guid>./categories/tex/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/tex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>./categories/python/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/python/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./categories/python/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sublime</title>
-      <link>./categories/sublime/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/sublime/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./categories/sublime/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/sublime/</guid>
       <description></description>
     </item>
     
     <item>
       <title>编程</title>
-      <link>./categories/%E7%BC%96%E7%A8%8B/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 22 Nov 2022 11:20:38 +0800</pubDate>
       
-      <guid>./categories/%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>latex</title>
-      <link>./categories/latex/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/latex/</link>
       <pubDate>Mon, 17 Oct 2022 20:55:33 +0800</pubDate>
       
-      <guid>./categories/latex/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/latex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>科研</title>
-      <link>./categories/%E7%A7%91%E7%A0%94/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/</link>
       <pubDate>Mon, 17 Oct 2022 20:55:33 +0800</pubDate>
       
-      <guid>./categories/%E7%A7%91%E7%A0%94/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/%E7%A7%91%E7%A0%94/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>./categories/git/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/git/</link>
       <pubDate>Sun, 27 Mar 2022 16:09:02 +0800</pubDate>
       
-      <guid>./categories/git/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maple</title>
-      <link>./categories/maple/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/maple/</link>
       <pubDate>Fri, 04 Feb 2022 21:10:51 +0800</pubDate>
       
-      <guid>./categories/maple/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/maple/</guid>
       <description></description>
     </item>
     
     <item>
       <title>文档</title>
-      <link>./categories/%E6%96%87%E6%A1%A3/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/%E6%96%87%E6%A1%A3/</link>
       <pubDate>Fri, 04 Feb 2022 21:10:51 +0800</pubDate>
       
-      <guid>./categories/%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/%E6%96%87%E6%A1%A3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>integrable system</title>
-      <link>./categories/integrable-system/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/categories/integrable-system/</link>
       <pubDate>Tue, 11 Jan 2022 19:48:46 +0800</pubDate>
       
-      <guid>./categories/integrable-system/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/categories/integrable-system/</guid>
       <description></description>
     </item>
     

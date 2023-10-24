@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>科研 on JMx&#39;s Blog</title>
-    <link>./tags/%E7%A7%91%E7%A0%94/</link>
+    <link>https://jiandandaoxingfu.github.io/myblog/tags/%E7%A7%91%E7%A0%94/</link>
     <description>Recent content in 科研 on JMx&#39;s Blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 26 Jul 2023 22:18:06 +0800</lastBuildDate><atom:link href="./tags/%E7%A7%91%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jul 2023 22:18:06 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/%E7%A7%91%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tex常见问题</title>
-      <link>./post/tex-problems/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/tex-problems/</link>
       <pubDate>Wed, 26 Jul 2023 22:18:06 +0800</pubDate>
       
-      <guid>./post/tex-problems/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/tex-problems/</guid>
       <description>tex常见问题</description>
     </item>
     

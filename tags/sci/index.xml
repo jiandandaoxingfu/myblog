@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>sci on JMx&#39;s Blog</title>
-    <link>./tags/sci/</link>
+    <link>https://jiandandaoxingfu.github.io/myblog/tags/sci/</link>
     <description>Recent content in sci on JMx&#39;s Blog</description>
     <image>
-      <url>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jiandandaoxingfu.github.io/myblog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Jan 2022 13:20:52 +0800</lastBuildDate><atom:link href="./tags/sci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jan 2022 13:20:52 +0800</lastBuildDate><atom:link href="https://jiandandaoxingfu.github.io/myblog/tags/sci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>论文写作与科研工具</title>
-      <link>./post/sci-writting/</link>
+      <link>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</link>
       <pubDate>Sat, 08 Jan 2022 13:20:52 +0800</pubDate>
       
-      <guid>./post/sci-writting/</guid>
+      <guid>https://jiandandaoxingfu.github.io/myblog/post/sci-writting/</guid>
       <description>科研中一些常用的网站</description>
     </item>
     
