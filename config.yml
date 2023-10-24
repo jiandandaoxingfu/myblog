@@ -1,5 +1,5 @@
 publishDir: docs
-baseURL: ./
+baseURL: https://jiandandaoxingfu.github.io/myblog/
 title: JMx's Blog
 paginate: 5
 theme: papermod
