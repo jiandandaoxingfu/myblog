@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-10-09 09:52:34 +0800
+lastmod: 2023-10-24 19:59:31 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -18,6 +18,12 @@ searchHidden: false
 ShowReadingTime: false
 ShowBreadCrumbs: false
 ShowPostNavLinks: true
+cover:
+    image: "images/maple.png"  
+    alt: "\u56fe\u7247"  
+    caption: "" 
+    relative: false 
+    hidden: true 
 
 ---
 

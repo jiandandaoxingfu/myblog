@@ -1,7 +1,7 @@
 ---
 title: "GeoGebra 绘图简介"
 date: 2023-10-23 14:29:55 +0800
-lastmod: 2023-10-24 09:24:02 +0800
+lastmod: 2023-10-24 20:44:57 +0800
 summary: ''
 tags: ["geogebra"]
 categories: ["教程"]
@@ -19,13 +19,12 @@ ShowReadingTime: true
 ShowBreadCrumbs: false
 ShowPostNavLinks: true
 cover:
-    image: ""  
+    image: "images/geogebra.svg"  
     alt: "\u56fe\u7247"  
     caption: "" 
     relative: false 
     hidden: true 
 ---
-{{< katex >}}
 
 本文简要介绍一下如何使用 GeoGebra 绘制平面图形. 因为是可视化操作, 大多数操作都可以通过拖拽来完成, 所以主要给出一些例子, 具体的功能不再介绍.
 
@@ -124,12 +123,16 @@ GeoGebra 左上方工具栏提供了各种点线面的功能, 可以轻松绘制
 ## 椭圆的离心率
 可视化当椭圆逐渐变圆的过程中, 离心率 $e$ 的变化.
 {{< video url="images/14.mp4" >}}
+> 文本中可以引用已经定义的变量的数值.
 
 ## [心形曲线](https://www.bilibili.com/video/BV1PK411T7nC/)
 {{< video url="images/15.mp4" >}}
 
 
 
-
 # 在线资源
 GeoGebra首页资源中, 有非常多别人分享的图形, 可以打开查看或者修改. GeoGebra可以绘制很多复杂的图形, 实现酷炫的效果.
+
+
+
+{{< katex >}}

@@ -1,7 +1,7 @@
 ---
 title: "Tex文件版本控制"
 date: 2022-03-27 16:09:02 +0800
-lastmod: 2023-07-11 14:20:19 +0800
+lastmod: 2023-10-24 20:39:43 +0800
 summary: '介绍如何使用git以及github desktop对tex文件进行版本控制'
 tags: ["git", 'github', 'tex', '论文写作']
 categories: ["教程", "git", 'tex', '科研']
@@ -18,6 +18,12 @@ searchHidden: false
 ShowReadingTime: true
 ShowBreadCrumbs: false
 ShowPostNavLinks: true
+cover:
+    image: "images/github.svg"  
+    alt: "\u56fe\u7247"  
+    caption: "" 
+    relative: false 
+    hidden: true 
 ---
 
 
