@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-10-24 19:59:31 +0800
+lastmod: 2023-10-27 10:11:28 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -328,6 +328,14 @@ hanoi(3, "A", "B", "C");
 
 ## 常用命令
 Maple中的内置命令一般都是选取英文名称或者前几个字母, 注意内置命令也不能作为变量名.
+
+### 假设
+```javascript
+assume(x, 'real');
+assume(x > 0, x < 5);
+assume(x, 'real', y > 0);
+about(x);
+```
 
 ### 化简/因式分解/展开/分子/分母
 ```javascript
