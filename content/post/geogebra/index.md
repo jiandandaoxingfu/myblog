@@ -1,8 +1,8 @@
 ---
 title: "GeoGebra 绘图简介"
 date: 2023-10-23 14:29:55 +0800
-lastmod: 2023-10-25 09:07:03 +0800
-summary: ''
+lastmod: 2023-10-29 22:11:07 +0800
+summary: '介绍绘图软件 GeoGebra 的简单使用'
 tags: ["geogebra"]
 categories: ["教程"]
 author: "JMx"
