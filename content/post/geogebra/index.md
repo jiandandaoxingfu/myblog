@@ -1,7 +1,7 @@
 ---
 title: "GeoGebra 绘图简介"
 date: 2023-10-23 14:29:55 +0800
-lastmod: 2023-10-29 22:11:07 +0800
+lastmod: 2023-11-01 22:35:07 +0800
 summary: '介绍绘图软件 GeoGebra 的简单使用'
 tags: ["geogebra"]
 categories: ["教程"]
@@ -111,12 +111,13 @@ GeoGebra 左上方工具栏提供了各种点线面的功能, 可以轻松绘制
 |a^2, A^2, A^{12}, A^{x+y}|$a^2, A^2, A^{12}, A^{x+y}$|
 |a_1, A_1, A_{12}, A_{x+y}|$a_1, A_1, A_{12}, A_{x+y}$|
 |a_1^2, a_{12}^{x+y}|$a_1^2, a_{12}^{x+y}$|
-|\frac{3}{4}, \frac{x^2}{a^2}, \frac{3(x+y)}{4(x-y)}|$\frac{3}{4}, \frac{x^2}{a^2}, \frac{3(x+y)}{4(x-y)}$|
+|\frac{3}{4}, \frac{x^2}{a^2}, \frac{3(x+y)}{4(x-y)}, a^{\frac{1}{3}}|$\frac{3}{4}, \frac{x^2}{a^2}, \frac{3(x+y)}{4(x-y)}, a^{\frac{1}{3}}$|
 |\geq, <, >, \leq, =|$\geq, <, >, \leq, =$|
 |\alpha, \beta, \gamma, \delta|$\alpha, \beta, \gamma, \delta$|
 |a\in A, B\subset A|$a\in A, B\subset A$|
 |\|AB\||$\|AB\|$|
 |\sqrt{a+b}|$\sqrt{a + b}$|
+|\overline{PQ}|$\overline{PQ}$|
 
 {{< video url="images/13.mp4" >}}
 
@@ -136,6 +137,8 @@ GeoGebra 左上方工具栏提供了各种点线面的功能, 可以轻松绘制
 ## [心形曲线](https://www.bilibili.com/video/BV1PK411T7nC/)
 {{< video url="images/15.mp4" >}}
 
+## 双曲线
+{{< video url="images/16.mp4" >}}
 
 # 在线资源
 GeoGebra首页资源中, 有非常多别人分享的图形, 可以打开查看或者修改. GeoGebra可以绘制很多复杂的图形, 实现酷炫的效果.
