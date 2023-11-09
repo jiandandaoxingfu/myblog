@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2023-07-27 07:07:11 +0800
+lastmod: 2023-11-09 14:48:01 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -23,6 +23,23 @@ ShowPostNavLinks: true
 这里主要是记录一些平时用到的一些代码片段， 不定时更新。
 
 ## Javascript
+
+### 统计数组中每个元素出现的次数
+```javascript
+const array = [1, 2, 3, 1, 2, 1];
+const count = {};
+
+array.forEach(item => {
+  if (count[item]) {
+    count[item]++;
+  } else {
+    count[item] = 1;
+  }
+});
+
+console.log(count);
+// 输出: {1: 3, ... }
+```
 
 ### 处理参考文献
 
