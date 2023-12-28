@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-10-29 22:15:29 +0800
+lastmod: 2023-12-28 19:30:07 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -799,7 +799,7 @@ n:=4:
 ```javascript
 with(Physics):
 Setup(mathematicalnotation=true):
-Set(noncommutativeprefix={U, V, X, ... }):
+Setup(noncommutativeprefix={U, V, X, ... }):
 eq := U V - V U; # eq != 0.
 ```
 
