@@ -1,7 +1,7 @@
 ---
 title: "Maple自动推导方程族"
 date: 2022-01-11 19:48:46 +0800
-lastmod: 2023-10-26 09:24:40 +0800
+lastmod: 2023-12-28 09:04:35 +0800
 summary: '对于给定的谱问题U， 利用Maple自动导出方程族相应的V'
 tags: ["Maple", "Lax pairs", "spectral problem"]
 categories: ["Maple", "integrable system"]
@@ -104,6 +104,7 @@ U, V, szce := construct_V(U);
 | **print_szce**:| 输出(打印)驻定零曲率方程. |`print_szce(szce, U)`. |szce, $U$|
 | **sort_szce**:| 对方程组中的$\lambda$以及每个变量按照(导数的)阶数合并同类项(优先关于$\lambda$). 作用于驻定零曲率方程, 可以方便写出$K, J$算子. |`szce: = sort_szce(szce, U)`. |方程组, 包含不需要合并同类项的变量的结构体|
 | **total_int**:| 处理积分, 能积出来但Maple没有积出来 |`total_int(eqs)` |结构体(如矩阵)|
+| **generate_diff_f**:| 定义函数的各阶导数, 如作用于$f(x)$, 则后续可以使用 `fx, fxx, ..., fxxxxxxxx` |`generate_diff_f([ f(x), g(x) ], x)` |单个函数或者结构体|
 
 > 这里`szce`表示驻定零曲率方程(stationary zero-curvature equation).
 方程组可以是集合, 矩阵, 列表等非单个表达式(因为函数里面用到了map, 单个表达式无效), 
