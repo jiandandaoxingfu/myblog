@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2023-12-28 19:30:07 +0800
+lastmod: 2024-01-03 10:29:41 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -523,6 +523,11 @@ cat('v', 1, 2) # return v12;
 seq(cat('v', i), i=1..3) # return v1, v2, v3
 seq(seq(cat('v', i, j), i=1..3), j=1..3 ) # return v11, v12, ..., v33
 convert([seq(seq(cat('v', j, i), i = 1..3), j = 1..3)], Matrix, 3) # return (vij)_{3*3}
+# 或者
+cat('v', 1, 2); 
+cat('v', 1 .. 3); 
+cat('v', 1 .. 3, 1 .. 3); 
+convert([cat('v', 1 .. 3, 1 .. 3)], Matrix, 3)
 ```
 ![cat](images/cat.png)
 
