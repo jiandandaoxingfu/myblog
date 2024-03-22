@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-01-03 10:29:41 +0800
+lastmod: 2024-03-22 12:59:46 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -375,6 +375,12 @@ sort([1,3,4,2]) # [1,2,3,4]
 sort([1,3,4,2], `>`) # [4,3,2,1]
 sort(x^3 + 2 x^4 + x + 3 x^2) # 2 x^4 + x^3 + 3 x^2 + x
 ```
+
+### 分母有理化
+```javascript
+rationalize( 1 / (sqrt(1 - u^2) - 1) ).
+```
+
 
 ### 替换
 ```javascript
