@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2023-11-09 14:48:01 +0800
+lastmod: 2024-07-09 21:54:53 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -40,6 +40,86 @@ array.forEach(item => {
 console.log(count);
 // 输出: {1: 3, ... }
 ```
+
+### 问卷星-生成随机数据
+```javascript
+// 获取问卷星数据
+const QAQs = document.getElementById('divQuestion').querySelectorAll('.ui-field-contain');
+let qaqs = [];
+for(qaq of QAQs) {
+    // console.log(qaq.querySelector('.field-label').innerText);
+    // console.log( (qaq.querySelector('.ui-controlgroup') || qaq.querySelector('.ui-input-text') ).innerText);
+    let q = qaq.querySelector('.field-label').innerText,
+        a = (qaq.querySelector('.ui-controlgroup') || qaq.querySelector('.ui-input-text') ).innerText.replace(/([ABCDEF]\.?|[ABCDEF] ?)/g, '').split('\n');
+    qaqs = [...qaqs, [q, a]];
+}
+
+// 初始化每个题目的答案概率(每个答案取相等概率), 对于特定的题目, 自行设定概率. 
+let weights = qaqs.map(qaq => qaq[1].map(a => 1/qaq[1].length) );
+weights[2] = [0.3, 0.3, 0.35, 0.05];
+weights[9] = [0.8, 0.1, 0.1];
+weights[19] = [0.8, 0.1, 0.1];
+weights[22] = [0.7, 0.1, 0.1, 0.1];
+weights[24] = [0.1, 0.8, 0.1];
+
+// 根据概率生成数据
+const N = 1500;
+let total_data = new Array(N);
+for(j=0; j<N; j++) {
+    let data = new Array(qaqs.length);
+    for(i=0; i<qaqs.length; i++) {
+        let r = Math.random();
+        let w = 0;
+        for(k=0; k<weights[i].length; k++) {
+            w += weights[i][k];
+            if(r < w) {
+                data[i] = qaqs[i][1][k];
+                break;
+            }
+        }
+        total_data[j] = data;
+    }    
+}
+
+// 生成每个题目的答案的统计数据
+count_arr = new Array(qaqs.length);
+for(s=0; s<qaqs.length; s++) {
+    let array = total_data.map(data => data[s]);
+    let count = {};
+
+    array.forEach(item => {
+        if (count[item]) {
+            count[item]++;
+        } else {
+            count[item] = 1;
+        }
+    });
+
+    count_arr[s] = count;
+    // console.log(s+1);
+    // console.log(count);
+    
+}
+
+// 保存数据到txt文件(复制txt文件内容到excel即可生成)
+const str_data = total_data.map(data => data.reduce((i, j) => i + '	' + j)).reduce((i, j) => i + '\n' + j);
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+ 
+  element.style.display = 'none';
+  document.body.appendChild(element);
+ 
+  element.click();
+ 
+  document.body.removeChild(element);
+}
+ 
+download("data.txt", str_data);
+```
+
+
 
 ### 处理参考文献
 
