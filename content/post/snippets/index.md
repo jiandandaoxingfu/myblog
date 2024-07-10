@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2024-07-09 21:54:53 +0800
+lastmod: 2024-07-10 20:12:42 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -44,15 +44,15 @@ console.log(count);
 ### 问卷星-生成随机数据
 ```javascript
 // 获取问卷星数据
-const QAQs = document.getElementById('divQuestion').querySelectorAll('.ui-field-contain');
-let qaqs = [];
-for(qaq of QAQs) {
-    // console.log(qaq.querySelector('.field-label').innerText);
-    // console.log( (qaq.querySelector('.ui-controlgroup') || qaq.querySelector('.ui-input-text') ).innerText);
-    let q = qaq.querySelector('.field-label').innerText,
-        a = (qaq.querySelector('.ui-controlgroup') || qaq.querySelector('.ui-input-text') ).innerText.replace(/([ABCDEF]\.?|[ABCDEF] ?)/g, '').split('\n');
-    qaqs = [...qaqs, [q, a]];
-}
+const qaq_containers = [...document.getElementById('divQuestion').querySelectorAll('.ui-field-contain')];
+let qaqs = qaq_containers.map(qc => {
+    // console.log(qc.querySelector('.field-label').innerText);
+    // console.log( (qc.querySelector('.ui-controlgroup') || qc.querySelector('.ui-input-text') ).innerText);
+    let q = qc.querySelector('.field-label').innerText;
+    let a_container = qc.querySelector('.ui-controlgroup') || qc.querySelector('.ui-input-text');
+    let a = a_container.innerText.replace(/([ABCDEF]\.?|[ABCDEF] ?)/g, '').split('\n');
+    return [q, a];
+})
 
 // 初始化每个题目的答案概率(每个答案取相等概率), 对于特定的题目, 自行设定概率. 
 let weights = qaqs.map(qaq => qaq[1].map(a => 1/qaq[1].length) );
@@ -64,10 +64,11 @@ weights[24] = [0.1, 0.8, 0.1];
 
 // 根据概率生成数据
 const N = 1500;
+const num_qaqs = qaqs.length;
 let total_data = new Array(N);
 for(j=0; j<N; j++) {
-    let data = new Array(qaqs.length);
-    for(i=0; i<qaqs.length; i++) {
+    let data = new Array(num_qaqs);
+    for(i=0; i<num_qaqs; i++) {
         let r = Math.random();
         let w = 0;
         for(k=0; k<weights[i].length; k++) {
@@ -82,8 +83,8 @@ for(j=0; j<N; j++) {
 }
 
 // 生成每个题目的答案的统计数据
-count_arr = new Array(qaqs.length);
-for(s=0; s<qaqs.length; s++) {
+let count_arr = new Array(num_qaqs);
+for(s=0; s<num_qaqs; s++) {
     let array = total_data.map(data => data[s]);
     let count = {};
 
@@ -104,15 +105,12 @@ for(s=0; s<qaqs.length; s++) {
 // 保存数据到txt文件(复制txt文件内容到excel即可生成)
 const str_data = total_data.map(data => data.reduce((i, j) => i + '	' + j)).reduce((i, j) => i + '\n' + j);
 function download(filename, text) {
-  var element = document.createElement('a');
+  let element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
- 
   element.style.display = 'none';
   document.body.appendChild(element);
- 
   element.click();
- 
   document.body.removeChild(element);
 }
  
