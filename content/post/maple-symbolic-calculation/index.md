@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-03-22 12:59:46 +0800
+lastmod: 2024-07-14 18:04:45 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -847,6 +847,9 @@ with(MyModule)  # return [add]
 add(3, 5) # return 8
 ```
 非常的方便.
+
+### 程序优化
+- 将 $\sqrt{2I - 4}$ 经`evalc`作用改写为 $\sqrt{\sqrt5 - 2} + I\sqrt{\sqrt5 + 2}$, 当上述值在函数中出现多次, 此方法可以加速计算, 快速绘制出图形. 
 
 
 
