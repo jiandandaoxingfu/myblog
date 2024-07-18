@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-07-14 18:04:45 +0800
+lastmod: 2024-07-18 16:16:09 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -655,6 +655,32 @@ end
 [X, Y, Z] = maple2matlab('F:/', 'data.txt');
 surf(X, Y, Z);
 ```
+
+### 程序运行时间和占用内存
+使用`timelimit`函数可以设定程序运行时间, 超过时间程序会停止运行. 如
+```javascript
+sum_ := proc()
+	global i, s;
+	s := 0;
+	for i from 1 to 10^8 do
+		s := s + i;
+	end do;
+end proc:
+
+try 
+	timelimit(0.1, sum_() );
+catch:
+	print("time limit");
+end try:
+
+print(i, s)
+```
+即0.1s后停止计算, 程序内的变量依然存在. 
+
+另外, 使用命令`kernelopts(bytesalloc)` 可以获取程序占用的内存(单位为字节, 除以1024^2为我们熟知的兆字节). 
+对于一些复杂的计算, 程序运行时会占用大量内存, 导致电脑卡顿甚至死机. 
+因此可以在循环计算中使用此命令, 通过判断占用内存来提前停止计算, 防止电脑死机, 导致前面的计算丢失.
+
 
 
 ## 一些例子
