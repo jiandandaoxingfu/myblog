@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-07-18 16:16:09 +0800
+lastmod: 2024-08-25 20:49:15 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -801,7 +801,7 @@ display(p1, p2)
 上面 `style=patchnogrid` 表示去掉网格线, `color=f`表示根据`z`坐标来进行染色.
 效果如下:
 ![plot3d及其俯视图](images/topview.jpg)
-类似地, Matlab中虽然提供了俯视图函数(`iamgesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
+类似地, Matlab中虽然提供了俯视图(密度图)函数(`imagesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
 因此也可采用上述方法来实现这一操作.
 
 
