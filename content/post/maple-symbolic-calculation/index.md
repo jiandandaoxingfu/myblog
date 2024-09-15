@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-03-22 12:59:46 +0800
+lastmod: 2024-09-16 07:30:18 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -389,9 +389,12 @@ subs(x=1, expr);
 subs(x=1, y=2, expr);
 subs({ x=1, y=2 }, expr);
 subs({ x=1 }, { y=2 }, expr);
+
+# 变量(表达式)交换
+subs([x = y, y = x], expr);
  
 # 代数替换, subs替换模式是精确替换, 而代数替换会考虑代数关系
-subs( x + y + z = t, expr ) # 只有当 x + y + z 项才会被替换
+subs( x + y + z = t, expr ) # 只有 x + y + z 项才会被替换
 algsubs( x + y + z = t, expr ) # 一次只能有一个代数表达式, 与 subs 不同
 
 # 微分替换, 常用于具有导数的式子
