@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-09-16 07:30:18 +0800
+lastmod: 2024-09-16 07:30:55 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -659,6 +659,32 @@ end
 surf(X, Y, Z);
 ```
 
+### 程序运行时间和占用内存
+使用`timelimit`函数可以设定程序运行时间, 超过时间程序会停止运行. 如
+```javascript
+sum_ := proc()
+	global i, s;
+	s := 0;
+	for i from 1 to 10^8 do
+		s := s + i;
+	end do;
+end proc:
+
+try 
+	timelimit(0.1, sum_() );
+catch:
+	print("time limit");
+end try:
+
+print(i, s)
+```
+即0.1s后停止计算, 程序内的变量依然存在. 
+
+另外, 使用命令`kernelopts(bytesalloc)` 可以获取程序占用的内存(单位为字节, 除以1024^2为我们熟知的兆字节). 
+对于一些复杂的计算, 程序运行时会占用大量内存, 导致电脑卡顿甚至死机. 
+因此可以在循环计算中使用此命令, 通过判断占用内存来提前停止计算, 防止电脑死机, 导致前面的计算丢失.
+
+
 
 ## 一些例子
 
@@ -778,7 +804,7 @@ display(p1, p2)
 上面 `style=patchnogrid` 表示去掉网格线, `color=f`表示根据`z`坐标来进行染色.
 效果如下:
 ![plot3d及其俯视图](images/topview.jpg)
-类似地, Matlab中虽然提供了俯视图函数(`iamgesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
+类似地, Matlab中虽然提供了俯视图(密度图)函数(`imagesc` 或者 `contourf`)且可以绘制在同一个坐标轴下(绘制在`z=0`平面), 但无法单独对俯视图平移. 如果三维图形经过`z=0`平面, 则两者相交.
 因此也可采用上述方法来实现这一操作.
 
 
@@ -850,6 +876,9 @@ with(MyModule)  # return [add]
 add(3, 5) # return 8
 ```
 非常的方便.
+
+### 程序优化
+- 将 $\sqrt{2I - 4}$ 经`evalc`作用改写为 $\sqrt{\sqrt5 - 2} + I\sqrt{\sqrt5 + 2}$, 当上述值在函数中出现多次, 此方法可以加速计算, 快速绘制出图形. 
 
 
 

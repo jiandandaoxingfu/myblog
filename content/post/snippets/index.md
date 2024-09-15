@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2024-07-10 20:12:42 +0800
+lastmod: 2024-09-03 09:53:49 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -39,6 +39,21 @@ array.forEach(item => {
 
 console.log(count);
 // 输出: {1: 3, ... }
+```
+
+### 集合运算
+```javascript
+function intersection(setA, setB) {
+    return new Set([...setA].filter(x => setB.has(x)));
+}
+
+function union(setA, setB) {
+    return new Set([...setA, ...setB]);
+}
+
+function difference(setA, setB) {
+    return new Set([...setA].filter(x => !setB.has(x)));
+}
 ```
 
 ### 问卷星-生成随机数据
