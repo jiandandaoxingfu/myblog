@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-08-25 20:49:15 +0800
+lastmod: 2024-09-19 08:32:57 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -429,7 +429,8 @@ op( [1,2,3] ) # list to seq
 nops([1, 2, 3, 4]) # 获取数组长度
 indets( A F(x) + B ) # { A, B, F(x), x }
 indets( A F(x) + B, name ) # { A, B, x}
-indets( A F(x) + B, Function ) # { F(x) }
+indets( A F(x) + B exp(x), Function ) # { F(x) }, 获取表达式中的未知函数
+indets( A F(x) + B int(F(x), x), function ) # {F(x), int(F(x), x)}, #获取表达式中的函数项
 ```
 ![op](images/op.png)
 
