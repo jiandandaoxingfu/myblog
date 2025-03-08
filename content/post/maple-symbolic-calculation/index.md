@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-03-08 19:50:39 +0800
+lastmod: 2025-03-08 20:22:45 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -432,7 +432,8 @@ op( [1,2,3] ) # list to seq
 nops([1, 2, 3, 4]) # 获取数组长度
 indets( A F(x) + B ) # { A, B, F(x), x }
 indets( A F(x) + B, name ) # { A, B, x}
-indets( A F(x) + B, Function ) # { F(x) }
+indets( A F(x) + B exp(x), Function ) # { F(x) }, 获取表达式中的未知函数
+indets( A F(x) + B int(F(x), x), function ) # {F(x), int(F(x), x)}, #获取表达式中的函数项
 ```
 ![op](images/op.png)
 
@@ -472,8 +473,8 @@ seq( diff( f(x), x$i ), i=1..3)
 ### 映射
 将某个函数作用于数组, 列表, 矩阵等多维表达式的每一个元素.
 ```javascript
-map(f, [x, y, z], a); # return [f(x, a), f(y, a), f(z, a)];
-map2(f, a, [x, y, z]) # return [f(a, x), f(a, y), f(a, z)];
+map(f, [x, y, z], a); # return [f(x, a), f(y, a), f(z, a)];  适用于 diff, int等函数
+map2(f, a, [x, y, z]) # return [f(a, x), f(a, y), f(a, z)];  适用于 op(0, f), subs等函数
 arr := [ seq(1..3) ];
 map( x-> x^2, arr ); # return [1, 4, 9] map可以替代for循环， 更加方便。
 map(sin, arr); # sin 函数作用于每一个元素
