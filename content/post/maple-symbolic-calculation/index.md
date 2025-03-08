@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2024-09-16 07:30:55 +0800
+lastmod: 2025-03-08 19:50:39 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -466,14 +466,14 @@ int(f, x); # 不定积分
 int(f, x=0..1); # 定积分
 seq( diff( f(x), x$i ), i=1..3)
 ```
-需要注意的是, 在一些低版本中, 求导积分等一些运算只能作用域单个表达式, 不能作用域集合, 矩阵等.
+需要注意的是, 在一些低版本中, 求导积分等一些运算只能作用于单个表达式, 不能作用于集合, 矩阵等.
 ![diff](images/diff.png)
 
 ### 映射
 将某个函数作用于数组, 列表, 矩阵等多维表达式的每一个元素.
 ```javascript
 map(f, [x, y, z], a); # return [f(x, a), f(y, a), f(z, a)];
-map2(f, a, [x, y, z]) # return [f(x, 1), f(y, 2), f(a, z)];
+map2(f, a, [x, y, z]) # return [f(a, x), f(a, y), f(a, z)];
 arr := [ seq(1..3) ];
 map( x-> x^2, arr ); # return [1, 4, 9] map可以替代for循环， 更加方便。
 map(sin, arr); # sin 函数作用于每一个元素
@@ -508,8 +508,8 @@ solve( eq > 0, x);
 dsolve( deq = 0, y );
 dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) 
 # 偏微用 
-dsolve( deq = 0, y );
-dsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) 
+pdsolve( deq = 0, y );
+pdsolve({ deq1=b1, deq2=b2, ... }, { y1, y2, ... }) 
 # 同样右端等于0可以省略
 ```
 ![dsolve](images/dsolve.png)
@@ -568,6 +568,8 @@ plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
 plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
 ```
 ![plot](images/plot.png)
+对于隐函数, 可以使用
+`implicitplot`和`implicitplot3d`来进行绘制.
 Maple 还可以绘制动画, 例如我们有一个(2+1)-维偏微分方程的解, 那么可以将时间`t`作为参数进行绘制, 看图形随时间的演化
 ```javascript
 with(plots):
@@ -917,6 +919,15 @@ add(3, 5) # return 8
 
 
 ## 下载
+- 本文档对应的的程序
+
+{{< download url="files/maple讲义.mw" text="Maple符号计算" >}}
+
+- 官方手册
+
+{{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
+
+- 一些应用
 
 {{< download url="files/2023-03-02-example.mw" text="Maple 与 Darboux 变换" >}}
 
@@ -924,9 +935,15 @@ add(3, 5) # return 8
 
 {{< download url="files/2023-02-24-王鑫-离散BC.mw" text="离散可积方程的 Darboux 变换" >}}
 
-{{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
+- 最近开了一门课: `Maple在可积系统中的应用`. 课堂上的讲义如下(还在更新):
 
-> 上面的`离散可积方程的Darboux变换`程序中用到了 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包中的一些函数, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
+{{< download url="files/2025-02-21-maple.mw" text="Lesson 1" >}}
+
+{{< download url="files/2025-02-28.mw" text="Lesson 2" >}}
+
+{{< download url="files/2025-02-28-test.mw" text="Test 1" >}}
+
+{{< download url="files/2025-03-07.mw" text="Lesson 3" >}}
+
+> 上面的`离散可积方程的Darboux变换`程序中用到了自定义的 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
 这两个包的下载和使用方法可以参见文档 [SolveDifferenceEq](https://jiandandaoxingfu.github.io/myblog/post/solve-difference-equation/) 和 [DiscreteHierarchy](https://jiandandaoxingfu.github.io/myblog/post/derive-hierarchy/).
-
-
