@@ -89,7 +89,20 @@ Maple 安装完成占用空间大概为`1.3G`(这里以 Maple 18为例), 而后�
 ![下标](images/input-sub.jpg)
 ![%](images/%.jpg)
 
+除了系统输出结果, 我们也可以使用打印函数来输出.
+```javascript
+print(3); 
+a := 3; 
+print(a); 
+printf(`a = %f `, a); # 注意 `printf` 函数从行首还是打印, 并且默认不换行
+printf(`a = %g \n`, a); # `\n`是换行符
+printf(`b = %s`, "string")
+```
+上面的`%f`, `%g`, `%s`分别指代浮点数, 整数, 字符串.
+
 ### 定义变量
+
+变量名只能包含字母, 下划线, 数字, 且不能以数字开始.
 ```javascript
 a := 3;  # 定义变量不是用等号， 而是用冒号等号
 b := 4:  # 冒号不打印
@@ -111,7 +124,17 @@ alias(u=u(x), v=v(x));
 ![alias](images/alias.png)
 图中第一行由于 v 没有定义, 默认为常数, 因此求导为 0.
 
+> 需要注意的是, 变量名不能与系统内置函数名以及一些保留字或关键词(如and, or, in, array, list)重复.
+
+> 对于名字较长的变量名, 一般用下划线隔开每个单词, 或者从第二个单词开始, 首字母大写(称为驼峰规则). 例如
+> ```javascript
+> zero_curvature_equation := 0;
+> zeroCurvatureEquation := 0;
+> ```
+
 > 需要特别注意的是, 输入时, 字母和括号前/后, 括号与括号前/后尽量添加空格(函数除外, 如`f(x)`), 如`x * (a + b)` 省略乘号时要加空格, `x(a + b)` 通常会被是为 $x$ 关于 $a+b$ 的函数. 此外, `)(` 之间也要加空格, 否则可能会有问题. 一旦出现这种错误, 很难被发现.
+
+> 注意`1/2`和`0.5`在程序中一般不等价, 特别是代入时.
 
 ### 变量类型
 上面定义的变量都是单个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
@@ -156,23 +179,31 @@ coeMat, b := GenerateMatrix( [ eq1, eq2, ...], [ x1, x2, ...]);  # 获取系数�
 > 改变 `a` 的值不会影响 `b` 的值.
 > 但是对于矩阵, 两者指向同一地址.
 > ```javascript
-> A := [1, 2, 3];
+> A := Matrix([1, 2, 3]);
 > B := A;
 > ```
 > 因此如果改变 `A` 中某个元素的值, 则 `B` 也会发生变化.
 > ![memory](images/memory.png)
-
+> 为了使两者地址不同, 可以用`simplify`等函数作用一下.
+> ```javascript
+> A := Matrix([1, 2, 3]);
+> B := simplify(A); 
+> C := subs({}, A);
+> ```
 
 **列表(list)**
 ```javascript
 arr :=[1, 2, 3, 4]:
 arr[3] # return 3;
 arr[1..2] # return [1, 2];
+arr[2..] # return [2, 3, 4];
 arr[-1] # return 4
+arr2 := [ [1, 2, 3], [2, 4, 5] ] ; # 列表元素还可以是列表
 arr + arr # 列表也可以加减
 ```
 ![list](images/list.png)
-列表引用似乎不会同时改变.
+
+> 列表引用似乎不会同时改变. 
 
 **集合(set)**
 
@@ -194,6 +225,7 @@ arr2 := < 1 | 2 | 3>; # 行向量
 arr . arr2 # 矩阵
 ```
 ![vec](images/vec.png)
+向量可以作为矩阵, 参与矩阵运算.
 
 **序列**
 ```javascript
@@ -208,11 +240,22 @@ seq( seq(a[j, i](x), i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}. # 
 ```
 ![seq](images/seq.png)
 
+> 一些内置的函数如, `add`, `sum`, `cat`等具有与`seq`类似性质, 如
+>```javascript
+> add(f(i), i=1..4); # f(1) + ... + f(4).
+> cat('v', 1..4); # v1, v2, v3, v4;
+> cat('v', 1..4, 1..4); # v11, v12, v13, ..., ,v44;
+>```
+
 **字典(table)**
+
+字典中的元素称为键值对(key-value), 引用不再是下标, 而是键, 如下
 ```javascript
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
 T[a] #  1.
 ```
+table通常用于函数输入, 针对输入参数较多的情绪, 使用table, 使参数的意义更加清晰.
+
 
 **字符串**
 ```javascript
@@ -228,11 +271,31 @@ print("please input U");
 ### 流程控制
 **判断**
 ```javascript
-if x > 0 and (or) x < 4 then
+if x > 0 and/or x < 4 then
    # do something;
 end if;
 
-if x > 0 and (or) x < 4 then
+if x != 4 then
+   # do something;
+end if
+
+if x in [1,2,3] then
+   ...
+end if 
+
+if not x in [1, 2, 3] then
+ 	...
+end if 
+
+if not a=3 then
+	...
+end if 
+
+if a = 3 then
+	...
+end if
+
+if x > 0 and/or x < 4 then
    # do something
 elif x < 0 then
 	# do something
@@ -240,11 +303,17 @@ else
 	# do something
 end if;
 ```
-注意换行并添加缩进.
+> 注意换行并添加缩进.
+
+> `and`, `or` `=`, `!=`(不等号), `>=`, `<=`, `not`, `in`(属于) 称为逻辑运算符, 在条件语句中的优先级<加减乘除<括号. 在不确定逻辑运算符之间的优先级时, 可以用括号提升优先级.
 
 **循环**
 ```javascript
 for i from 1 to 10 do
+   # do something;
+end do;
+
+for i from 1 to 10 by 2 do # 这里步长为2, 默认为1;
    # do something;
 end do;
 
@@ -254,6 +323,7 @@ for i from 1 to 10 do
    end if;
 end do;
 
+# for 循环可以遍历列表, 矩阵等结构;
 arr := [1, 2, 3, 4];
 for i in arr do
    # do something;
@@ -324,8 +394,79 @@ hanoi(3, "A", "B", "C");
 ![func](images/func.png)
 ![func](images/func2.png)
 ![chatgpt-hanoi](images/chatgpt-hanoi.png)
-需要注意的是, 函数内部的命令行不论是以分号还是冒号结尾, 都不会打印, 因此需要`print`函数来进行打印.
+> 需要注意的是, 函数内部的命令行不论是以分号还是冒号结尾, 都不会打印, 因此需要`print`函数来进行打印.
 
+> 函数定义中, 输入的参数称为形式参数, 调用时的输入称为实际参数. 与其它语言不同, Maple中形式参数不能再被赋值. 
+
+> 定义函数时, 规范的做法包括
+> - 添加注释, 包括输入参数的类型和意义, 函数的功能, 输出类型和意义. 
+> - 合理缩进, 空格, 使代码清晰.
+> - 异常处理. 一般来说, 函数的输入是特定类型的参数. 如果输入其它类型的参数, 程序可能会报错甚至陷入死循环. 因此对输入参数做预处理能够保证程序的正确性. 异常处理通俗来说, 也即考虑各种可能性, 对预料到的异常进行提前处理. 例如
+>```javascript
+># define some difference operators: shift, Delta, Deltam, subss
+># solve_deq: solve difference equations.
+>
+>solve_deq := proc(params)	
+>	# params: table( [ _eq_, _iteration_, _maxORmin_, _var_, _F_, _m_, _sol_, _rep_  ])
+>	# determine var of eq = F(var) - f(n) = 0, where f is the nonhomogeneous term (i.e., f is var-independent) and F(0)=0.
+>	# eq:	   g(n) (= F(var) - f(n))
+>	# iteration: the maximun iteration times.
+>	# maxORmin:  the max/min function.
+>	# var: 	   (optional) the unknown function to be find (default value is 0, then F must be given)
+>	# F: 	   (optional) the function of _A_ that is of the form F(_A_) = cm _A_(n+m) + _A_(n+m-1)... + c0 _A_(n) + ... + c_k _A_(n-k) and F(0)=0.
+>	#		   		normalized F means that cm=1 for max and c_k = 1 for min.
+>	# eq:	   normalized eq means that cm=1 for max and c_k = 1 for min in F(var) of eq.
+>	# m:         (optional) m (max) or -k (min).
+>	# sol: 	   (optional) the solution.
+>	# rep: 	   (optional) the value of paramters in eq.
+>	# `A!=B` doesn't work, so we have to use `not A=B`.
+>	local eq, eqs, eqs2, index, maxmin, sign, i;
+>
+>	if whattype(params[_sol_]) = indexed then
+>		params[_sol_] := 0;
+>	end if;
+>
+>	if whattype(params[_rep_]) = indexed then
+>		...
+>	end if;
+>
+>	if not type(params[_iteration_], integer) then
+>		print("interation times is not integer");
+>		return;
+>	end if;
+>
+>	if ... then
+>		return params[_sol_];
+>	end if;
+>
+>	# if var != 0, then F, m, and normalized eq can be found automatic, else F, m should be provided.
+>	if ... then
+>		if ... then
+>			print("_var or _F_ must be given");
+>			return;
+>		end if;
+>		...
+>		# normalized eq and F
+>		...
+>	else
+>		...
+>		# normalized F
+>		...
+>	end if;
+>
+>   ...
+>
+>	if params[_iteration_] = 0 and not (params[_eq_] = 0) then
+>		print("unsolved");
+>		return <params[_eq_], params[_sol_]>;
+>	elif params[_eq_] = 0 then
+>		return params[_sol_];
+>	else
+>		params[_iteration_] := params[_iteration_] - 1;
+>		return solve_deq(params);
+>	end if;
+>end proc:
+>```
 
 
 ## 常用命令
@@ -381,6 +522,21 @@ sort(x^3 + 2 x^4 + x + 3 x^2) # 2 x^4 + x^3 + 3 x^2 + x
 rationalize( 1 / (sqrt(1 - u^2) - 1) ).
 ```
 
+### 随机数
+
+Maple提供了随机生成整数的函数
+```javascript
+rand_n := rand(n); # 定义了一个随机生成1-n之间整数的函数
+rand_N();
+rand_m2n := rand(m..n); # 定义了一个随机生成m-n之间整数的函数(m<n)
+```
+但似乎没有提供生成(0, 1)之间的小数的函数. 我们可以借助于`rand`函数来定义此函数.
+```javascript
+N := 10^12;
+rand_N := rand(N);
+random[0, 1] := () -> evalf(rand_N() / N, 12 );
+random[0, 1]()
+```
 
 ### 替换
 ```javascript
@@ -438,15 +594,20 @@ indets( A F(x) + B int(F(x), x), function ) # {F(x), int(F(x), x)}, #获取表�
 ![op](images/op.png)
 
 
-### 变量转换
+### 类型转换
 ```javascript
-convert( 1/3, float ) #  return 0.3333333...
+convert( 1/3, float ) #  return 0.3333333..., 等价于
+evalf( 1/3 )
+convert( 1/3, float, 10) # 精确到10位, 等价于
+evalf( 1/3, 10);
 convert( f(x), string ) # return "f(x)"
 convert( "f", symbol ) # return f
 convert( [1, 2, 3, 4], set ) # return {1, 2, 3, 4}
 convert(expr, sin); # 把所有函数都用正弦函数来表示
 convert(expr, exp); 
 convert(expr, sech);
+convert([1, 2, 3, 4], `+`); # 等价于 add/sum(i, i=1..4);
+convert([1, 2, 3, 4], `*`); # 等价于 product(i, i=1..4);
 
 # 也可用 op
 { op( [1, 2, 3, 4] ) }; # { 1, 2, 3, 4 }
@@ -528,6 +689,8 @@ convert( series( f(x) / x, x=0, 3 ), polynom ) # 去掉大 O 项
 
 
 ### 符号连接
+
+通常用来生成有规则的序列.
 ```javascript
 cat('v', 1, 2) # return v12;
 seq(cat('v', i), i=1..3) # return v1, v2, v3
@@ -544,6 +707,7 @@ convert([cat('v', 1 .. 3, 1 .. 3)], Matrix, 3)
 ### 类型判断
 ```javascript
 is(5 > 10) # false
+is(5, integer)
 type(f(x), function) # true
 has(f(x), x) # true
 has(sin(x) + cos(x), sin) # true
@@ -563,10 +727,14 @@ select(type, [f(x), a, b], function) # [f(x)]
 ```
 
 ### 绘图
+Maple提供了针对各种函数类型的绘制函数, 如`plot`, `plot3d`, `implicitplot`, `implicitplot3d`等等.
 ```javascript
 plot( sin(x), x=-3..3 );
 plot3d( sech^2(x/6 + t) , x=-3..3, t=-3..3);
 plot3d( k^n exp(3 t), n=-10..10, t=-5..5, grid=[21, 100] );
+
+Q11 := -exp((1/2 I) x) (256 alpha^4 t^4-(256 I) alpha^2 t^2+(256 I) alpha^3 t^3+32 alpha^2 t^2 x^2+(64 I) alpha^2 t^2 x+(16 I) alpha t x^2+(64 I) x-(128 I) t alpha x-256 alpha^2 t^2+x^4+(16 I) x^2+64 t alpha x+(4 I) x^3+256 t alpha+16 x^2-64)/(256 alpha^4 t^4+(256 I) alpha^3 t^3-(64 I) alpha^2 t^2 x+32 alpha^2 t^2 x^2+(16 I) alpha t x^2-(4 I) x^3+x^4+64 t alpha x+64);
+plot3d(abs(subs({alpha = 1}, Q11)), x = -10 .. 10, t = -10 .. 10, axes = frame, shading = zhue, labels = ['x', 't', 'abs(q2)'], orientation = [70, 30], labelfont = [COURIER, BOLD, 15], font = [COURIER, BOLD, 15], title = " the modulus of q2", caption = "the modulus of q2", titlefont = [COURIER, 20], style = patchnogrid, lightmodel = light4, grid = [100, 100]);
 ```
 ![plot](images/plot.png)
 对于隐函数, 可以使用
@@ -578,6 +746,12 @@ u := sin(x + y + t):
 animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 50, t = 0 .. 50);
 ```
 ![animation](images/animation.gif)
+
+> 在求精确解绘图时, 如果图像太高(>100), 就要考虑是否有奇性. 可以通过`grid`或者`numpoints`选项对图形加细. 也可以使用最值函数求极值点附近的最值.
+>```javascript
+> with(Optimization);
+> Maximize(u, { x>=-5, x<=5, t>=-5, t<=5 }); # Minimize;
+>```
 
 ### 文件读取
 我们可以把计算中产生的变量保存到文件, 下次直接读取文件即可得到数据. 
