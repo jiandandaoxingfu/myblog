@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-03-09 16:04:05 +0800
+lastmod: 2025-03-09 22:01:24 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -254,7 +254,7 @@ seq( seq(a[j, i](x), i=1..3), j=1..3 ); # return a_{11}, a_{12}, ..., a_{33}. # 
 T := table([ a = 1, b = x^2, c = "abcde"  ]); 
 T[a] #  1.
 ```
-table通常用于函数输入, 针对输入参数较多的情绪, 使用table, 使参数的意义更加清晰.
+table通常用于函数输入, 针对输入参数较多的情况, 使用table, 使参数的意义更加清晰.
 
 
 **字符串**
@@ -338,6 +338,7 @@ end do: # 注意, 这里如果不用冒号, 每次循环都会输出 prod_;
 print(prod_);
 ```
 ![for](images/for.png)
+> 很多情况下, 序列函数可以替代循环, 更加简洁方便. 后续会看到.
 
 ### 自定义函数
 ```javascript
