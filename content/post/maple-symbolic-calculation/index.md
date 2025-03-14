@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-03-14 10:02:52 +0800
+lastmod: 2025-03-14 12:08:14 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -1124,6 +1124,8 @@ add(3, 5) # return 8
 {{< download url="files/2025-02-28-test.mw" text="Test 1" >}}
 
 {{< download url="files/2025-03-07.mw" text="Lesson 3" >}}
+
+{{< download url="files/2025-03-14.mw" text="Lesson 4" >}}
 
 > 上面的`离散可积方程的Darboux变换`程序中用到了自定义的 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
 这两个包的下载和使用方法可以参见文档 [SolveDifferenceEq](https://jiandandaoxingfu.github.io/myblog/post/solve-difference-equation/) 和 [DiscreteHierarchy](https://jiandandaoxingfu.github.io/myblog/post/derive-hierarchy/).
