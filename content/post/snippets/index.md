@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2025-03-10 11:19:38 +0800
+lastmod: 2025-03-16 12:20:34 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -254,8 +254,8 @@ authors_ = refs_.map( r => r.match(/} *\n(.*?)\n/)[1] )
 ```
 因为排序只比较姓氏，因此，我们只需获取每个参考文献的姓氏，然后重排即可。 首先姓氏相加(针对上述四种情况)
 ```javascript
-authors = authors_.map( a => a.filter((e, i) => i%2 === 1 ).reduce((i, j) => i + j).replaceAll(' ', '') ) // case 1
-authors = authors_.map( a => a.filter((e, i) => i%2 === 0 ).reduce((i, j) => i + j).replaceAll(' ', '') ) // case 2
+authors = authors_.map( a => a.filter((e, i) => i%2 === 0 ).reduce((i, j) => i + j).replaceAll(' ', '') ) // case 1
+authors = authors_.map( a => a.filter((e, i) => i%2 === 1 ).reduce((i, j) => i + j).replaceAll(' ', '') ) // case 2
 authors = authors_.map( a => a.map( a => a.match(/([a-z]{2,} )?[A-Z][a-zA-Z]+/)[0] ) ).map( a => a.reduce( (i, j) => i+j) ) // case 3/4
 ```
 然后
