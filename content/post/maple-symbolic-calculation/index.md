@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-03-14 12:08:14 +0800
+lastmod: 2025-03-15 11:25:53 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -188,6 +188,7 @@ coeMat, b := GenerateMatrix( [ eq1, eq2, ...], [ x1, x2, ...]);  # 获取系数�
 > ```javascript
 > convert( map( a -> a^2, A - B ), `+`);
 > ```
+> 当然, `LinearAlgebra`包中内置了`Equal`函数来判断两个矩阵是否元素相等.
 > 为了使两者地址不同, 可以用`simplify`等函数作用一下.
 > ```javascript
 > A := Matrix([1, 2, 3]);
