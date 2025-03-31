@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-03-15 11:25:53 +0800
+lastmod: 2025-03-31 09:06:07 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -40,7 +40,7 @@ Maple 安装完成占用空间大概为`1.3G`(这里以 Maple 18为例), 而后�
 
 ## 基本用法
 学习一门编程语言一般只需要掌握以下几点就可以正常使用了, 至于其它的特性则需要在使用中不断学习. 
-不建议上来就抱着一本几百页的数一点一点的看, 太慢了, 而且不用的话, 很难理解.
+不建议上来就抱着一本几百页的书一点一点的看, 太慢了, 而且不用的话, 很难理解.
 平时学习中, 要学会偷懒, 能用计算机算, 就不要手算, 这样才能提高编程能力.
 
 > 下面的内容均基于 **Maple 18 (2014.1.24) 版本**. 部分地方可能会与新版本不同, 例如, 2022版矩阵求导不需要`map`, 但是如矩阵积分依然需要`map`, 其它常用的符号计算的命令并没有太大的改变.
@@ -135,6 +135,10 @@ alias(u=u(x), v=v(x));
 > 需要特别注意的是, 输入时, 字母和括号前/后, 括号与括号前/后尽量添加空格(函数除外, 如`f(x)`), 如`x * (a + b)` 省略乘号时要加空格, `x(a + b)` 通常会被是为 $x$ 关于 $a+b$ 的函数. 此外, `)(` 之间也要加空格, 否则可能会有问题. 一旦出现这种错误, 很难被发现.
 
 > 注意`1/2`和`0.5`在程序中一般不等价, 特别是代入时.
+
+> 由于字母`l`和数字`1`很难区分, 因此变量命名时要特别注意. 
+
+> 取消个别变量的赋值可以使用`unassign`, 如果想从文件开头重新运行, 通常在文件开头使用`restart`命令, 它会清除所有变量的赋值. 该命令最好单独一个代码块. 特别注意`restart`不能和`alias`放在同一个代码块. 
 
 ### 变量类型
 上面定义的变量都是单个的表达式或者数字, 对于多个表达式, 可以用集合, 矩阵, 列表等类型.
@@ -1118,15 +1122,21 @@ add(3, 5) # return 8
 
 - 最近开了一门课: `Maple在可积系统中的应用`. 课堂上的讲义如下(还在更新):
 
-{{< download url="files/2025-02-21-maple.mw" text="Lesson 1" >}}
+{{< download url="files/2025-02-21-maple.mw" text="Lesson 1: Maple入门" >}}
 
-{{< download url="files/2025-02-28.mw" text="Lesson 2" >}}
+{{< download url="files/2025-02-28.mw" text="Lesson 2: Maple入门" >}}
 
 {{< download url="files/2025-02-28-test.mw" text="Test 1" >}}
 
-{{< download url="files/2025-03-07.mw" text="Lesson 3" >}}
+{{< download url="files/2025-03-07.mw" text="Lesson 3: Maple的简单应用" >}}
 
-{{< download url="files/2025-03-14.mw" text="Lesson 4" >}}
+{{< download url="files/2025-03-14.mw" text="Lesson 4: Maple的简单应用" >}}
+
+{{< download url="files/2025-03-21.mw" text="Lesson 5: 推导方程" >}}
+
+{{< download url="files/2025-03-21-test.mw" text="Test 2" >}}
+
+{{< download url="files/2025-03-28.mw" text="Lesson 6: 推导方程" >}}
 
 > 上面的`离散可积方程的Darboux变换`程序中用到了自定义的 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
 这两个包的下载和使用方法可以参见文档 [SolveDifferenceEq](https://jiandandaoxingfu.github.io/myblog/post/solve-difference-equation/) 和 [DiscreteHierarchy](https://jiandandaoxingfu.github.io/myblog/post/derive-hierarchy/).
