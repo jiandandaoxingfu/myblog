@@ -1,7 +1,7 @@
 ---
 title: "GeoGebra 绘图简介"
 date: 2023-10-23 14:29:55 +0800
-lastmod: 2023-11-05 21:13:25 +0800
+lastmod: 2025-10-27 10:20:09 +0800
 summary: '介绍绘图软件 GeoGebra 的简单使用'
 tags: ["geogebra"]
 categories: ["教程"]
@@ -146,5 +146,215 @@ GeoGebra 左上方工具栏提供了各种点线面的功能, 可以轻松绘制
 GeoGebra首页资源中, 有非常多别人分享的图形. 首页搜索框可以直接搜索别人分享的绘图, 可以打开查看, 修改, 保存.
 ![](images/1.1.png)
 GeoGebra可以绘制很多复杂, 酷炫的图形和效果.
+
+
+
+
+# 🧾 GeoGebra常用指令与绘图示例大全
+
+> 本文由ChatGPT生成, 整理了GeoGebra中常用的基础与绘图指令，配合示例展示输入语法与可视化范围。  
+> 适用于课堂教学、实验报告及数学演示。
+
+---
+
+## 📌 一、基础代数指令
+
+### 1. 赋值与计算
+```javascript
+a = 3
+b = 4
+c = sqrt(a^2 + b^2)
+```
+**说明：** 计算直角三角形斜边长度。
+
+---
+
+### 2. 函数定义与计算
+```javascript
+f(x) = x^2 + 3x - 5
+f(2)
+```
+**输出：** `5`
+
+---
+
+### 3. 解方程
+```javascript
+Solve(x^2 - 5x + 6 = 0)
+```
+**输出：** `{x = 2, x = 3}`
+
+---
+
+### 4. 极值与导数
+```javascript
+f(x) = x^3 - 3x^2 + 2
+Derivative(f)
+Extremum(f)
+```
+**说明：** 求函数导数与极值点。
+
+---
+
+## 📉 二、绘图与曲线命令
+
+### 1. 绘制函数图像
+```javascript
+f = sin(x)
+```
+或者限制范围
+```javascript
+Function(f, -2π, 2π)
+```
+---
+
+### 2. 参数曲线
+```javascript
+Curve(cos(t), sin(t), t, 0, 2π)
+```
+**说明：** 绘制单位圆。
+
+---
+
+### 3. 极坐标曲线
+```javascript
+Curve(r*cos(t), r*sin(t), t, 0, 2π)
+```
+**示例：**  
+```javascript
+r = 1 + 0.5*sin(5t)
+Curve(r*cos(t), r*sin(t), t, 0, 2π)
+```
+**说明：** 五叶玫瑰线。
+
+---
+
+## 📊 三、几何作图指令
+
+### 1. 点与线
+```javascript
+A = (0, 0)
+B = (3, 2)
+Line(A, B)
+Segment(A, B)
+```
+
+---
+
+### 2. 圆与多边形
+```javascript
+Circle(A, 2)
+Polygon((0,0), (2,0), (1,2))
+```
+
+---
+
+### 3. 垂线与平行线
+```javascript
+PerpendicularLine(A, Line(B, C))
+ParallelLine(A, Line(B, C))
+```
+
+---
+
+### 4. 交点
+```javascript
+Intersect(Line(A, B), Circle(A, 2))
+```
+
+---
+
+## 🧮 四、分析与计算工具
+
+### 1. 定积分
+```javascript
+Integral(f, 0, 2)
+```
+
+### 2. 数列与表格
+```javascript
+Sequence(n^2, n, 1, 10)
+```
+
+### 3. 统计与拟合
+```javascript
+List1 = {1, 2, 3, 4, 5}
+List2 = {2, 3, 5, 7, 11}
+FitLine(List1, List2)
+```
+
+---
+
+## 🧭 五、动画与动态演示
+
+### 1. 动点
+```javascript
+A = (cos(t), sin(t))
+```
+**说明：** 将t设置为滑块，A沿圆周运动。
+
+---
+
+### 2. 旋转与平移
+```javascript
+Rotate(Polygon((0,0), (1,0), (0,1)), 45°)
+Translate(A, (2, 1))
+```
+
+---
+
+## 🧠 六、其他实用命令
+
+| 功能 | 指令示例 | 说明 |
+|------|-----------|------|
+| 隐函数图像 | `ImplicitPlot(x^2 + y^2 = 1)` | 画出圆 |
+| 向量表示 | `Vector((0,0),(2,1))` | 定义向量 |
+| 单位向量 | `UnitVector((3,4))` | 归一化 |
+| 角度计算 | `Angle(A, B, C)` | 计算∠ABC |
+| 数值显示 | `Value(f(1.5))` | 输出函数值 |
+
+---
+
+## 📘 七、示例：综合演示
+
+```javascript
+f(x) = sin(x)
+g(x) = cos(x)
+A = (π/4, f(π/4))
+B = (π/4, g(π/4))
+Polygon((0,0), A, B)
+```
+**说明：** 同时绘制sin与cos曲线，并作出特定区间内的三角形演示。
+
+**绘制曲线围成的区域: 分割计算面积**
+```javascript
+x = 1
+n = 100
+Sequence[ Polygon[{ (0 + i*x/n, 0), (0 + i*x/n, (0 + i*x/n)^2), (0 + (i+1)*x/n, (0 + i*x/n)^2), (0 + (i+1)*x/n, 0) }], i, 0, n-1 ]
+```
+
+---
+
+## ✅ 附录：常见快捷指令
+
+| 类别 | 指令 | 功能说明 |
+|------|------|-----------|
+| 代数 | `Simplify(expr)` | 化简表达式 |
+| 代数 | `Expand(expr)` | 展开表达式 |
+| 微积分 | `Derivative(f, x)` | 对f求导 |
+| 微积分 | `Integral(f, a, b)` | 求定积分 |
+| 数列 | `Sequence(expr, var, start, end)` | 生成序列 |
+| 几何 | `Polygon(P1, P2, …)` | 绘制多边形 |
+| 函数绘图 | `Plot(f, a, b)` | 绘制f在[a,b]上的曲线 |
+
+---
+
+> 📎 **说明：** 所有示例均可在GeoGebra网页版或桌面版直接输入运行。  
+> 推荐：使用滑块(`Slider`)动态控制参数，实现交互式教学效果。
+
+
+
+
+
 
 {{< katex >}}
