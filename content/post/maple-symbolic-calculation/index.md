@@ -1,7 +1,7 @@
 ---
 title: "Maple-符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2025-04-25 10:03:24 +0800
+lastmod: 2026-02-16 19:09:14 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -600,6 +600,9 @@ indets( A F(x) + B ) # { A, B, F(x), x }
 indets( A F(x) + B, name ) # { A, B, x}
 indets( A F(x) + B exp(x), Function ) # { F(x) }, 获取表达式中的未知函数
 indets( A F(x) + B int(F(x), x), function ) # {F(x), int(F(x), x)}, #获取表达式中的函数项
+indets(expr, 'specfunc(anything, f)') # 表达式中函数名为f的所有函数, specfunc定义函数类项
+indets(expr, 'anything'^identical(n)) # 
+indets(expr, 'anything'^symbol)
 ```
 ![op](images/op.png)
 
