@@ -1,7 +1,7 @@
 ---
 title: "一些常用的代码片段"
 date: 2022-01-21 18:34:49 +0800
-lastmod: 2025-03-16 12:20:34 +0800
+lastmod: 2025-09-15 10:18:18 +0800
 summary: '学习生活中用到的一些代码片段， 多是正则表示式。'
 tags: ["regrep", "snippets", "latex"]
 categories: ["科研"]
@@ -135,6 +135,8 @@ download("data.txt", str_data);
 
 
 ### 处理参考文献
+
+> 不用看了, 直接发给ChatGPT就完事了. 
 
 > 良好的习惯是保持每条参考文献都是如下格式(下面我们的操作都以此为基础)
 > ```javascript
