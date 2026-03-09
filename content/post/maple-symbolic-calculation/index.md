@@ -1049,8 +1049,8 @@ P1 := densityplot(wxy, x = -R .. R, y = -R .. R,
                   style = patchnogrid, 
                   colorstyle = HUE,
                   #labelfont=["Sim", 130], axesfont=["Sim", 130] );
-# 注意, 这里的labelfont和axesfont字体设置的非常大, Maple绘制出来的图像比文字小许多
-# 但是它导出的图片却是正常的, 反倒是默认字体导出的图片中各种字体小的看不清楚
+# 注意, 这里的 labelfont 和 axesfont 字体设置的非常大, Maple绘制出来的图像比文字小许多
+# 但是它导出的图片却是正常的, 反倒是默认字体导出的图片中字体小的看不清楚
 # 这个可能是软件的问题, 也可能是硬件的问题(不同电脑可能不同, 可以多试几次字体大小)
 
 # 3. 生成截面对比图 (P2)
@@ -1074,10 +1074,10 @@ P2 := display([p1, p2, p3],
               axesfont = ["Sim", 20], 
               legendstyle = [font = ["Sim", 20], location = "right"]);
 
-# 4. 图像导出部分
+# 4. 图像导出部分: 文件路径要存在才行
 path := "E:/images/":
 
-# 导出 P1 (PNG格式), 也可以改为jpg等格式
+# 导出 P1 (PNG格式), 也可以改为jpg等格式, 这里的宽和高都可以修改, 和清晰度成正比
 plotsetup(png, plotoutput = cat(path, "lump2density-xy"), 
           plotoptions = "height=2000,width=2000"):
 P1;
