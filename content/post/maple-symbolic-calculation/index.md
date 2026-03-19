@@ -1207,11 +1207,11 @@ add(3, 5) # return 8
 ## 下载
 - 本文档对应的的程序
 
-{{< download url="files/maple讲义.mw" text="Maple符号计算" >}}
+{{< download url="files/2025/maple讲义.mw" text="Maple符号计算" >}}
 
 - 官方手册
 
-{{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
+{{< download url="files/2025/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
 
 - 一些应用
 
@@ -1221,35 +1221,56 @@ add(3, 5) # return 8
 
 {{< download url="files/2023-02-24-王鑫-离散BC.mw" text="离散可积方程的 Darboux 变换" >}}
 
-- 最近开了一门课: `Maple在可积系统中的应用`. 课堂上的讲义如下(还在更新):
-
-{{< download url="files/2025-02-21-maple.mw" text="Lesson 1: Maple入门" >}}
-
-{{< download url="files/2025-02-28.mw" text="Lesson 2: Maple入门" >}}
-
-{{< download url="files/2025-02-28-test.mw" text="Test 1" >}}
-
-{{< download url="files/2025-03-07.mw" text="Lesson 3: Maple的简单应用" >}}
-
-{{< download url="files/2025-03-14.mw" text="Lesson 4: Maple的简单应用" >}}
-
-{{< download url="files/2025-03-21.mw" text="Lesson 5: 推导方程" >}}
-
-{{< download url="files/2025-03-21-test.mw" text="Test 2" >}}
-
-{{< download url="files/2025-03-28.mw" text="Lesson 6: 推导方程" >}}
-
-{{< download url="files/2025-04-11.mw" text="Lesson 7: 推导方程" >}}
-
-{{< download url="files/2025-04-25.mw" text="Lesson 8: 守恒律" >}}
-
-{{< download url="files/2025-05-09.mw" text="Lesson 9: 守恒律" >}}
-
-{{< download url="files/2025-05-16.mw" text="Lesson 10: RH方法解的验证及绘图" >}}
-
-{{< download url="files/2025-05-23.mw" text="Lesson 11: RH方法解的验证及绘图" >}}
-
-{{< download url="files/2025-05-30.mw" text="Lesson 12: RH方法解的验证及绘图" >}}
 
 > 上面的`离散可积方程的Darboux变换`程序中用到了自定义的 `SolveDifferenceEq` 和 `DiscreteHierarchy` 两个包, 需要把以上两个包放在Maple安装路径的`lib`文件夹下, 即`maple 18/lib/`里面.
 这两个包的下载和使用方法可以参见文档 [SolveDifferenceEq](https://jiandandaoxingfu.github.io/myblog/post/solve-difference-equation/) 和 [DiscreteHierarchy](https://jiandandaoxingfu.github.io/myblog/post/derive-hierarchy/).
+
+
+## 课程讲义
+
+25年开始, 给本方向研究生开了一门课: `Maple在可积系统中的应用`. 课堂上的讲义如下:
+
+### 2025年春季课程
+
+{{< download url="files/2025/2025-02-21-maple.mw" text="Lesson 1: Maple入门" >}}
+
+{{< download url="files/2025/2025-02-28.mw" text="Lesson 2: Maple入门" >}}
+
+{{< download url="files/2025/2025-02-28-test.mw" text="Test 1" >}}
+
+{{< download url="files/2025/2025-03-07.mw" text="Lesson 3: Maple的简单应用" >}}
+
+{{< download url="files/2025/2025-03-14.mw" text="Lesson 4: Maple的简单应用" >}}
+
+{{< download url="files/2025/2025-03-21.mw" text="Lesson 5: 推导方程" >}}
+
+{{< download url="files/2025/2025-03-21-test.mw" text="Test 2" >}}
+
+{{< download url="files/2025/2025-03-28.mw" text="Lesson 6: 推导方程" >}}
+
+{{< download url="files/2025/2025-04-11.mw" text="Lesson 7: 推导方程" >}}
+
+{{< download url="files/2025/2025-04-25.mw" text="Lesson 8: 守恒律" >}}
+
+{{< download url="files/2025/2025-05-09.mw" text="Lesson 9: 守恒律" >}}
+
+{{< download url="files/2025/2025-05-16.mw" text="Lesson 10: RH方法解的验证及绘图" >}}
+
+{{< download url="files/2025/2025-05-23.mw" text="Lesson 11: RH方法解的验证及绘图" >}}
+
+{{< download url="files/2025/2025-05-30.mw" text="Lesson 12: RH方法解的验证及绘图" >}}
+
+
+### 2026年春季课程(更新中)
+
+{{< download url="files/2026/2026-03-06-Lesson 1.mw" text="Lesson 1: Maple入门-输入输出及变量类型" >}}
+
+{{< download url="files/2026/2026-03-13-Lesson 2.mw" text="Lesson 2: 实战: 双线性方法求解lump解" >}}
+
+{{< download url="files/2026/The Direct Method in Soliton Theory.pdf" text="Lesson 2: 文献 1" >}}
+
+{{< download url="files/2026/硕士论文.pdf" text="Lesson 2: 文献 2" >}}
+
+{{< download url="files/2026/2015-MaWX-lump solutions to KP-PLA.pdf" text="Lesson 2: 文献 3" >}}
+
+{{< download url="files/2026/Lump解的物理实验-PRL.pdf" text="Lesson 2: 文献 4" >}}

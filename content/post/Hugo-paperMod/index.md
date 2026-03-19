@@ -29,6 +29,8 @@ cover:
 
 首先下载[Hugo程序](https://github.com/gohugoio/hugo/releases)，我们将其放在目录`D:/Hugo/bin/hugo.exe`。 然后将该路径添加到环境变量`Path`中`...;D:/Hugo/bin/`。 在命令行输入`hugo version`并回车，可以查看hugo的版本信息，则环境配置成功。
 
+> 注意, 我们使用的是`v0.100.1`左右, 其他版本可能会有变化. 
+
 然后我们就可以使用命令行工具创建网站项目。 创建网站项目名为mysite，放在E盘
 ```
 E:\> hugo new site mysite
