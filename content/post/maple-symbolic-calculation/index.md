@@ -1,5 +1,5 @@
 ---
-title: "Maple-符号计算"
+title: "Maple符号计算"
 date: 2022-01-13 07:43:08 +0800
 lastmod: 2026-03-27 14:42:53 +0800
 summary: 'Maple符号计算的快速入门教程'
@@ -1275,6 +1275,7 @@ add(3, 5) # return 8
 
 {{< download url="files/2026/Lump解的物理实验-PRL.pdf" text="Lesson 2: 文献 4" >}}
 
-{{< download url="files/2026/2026-03-13-Lesson 3.mw" text="Lesson 3: 实战: 双线性方法求解lump解" >}}
+{{< download url="files/2026/2026-03-20-Lesson 3.mw" text="Lesson 3: 实战: 双线性方法求解lump解" >}}
 
-{{< download url="files/2026/2026-03-13-Lesson 4.mw" text="Lesson 4: 实战: 双线性方法求解lump解" >}}
+{{< download url="files/2026/2026-03-27-Lesson 4.mw" text="Lesson 4: 实战: 双线性方法求解lump解" >}}
+{{< download url="files/2026/BKP.pdf" text="Lesson 4: 练习" >}}
