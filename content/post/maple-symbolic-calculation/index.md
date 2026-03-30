@@ -1207,11 +1207,11 @@ add(3, 5) # return 8
 ## 下载
 - 本文档对应的的程序
 
-{{< download url="files/2025/maple讲义.mw" text="Maple符号计算" >}}
+{{< download url="files/maple讲义.mw" text="Maple符号计算" >}}
 
 - 官方手册
 
-{{< download url="files/2025/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
+{{< download url="files/Maple2020中文用户手册.pdf" text="Maple 2020 中文用户手册" >}}
 
 - 一些应用
 
