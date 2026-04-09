@@ -1,7 +1,7 @@
 ---
 title: "Maple符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2026-04-03 14:46:11 +0800
+lastmod: 2026-04-09 20:26:21 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -154,6 +154,7 @@ M := Matrix( row, col ); # row * col阶矩阵
 M := Matrix( row ); # row阶方阵
 M := Matrix([ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]); # 三阶矩阵 或者
 M := <1, 2, 3 | 4, 5, 6 |, 7, 8, 9>; # 注意这里与上面定义的M互为转置 
+M := Matrix(n, (i, j) -> m[i, j]); # 生成 m_{ij} 矩阵.
 M[1, ..] # M的第一行(向量型)
 M[.., 1] # M的第一列
 M^-1 # M的逆
