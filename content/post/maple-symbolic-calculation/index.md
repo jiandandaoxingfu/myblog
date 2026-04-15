@@ -515,6 +515,15 @@ lcoeff(expr, x)  # x最高次幂的系数
 tcoeff(expr, x)  # x最低次幂的系数
 coeffs(expr, x); # x 的各次幂系数
 
+expr := lambda*y + c*lambda^2*y + h*lambda + (a + b)*y*lambda + w*lambda^5 + v*lambda^3 + d;
+coeffs(expr, lambda, 't') 
+# 返回系数序列, 这里t是系数对应的 lambda 的首一幂函数, 注意未必是按照幂次升或降, 可能是乱序
+print(t);
+
+coeffs(collect(expr, [lambda, y], 'distributed'), [lambda, y]); 
+# 这里返回的是首一lambda和 y构成的单项式
+# 另外需要注意的是, coeffs作用表达式之前, 应该collect一下, 否则可能报错
+
 with(PolynomialTools):
 CoefficientVector(x^3 + 2 x^2 + 3 x + 4, x); # <4, 3, 2, 1>
 
@@ -522,6 +531,7 @@ with(PDETools):
 dcoeffs(expr, u); # u 的各阶导数的系数
 ```
 ![coeff](images/coeff.png)
+![coeffs](images/coeffs.png)
 
 ### 排序
 ```javascript
@@ -540,7 +550,7 @@ rationalize( 1 / (sqrt(1 - u^2) - 1) ).
 Maple提供了随机生成整数的函数
 ```javascript
 rand_n := rand(n); # 定义了一个随机生成1-n之间整数的函数
-rand_N();
+rand_n();
 rand_m2n := rand(m..n); # 定义了一个随机生成m-n之间整数的函数(m<n)
 ```
 但似乎没有提供生成(0, 1)之间的小数的函数. 我们可以借助于`rand`函数来定义此函数.
