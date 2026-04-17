@@ -1297,3 +1297,5 @@ add(3, 5) # return 8
 {{< download url="files/2026/2026-04-03-Lesson 5.mw" text="Lesson 5: 常用函数" >}}
 
 {{< download url="files/2026/2026-04-10-Lesson 6.mw" text="Lesson 6: 常用函数" >}}
+
+{{< download url="files/2026/2026-04-10-Lesson 6.mw" text="Lesson 7: 判断, 循环和自定义函数" >}}
