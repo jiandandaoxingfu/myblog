@@ -1299,3 +1299,7 @@ add(3, 5) # return 8
 {{< download url="files/2026/2026-04-10-Lesson 6.mw" text="Lesson 6: 常用函数" >}}
 
 {{< download url="files/2026/2026-04-17-Lesson 7.mw" text="Lesson 7: 判断, 循环和自定义函数" >}}
+
+{{< download url="files/2026/2026-04-24-Lesson 8.mw" text="Lesson 8: 构造时间谱问题" >}}
+
+{{< download url="files/2026/2026-04-24-Lesson 9-习题.pdf" text="Lesson 9: 练习" >}}
