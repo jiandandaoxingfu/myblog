@@ -357,6 +357,13 @@ print(prod_);
 func := (x) -> x^2: # 箭头函数, 注意与 func := x^2 的区别
 
 func(4) # 16
+fx := diff(func(x), x); # 注意这里 fx 是表达式, 不是函数
+
+# 如果我们想从一个表达式来定义函数, 可以用 unapply 或者 MakeFunction
+fx := unapply( diff(func(x), x), x);
+# 或者
+fx := MakeFunction( diff(func(x), x), x );
+# 这两个函数功能相同, 作用相同, unapply(expr, x, y, ...) 等价于箭头函数 (x, y, ...) -> expr
 
 # proc里面的量就是变量, 即输入, 而 return 后面是返回的结果, 可以返回多个
 func := proc(x)
@@ -409,7 +416,7 @@ hanoi(3, "A", "B", "C");
 ![chatgpt-hanoi](images/chatgpt-hanoi.png)
 > 需要注意的是, 函数内部的命令行不论是以分号还是冒号结尾, 都不会打印, 因此需要`print`函数来进行打印.
 
-> 函数定义中, 输入的参数称为形式参数, 调用时的输入称为实际参数. 与其它语言不同, Maple中形式参数不能再被赋值. 
+> 函数定义中, 输入的参数称为形式参数, 调用时的输入称为实际参数. 与其它语言不同, Maple中形式参数不能再被赋值或者修改. 
 
 > 定义函数时, 规范的做法包括
 > - 添加注释, 包括输入参数的类型和意义, 函数的功能, 输出类型和意义. 
