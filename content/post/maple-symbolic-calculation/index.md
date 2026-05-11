@@ -1310,3 +1310,5 @@ add(3, 5) # return 8
 {{< download url="files/2026/2026-04-24-Lesson 8.mw" text="Lesson 8: 构造时间谱问题" >}}
 
 {{< download url="files/2026/2026-04-24-Lesson 9-习题.pdf" text="Lesson 9: 练习" >}}
+
+{{< download url="files/2026/2026-05-08-Lesson 9.mw" text="Lesson 9: 构造时间谱问题" >}}
