@@ -1,7 +1,7 @@
 ---
 title: "Maple符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2026-04-09 20:26:21 +0800
+lastmod: 2026-05-17 21:54:02 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -318,6 +318,18 @@ end if;
 > 注意换行并添加缩进.
 
 > `and`, `or` `=`, `!=`(不等号), `>=`, `<=`, `not`, `in`(属于) 称为逻辑运算符, 在条件语句中的优先级<加减乘除<括号. 在不确定逻辑运算符之间的优先级时, 可以用括号提升优先级.
+
+> Maple 提供了类似其它语言的三目运算
+```javascript
+`if`(condition, true_expr, false_expr)
+
+# 等价于
+if condition then
+	true_expr;
+else
+	false_expr;
+fi;
+```
 
 **循环**
 ```javascript
