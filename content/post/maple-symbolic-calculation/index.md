@@ -1324,3 +1324,9 @@ add(3, 5) # return 8
 {{< download url="files/2026/2026-04-24-Lesson 9-习题.pdf" text="Lesson 9: 练习" >}}
 
 {{< download url="files/2026/2026-05-08-Lesson 9.mw" text="Lesson 9: 构造时间谱问题" >}}
+
+{{< download url="files/2026/2026-05-15-Lesson 10-DT-gNLS.mw" text="Lesson 10: Darboux 变换" >}}
+
+{{< download url="files/2026/2012-GengXG-gNLS-ND.pdf" text="Lesson 10: Darboux 变换文献" >}}
+
+{{< download url="files/2026/2026-05-22-Lesson 11-DT-gNLS.mw" text="Lesson 11: Darboux 变换" >}}
