@@ -1,7 +1,7 @@
 ---
 title: "Maple符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2026-05-17 21:54:02 +0800
+lastmod: 2026-05-29 11:31:24 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -1330,3 +1330,5 @@ add(3, 5) # return 8
 {{< download url="files/2026/2012-GengXG-gNLS-ND.pdf" text="Lesson 10: Darboux 变换文献" >}}
 
 {{< download url="files/2026/2026-05-22-Lesson 11-DT-gNLS.mw" text="Lesson 11: Darboux 变换" >}}
+
+{{< download url="files/2026/2026-05-29-Lesson 12-DT-gNLS.mw" text="Lesson 12: Darboux 变换" >}}
