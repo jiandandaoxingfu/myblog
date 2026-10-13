@@ -1,7 +1,7 @@
 ---
 title: "Maple符号计算"
 date: 2022-01-13 07:43:08 +0800
-lastmod: 2026-06-05 15:16:30 +0800
+lastmod: 2026-10-13 17:36:00 +0800
 summary: 'Maple符号计算的快速入门教程'
 tags: ["symbolic calculation", "Maple"]
 categories: ["Maple", '教程']
@@ -828,6 +828,11 @@ animate(plot3d, [u, x = -10 .. 40, y = -10 .. 40, grid = [100, 100]], frames = 5
 > with(Optimization);
 > Maximize(u, { x>=-5, x<=5, t>=-5, t<=5 }); # Minimize;
 >```
+
+
+> 如果只是绘制一些简单的二维图像, 可以用其它轻量化的软件. 对于有表达式的曲线, 可以用[Geogebra](https://www.geogebra.org/classic/); 没有表达式, 只是一个大概的曲线(比如RH做长时间渐近时会经常出现), 可以使用[Ipe](https://ipe-web.otfried.org/index.html).
+
+
 
 ### 文件读取
 我们可以把计算中产生的变量保存到文件, 下次直接读取文件即可得到数据. 
